@@ -1,0 +1,114 @@
+{% comment %} Assign images from settings {% endcomment %}
+{% assign desktop_image = section.settings.desktop_landscape_image %}
+{% assign mobile_image = section.settings.mobile_portrait_image %}
+{% stylesheet %}
+  .simple-responsive-image-container {
+    width: 100%;
+    height: 100vh;
+    max-height: 500px; /* Or define a fixed height for the container, e.g., 500px */
+    overflow: hidden; /* Important for object-fit */
+    /* Add desired padding or margin here if needed for the section */
+  }
+
+  .simple-responsive-image-container img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Hardcoded to cover */
+    object-position: center; /* Default position when covering */
+  }
+
+  .no-images-selected {
+    text-align: center;
+    padding: 20px;
+    border: 1px dashed #ccc;
+  }
+{% endstylesheet %}
+<div class="simple-responsive-image-container">
+  {% if desktop_image != blank or mobile_image != blank %}
+    <picture>
+      {% comment %} Source for mobile portrait image {% endcomment %}
+      {% if mobile_image != blank %}
+        <source
+          media="(max-width: 767px)"
+          srcset="
+            {{ mobile_image | image_url: width: 375 }} 375w,
+            {{ mobile_image | image_url: width: 480 }} 480w,
+            {{ mobile_image | image_url: width: 600 }} 600w
+          "
+          sizes="(max-width: 767px) 100vw, 375px"
+        >
+      {% endif %}
+
+      {% comment %} Source for desktop landscape image {% endcomment %}
+      {% if desktop_image != blank %}
+        <source
+          media="(min-width: 768px)"
+          srcset="
+            {{ desktop_image | image_url: width: 768 }} 768w,
+            {{ desktop_image | image_url: width: 1024 }} 1024w,
+            {{ desktop_image | image_url: width: 1200 }} 1200w,
+            {{ desktop_image | image_url: width: 1400 }} 1400w,
+            {{ desktop_image | image_url: width: 1600 }} 1600w,
+            {{ desktop_image | image_url: width: 1800 }} 1800w,
+            {{ desktop_image | image_url: width: 2000 }} 2000w
+          "
+          sizes="(min-width: 768px) 100vw, 768px"
+        >
+      {% endif %}
+
+      {% comment %} Fallback img tag (required for <picture> and for browsers that don't support <picture>) {% endcomment %}
+      {% assign fallback_image = desktop_image | default: mobile_image %}
+      {% if fallback_image != blank %}
+        <img
+          src="{{ fallback_image | image_url: width: fallback_image.width }}"
+          width="{{ fallback_image.width }}"
+          height="{{ fallback_image.height }}"
+          alt="{{ fallback_image.alt }}"
+          loading="lazy"
+          class="simple-responsive-image"
+        >
+      {% else %}
+        {{ 'image' | placeholder_svg_tag: 'placeholder-svg-image' }}
+      {% endif %}
+    </picture>
+  {% else %}
+    {% comment %} Placeholder if no images are selected in settings {% endcomment %}
+    <div class="no-images-selected">
+      <p>Please select images in the section settings.</p>
+      {{ 'image' | placeholder_svg_tag: 'placeholder-svg-image' }}
+    </div>
+  {% endif %}
+</div>
+
+{% schema %}
+{
+  "name": "Img Landing",
+  "tag": "section",
+  "class": "img-landing-section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Image Settings"
+    },
+    {
+      "type": "image_picker",
+      "id": "desktop_landscape_image",
+      "label": "Desktop Landscape Image",
+      "info": "Upload an image best suited for wider screens (e.g., landscape aspect ratio like 16:9 or 3:2)."
+    },
+    {
+      "type": "image_picker",
+      "id": "mobile_portrait_image",
+      "label": "Mobile Portrait Image",
+      "info": "Upload an image best suited for narrower screens (e.g., portrait aspect ratio like 9:16 or 2:3)."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Img Landing",
+      "category": "Image"
+    }
+  ]
+}
+{% endschema %}
