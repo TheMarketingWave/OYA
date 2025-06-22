@@ -8,13 +8,19 @@ is yours! :)
   --max-width: 1230px;
   --black: #000000;
   --white: #ffffff;
-  --cream: #FFF6D1;
+  --cream: #fff6d1;
   --font-stack: system-ui, sans-serif;
   --font-size: 1.125rem;
   --regular: 400;
   --bold: 900;
   --border: 2px solid var(--black);
-  --shading: repeating-linear-gradient(45deg, white, white 2px, black 1px, black 3px);
+  --shading: repeating-linear-gradient(
+    45deg,
+    white,
+    white 2px,
+    black 1px,
+    black 3px
+  );
 }
 
 * {
@@ -76,6 +82,10 @@ sup {
 header {
   margin: 0 auto;
   max-width: var(--max-width);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100wh;
 }
 
 main img,
@@ -94,7 +104,7 @@ footer img {
   padding: 0;
 }
 .section-wrap:before {
-  content: '';
+  content: "";
   position: absolute;
   left: 0;
   right: 0;
@@ -599,7 +609,7 @@ table:before {
 /* Header */
 header {
   display: grid;
-  grid-template-columns: .25fr 0.5fr .25fr;
+  grid-template-columns: 0.25fr 0.5fr 0.25fr;
   grid-gap: 1rem;
   padding: 0 1rem;
 }
