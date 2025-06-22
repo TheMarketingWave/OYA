@@ -13,6 +13,7 @@
   "sections": {
     "announcement": {
       "type": "announcement-bar",
+      "disabled": true,
       "settings": {
         "text": "Welcome to the Taillour Demo store.",
         "background": "",
@@ -21,6 +22,7 @@
     },
     "header": {
       "type": "header",
+      "disabled": true,
       "settings": {}
     },
     "nav": {

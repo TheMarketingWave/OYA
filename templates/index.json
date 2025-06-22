@@ -9,6 +9,14 @@
  */
 {
   "sections": {
+    "landing_section_FhfMEz": {
+      "type": "landing-section",
+      "name": "Img Landing",
+      "settings": {
+        "desktop_landscape_image": "shopify://shop_images/1.png",
+        "mobile_portrait_image": "shopify://shop_images/Hero.png"
+      }
+    },
     "image_banner_6NDtLC": {
       "type": "image-banner",
       "blocks": {
@@ -42,6 +50,7 @@
         "text_yz7Gyj",
         "buttons_zUiW9p"
       ],
+      "disabled": true,
       "settings": {
         "background": "#f5f5f5",
         "object_fit": "cover",
@@ -77,6 +86,7 @@
         "text_amNwtU",
         "buttons_hEXxe6"
       ],
+      "disabled": true,
       "settings": {
         "object_fit": "cover",
         "object_position": "center",
@@ -88,6 +98,7 @@
     },
     "text_GjxAeE": {
       "type": "text",
+      "disabled": true,
       "settings": {
         "max_width": 768,
         "text": "<p>By keeping things simple, you can build your theme quickly and efficiently without having to dive through convoluted code.</p><p>This is another nice section. 🙂 </p>",
@@ -127,6 +138,7 @@
         "text_VhigEQ",
         "buttons_jzKH3h"
       ],
+      "disabled": true,
       "settings": {
         "video": "",
         "object_fit": "contain",
@@ -140,6 +152,7 @@
     },
     "product_grid_9e9FqV": {
       "type": "product-grid",
+      "disabled": true,
       "settings": {
         "text": "Products Section",
         "size": "h2",
@@ -152,6 +165,7 @@
     },
     "button_row_NkV6Bn": {
       "type": "button-row",
+      "disabled": true,
       "settings": {
         "text": "Go Shopping",
         "link": "shopify://collections"
@@ -159,6 +173,7 @@
     },
     "collection_grid_7w6HWG": {
       "type": "collection-grid",
+      "disabled": true,
       "settings": {
         "text": "Collections Section",
         "size": "h2",
@@ -175,6 +190,7 @@
       "blocks": {
         "column_zYFacD": {
           "type": "column",
+          "disabled": true,
           "settings": {
             "show_image": true,
             "text": "Columns Section",
@@ -186,6 +202,7 @@
         },
         "column_CNfgmM": {
           "type": "column",
+          "disabled": true,
           "settings": {
             "show_image": true,
             "text": "Customisable",
@@ -197,6 +214,7 @@
         },
         "column_kbECRk": {
           "type": "column",
+          "disabled": true,
           "settings": {
             "show_image": true,
             "text": "Headline",
@@ -212,6 +230,7 @@
         "column_CNfgmM",
         "column_kbECRk"
       ],
+      "disabled": true,
       "settings": {
         "background": "#ffffff",
         "color": ""
@@ -219,6 +238,7 @@
     },
     "newsletter_form_JJALbH": {
       "type": "newsletter-form",
+      "disabled": true,
       "settings": {
         "heading": "Newsletter Signup",
         "size": "h2",
@@ -315,6 +335,7 @@
         "checkbox_HGGwkP",
         "checkbox_wHnRgw"
       ],
+      "disabled": true,
       "settings": {
         "heading": "Contact Form Section",
         "size": "h2",
@@ -326,6 +347,7 @@
     },
     "articles_grid_XrKUxx": {
       "type": "articles-grid",
+      "disabled": true,
       "settings": {
         "text": "Latest Articles Section",
         "size": "h2",
@@ -338,6 +360,7 @@
     }
   },
   "order": [
+    "landing_section_FhfMEz",
     "image_banner_6NDtLC",
     "image_with_text_pjRwPQ",
     "text_GjxAeE",
