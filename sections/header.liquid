@@ -50,6 +50,12 @@
     height: 40px;
     display: block;
   }
+
+  .header-content {
+    margin-left: auto;
+    display: flex;
+    gap: 16px;
+  }
 {% endstyle %}
 
 <header>
@@ -62,6 +68,8 @@
   </div>
 
   <div class="header-content">
-    <!-- Header content can be added here -->
+    {% render 'icon-button', icon: 'search.svg', label: 'Search' %}
+    {% render 'icon-button', icon: 'person.svg', label: 'Log In' %}
+    {% render 'icon-button', icon: 'cart.svg', label: 'Cart' %}
   </div>
 </header>

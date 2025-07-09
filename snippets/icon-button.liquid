@@ -1,0 +1,74 @@
+{% comment %}
+  Icon Button Snippet
+  Usage: {% render 'icon-button', icon: 'menu.svg' %}
+  Usage: {% render 'icon-button', icon: 'menu.svg', size: 'large' %}
+
+  Parameters:
+  - icon: The asset filename (e.g., 'menu.svg', 'close.svg')
+  - size: Optional size modifier ('large', 'xlarge') - defaults to normal
+{% endcomment %}
+
+{% style %}
+  .icon-button {
+    background: none;
+    border: none;
+    padding: 0.5rem;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    gap: 3px;
+    position: relative;
+  }
+
+  .icon-button:before {
+    content: '';
+    position: absolute;
+    bottom: 0px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 6px;
+    height: 6px;
+    background-color: var(--color-brand-cream);
+    border-radius: 50%;
+    opacity: 0;
+    transform: translateY(0px);
+
+    transition: opacity 0.2s ease, transform 0.2s ease;
+  }
+
+  .icon-button:hover:before {
+    opacity: 1;
+    transform: translateY(3px);
+  }
+
+  .icon-button:active:before {
+    opacity: 1;
+    transform: translateY(8px);
+  }
+
+  .icon-button p {
+    color: var(--color-brand-cream);
+    font-size: var(--font-size-small);
+  }
+
+  .icon-button:hover {
+    /* transform: scale(1.05); */
+  }
+
+  .icon-button img {
+    width: 16px;
+    height: 16px;
+    display: block;
+  }
+{% endstyle %}
+
+<button
+  class="icon-button"
+  aria-label="{{ icon | split: '.' | first | capitalize }} button"
+>
+  <p>{{ label }}</p>
+  <img src="{{ icon | asset_url }}" alt="{{ icon | split: '.' | first | capitalize }}" width="24" height="24">
+</button>

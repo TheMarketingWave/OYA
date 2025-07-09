@@ -11,41 +11,12 @@
   "sections": {
     "responsive_video_1": {
       "type": "responsive-video",
-      "blocks": {
-        "heading_prwWPh": {
-          "type": "heading",
-          "settings": {
-            "text": "Headline",
-            "size": "h2"
-          }
-        },
-        "text_NXYdYQ": {
-          "type": "text",
-          "settings": {
-            "text": "<p>Add your compelling text here to overlay on the video background.</p>"
-          }
-        },
-        "buttons_taUEih": {
-          "type": "buttons",
-          "disabled": true,
-          "settings": {
-            "button_label": "Learn More",
-            "button_link": ""
-          }
-        }
-      },
-      "block_order": [
-        "heading_prwWPh",
-        "text_NXYdYQ",
-        "buttons_taUEih"
-      ],
       "name": "Responsive Video",
       "settings": {
+        "heading_text": "Nature That Nourishes. Rituals That Awaken.",
         "desktop_video": "shopify://files/videos/teaser-cut-web_1fb333f4-abbc-4029-922e-d0efb1d46ebf.mp4"
       }
     }
   },
-  "order": [
-    "responsive_video_1"
-  ]
+  "order": ["responsive_video_1"]
 }
