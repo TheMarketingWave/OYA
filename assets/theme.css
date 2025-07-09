@@ -48,6 +48,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-size: var(--font-size);
+  position: relative;
 }
 button {
   cursor: pointer;
@@ -77,15 +78,6 @@ a {
 sup {
   position: absolute;
   top: -4px;
-}
-
-header {
-  margin: 0 auto;
-  max-width: var(--max-width);
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100wh;
 }
 
 main img,
@@ -604,53 +596,6 @@ table:before {
   object-fit: cover;
   object-position: center;
   aspect-ratio: 1/1;
-}
-
-/* Header */
-header {
-  display: grid;
-  grid-template-columns: 0.25fr 0.5fr 0.25fr;
-  grid-gap: 1rem;
-  padding: 0 1rem;
-}
-header #logo {
-  display: flex;
-  align-items: center;
-  margin: 1rem 0;
-}
-header form {
-  flex: 1 auto;
-}
-nav {
-  font-size: 1rem;
-  font-weight: var(--bold);
-}
-nav ul {
-  display: flex;
-  align-items: center;
-}
-nav li {
-  padding: 12px 16px;
-  border-right: var(--border);
-  display: flex;
-  align-items: center;
-}
-header nav li:last-child {
-  border-right: 0;
-  display: flex;
-  width: 100%;
-  justify-content: flex-end;
-}
-header nav li:last-child div {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-header nav a {
-  text-decoration: none;
-}
-header nav li.active a {
-  text-decoration: underline;
 }
 
 blockquote {
