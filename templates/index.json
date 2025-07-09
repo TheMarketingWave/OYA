@@ -357,6 +357,41 @@
         "background": "#f5f5f5",
         "color": ""
       }
+    },
+    "responsive_video_HYVJUG": {
+      "type": "responsive-video",
+      "blocks": {
+        "heading_prwWPh": {
+          "type": "heading",
+          "settings": {
+            "text": "Headline",
+            "size": "h2"
+          }
+        },
+        "text_NXYdYQ": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Add your compelling text here to overlay on the video background.</p>"
+          }
+        },
+        "buttons_taUEih": {
+          "type": "buttons",
+          "disabled": true,
+          "settings": {
+            "button_label": "Learn More",
+            "button_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "heading_prwWPh",
+        "text_NXYdYQ",
+        "buttons_taUEih"
+      ],
+      "name": "Responsive Video",
+      "settings": {
+        "desktop_video": "shopify://files/videos/teaser-cut-web.mp4"
+      }
     }
   },
   "order": [
@@ -371,6 +406,7 @@
     "multicolumn_VbBRUF",
     "newsletter_form_JJALbH",
     "contact_form_EAWmhp",
-    "articles_grid_XrKUxx"
+    "articles_grid_XrKUxx",
+    "responsive_video_HYVJUG"
   ]
 }
