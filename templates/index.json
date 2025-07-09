@@ -41,9 +41,9 @@
       ],
       "name": "Responsive Video",
       "settings": {
-        "desktop_video": "shopify://files/videos/teaser-cut-web.mp4"
+        "desktop_video": "shopify://files/videos/teaser-cut-web_1fb333f4-abbc-4029-922e-d0efb1d46ebf.mp4"
       }
-    },
+    }
   },
   "order": [
     "responsive_video_1"
