@@ -88,7 +88,7 @@
         loop
         playsinline
       >
-        <source src="{{ section.settings.desktop_video }}" type="video/mp4">
+        <source src="{{ section.settings.desktop_video | asset_url }}" type="video/mp4">
         Your browser does not support the video tag.
       </video>
     {% else %}
@@ -105,7 +105,7 @@
         loop
         playsinline
       >
-        <source src="{{ section.settings.mobile_video }}" type="video/mp4">
+        <source src="{{ section.settings.mobile_video | asset_url }}" type="video/mp4">
         Your browser does not support the video tag.
       </video>
     {% elsif section.settings.desktop_video != blank %}
@@ -116,7 +116,7 @@
         loop
         playsinline
       >
-        <source src="{{ section.settings.desktop_video }}" type="video/mp4">
+        <source src="{{ section.settings.desktop_video | asset_url }}" type="video/mp4">
         Your browser does not support the video tag.
       </video>
     {% else %}
