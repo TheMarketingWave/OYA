@@ -56,10 +56,49 @@
     display: flex;
     gap: 16px;
   }
+
+  /* New menu container styles */
+  #custom-menu-container {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: #e0d9ba;
+    z-index: 2000;
+    overflow-y: auto;
+  }
+  #custom-menu-container.menu-open {
+    display: block;
+  }
+  .custom-menu-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    gap: 2rem;
+  }
+  .custom-menu-list li a {
+    font-size: 1.5rem;
+    color: #222;
+    text-decoration: none;
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    transition: background 0.2s;
+    display: block;
+  }
+  .custom-menu-list li a:hover {
+    background: #d2c9a3;
+  }
 {% endstyle %}
 
 <header>
-  <button class="menu-button" aria-label="Toggle menu">
+  <button class="menu-button" aria-label="Toggle menu" id="custom-menu-button">
     <img src="{{ 'menu.svg' | asset_url }}" alt="Menu" width="40" height="40">
   </button>
 
@@ -71,5 +110,17 @@
     {% render 'icon-button', icon: 'search.svg', label: 'Search' %}
     {% render 'icon-button', icon: 'person.svg', label: 'Log In' %}
     {% render 'icon-button', icon: 'cart.svg', label: 'Cart' %}
+  </div>
+
+  <!-- New menu container -->
+  <div id="custom-menu-container">
+    <ul class="custom-menu-list">
+      {% assign menu_handle = section.settings.menu %}
+      {% for link in linklists[menu_handle].links %}
+        <li>
+          <a href="{{ link.url }}">{{ link.title }}</a>
+        </li>
+      {% endfor %}
+    </ul>
   </div>
 </header>
