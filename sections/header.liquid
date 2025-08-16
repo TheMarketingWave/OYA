@@ -65,35 +65,149 @@
     left: 0;
     width: 100vw;
     height: 100vh;
-    background: #e0d9ba;
+    background: var(--color-brand-cream, #f5f1e8);
     z-index: 2000;
     overflow-y: auto;
   }
   #custom-menu-container.menu-open {
     display: block;
   }
+
+  .menu-layout {
+    display: flex;
+    height: 100vh;
+    position: relative;
+  }
+
+  .menu-left {
+    flex: 1;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+  }
+
+  .menu-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+  }
+
+  .menu-content {
+    position: relative;
+    z-index: 2;
+    padding: 2rem;
+  }
+
   .custom-menu-list {
     list-style: none;
-    margin: 0;
+    margin: 0 0 2rem 0;
     padding: 0;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
-    gap: 2rem;
+    gap: 1rem;
   }
+
   .custom-menu-list li a {
-    font-size: 1.5rem;
+    font-size: 2rem;
     color: #222;
     text-decoration: none;
-    padding: 1rem 2rem;
-    border-radius: 8px;
-    transition: background 0.2s;
     display: block;
+    transition: opacity 0.2s;
+    font-weight: 300;
   }
+
   .custom-menu-list li a:hover {
-    background: #d2c9a3;
+    opacity: 0.7;
+  }
+
+  .menu-right {
+    flex: 1;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+  }
+
+  .menu-text {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #222;
+    margin-bottom: 2rem;
+    max-width: 400px;
+  }
+
+  .menu-social {
+    display: flex;
+    gap: 1rem;
+  }
+
+  .menu-social a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    background: #7a8b72;
+    border-radius: 4px;
+    transition: background 0.2s;
+  }
+
+  .menu-social a:hover {
+    background: #6a7b62;
+  }
+
+  .menu-social img {
+    width: 24px;
+    height: 24px;
+    filter: brightness(0) invert(1);
+  }
+
+  .menu-close {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    background: none;
+    border: none;
+    font-size: 2rem;
+    cursor: pointer;
+    z-index: 3;
+    color: #222;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  @media (max-width: 768px) {
+    .menu-layout {
+      flex-direction: column;
+    }
+
+    .menu-left {
+      height: 50vh;
+    }
+
+    .menu-right {
+      height: 50vh;
+      padding: 1rem;
+    }
+
+    .custom-menu-list li a {
+      font-size: 1.5rem;
+    }
+
+    .menu-text {
+      font-size: 1rem;
+      margin-bottom: 1rem;
+    }
   }
 {% endstyle %}
 
@@ -114,13 +228,95 @@
 
   <!-- New menu container -->
   <div id="custom-menu-container">
-    <ul class="custom-menu-list">
-      {% assign menu_handle = section.settings.menu %}
-      {% for link in linklists[menu_handle].links %}
-        <li>
-          <a href="{{ link.url }}">{{ link.title }}</a>
-        </li>
-      {% endfor %}
-    </ul>
+    <button class="menu-close" id="custom-menu-close" aria-label="Close menu">×</button>
+    <div class="menu-layout">
+      <div class="menu-left">
+        {% if section.settings.menu_image %}
+          <img
+            src="{{ section.settings.menu_image | image_url: width: 800 }}"
+            alt="Menu background"
+            class="menu-image"
+            width="800"
+            height="600"
+          >
+        {% endif %}
+        <div class="menu-content">
+          <ul class="custom-menu-list">
+            {% assign menu_handle = section.settings.menu %}
+            {% for link in linklists[menu_handle].links %}
+              <li>
+                <a href="{{ link.url }}">{{ link.title }}</a>
+              </li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+
+      <div class="menu-right">
+        {% if section.settings.menu_text %}
+          <div class="menu-text">
+            {{ section.settings.menu_text }}
+          </div>
+        {% endif %}
+
+        <div class="menu-social">
+          {% if section.settings.instagram_url %}
+            <a href="{{ section.settings.instagram_url }}" target="_blank" rel="noopener">
+              <img src="{{ 'instagram.svg' | asset_url }}" alt="Instagram" width="24" height="24">
+            </a>
+          {% endif %}
+          {% if section.settings.facebook_url %}
+            <a href="{{ section.settings.facebook_url }}" target="_blank" rel="noopener">
+              <img src="{{ 'facebook.svg' | asset_url }}" alt="Facebook" width="24" height="24">
+            </a>
+          {% endif %}
+          {% if section.settings.pinterest_url %}
+            <a href="{{ section.settings.pinterest_url }}" target="_blank" rel="noopener">
+              <img src="{{ 'pinterest.svg' | asset_url }}" alt="Pinterest" width="24" height="24">
+            </a>
+          {% endif %}
+        </div>
+      </div>
+    </div>
   </div>
 </header>
+
+{% schema %}
+{
+  "name": "Nav",
+  "settings": [
+    {
+      "type": "link_list",
+      "id": "menu",
+      "label": "Menu",
+      "default": "main-menu"
+    },
+    {
+      "type": "image_picker",
+      "id": "menu_image",
+      "label": "Menu Background Image"
+    },
+    {
+      "type": "textarea",
+      "id": "menu_text",
+      "label": "Menu Text",
+      "default": "Our essential oils capture nature in its purest, most expansive form. Sourced from organic gardens and carefully distilled into refillable, eco-friendly bottles, each drop is an invitation to indulge in the art of mindful wellness."
+    },
+    {
+      "type": "url",
+      "id": "instagram_url",
+      "label": "Instagram URL"
+    },
+    {
+      "type": "url",
+      "id": "facebook_url",
+      "label": "Facebook URL"
+    },
+    {
+      "type": "url",
+      "id": "pinterest_url",
+      "label": "Pinterest URL"
+    }
+  ]
+}
+{% endschema %}

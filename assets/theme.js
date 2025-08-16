@@ -1,13 +1,19 @@
 const setToggleMenu = () => {
   const menuContainer = document.getElementById("custom-menu-container");
   const menuButton = document.getElementById("custom-menu-button");
-  console.log(menuContainer, menuButton);
+  const closeButton = document.getElementById("custom-menu-close");
 
   if (menuContainer && menuButton) {
     menuButton.addEventListener("click", () => {
-      console.log("in");
+      console.log("click");
 
       menuContainer.classList.toggle("menu-open");
+    });
+  }
+
+  if (menuContainer && closeButton) {
+    closeButton.addEventListener("click", () => {
+      menuContainer.classList.remove("menu-open");
     });
   }
 };
@@ -21,5 +27,3 @@ if (document.readyState !== "loading") {
 } else {
   document.addEventListener("DOMContentLoaded", onLoad);
 }
-
-console.log("in");
