@@ -1,224 +1,448 @@
 {% style %}
-    /* Header Styles */
-    header {
-      position: fixed;
-      top: 0;
-      left: 0;
-      z-index: 1000;
-      width: 100%;
-      height: 72px;
-      display: flex;
-      padding: 0 48px;
-      align-items: center;
-    }
+  header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 3000;
+    width: 100%;
+    height: 72px;
+    display: flex;
+    padding: 0 48px;
+    align-items: center;
+  }
 
-    .header-logo {
-      position: absolute;
-      padding-top: 5px;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-    }
+  .header-logo {
+    position: absolute;
+    padding-top: 5px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2000;
+  }
 
-    .header-logo img {
-      height: 40px;
-      width: auto;
-      display: block;
-    }
+  .header-logo img {
+    height: 40px;
+    width: auto;
+    display: block;
+    z-index: 1;
+    transition: filter 0.3s ease;
+  }
 
-    .menu-button {
-      background: none;
-      border: none;
-      padding: 0.5rem;
-      cursor: pointer;
-      transition: transform 0.2s ease;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
+  .menu-button.menu-open ~ .header-logo img {
+    filter: brightness(0) saturate(100%) invert(0%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(0%)
+      contrast(100%);
+  }
 
-    .menu-button:hover {
-      transform: scale(1.05);
-    }
+  .menu-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.2s ease, filter 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    width: 40px;
+    height: 40px;
+  }
 
-    .menu-button:active {
-      transform: scale(0.95);
-    }
+  .menu-button img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    position: absolute;
+    transition: opacity 0.3s ease, filter 0.3s ease;
+    z-index: 2000;
+  }
 
-    .menu-button img {
-      width: 40px;
-      height: 40px;
-      display: block;
-    }
+  .menu-button img.menu-icon {
+    opacity: 1;
+    filter: blur(0px);
+  }
 
-    .header-content {
-      margin-left: auto;
-      display: flex;
-      gap: 16px;
-    }
+  .menu-button img.close-icon {
+    opacity: 0;
+    filter: blur(5px);
+  }
 
-    /* New menu container styles */
-    #custom-menu-container {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      background: var(--color-brand-cream);
-      z-index: 2000;
-      overflow-y: auto;
-    }
-    #custom-menu-container.menu-open {
-      display: block;
-    }
+  .menu-button.menu-open img.menu-icon {
+    opacity: 0;
+    filter: blur(5px);
+  }
 
+  .menu-button.menu-open img.close-icon {
+    opacity: 1;
+    filter: blur(0px);
+  }
+
+  .header-content {
+    margin-left: auto;
+    display: flex;
+    gap: 16px;
+    z-index: 2000;
+  }
+
+  .menu-button.menu-open ~ .header-content,
+  .menu-button.menu-open ~ .header-content * {
+    color: var(--color-brand-brown);
+    transition: color 0.3s ease;
+  }
+
+  .menu-button.menu-open ~ .header-content .icon-button p {
+    color: var(--color-brand-brown) !important;
+  }
+
+  .menu-button.menu-open ~ .header-content .icon-button img {
+    filter: brightness(0) saturate(100%) invert(31%) sepia(15%) saturate(1056%) hue-rotate(344deg) brightness(95%)
+      contrast(92%);
+    transition: filter 0.3s ease;
+  }
+
+  .menu-button.menu-open ~ .header-content .icon-button:before {
+    background-color: var(--color-brand-brown) !important;
+  }
+
+  .header-content * {
+    transition: color 0.3s ease;
+  }
+
+  .header-content .icon-button img {
+    transition: filter 0.3s ease;
+  }
+
+  #custom-menu-container {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: var(--color-brand-cream);
+    overflow-y: auto;
+    opacity: 0;
+    filter: blur(10px);
+    transition: opacity 0.4s ease-in-out, filter 0.4s 0.4s ease-in-out;
+    overflow: hidden;
+  }
+
+  #custom-menu-container.menu-open {
+    display: block;
+    opacity: 1;
+    filter: blur(0px);
+  }
+
+  .menu-layout {
+    display: flex;
+    height: 100vh;
+    position: relative;
+    padding-top: 200px;
+  }
+
+  .menu-left {
+    flex: 2;
+    padding: 0 48px;
+    display: flex;
+    align-items: flex-start;
+  }
+
+  .menu-content {
+    position: relative;
+    z-index: 2;
+    margin: 0 auto;
+  }
+
+  .custom-menu-list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .menu-item {
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    opacity: 0;
+    transform: translateX(-30px);
+    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+  }
+
+  #custom-menu-container.menu-open .menu-item {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  #custom-menu-container.menu-open .menu-item:nth-child(1) {
+    transition-delay: 0.1s;
+  }
+
+  #custom-menu-container.menu-open .menu-item:nth-child(2) {
+    transition-delay: 0.2s;
+  }
+
+  #custom-menu-container.menu-open .menu-item:nth-child(3) {
+    transition-delay: 0.3s;
+  }
+
+  #custom-menu-container.menu-open .menu-item:nth-child(4) {
+    transition-delay: 0.4s;
+  }
+
+  #custom-menu-container.menu-open .menu-item:nth-child(5) {
+    transition-delay: 0.5s;
+  }
+
+  .menu-item > a {
+    font-family: 'Playfair Display';
+    font-size: 40px;
+  }
+
+  .menu-item-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .menu-item-header > a {
+    font-family: 'Playfair Display';
+    font-size: 40px;
+  }
+
+  .custom-menu-list li {
+    display: flex;
+  }
+
+  .custom-menu-list > li a {
+    color: #222;
+    text-decoration: none;
+    display: block;
+    transition: opacity 0.2s;
+    font-weight: 300;
+  }
+
+  .custom-menu-list li a:hover {
+    opacity: 0.7;
+  }
+
+  .expand-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #222;
+    transition: all 0.2s ease;
+    padding: 0;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+
+  .expand-button:hover {
+    opacity: 0.7;
+  }
+
+  .expand-icon {
+    position: relative;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .expand-icon span {
+    position: absolute;
+    width: 16px;
+    height: 2px;
+    background: black;
+    transition: transform 0.3s ease;
+  }
+
+  .expand-icon span:last-child {
+    transform: rotate(90deg);
+  }
+
+  .expand-button.expanded .expand-icon span:last-child {
+    transform: rotate(0deg);
+  }
+
+  .submenu {
+    list-style: none;
+    padding: 0;
+    margin: 0.5rem 0 0 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: max-height 0.4s ease-in-out, opacity 0.3s ease-in-out, margin 0.3s ease-in-out;
+  }
+
+  .submenu.expanded {
+    max-height: 500px; /* Adjust based on your content */
+    opacity: 1;
+    margin-top: 1rem;
+  }
+
+  .submenu li {
+    transform: translateY(-10px);
+    transition: transform 0.3s ease-in-out;
+    transition-delay: 0.1s;
+  }
+
+  .submenu.expanded li {
+    transform: translateY(0);
+  }
+
+  .submenu li:nth-child(1) {
+    transition-delay: 0.1s;
+  }
+
+  .submenu li:nth-child(2) {
+    transition-delay: 0.2s;
+  }
+
+  .submenu li:nth-child(3) {
+    transition-delay: 0.3s;
+  }
+
+  .submenu li:nth-child(4) {
+    transition-delay: 0.4s;
+  }
+
+  .submenu li:nth-child(5) {
+    transition-delay: 0.5s;
+  }
+
+  .submenu li a {
+    font-size: 16px;
+  }
+
+  .menu-right {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    opacity: 0;
+    transform: translateX(30px);
+    transition: opacity 0.6s ease-in-out, transform 0.6s ease-in-out;
+  }
+
+  #custom-menu-container.menu-open .menu-right {
+    opacity: 1;
+    transform: translateX(0);
+    transition-delay: 0.3s;
+  }
+
+  .menu-text {
+    font-size: 16px;
+    font-weight: 300;
+    margin-bottom: 2rem;
+    max-width: 400px;
+  }
+
+  .menu-social {
+    display: flex;
+    gap: 1rem;
+  }
+
+  .menu-social a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    background: var(--color-brand-green);
+    border-radius: 4px;
+    transition: background 0.2s ease;
+  }
+
+  .menu-social a:hover {
+    background: #6a7b62;
+  }
+
+  .menu-social img {
+    width: 24px;
+    height: 24px;
+    filter: brightness(0) invert(1);
+  }
+
+  .menu-close {
+    display: none;
+  }
+
+  .menu-right-msg {
+    margin-top: auto;
+    margin-bottom: 100px;
+    font-size: 18px;
+    font-weight: 600;
+  }
+
+  .menu-item-icon {
+    width: 24px;
+    height: 2px;
+    background: black;
+    margin-top: 44px;
+  }
+
+  .submenu-container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .menu-image {
+    width: 40%;
+    height: auto;
+  }
+
+  @media (max-width: 768px) {
     .menu-layout {
-      display: flex;
-      height: 100vh;
-      position: relative;
-      padding-top: 200px;
+      flex-direction: column;
     }
 
     .menu-left {
-      flex: 2;
-      padding: 0 48px;
-      display: flex;
-      align-items: flex-start;
-    }
-
-    .menu-image {
-  a    /* position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      z-index: 1; */
-    }
-
-    .menu-content {
-      position: relative;
-      z-index: 2;
-      padding: 2rem;
-        margin: 0 auto;
-    }
-
-    .custom-menu-list {
-      list-style: none;
-      padding: 0;
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-      font-family: "Playfair Display";
-      font-size: 40px;
-    }
-
-    .custom-menu-list li a {
-      font-size: 2rem;
-      color: #222;
-      text-decoration: none;
-      display: block;
-      transition: opacity 0.2s;
-      font-weight: 300;
-    }
-
-    .custom-menu-list li a:hover {
-      opacity: 0.7;
+      height: 50vh;
     }
 
     .menu-right {
-      flex: 1;
-      padding: 2rem;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: flex-start;
+      height: 50vh;
+      padding: 1rem;
+    }
+
+    .custom-menu-list li a {
+      font-size: 1.5rem;
+    }
+
+    .submenu {
+      margin-left: 1rem;
+    }
+
+    .submenu li a {
+      font-size: 1.2rem !important;
     }
 
     .menu-text {
-      font-size: 1.1rem;
-      line-height: 1.6;
-      color: #222;
-      margin-bottom: 2rem;
-      max-width: 400px;
+      font-size: 1rem;
+      margin-bottom: 1rem;
     }
-
-    .menu-social {
-      display: flex;
-      gap: 1rem;
-    }
-
-    .menu-social a {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 48px;
-      height: 48px;
-      background: #7a8b72;
-      border-radius: 4px;
-      transition: background 0.2s;
-    }
-
-    .menu-social a:hover {
-      background: #6a7b62;
-    }
-
-    .menu-social img {
-      width: 24px;
-      height: 24px;
-      filter: brightness(0) invert(1);
-    }
-
-    .menu-close {
-      position: absolute;
-      top: 2rem;
-      right: 2rem;
-      background: none;
-      border: none;
-      font-size: 2rem;
-      cursor: pointer;
-      z-index: 3;
-      color: #222;
-      width: 40px;
-      height: 40px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    @media (max-width: 768px) {
-      .menu-layout {
-        flex-direction: column;
-      }
-
-      .menu-left {
-        height: 50vh;
-      }
-
-      .menu-right {
-        height: 50vh;
-        padding: 1rem;
-      }
-
-      .custom-menu-list li a {
-        font-size: 1.5rem;
-      }
-
-      .menu-text {
-        font-size: 1rem;
-        margin-bottom: 1rem;
-      }
-    }
+  }
 {% endstyle %}
 
 <header>
   <button class="menu-button" aria-label="Toggle menu" id="custom-menu-button">
-    <img src="{{ 'menu.svg' | asset_url }}" alt="Menu" width="40" height="40">
+    <img src="{{ 'menu.svg' | asset_url }}" alt="Menu" width="40" height="40" class="menu-icon">
+    <img src="{{ 'close.svg' | asset_url }}" alt="Close" width="40" height="40" class="close-icon">
   </button>
 
   <div class="header-logo">
-    <img src="{{ 'logo.png' | asset_url }}" alt="Logo" width="auto" height="40">
+    <a href="{{ routes.root_url }}">
+      <img src="{{ 'logo.png' | asset_url }}" alt="Logo" width="auto" height="40">
+    </a>
   </div>
 
   <div class="header-content">
@@ -228,8 +452,7 @@
   </div>
 
   <!-- New menu container -->
-  <div id="custom-menu-container" class="menu-open">
-    <button class="menu-close" id="custom-menu-close" aria-label="Close menu">×</button>
+  <div id="custom-menu-container">
     <div class="menu-layout">
       <div class="menu-left">
         {% if section.settings.menu_image %}
@@ -245,8 +468,30 @@
           <ul class="custom-menu-list">
             {% assign menu_handle = section.settings.menu %}
             {% for link in linklists[menu_handle].links %}
-              <li>
-                <a href="{{ link.url }}">{{ link.title }}</a>
+              <li class="menu-item">
+                <div class="menu-item-icon"></div>
+                {% if link.links != blank %}
+                  <div class="submenu-container">
+                    <div class="menu-item-header">
+                      <a href="{{ link.url }}">{{ link.title }}</a>
+                      <button class="expand-button" aria-label="Expand submenu" data-submenu-toggle>
+                        <div class="expand-icon">
+                          <span></span>
+                          <span></span>
+                        </div>
+                      </button>
+                    </div>
+                    <ul class="submenu">
+                      {% for child_link in link.links %}
+                        <li>
+                          <a href="{{ child_link.url }}">{{ child_link.title }}</a>
+                        </li>
+                      {% endfor %}
+                    </ul>
+                  </div>
+                {% else %}
+                  <a href="{{ link.url }}">{{ link.title }}</a>
+                {% endif %}
               </li>
             {% endfor %}
           </ul>
@@ -277,6 +522,10 @@
             </a>
           {% endif %}
         </div>
+        <p class="menu-right-msg">
+          Our essential oils capture <br>
+          nature in its purest.
+        </p>
       </div>
     </div>
   </div>
