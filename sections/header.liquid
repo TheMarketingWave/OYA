@@ -1,214 +1,215 @@
 {% style %}
-  /* Header Styles */
-  header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 1000;
-    width: 100%;
-    height: 72px;
-    display: flex;
-    padding: 0 48px;
-    align-items: center;
-  }
+    /* Header Styles */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 1000;
+      width: 100%;
+      height: 72px;
+      display: flex;
+      padding: 0 48px;
+      align-items: center;
+    }
 
-  .header-logo {
-    position: absolute;
-    padding-top: 5px;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  }
+    .header-logo {
+      position: absolute;
+      padding-top: 5px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
 
-  .header-logo img {
-    height: 40px;
-    width: auto;
-    display: block;
-  }
+    .header-logo img {
+      height: 40px;
+      width: auto;
+      display: block;
+    }
 
-  .menu-button {
-    background: none;
-    border: none;
-    padding: 0.5rem;
-    cursor: pointer;
-    transition: transform 0.2s ease;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
+    .menu-button {
+      background: none;
+      border: none;
+      padding: 0.5rem;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
 
-  .menu-button:hover {
-    transform: scale(1.05);
-  }
+    .menu-button:hover {
+      transform: scale(1.05);
+    }
 
-  .menu-button:active {
-    transform: scale(0.95);
-  }
+    .menu-button:active {
+      transform: scale(0.95);
+    }
 
-  .menu-button img {
-    width: 40px;
-    height: 40px;
-    display: block;
-  }
+    .menu-button img {
+      width: 40px;
+      height: 40px;
+      display: block;
+    }
 
-  .header-content {
-    margin-left: auto;
-    display: flex;
-    gap: 16px;
-  }
+    .header-content {
+      margin-left: auto;
+      display: flex;
+      gap: 16px;
+    }
 
-  /* New menu container styles */
-  #custom-menu-container {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background: var(--color-brand-cream, #f5f1e8);
-    z-index: 2000;
-    overflow-y: auto;
-  }
-  #custom-menu-container.menu-open {
-    display: block;
-  }
+    /* New menu container styles */
+    #custom-menu-container {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: var(--color-brand-cream);
+      z-index: 2000;
+      overflow-y: auto;
+    }
+    #custom-menu-container.menu-open {
+      display: block;
+    }
 
-  .menu-layout {
-    display: flex;
-    height: 100vh;
-    position: relative;
-  }
-
-  .menu-left {
-    flex: 1;
-    padding: 2rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    position: relative;
-  }
-
-  .menu-image {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    z-index: 1;
-  }
-
-  .menu-content {
-    position: relative;
-    z-index: 2;
-    padding: 2rem;
-  }
-
-  .custom-menu-list {
-    list-style: none;
-    margin: 0 0 2rem 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-  }
-
-  .custom-menu-list li a {
-    font-size: 2rem;
-    color: #222;
-    text-decoration: none;
-    display: block;
-    transition: opacity 0.2s;
-    font-weight: 300;
-  }
-
-  .custom-menu-list li a:hover {
-    opacity: 0.7;
-  }
-
-  .menu-right {
-    flex: 1;
-    padding: 2rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
-  }
-
-  .menu-text {
-    font-size: 1.1rem;
-    line-height: 1.6;
-    color: #222;
-    margin-bottom: 2rem;
-    max-width: 400px;
-  }
-
-  .menu-social {
-    display: flex;
-    gap: 1rem;
-  }
-
-  .menu-social a {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 48px;
-    height: 48px;
-    background: #7a8b72;
-    border-radius: 4px;
-    transition: background 0.2s;
-  }
-
-  .menu-social a:hover {
-    background: #6a7b62;
-  }
-
-  .menu-social img {
-    width: 24px;
-    height: 24px;
-    filter: brightness(0) invert(1);
-  }
-
-  .menu-close {
-    position: absolute;
-    top: 2rem;
-    right: 2rem;
-    background: none;
-    border: none;
-    font-size: 2rem;
-    cursor: pointer;
-    z-index: 3;
-    color: #222;
-    width: 40px;
-    height: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  @media (max-width: 768px) {
     .menu-layout {
-      flex-direction: column;
+      display: flex;
+      height: 100vh;
+      position: relative;
+      padding-top: 200px;
     }
 
     .menu-left {
-      height: 50vh;
+      flex: 2;
+      padding: 0 48px;
+      display: flex;
+      align-items: flex-start;
     }
 
-    .menu-right {
-      height: 50vh;
-      padding: 1rem;
+    .menu-image {
+  a    /* position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 1; */
+    }
+
+    .menu-content {
+      position: relative;
+      z-index: 2;
+      padding: 2rem;
+        margin: 0 auto;
+    }
+
+    .custom-menu-list {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      font-family: "Playfair Display";
+      font-size: 40px;
     }
 
     .custom-menu-list li a {
-      font-size: 1.5rem;
+      font-size: 2rem;
+      color: #222;
+      text-decoration: none;
+      display: block;
+      transition: opacity 0.2s;
+      font-weight: 300;
+    }
+
+    .custom-menu-list li a:hover {
+      opacity: 0.7;
+    }
+
+    .menu-right {
+      flex: 1;
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
     }
 
     .menu-text {
-      font-size: 1rem;
-      margin-bottom: 1rem;
+      font-size: 1.1rem;
+      line-height: 1.6;
+      color: #222;
+      margin-bottom: 2rem;
+      max-width: 400px;
     }
-  }
+
+    .menu-social {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .menu-social a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 48px;
+      height: 48px;
+      background: #7a8b72;
+      border-radius: 4px;
+      transition: background 0.2s;
+    }
+
+    .menu-social a:hover {
+      background: #6a7b62;
+    }
+
+    .menu-social img {
+      width: 24px;
+      height: 24px;
+      filter: brightness(0) invert(1);
+    }
+
+    .menu-close {
+      position: absolute;
+      top: 2rem;
+      right: 2rem;
+      background: none;
+      border: none;
+      font-size: 2rem;
+      cursor: pointer;
+      z-index: 3;
+      color: #222;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    @media (max-width: 768px) {
+      .menu-layout {
+        flex-direction: column;
+      }
+
+      .menu-left {
+        height: 50vh;
+      }
+
+      .menu-right {
+        height: 50vh;
+        padding: 1rem;
+      }
+
+      .custom-menu-list li a {
+        font-size: 1.5rem;
+      }
+
+      .menu-text {
+        font-size: 1rem;
+        margin-bottom: 1rem;
+      }
+    }
 {% endstyle %}
 
 <header>
@@ -227,17 +228,17 @@
   </div>
 
   <!-- New menu container -->
-  <div id="custom-menu-container">
+  <div id="custom-menu-container" class="menu-open">
     <button class="menu-close" id="custom-menu-close" aria-label="Close menu">×</button>
     <div class="menu-layout">
       <div class="menu-left">
         {% if section.settings.menu_image %}
           <img
-            src="{{ section.settings.menu_image | image_url: width: 800 }}"
+            src="{{ section.settings.menu_image | image_url: width: 278 }}"
             alt="Menu background"
             class="menu-image"
-            width="800"
-            height="600"
+            width="278px"
+            height="394px"
           >
         {% endif %}
         <div class="menu-content">
