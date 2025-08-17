@@ -1,0 +1,110 @@
+{% style %}
+  .text-scroll-animation {
+    padding: 60px 20px;
+    text-align: center;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .text-scroll-animation__title {
+    font-size: 2.5rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    color: #333;
+  }
+
+  .text-scroll-animation__content {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+    color: #666;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .text-scroll-animation__cta {
+    display: inline-block;
+    background: #333;
+    color: white;
+    padding: 12px 24px;
+    text-decoration: none;
+    border-radius: 4px;
+    font-weight: 500;
+    transition: background 0.3s ease;
+  }
+
+  .text-scroll-animation__cta:hover {
+    background: #555;
+    color: white;
+  }
+
+  @media (max-width: 768px) {
+    .text-scroll-animation {
+      padding: 40px 16px;
+    }
+
+    .text-scroll-animation__title {
+      font-size: 2rem;
+    }
+
+    .text-scroll-animation__content {
+      font-size: 1rem;
+    }
+  }
+{% endstyle %}
+
+<div class="text-scroll-animation">
+  {% if section.settings.title != blank %}
+    <h2 class="text-scroll-animation__title title-font">{{ section.settings.title }}</h2>
+  {% endif %}
+
+  {% if section.settings.content != blank %}
+    <div class="text-scroll-animation__content">
+      {{ section.settings.content | newline_to_br }}
+    </div>
+  {% endif %}
+
+  {% if section.settings.cta_text != blank %}
+    <a href="{{ section.settings.cta_url | default: '#' }}" class="text-scroll-animation__cta">
+      {{ section.settings.cta_text }}
+    </a>
+  {% endif %}
+</div>
+
+{% schema %}
+{
+  "name": "Text Scroll Animation",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Scroll Animation Title"
+    },
+    {
+      "type": "textarea",
+      "id": "content",
+      "label": "Content",
+      "default": "This is the content area for your scroll animation section. You can add your text here and it will be displayed with proper styling."
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "Call to Action Text",
+      "default": "Learn More"
+    },
+    {
+      "type": "url",
+      "id": "cta_url",
+      "label": "Call to Action URL",
+      "info": "Where the CTA button should link to"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Text Scroll Animation"
+    }
+  ]
+}
+{% endschema %}

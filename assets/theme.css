@@ -19,12 +19,12 @@
 }
 
 html {
-  line-height: 1.15;
+  width: 100%;
   -webkit-text-size-adjust: 100%;
 }
 
 body {
-  line-height: 1.5;
+  width: 100%;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-family: "Poppins", sans-serif;
@@ -57,7 +57,6 @@ h6 {
   overflow-wrap: break-word;
 }
 
-#root,
-#__next {
-  isolation: isolate;
+.title-font {
+  font-family: "Playfair Display";
 }

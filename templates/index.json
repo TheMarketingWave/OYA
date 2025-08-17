@@ -16,7 +16,16 @@
         "heading_text": "Nature That Nourishes. Rituals That Awaken.",
         "desktop_video": "shopify://files/videos/teaser-cut-web_1fb333f4-abbc-4029-922e-d0efb1d46ebf.mp4"
       }
+    },
+    "text_scroll_animation_1": {
+      "type": "text-scroll-animation",
+      "settings": {
+        "title": "Pure Essential Oils",
+        "content": "Discover our collection of carefully sourced essential oils, each one capturing the essence of nature in its purest form. From calming lavender to invigorating eucalyptus, our oils are sustainably harvested and ethically produced.",
+        "cta_text": "Shop Collection",
+        "cta_url": "/collections/all"
+      }
     }
   },
-  "order": ["responsive_video_1"]
+  "order": ["responsive_video_1", "text_scroll_animation_1"]
 }
