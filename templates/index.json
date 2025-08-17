@@ -13,19 +13,22 @@
       "type": "responsive-video",
       "name": "Responsive Video",
       "settings": {
-        "heading_text": "Nature That Nourishes. Rituals That Awaken.",
-        "desktop_video": "shopify://files/videos/teaser-cut-web_1fb333f4-abbc-4029-922e-d0efb1d46ebf.mp4"
+        "desktop_video": "shopify://files/videos/teaser-cut-web_1fb333f4-abbc-4029-922e-d0efb1d46ebf.mp4",
+        "heading_text": "Nature That Nourishes. Rituals That Awaken."
       }
     },
     "text_scroll_animation_1": {
       "type": "text-scroll-animation",
       "settings": {
-        "title": "Pure Essential Oils",
-        "content": "Discover our collection of carefully sourced essential oils, each one capturing the essence of nature in its purest form. From calming lavender to invigorating eucalyptus, our oils are sustainably harvested and ethically produced.",
-        "cta_text": "Shop Collection",
+        "title": "The Art of Aromatherapy, Reimagined",
+        "content": "At OYA, every drop and aromatic breeze is a handcrafted journey—from soil to scent. We bring together rare botanicals, time-honored distillation, and a commitment to sustainability to create essential oils and incense that ground the body and uplift the spirit. Whether you’re seeking stillness, clarity, or a spark of creative energy, OYA invites you into a ritual that expands the moment.",
+        "cta_text": "Experience the Art of Aromatherapy",
         "cta_url": "/collections/all"
       }
     }
   },
-  "order": ["responsive_video_1", "text_scroll_animation_1"]
+  "order": [
+    "responsive_video_1",
+    "text_scroll_animation_1"
+  ]
 }
