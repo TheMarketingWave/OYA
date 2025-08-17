@@ -1,33 +1,44 @@
 {% style %}
   .text-scroll-animation {
-    padding: 60px 20px;
+    padding: 100px 20px;
     text-align: center;
-    max-width: 1200px;
+    width: 100%;
     margin: 0 auto;
-    color: var(--color-brand-cream);)
+    color: var(--color-brand-cream);
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
   }
 
   .text-scroll-animation__title {
     font-size: 48px;
     font-weight: 600;
-    margin-bottom: 1.5rem;
   }
 
   .text-scroll-animation__content {
-    font-size: 32px;
-    margin-bottom: 2rem;
+    font-size: 28px;
     max-width: 800px;
     margin-left: auto;
     margin-right: auto;
   }
 
   .text-scroll-animation__cta {
-    display: inline-block;
     background: #333;
     color: white;
     padding: 12px 24px;
     text-decoration: none;
     border-radius: 4px;
+    align-self: center;
+  }
+
+  .text-scroll-animation__content__word {
+    opacity: 0.1;
+  }
+
+  .text-scroll-animation .icon-button {
+    align-self: center;
+    /* border: 1px solid var(--color-brand-cream); */
+    font-weight: bold;
   }
 {% endstyle %}
 
@@ -38,14 +49,12 @@
 
   {% if section.settings.content != blank %}
     <div class="text-scroll-animation__content">
-      {{ section.settings.content | newline_to_br }}
+      {{ section.settings.content | escape }}
     </div>
   {% endif %}
 
   {% if section.settings.cta_text != blank %}
-    <a href="{{ section.settings.cta_url | default: '#' }}" class="text-scroll-animation__cta">
-      {{ section.settings.cta_text }}
-    </a>
+    {% render 'icon-button', icon: 'drop.svg', label: section.settings.cta_text %}
   {% endif %}
 </div>
 

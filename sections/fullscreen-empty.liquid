@@ -1,0 +1,81 @@
+<section class="fullscreen-empty">
+  <div class="fullscreen-empty__content">
+    <!-- Empty content area - can be customized via theme settings -->
+    {% if section.settings.show_placeholder %}
+      <div class="fullscreen-empty__placeholder">
+        <p>{{ section.settings.placeholder_text | default: 'Full Screen Section' }}</p>
+      </div>
+    {% endif %}
+  </div>
+</section>
+
+<style>
+  .fullscreen-empty {
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: {{ section.settings.background_color | default: '#ffffff' }};
+
+  }
+
+  .fullscreen-empty__content {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .fullscreen-empty__placeholder {
+    text-align: center;
+    color: {{ section.settings.text_color | default: '#000000' }};
+    font-size: 2rem;
+    opacity: 0.5;
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Fullscreen Empty Section",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section Settings"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#000000"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_placeholder",
+      "label": "Show placeholder text",
+      "default": false
+    },
+    {
+      "type": "text",
+      "id": "placeholder_text",
+      "label": "Placeholder Text",
+      "default": "Full Screen Section"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Fullscreen Empty Section"
+    }
+  ]
+}
+{% endschema %}
