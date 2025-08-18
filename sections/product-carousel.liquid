@@ -187,61 +187,63 @@
 
   <div class="product-carousel__container">
     <div class="product-carousel__track">
-      {% if section.settings.product_collection != blank %}
-        {% assign collection = collections[section.settings.product_collection] %}
-        {% for product in collection.products limit: section.settings.products_limit %}
-          <div class="product-card">
-            {% if product.featured_image %}
-              <img
-                src="{{ product.featured_image | image_url: width: 300 }}"
-                alt="{{ product.featured_image.alt | escape }}"
-                class="product-card__image"
-                width="300"
-                height="200"
-                loading="lazy"
-              >
-            {% endif %}
-
-            {% if product.tags.size > 0 %}
-              <div class="product-card__tags">
-                {% for tag in product.tags limit: 3 %}
-                  <span class="product-card__tag">{{ tag }}</span>
-                {% endfor %}
-              </div>
-            {% endif %}
-
-            <h3 class="product-card__title">{{ product.title }}</h3>
-
-            {% if product.description != blank %}
-              <p class="product-card__description">
-                {{ product.description | strip_html | truncate: 100 }}
-              </p>
-            {% endif %}
-
-            <div class="product-card__details">
-              <span class="product-card__price">
-                {{ product.price | money }}
-              </span>
-              {% if product.metafields.custom.weight_volume != blank %}
-                <span class="product-card__weight">
-                  {{ product.metafields.custom.weight_volume }}
-                </span>
-              {% elsif product.variants.first.weight > 0 %}
-                <span class="product-card__weight">
-                  {{ product.variants.first.weight | weight_with_unit }}
-                </span>
+      {% if section.blocks.size > 0 %}
+        {% for block in section.blocks %}
+          {% if block.settings.product != blank %}
+            {% assign product = all_products[block.settings.product] %}
+            <div class="product-card" {{ block.shopify_attributes }}>
+              {% if product.featured_image %}
+                <img
+                  src="{{ product.featured_image | image_url: width: 300 }}"
+                  alt="{{ product.featured_image.alt | escape }}"
+                  class="product-card__image"
+                  width="300"
+                  height="200"
+                  loading="lazy"
+                >
               {% endif %}
-            </div>
 
-            <form action="{{ routes.cart_add_url }}" method="post" enctype="multipart/form-data">
-              <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
-              <button type="submit" class="product-card__button">Add to Cart</button>
-            </form>
-          </div>
+              {% if product.tags.size > 0 %}
+                <div class="product-card__tags">
+                  {% for tag in product.tags limit: 3 %}
+                    <span class="product-card__tag">{{ tag }}</span>
+                  {% endfor %}
+                </div>
+              {% endif %}
+
+              <h3 class="product-card__title">{{ product.title }}</h3>
+
+              {% if product.description != blank %}
+                <p class="product-card__description">
+                  {{ product.description | strip_html | truncate: 100 }}
+                </p>
+              {% endif %}
+
+              <div class="product-card__details">
+                <span class="product-card__price">
+                  {{ product.price | money }}
+                </span>
+                {% if product.metafields.custom.weight_volume != blank %}
+                  <span class="product-card__weight">
+                    {{ product.metafields.custom.weight_volume }}
+                  </span>
+                {% elsif product.variants.first.weight > 0 %}
+                  <span class="product-card__weight">
+                    {{ product.variants.first.weight | weight_with_unit }}
+                  </span>
+                {% endif %}
+              </div>
+
+              <form action="{{ routes.cart_add_url }}" method="post" enctype="multipart/form-data">
+                <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+                <button type="submit" class="product-card__button">Add to Cart</button>
+              </form>
+            </div>
+          {% endif %}
         {% endfor %}
       {% else %}
-        <!-- Placeholder cards when no collection is selected -->
-        {% for i in (1..6) %}
+        <!-- Placeholder cards when no products are selected -->
+        {% for i in (1..4) %}
           <div class="product-card">
             <div
               class="product-card__image"
@@ -250,11 +252,11 @@
               Product Image
             </div>
             <div class="product-card__tags">
-              <span class="product-card__tag">Tag {{ i }}</span>
+              <span class="product-card__tag">Sample Tag</span>
             </div>
             <h3 class="product-card__title">Sample Product {{ i }}</h3>
             <p class="product-card__description">
-              This is a sample product description that shows how the layout will look.
+              This is a sample product description. Add products using the blocks below.
             </p>
             <div class="product-card__details">
               <span class="product-card__price">$29.99</span>
@@ -297,20 +299,6 @@
       "id": "subtitle",
       "label": "Subtitle",
       "default": "Discover our handcrafted collection"
-    },
-    {
-      "type": "collection",
-      "id": "product_collection",
-      "label": "Product Collection"
-    },
-    {
-      "type": "range",
-      "id": "products_limit",
-      "label": "Number of products to show",
-      "min": 3,
-      "max": 20,
-      "step": 1,
-      "default": 8
     },
     {
       "type": "header",
@@ -362,9 +350,36 @@
       "default": "#ffffff"
     }
   ],
+  "blocks": [
+    {
+      "type": "product",
+      "name": "Product",
+      "settings": [
+        {
+          "type": "product",
+          "id": "product",
+          "label": "Select Product"
+        }
+      ]
+    }
+  ],
   "presets": [
     {
-      "name": "Product Carousel"
+      "name": "Product Carousel",
+      "blocks": [
+        {
+          "type": "product"
+        },
+        {
+          "type": "product"
+        },
+        {
+          "type": "product"
+        },
+        {
+          "type": "product"
+        }
+      ]
     }
   ]
 }
