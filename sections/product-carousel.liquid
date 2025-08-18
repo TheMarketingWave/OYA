@@ -1,0 +1,430 @@
+{% style %}
+  .product-carousel {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .product-carousel__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .product-carousel__header-content {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .product-carousel__navigation {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    margin-top: auto;
+  }
+
+  .product-carousel__nav-button {
+    background: transparent;
+    border-radius: 50%;
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: none;
+  }
+
+  .product-carousel__nav-button:hover {
+    background: var(--color-brand-cream);
+  }
+
+  .product-carousel__nav-button:hover svg path {
+    fill: var(--color-brand-brown);
+  }
+
+  .product-carousel__nav-button svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .product-carousel__title {
+    font-size: 40px;
+    font-weight: 600;
+    color: var(--color-brand-cream);
+
+  }
+
+  .product-carousel__subtitle {
+    font-size: 16px;
+    color: var(--color-brand-cream);
+    max-width: 40%;
+  }
+
+  .product-carousel__container {
+    position: relative;
+  }
+
+  .product-carousel__track {
+    display: flex;
+    gap: 24px;
+    overflow: hidden;
+    padding: 20px 0;
+  }
+
+  .product-card {
+    flex-shrink: 0;
+    width: 300px;
+    height: 560px;
+  }
+
+  .product-card__inner {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    color: var(--color-brand-cream);
+    gap: 16px;
+  }
+
+  .product-card:first-child {
+    margin-left: 24px;
+  }
+
+  .product-card__image {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border-radius: 4px;
+    transition: filter 0.6s ease, opacity 0.6s ease, transform 0.6s ease;
+    will-change: filter, opacity, transform;
+  }
+
+
+
+  .product-card__tags {
+    display: flex;
+    gap: 8px;
+    overflow: hidden;
+  }
+
+  .product-card__tag {
+    background: var(--color-brand-green);
+    color: white;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    text-transform: uppercase;
+  }
+
+  .product-card__title {
+    font-size: 18px;
+    width: 100%;
+
+
+  }
+
+  .product-card__description {
+    font-size: 14px;
+
+  }
+
+  .product-card__details {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+    margin-top: auto;
+  }
+
+  .product-card__price {
+    font-size: 20px;
+    font-weight: 600;
+  }
+
+  .product-card__weight {
+    font-size: 14px;
+  }
+
+  .product-card__button {
+    background: var(--color-brand-cream);
+    color: var(--color-brand-brown);
+    border: none;
+    padding: 12px 16px;
+    border-radius: 6px;
+    font-size: 14px;
+    cursor: pointer;
+  }
+
+  .product-carousel__cta {
+    margin-top: 60px;
+  }
+
+  .product-carousel__cta-button {
+    background: {{ section.settings.cta_background | default: '#333333' }};
+    color: {{ section.settings.cta_color | default: '#ffffff' }};
+    padding: 16px 32px;
+    text-decoration: none;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: 600;
+  }
+{% endstyle %}
+
+<section class="product-carousel section-container">
+  <div class="product-carousel__header">
+    <div class="product-carousel__header-content">
+      {% if section.settings.title != blank %}
+        <h2 class="product-carousel__title title-font">{{ section.settings.title }}</h2>
+      {% endif %}
+
+      {% if section.settings.subtitle != blank %}
+        <p class="product-carousel__subtitle">{{ section.settings.subtitle }}</p>
+      {% endif %}
+    </div>
+
+    <div class="product-carousel__navigation">
+      <button type="button" class="product-carousel__nav-button" id="carousel-prev-btn" aria-label="Previous products">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <mask id="mask0_490_462" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="20" height="20">
+            <rect width="20" height="20" fill="#D9D9D9"/>
+          </mask>
+          <g mask="url(#mask0_490_462)">
+            <path d="M11.6667 15L6.66669 10L11.6667 5L12.8334 6.16667L9.00002 10L12.8334 13.8333L11.6667 15Z" fill="#E0D9BA"/>
+          </g>
+        </svg>
+      </button>
+      <button type="button" class="product-carousel__nav-button" id="carousel-next-btn" aria-label="Next products">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <mask id="mask0_490_152" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="20" height="20">
+            <rect width="20" height="20" fill="#D9D9D9"/>
+          </mask>
+          <g mask="url(#mask0_490_152)">
+            <path d="M10.5 10L6.66669 6.16667L7.83335 5L12.8334 10L7.83335 15L6.66669 13.8333L10.5 10Z" fill="#E0D9BA"/>
+          </g>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <div class="product-carousel__track">
+    {% if section.blocks.size > 0 %}
+      {% for block in section.blocks %}
+        {% if block.settings.product != blank %}
+          {% assign product = all_products[block.settings.product] %}
+          <div class="product-card" {{ block.shopify_attributes }}>
+            <div class="product-card__inner">
+              {% if product.featured_image %}
+                <img
+                  src="{{ product.featured_image | image_url: width: 300 }}"
+                  alt="{{ product.featured_image.alt | escape }}"
+                  class="product-card__image"
+                  width="300"
+                  height="200"
+                  loading="lazy"
+                >
+              {% endif %}
+
+              {% if product.tags.size > 0 %}
+                <div class="product-card__tags">
+                  {% for tag in product.tags limit: 3 %}
+                    <span class="product-card__tag">{{ tag }}</span>
+                  {% endfor %}
+                </div>
+              {% endif %}
+
+              <h3 class="product-card__title">{{ product.title }}</h3>
+
+              {% if product.description != blank %}
+                <p class="product-card__description">
+                  {{ product.description | strip_html | truncate: 90 }}
+                </p>
+              {% endif %}
+
+              <div class="product-card__details">
+                <span class="product-card__price">
+                  {{ product.price | money }}
+                </span>
+                {% comment %} Use unit price measurement to determine weight vs volume {% endcomment %}
+                {% if product.selected_or_first_available_variant.unit_price_measurement %}
+                  {% assign unit_measurement = product.selected_or_first_available_variant.unit_price_measurement %}
+                  <span class="product-card__weight">
+                    {% if unit_measurement.measured_type == 'weight' %}
+                      {{ unit_measurement.quantity_value -}}
+                      {{- unit_measurement.quantity_unit }}
+                    {% elsif unit_measurement.measured_type == 'volume' %}
+                      {{ unit_measurement.quantity_value -}}
+                      {{- unit_measurement.quantity_unit }}
+                    {% else %}
+                      {{ unit_measurement.quantity_value -}}
+                      {{- unit_measurement.quantity_unit }}
+                    {% endif %}
+                  </span>
+                {% elsif product.metafields.custom.weight_volume != blank %}
+                  <span class="product-card__weight">
+                    {{ product.metafields.custom.weight_volume }}
+                  </span>
+                {% elsif product.variants.first.weight > 0 %}
+                  <span class="product-card__weight">
+                    {{ product.variants.first.weight | weight_with_unit }}
+                  </span>
+                {% endif %}
+              </div>
+
+              <button
+                type="button"
+                class="product-card__button"
+                onclick="addToCartFromCarousel('{{ product.selected_or_first_available_variant.id }}', '{{ product.title | escape }}', this)"
+              >
+                Add to Cart
+              </button>
+            </div>
+          </div>
+        {% endif %}
+      {% endfor %}
+    {% else %}
+      <!-- Placeholder cards when no products are selected -->
+      {% for i in (1..4) %}
+        <div class="product-card">
+          <div
+            class="product-card__image"
+            style="background: #f0f0f0; display: flex; align-items: center; justify-content: center; color: #999;"
+          >
+            Product Image
+          </div>
+          <div class="product-card__tags">
+            <span class="product-card__tag">Sample Tag</span>
+          </div>
+          <h3 class="product-card__title">Sample Product {{ i }}</h3>
+          <p class="product-card__description">
+            This is a sample product description. Add products using the blocks below.
+          </p>
+          <div class="product-card__details">
+            <span class="product-card__price">$29.99</span>
+            <span class="product-card__weight">50ml</span>
+          </div>
+          <button class="product-card__button">Add to Cart</button>
+        </div>
+      {% endfor %}
+    {% endif %}
+  </div>
+
+  {% if section.settings.cta_text != blank and section.settings.cta_url != blank %}
+    <div class="product-carousel__cta">
+      <a href="{{ section.settings.cta_url }}" class="product-carousel__cta-button">
+        {{ section.settings.cta_text }}
+      </a>
+    </div>
+  {% endif %}
+</section>
+
+{% schema %}
+{
+  "name": "Product Carousel",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section Content"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Featured Products"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "Discover our handcrafted collection"
+    },
+    {
+      "type": "header",
+      "content": "Call to Action"
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "CTA Button Text",
+      "default": "View All Products"
+    },
+    {
+      "type": "url",
+      "id": "cta_url",
+      "label": "CTA Button URL"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "title_color",
+      "label": "Title Color",
+      "default": "#333333"
+    },
+    {
+      "type": "color",
+      "id": "subtitle_color",
+      "label": "Subtitle Color",
+      "default": "#666666"
+    },
+    {
+      "type": "color",
+      "id": "cta_background",
+      "label": "CTA Background Color",
+      "default": "#333333"
+    },
+    {
+      "type": "color",
+      "id": "cta_color",
+      "label": "CTA Text Color",
+      "default": "#ffffff"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "product",
+      "name": "Product",
+      "settings": [
+        {
+          "type": "product",
+          "id": "product",
+          "label": "Select Product"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product Carousel",
+      "blocks": [
+        {
+          "type": "product"
+        },
+        {
+          "type": "product"
+        },
+        {
+          "type": "product"
+        },
+        {
+          "type": "product"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

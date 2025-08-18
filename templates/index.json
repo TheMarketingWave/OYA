@@ -17,15 +17,6 @@
         "heading_text": "Nature That Nourishes. Rituals That Awaken."
       }
     },
-    "fullscreen_empty_1": {
-      "type": "fullscreen-empty",
-      "settings": {
-        "background_color": "#ffffff",
-        "text_color": "#000000",
-        "show_placeholder": false,
-        "placeholder_text": "Full Screen Section"
-      }
-    },
     "text_scroll_animation_1": {
       "type": "text-scroll-animation",
       "settings": {
@@ -34,11 +25,84 @@
         "cta_text": "Experience the Art of Aromatherapy",
         "cta_url": "/collections/all"
       }
+    },
+    "product_carousel_AhhLUq": {
+      "type": "product-carousel",
+      "blocks": {
+        "product_aNBrMe": {
+          "type": "product",
+          "settings": {
+            "product": "origami-crane-necklace"
+          }
+        },
+        "product_YhMHfF": {
+          "type": "product",
+          "settings": {
+            "product": "choker-with-gold-pendant"
+          }
+        },
+        "product_kRbpUP": {
+          "type": "product",
+          "settings": {
+            "product": "choker-with-bead"
+          }
+        },
+        "product_eaiDgY": {
+          "type": "product",
+          "settings": {
+            "product": "leather-anchor"
+          }
+        },
+        "product_f6YbUh": {
+          "type": "product",
+          "settings": {
+            "product": "leather-anchor"
+          }
+        },
+        "product_JfphKc": {
+          "type": "product",
+          "settings": {
+            "product": "moon-charm-bracelet"
+          }
+        },
+        "product_BntJXK": {
+          "type": "product",
+          "settings": {
+            "product": "stylish-summer-neclace"
+          }
+        }
+      },
+      "block_order": [
+        "product_aNBrMe",
+        "product_YhMHfF",
+        "product_kRbpUP",
+        "product_eaiDgY",
+        "product_f6YbUh",
+        "product_JfphKc",
+        "product_BntJXK"
+      ],
+      "name": "Product Carousel",
+      "settings": {
+        "title": "OYA Essentials Oils",
+        "subtitle": "Six timeless essentials. Infinite possibilities. Each OYA Oil was chosen for its purity, purpose, and emotional resonance.",
+        "cta_text": "View All Oils",
+        "cta_url": "",
+      }
+    },
+    "fullscreen_empty_1": {
+      "type": "fullscreen-empty",
+      "settings": {
+        "background_color": "#ffffff",
+        "text_color": "#000000",
+        "show_placeholder": false,
+        "placeholder_text": "Full Screen Section"
+      }
     }
   },
   "order": [
     "responsive_video_1",
     "text_scroll_animation_1",
-    "fullscreen_empty_1",
+    "product_carousel_AhhLUq",
+    "fullscreen_empty_1"
   ]
 }

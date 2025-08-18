@@ -22,6 +22,21 @@
 
     <link rel="stylesheet" href="{{ 'theme.css' | asset_url }}">
     <link rel="stylesheet" href="{{ 'mobile.css' | asset_url }}" media="(max-width: 768px)">
+
+    <!-- GSAP Libraries - Available Globally -->
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/InertiaPlugin.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/Draggable.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js" defer></script>
+    <script>
+      // Register GSAP plugins globally when libraries are loaded
+      document.addEventListener('DOMContentLoaded', function () {
+        if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+          gsap.registerPlugin(ScrollTrigger);
+        }
+      });
+    </script>
+
     <script src="{{ 'theme.js' | asset_url }}" async></script>
     <script src="{{ 'predictive-search.js' | asset_url }}" defer></script>
 
@@ -60,6 +75,8 @@
       %}
     {% endcomment %}
 
-    <script type="module" src="{{ 'text-scroll-animation.js' | asset_url }}"></script>
+    <script src="{{ 'text-scroll-animation.js' | asset_url }}" defer></script>
+    <script src="{{ 'cart.js' | asset_url }}" defer></script>
+    <script src="{{ 'product-carousel.js' | asset_url }}" defer></script>
   </body>
 </html>
