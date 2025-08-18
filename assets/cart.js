@@ -6,38 +6,38 @@ function updateLineItemQty(el) {
   let key = el.dataset.key;
   let id = el.dataset.id;
   let quantity = el.value;
-  let row = el.closest('.js--cart-item');
+  let row = el.closest(".js--cart-item");
   if (quantity != "" && quantity >= 0) {
     let data = {
       id: key,
-      quantity: quantity
+      quantity: quantity,
     };
-    fetch('/cart/change.js', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data)
-      })
-      .then(response => response.json())
-      .then(cart => {
+    fetch("/cart/change.js", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    })
+      .then((response) => response.json())
+      .then((cart) => {
         console.log(cart);
         if (quantity > 0) {
-          row.querySelectorAll('.js--cart-item-total').forEach(function(el) {
+          row.querySelectorAll(".js--cart-item-total").forEach(function (el) {
             // Get details of the updated item.
-            let item = cart.items.filter(function(lineitem) {
+            let item = cart.items.filter(function (lineitem) {
               if (lineitem.key === key) {
                 return lineitem;
               }
             });
-            el.innerText = Shopify.formatMoney((item[0].final_line_price));
+            el.innerText = Shopify.formatMoney(item[0].final_line_price);
           });
         } else {
           row.remove();
           removeGiftWrap(key);
         }
         // Update the total cart price.
-        document.querySelectorAll('.js--cart-total').forEach(function(el) {
+        document.querySelectorAll(".js--cart-total").forEach(function (el) {
           el.innerText = Shopify.formatMoney(cart.total_price);
         });
         if (typeof window.spendMore === "function") {
@@ -47,11 +47,11 @@ function updateLineItemQty(el) {
         updateCartCounter(cart);
         // Display empty cart if no items.
         if (cart.item_count == 0) {
-          document.querySelector('#cart-content').innerHTML = emptyCartHtml;
+          document.querySelector("#cart-content").innerHTML = emptyCartHtml;
         }
       });
   }
-};
+}
 
 /*
  * GIFT WRAP OPTION
@@ -76,29 +76,31 @@ function runGiftWrap() {
  */
 function addGiftWrap(lineItemTitle, lineItemKey) {
   var data = {
-    items: [{
-      id: giftWrap.id,
-      quantity: 1,
-      properties: {
-        Item: lineItemTitle,
-        _id: lineItemKey,
+    items: [
+      {
+        id: giftWrap.id,
+        quantity: 1,
+        properties: {
+          Item: lineItemTitle,
+          _id: lineItemKey,
+        },
       },
-    }, ],
+    ],
   };
 
   fetch("/cart/add.js", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    })
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data),
+  })
     .then((response) => response.json())
     .then((update) => {
       fetch("/cart.json")
         .then((response) => response.json())
         .then((cart) => {
-          document.querySelectorAll(".js--cart-total").forEach(function(el) {
+          document.querySelectorAll(".js--cart-total").forEach(function (el) {
             el.textContent = Shopify.formatMoney(cart.total_price);
           });
           updateCartCounter(cart);
@@ -116,7 +118,7 @@ function removeGiftWrap(lineItemKey) {
   fetch("/cart.json")
     .then((response) => response.json())
     .then((cart) => {
-      var item = cart.items.filter(function(item) {
+      var item = cart.items.filter(function (item) {
         if (item.properties) {
           if (item.properties["_id"] == lineItemKey) {
             data = {
@@ -124,17 +126,19 @@ function removeGiftWrap(lineItemKey) {
               quantity: 0,
             };
             fetch("/cart/change.js", {
-                method: "POST",
-                headers: {
-                  "Content-Type": "application/json",
-                },
-                body: JSON.stringify(data),
-              })
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify(data),
+            })
               .then((response) => response.json())
               .then((cart) => {
-                document.querySelectorAll(".js--cart-total").forEach(function(el) {
-                  el.textContent = Shopify.formatMoney(cart.total_price);
-                });
+                document
+                  .querySelectorAll(".js--cart-total")
+                  .forEach(function (el) {
+                    el.textContent = Shopify.formatMoney(cart.total_price);
+                  });
                 updateCartCounter(cart);
                 spendMore(cart);
               });
@@ -148,7 +152,71 @@ function removeGiftWrap(lineItemKey) {
  * Update cart item count.
  */
 function updateCartCounter(cart) {
-  document.querySelectorAll('.js--cart-counter').forEach(function(el) {
+  document.querySelectorAll(".js--cart-counter").forEach(function (el) {
     el.innerText = cart.item_count;
   });
+}
+
+/*
+ * ADD TO CART FROM PRODUCT CAROUSEL
+ * Adds a product to cart from carousel buttons
+ * @param variantId (string) - Product variant ID
+ * @param productTitle (string) - Product title for feedback
+ * @param button (element) - Button element to update
+ */
+function addToCartFromCarousel(variantId, productTitle, button) {
+  const originalText = button.textContent;
+
+  // Update button state
+  button.textContent = "Adding...";
+  button.disabled = true;
+
+  const data = {
+    items: [
+      {
+        id: variantId,
+        quantity: 1,
+      },
+    ],
+  };
+
+  fetch("/cart/add.js", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data),
+  })
+    .then((response) => response.json())
+    .then((result) => {
+      // Success feedback
+      button.textContent = "Added!";
+
+      // Update cart counter
+      fetch("/cart.json")
+        .then((response) => response.json())
+        .then((cart) => {
+          updateCartCounter(cart);
+          // Call spendMore if it exists
+          if (typeof window.spendMore === "function") {
+            spendMore(cart);
+          }
+        });
+
+      // Reset button after 2 seconds
+      setTimeout(() => {
+        button.textContent = originalText;
+        button.disabled = false;
+      }, 2000);
+    })
+    .catch((error) => {
+      console.error("Error adding to cart:", error);
+      button.textContent = "Error";
+
+      // Reset button after 2 seconds
+      setTimeout(() => {
+        button.textContent = originalText;
+        button.disabled = false;
+      }, 2000);
+    });
 }

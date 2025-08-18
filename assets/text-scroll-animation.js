@@ -1,7 +1,3 @@
-import gsap from "https://cdn.jsdelivr.net/npm/gsap@3.13.0/index.js";
-import ScrollTrigger from "https://cdn.jsdelivr.net/npm/gsap@3.13.0/ScrollTrigger.js";
-gsap.registerPlugin(ScrollTrigger);
-
 const splitIntoWords = (el) => {
   const original = el.textContent;
   const tokens = original.match(/(\s+|[^\s]+)/g) || [original];
@@ -28,7 +24,6 @@ const splitIntoWords = (el) => {
 const colorScroll = (el) => {
   const words = splitIntoWords(el);
 
-  // Timeline progress is locked to scroll progress
   const tl = gsap.timeline({
     defaults: { ease: "none" },
     scrollTrigger: {
@@ -46,7 +41,6 @@ const colorScroll = (el) => {
 };
 
 const initTextScrollAnimation = () => {
-  console.log("init");
   document
     .querySelectorAll(".text-scroll-animation__content")
     ?.forEach(colorScroll);
