@@ -83,9 +83,9 @@
       ],
       "name": "Product Carousel",
       "settings": {
-        "title": "Featured Products",
-        "subtitle": "Discover our handcrafted collection",
-        "cta_text": "View All Products",
+        "title": "OYA Essentials Oils",
+        "subtitle": "Six timeless essentials. Infinite possibilities. Each OYA Oil was chosen for its purity, purpose, and emotional resonance.",
+        "cta_text": "View All Oils",
         "cta_url": "",
         "background_color": "#ffffff",
         "title_color": "#333333",
@@ -102,12 +102,22 @@
         "show_placeholder": false,
         "placeholder_text": "Full Screen Section"
       }
+    },
+    "scroll_video_CyYhQr": {
+      "type": "scroll-video",
+      "name": "Scroll Video",
+      "settings": {
+        "title": "Watch Our Story",
+        "video_desktop": "shopify://files/videos/crin-desktop.mp4",
+        "video_mobile": "shopify://files/videos/crin-mobile.mp4"
+      }
     }
   },
   "order": [
     "responsive_video_1",
     "text_scroll_animation_1",
     "product_carousel_AhhLUq",
+    "scroll_video_CyYhQr",
     "fullscreen_empty_1"
   ]
 }
