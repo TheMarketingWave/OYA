@@ -1,0 +1,123 @@
+{% style %}
+  .scroll-video {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+
+  .scroll-video__title {
+    font-size: 70px;
+    font-weight: 100;
+    color: var(--color-brand-cream);
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 0;
+    width: 100%;
+  }
+
+  .scroll-video__container {
+    width: 100%;
+    max-width: 700px;
+    margin: 0 auto;
+    position: relative;
+  }
+
+  .scroll-video__video {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 8px;
+    opacity: 0.4;
+  }
+
+  .scroll-video__mobile {
+    display: none;
+  }
+  .scroll-video__desktop {
+    display: block;
+  }
+
+  .scroll-video__divider {
+    height: 1px;
+    width: 100%;
+    max-width: 800px;
+    background: var(--color-brand-cream);
+  }
+
+  @media (max-width: 767px) {
+    .scroll-video__mobile {
+      display: block;
+    }
+    .scroll-video__desktop {
+      display: none;
+    }
+  }
+{% endstyle %}
+
+<section class="scroll-video section-container">
+  <div class="scroll-video__container">
+    {% if section.settings.video_mobile != blank %}
+      {{
+        section.settings.video_mobile
+        | video_tag:
+          class: 'scroll-video__video scroll-video__mobile',
+          muted: true,
+          playsinline: true,
+          preload: 'metadata',
+          controls: true
+      }}
+    {% endif %}
+
+    {% if section.settings.video_desktop != blank %}
+      {{
+        section.settings.video_desktop
+        | video_tag:
+          class: 'scroll-video__video scroll-video__desktop',
+          muted: true,
+          playsinline: true,
+          preload: 'metadata',
+          controls: false
+      }}
+    {% endif %}
+  </div>
+  <div class="scroll-video__divider"></div>
+
+  {% if section.settings.title != blank %}
+    {% assign parts = section.settings.title | split: ',' %}
+    <h2 class="scroll-video__title title-font">
+      {% for part in parts %}
+        {% assign words = part | strip | split: ' ' %}
+        {% for word in words %}
+          {% if forloop.last and forloop.parentloop.last %}
+            <em>{{ word }}</em>
+          {% else %}
+            {{ word }}
+          {% endif %}
+          {% unless forloop.last %} {% endunless %}
+        {% endfor %}
+        {% if forloop.last == false %},{% endif -%}
+        <br>
+      {% endfor %}
+    </h2>
+  {% endif %}
+</section>
+
+{% schema %}
+{
+  "name": "Scroll Video",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    { "type": "header", "content": "Section Content" },
+    { "type": "text", "id": "title", "label": "Title", "default": "Watch Our Story" },
+    { "type": "header", "content": "Videos" },
+    { "type": "video", "id": "video_desktop", "label": "Desktop Video" },
+    { "type": "video", "id": "video_mobile", "label": "Mobile Video (optional)" }
+  ],
+  "presets": [{ "name": "Scroll Video" }]
+}
+{% endschema %}
