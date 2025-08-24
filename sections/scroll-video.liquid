@@ -1,0 +1,131 @@
+{% style %}
+  .scroll-video {
+    height: 70vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 32px;
+    padding: 40px 20px;
+  }
+
+  .scroll-video__title {
+    font-size: 40px;
+    font-weight: 600;
+    color: var(--color-brand-cream);
+    text-align: center;
+  }
+
+  .scroll-video__container {
+    width: 100%;
+    max-width: 400px;
+    aspect-ratio: 1 / 1;
+    position: relative;
+  }
+
+  .scroll-video__video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+  }
+
+  .scroll-video__video--desktop {
+    display: block;
+  }
+
+  .scroll-video__video--mobile {
+    display: none;
+  }
+
+  @media (max-width: 768px) {
+    .scroll-video__video--desktop {
+      display: none;
+    }
+
+    .scroll-video__video--mobile {
+      display: block;
+    }
+
+    .scroll-video__title {
+      font-size: 32px;
+    }
+  }
+{% endstyle %}
+
+<section class="scroll-video section-container">
+  {% if section.settings.title != blank %}
+    <h2 class="scroll-video__title title-font">{{ section.settings.title }}</h2>
+  {% endif %}
+
+  <div class="scroll-video__container">
+    {% if section.settings.video_desktop != blank %}
+      <video
+        class="scroll-video__video scroll-video__video--desktop"
+        autoplay
+        muted
+        loop
+        playsinline
+        preload="auto"
+      >
+        <source src="{{ section.settings.video_desktop | file_url }}" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+    {% endif %}
+
+    {% if section.settings.video_mobile != blank %}
+      <video
+        class="scroll-video__video scroll-video__video--mobile"
+        autoplay
+        muted
+        loop
+        playsinline
+        preload="auto"
+      >
+        <source src="{{ section.settings.video_mobile | file_url }}" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+    {% endif %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Scroll Video",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section Content"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Watch Our Story"
+    },
+    {
+      "type": "header",
+      "content": "Videos"
+    },
+    {
+      "type": "url",
+      "id": "video_desktop",
+      "label": "Desktop Video URL",
+      "info": "Upload video to Files and paste URL here"
+    },
+    {
+      "type": "url",
+      "id": "video_mobile",
+      "label": "Mobile Video URL",
+      "info": "Upload video to Files and paste URL here"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Scroll Video"
+    }
+  ]
+}
+{% endschema %}
