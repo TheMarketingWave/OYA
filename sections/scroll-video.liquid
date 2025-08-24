@@ -30,23 +30,7 @@
     border-radius: 8px;
   }
 
-  .scroll-video__video--desktop {
-    display: block;
-  }
-
-  .scroll-video__video--mobile {
-    display: none;
-  }
-
   @media (max-width: 768px) {
-    .scroll-video__video--desktop {
-      display: none;
-    }
-
-    .scroll-video__video--mobile {
-      display: block;
-    }
-
     .scroll-video__title {
       font-size: 32px;
     }
@@ -60,31 +44,10 @@
 
   <div class="scroll-video__container">
     {% if section.settings.video_desktop != blank %}
-      <video
-        class="scroll-video__video scroll-video__video--desktop"
-        autoplay
-        muted
-        loop
-        playsinline
-        preload="auto"
-      >
-        <source src="{{ section.settings.video_desktop | file_url }}" type="video/mp4">
-        Your browser does not support the video tag.
-      </video>
-    {% endif %}
-
-    {% if section.settings.video_mobile != blank %}
-      <video
-        class="scroll-video__video scroll-video__video--mobile"
-        autoplay
-        muted
-        loop
-        playsinline
-        preload="auto"
-      >
-        <source src="{{ section.settings.video_mobile | file_url }}" type="video/mp4">
-        Your browser does not support the video tag.
-      </video>
+      {{
+        section.settings.video_desktop
+        | video_tag: class: 'scroll-video__video', autoplay: true, muted: true, loop: true, controls: false
+      }}
     {% endif %}
   </div>
 </section>
@@ -110,16 +73,16 @@
       "content": "Videos"
     },
     {
-      "type": "url",
+      "type": "video",
       "id": "video_desktop",
-      "label": "Desktop Video URL",
-      "info": "Upload video to Files and paste URL here"
+      "label": "Desktop Video",
+      "info": "Upload or select a video for desktop display"
     },
     {
-      "type": "url",
+      "type": "video",
       "id": "video_mobile",
-      "label": "Mobile Video URL",
-      "info": "Upload video to Files and paste URL here"
+      "label": "Mobile Video",
+      "info": "Upload or select a video for mobile display (optional - will use desktop video if not provided)"
     }
   ],
   "presets": [
