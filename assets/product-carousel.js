@@ -37,46 +37,61 @@ const INTERACTION_BLUR_STATE = {
 const initProductCarousel = () => {
   console.log("Product carousel initialized");
 
-  const wrapper = document.querySelector(".product-carousel__track");
-  const boxes = gsap.utils.toArray(".product-card");
+  // Find all carousel containers
+  const carouselContainers = document.querySelectorAll(".product-carousel");
 
-  if (!wrapper || !boxes.length) {
-    console.warn("Product carousel elements not found");
+  if (!carouselContainers.length) {
+    console.warn("No product carousel containers found");
     return;
   }
 
-  let activeElement;
+  // Initialize each carousel separately
+  carouselContainers.forEach((container, containerIndex) => {
+    const wrapper = container.querySelector(".product-carousel__track");
+    const boxes = gsap.utils.toArray(
+      container.querySelectorAll(".product-card")
+    );
 
-  // Initialize the horizontal loop
-  const loop = horizontalLoop(boxes, {
-    draggable: true,
-    center: true,
-    onChange: handleActiveElementChange,
-  });
-
-  // Set up click handlers for direct navigation
-  setupClickNavigation(boxes, loop);
-
-  // Set up navigation button handlers
-  setupNavigationButtons(loop);
-
-  // Center the middle element initially
-  if (loop && typeof loop.toIndex === "function") {
-    const middleIndex = Math.floor(boxes.length / 2);
-    loop.toIndex(middleIndex, { duration: 0 });
-  }
-
-  // Set up scroll-triggered blur-to-clear animation
-  setupScrollAnimation(boxes);
-
-  // Handle active element changes
-  function handleActiveElementChange(element, index) {
-    if (activeElement) {
-      activeElement.classList.remove("active");
+    if (!wrapper || !boxes.length) {
+      console.warn(
+        `Product carousel elements not found in carousel ${containerIndex}`
+      );
+      return;
     }
-    element.classList.add("active");
-    activeElement = element;
-  }
+
+    let activeElement;
+
+    // Initialize the horizontal loop
+    const loop = horizontalLoop(boxes, {
+      draggable: true,
+      center: true,
+      onChange: handleActiveElementChange,
+    });
+
+    // Set up click handlers for direct navigation
+    setupClickNavigation(boxes, loop);
+
+    // Set up navigation button handlers for this specific carousel
+    setupNavigationButtons(loop, container);
+
+    // Center the middle element initially
+    if (loop && typeof loop.toIndex === "function") {
+      const middleIndex = Math.floor(boxes.length / 2);
+      loop.toIndex(middleIndex, { duration: 0 });
+    }
+
+    // Set up scroll-triggered blur-to-clear animation
+    setupScrollAnimation(boxes, container);
+
+    // Handle active element changes
+    function handleActiveElementChange(element, index) {
+      if (activeElement) {
+        activeElement.classList.remove("active");
+      }
+      element.classList.add("active");
+      activeElement = element;
+    }
+  });
 };
 
 // ================================
@@ -94,9 +109,13 @@ function setupClickNavigation(boxes, loop) {
   });
 }
 
-function setupNavigationButtons(loop) {
-  const prevBtn = document.getElementById("carousel-prev-btn");
-  const nextBtn = document.getElementById("carousel-next-btn");
+function setupNavigationButtons(loop, container) {
+  const prevBtn = container.querySelector(
+    "#carousel-prev-btn, .carousel-prev-btn"
+  );
+  const nextBtn = container.querySelector(
+    "#carousel-next-btn, .carousel-next-btn"
+  );
 
   if (prevBtn && loop && typeof loop.previous === "function") {
     prevBtn.addEventListener("click", () => {
@@ -121,7 +140,7 @@ function setupNavigationButtons(loop) {
 // SCROLL ANIMATION SETUP
 // ================================
 
-function setupScrollAnimation(boxes) {
+function setupScrollAnimation(boxes, container) {
   if (!boxes.length || typeof ScrollTrigger === "undefined") {
     console.warn("ScrollTrigger not available for carousel animation");
     return;
@@ -134,7 +153,7 @@ function setupScrollAnimation(boxes) {
   const tl = gsap.timeline({
     defaults: { ease: "power2.out", force3D: true },
     scrollTrigger: {
-      trigger: ".product-carousel",
+      trigger: container,
       start: "top 50%",
       toggleActions: "play none none none", // Only play once, no reverse
     },
