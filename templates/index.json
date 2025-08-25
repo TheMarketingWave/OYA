@@ -168,7 +168,7 @@
       "type": "scroll-video",
       "name": "Scroll Video",
       "settings": {
-        "title": "Every drop, a masterpiece.",
+        "title": "Every drop, \na masterpiece.",
         "video_desktop": "shopify://files/videos/crin-desktop.mp4",
         "video_mobile": "shopify://files/videos/crin-mobile.mp4"
       }
