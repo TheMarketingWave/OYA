@@ -1,0 +1,219 @@
+{% style %}
+  .image-with-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    padding: 80px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    align-items: center;
+  }
+
+  .image-with-content__text {
+    padding-right: 40px;
+  }
+
+  .image-with-content__title {
+    font-size: 48px;
+    font-weight: 400;
+    margin-bottom: 20px;
+    color: var(--color-text);
+    font-family: var(--font-heading-family);
+  }
+
+  .image-with-content__subtitle {
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 40px;
+    color: var(--color-text);
+    opacity: 0.8;
+  }
+
+  .image-with-content__content-title {
+    font-size: 24px;
+    font-weight: 500;
+    margin-bottom: 16px;
+    color: var(--color-text);
+    font-family: var(--font-heading-family);
+  }
+
+  .image-with-content__content-subtitle {
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--color-text);
+    opacity: 0.7;
+  }
+
+  .image-with-content__images {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .image-with-content__image-large {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    border-radius: 8px;
+  }
+
+  .image-with-content__image-small {
+    width: 60%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+    align-self: flex-start;
+  }
+
+  @media (max-width: 768px) {
+    .image-with-content {
+      grid-template-columns: 1fr;
+      gap: 40px;
+      padding: 60px 20px;
+    }
+
+    .image-with-content__text {
+      padding-right: 0;
+      order: 2;
+    }
+
+    .image-with-content__images {
+      order: 1;
+    }
+
+    .image-with-content__title {
+      font-size: 36px;
+    }
+
+    .image-with-content__image-small {
+      width: 80%;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .image-with-content {
+      padding: 40px 15px;
+    }
+
+    .image-with-content__title {
+      font-size: 28px;
+    }
+
+    .image-with-content__image-small {
+      width: 100%;
+    }
+  }
+{% endstyle %}
+
+<section class="image-with-content">
+  <div class="image-with-content__text">
+    {% if section.settings.title != blank %}
+      <h2 class="image-with-content__title">{{ section.settings.title }}</h2>
+    {% endif %}
+
+    {% if section.settings.subtitle != blank %}
+      <p class="image-with-content__subtitle">{{ section.settings.subtitle }}</p>
+    {% endif %}
+
+    {% if section.settings.content_title != blank %}
+      <h3 class="image-with-content__content-title">{{ section.settings.content_title }}</h3>
+    {% endif %}
+
+    {% if section.settings.content_subtitle != blank %}
+      <p class="image-with-content__content-subtitle">{{ section.settings.content_subtitle }}</p>
+    {% endif %}
+  </div>
+
+  <div class="image-with-content__images">
+    {% if section.settings.image_large != blank %}
+      <img
+        src="{{ section.settings.image_large | image_url: width: 600 }}"
+        alt="{{ section.settings.image_large.alt | escape }}"
+        class="image-with-content__image-large"
+        width="600"
+        height="400"
+        loading="lazy"
+      >
+    {% endif %}
+
+    {% if section.settings.image_small != blank %}
+      <img
+        src="{{ section.settings.image_small | image_url: width: 300 }}"
+        alt="{{ section.settings.image_small.alt | escape }}"
+        class="image-with-content__image-small"
+        width="300"
+        height="200"
+        loading="lazy"
+      >
+    {% endif %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Content on 2 column",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Content Settings"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Main Title",
+      "default": "Designed to be Refilled",
+      "info": "The main heading for this section"
+    },
+    {
+      "type": "textarea",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "Our signature glass bottles are meant to be part of your long-term ritual. When empty, refill, because true luxury respects the earth it comes from.",
+      "info": "Descriptive text below the main title"
+    },
+    {
+      "type": "text",
+      "id": "content_title",
+      "label": "Content Title",
+      "default": "Refill, Refresh, Renew",
+      "info": "Secondary heading for the content section"
+    },
+    {
+      "type": "textarea",
+      "id": "content_subtitle",
+      "label": "Content Subtitle",
+      "default": "Our bottles are made to last—because wellness should be beautiful, not wasteful. When your OYA oil runs low, simply send your bottle back to us. We'll clean, refill, and return it to you—every bottle activity that the refill.",
+      "info": "Descriptive text for the content section"
+    },
+    {
+      "type": "header",
+      "content": "Image Settings"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_large",
+      "label": "Large Image",
+      "info": "Main image displayed prominently"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_small",
+      "label": "Small Image",
+      "info": "Smaller accent image displayed below the main image"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Image with Content",
+      "settings": {
+        "title": "Designed to be Refilled",
+        "subtitle": "Our signature glass bottles are meant to be part of your long-term ritual. When empty, refill, because true luxury respects the earth it comes from.",
+        "content_title": "Refill, Refresh, Renew",
+        "content_subtitle": "Our bottles are made to last—because wellness should be beautiful, not wasteful. When your OYA oil runs low, simply send your bottle back to us. We'll clean, refill, and return it to you—every bottle activity that the refill."
+      }
+    }
+  ]
+}
+{% endschema %}
