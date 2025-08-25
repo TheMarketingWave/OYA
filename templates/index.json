@@ -95,6 +95,14 @@
         "cta_color": "#ffffff"
       }
     },
+    "horizontal_spacer_GhM9iT": {
+      "type": "horizontal-spacer",
+      "name": "Horizontal Spacer",
+      "settings": {
+        "desktop_height": 90,
+        "mobile_height": 40
+      }
+    },
     "product_carousel_e7BfWK": {
       "type": "product-carousel",
       "blocks": {
@@ -186,6 +194,7 @@
     "responsive_video_1",
     "text_scroll_animation_1",
     "product_carousel_AhhLUq",
+    "horizontal_spacer_GhM9iT",
     "product_carousel_e7BfWK",
     "scroll_video_CyYhQr",
     "fullscreen_empty_1"
