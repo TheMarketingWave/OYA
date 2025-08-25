@@ -28,11 +28,30 @@
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/InertiaPlugin.min.js" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/Draggable.min.js" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollSmoother.min.js" defer></script>
+
     <script>
-      // Register GSAP plugins globally when libraries are loaded
+      // Initialize GSAP plugins and ScrollSmoother when libraries are loaded
       document.addEventListener('DOMContentLoaded', function () {
-        if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
-          gsap.registerPlugin(ScrollTrigger);
+        // Register GSAP plugins
+        if (
+          typeof gsap !== 'undefined' &&
+          typeof ScrollTrigger !== 'undefined' &&
+          typeof ScrollSmoother !== 'undefined'
+        ) {
+          console.log('GSAP and ScrollSmoother are loaded');
+          gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
+
+          // Initialize ScrollSmoother with required wrapper and content elements
+          ScrollSmoother.create({
+            wrapper: '#smooth-wrapper',
+            content: '#smooth-content',
+            smooth: 1.5, // How smooth the scrolling should be (0-3)
+            effects: true, // Enable data-speed and data-lag effects
+            smoothTouch: 0.1, // Enable smooth scrolling on touch devices (0-1, or false)
+            normalizeScroll: true, // Prevent address bar from showing/hiding on mobile
+            ignoreMobileResize: true, // Prevent refresh on mobile resize
+          });
         }
       });
     </script>
@@ -48,32 +67,36 @@
   <body>
     {% sections 'header-group' %}
 
-    {% liquid
-      unless template == 'index'
-        render 'breadcrumb'
-      endunless
-    %}
+    <div id="smooth-wrapper">
+      <div id="smooth-content">
+        {% liquid
+          unless template == 'index'
+            render 'breadcrumb'
+          endunless
+        %}
 
-    <main id="main-content">
-      {{ content_for_layout }}
-    </main>
+        <main id="main-content">
+          {{ content_for_layout }}
+        </main>
 
-    {% comment %}
-      <footer class="section-wrap">
-        <div class="container">
-          {% sections 'footer-group' %}
-        </div>
-      </footer>
-    {% endcomment %}
+        {% comment %}
+          <footer class="section-wrap">
+            <div class="container">
+              {% sections 'footer-group' %}
+            </div>
+          </footer>
+        {% endcomment %}
 
-    {% comment %}
-      {% liquid
-        # Newsletter Popup.
-        if settings.newsletter_popup
-          render 'newsletter-popup'
-        endif
-      %}
-    {% endcomment %}
+        {% comment %}
+          {% liquid
+            # Newsletter Popup.
+            if settings.newsletter_popup
+              render 'newsletter-popup'
+            endif
+          %}
+        {% endcomment %}
+      </div>
+    </div>
 
     <script src="{{ 'text-scroll-animation.js' | asset_url }}" defer></script>
     <script src="{{ 'cart.js' | asset_url }}" defer></script>

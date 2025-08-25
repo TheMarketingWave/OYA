@@ -1,0 +1,39 @@
+{%- comment -%}
+  Icon snippet for rendering SVG icons from assets
+
+  Usage:
+  {% render 'icon', icon: 'star', class: 'my-icon-class', size: '24' %}
+
+  Parameters:
+  - icon: (required) The icon name (matches the SVG filename without icon- prefix and .svg)
+  - class: (optional) CSS classes to add to the icon
+  - size: (optional) Size for width/height, defaults to '24'
+  - width: (optional) Specific width, overrides size
+  - height: (optional) Specific height, overrides size
+{%- endcomment -%}
+
+{%- liquid
+  assign icon_name = icon | default: 'star'
+  assign icon_class = class | default: ''
+  assign icon_size = size | default: '24'
+  assign icon_width = width | default: icon_size
+  assign icon_height = height | default: icon_size
+
+  # Create the full asset filename
+  assign icon_filename = 'icon-' | append: icon_name | append: '.svg'
+  assign icon_url = icon_filename | asset_url
+-%}
+
+<div
+  class="icon icon--{{ icon_name }} {{ icon_class }}"
+  style="width: {{ icon_width }}px; height: {{ icon_height }}px; display: inline-block;"
+>
+  <img
+    src="{{ icon_url }}"
+    alt=""
+    loading="lazy"
+    width="{{ icon_width }}"
+    height="{{ icon_height }}"
+    style="width: 100%; height: 100%; object-fit: contain;"
+  >
+</div>

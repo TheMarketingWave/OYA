@@ -1,3 +1,10 @@
+const scrollDown = () => {
+  window.scrollBy({
+    top: window.innerHeight,
+    behavior: "smooth",
+  });
+};
+
 const setToggleMenu = () => {
   const menuContainer = document.getElementById("custom-menu-container");
   const menuButton = document.getElementById("custom-menu-button");

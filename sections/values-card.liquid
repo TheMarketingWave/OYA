@@ -1,0 +1,219 @@
+{% style %}
+  .card-section {
+    width: 100%;
+    padding: 80px 20px;
+  }
+
+  .card-section__container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .card-section__header {
+    text-align: center;
+    margin-bottom: 60px;
+  }
+
+  .card-section__title {
+    font-size: 48px;
+    font-weight: 400;
+    margin-bottom: 20px;
+    color: var(--color-brand-cream, #333);
+  }
+
+  .card-section__subtitle {
+    font-size: 18px;
+    line-height: 1.6;
+    color: var(--color-brand-cream, #666);
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .card-section__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+  }
+
+  .card {
+    display: flex;
+    flex-direction: column;
+    padding: 40px;
+    border-radius: 8px;
+  }
+
+  .card__header {
+    margin-bottom: 20px;
+  }
+
+  .card__title {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 24px;
+    font-weight: 600;
+    margin: 0;
+    color: var(--color-brand-cream, #333);
+    font-family: var(--font-heading-family, inherit);
+  }
+
+  .card__icon {
+    flex-shrink: 0;
+  }
+
+  .card__content {
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--color-brand-cream, #666);
+    margin: 0;
+  }
+
+  @media (max-width: 768px) {
+    .card-section {
+      padding: 60px 15px;
+    }
+
+    .card-section__header {
+      margin-bottom: 40px;
+    }
+
+    .card-section__title {
+      font-size: 36px;
+    }
+
+    .card-section__subtitle {
+      font-size: 16px;
+    }
+
+    .card-section__grid {
+      grid-template-columns: 1fr;
+      gap: 30px;
+    }
+
+    .card {
+      padding: 30px;
+    }
+
+    .card__title {
+      font-size: 20px;
+    }
+
+    .card__content {
+      font-size: 14px;
+    }
+  }
+{% endstyle %}
+
+<section class="card-section">
+  <div class="card-section__container">
+    {% if section.settings.section_title != blank or section.settings.section_subtitle != blank %}
+      <div class="card-section__header">
+        {% if section.settings.section_title != blank %}
+          <h2 class="card-section__title title-font">{{ section.settings.section_title }}</h2>
+        {% endif %}
+        {% if section.settings.section_subtitle != blank %}
+          <p class="card-section__subtitle">{{ section.settings.section_subtitle }}</p>
+        {% endif %}
+      </div>
+    {% endif %}
+
+    <div class="card-section__grid">
+      {% for block in section.blocks %}
+        <div class="card">
+          <div class="card__header">
+            <h3 class="card__title">
+              {% if block.settings.icon != blank %}
+                {% render 'icon', icon: block.settings.icon, class: 'card__icon', size: '20' %}
+              {% endif %}
+              {{ block.settings.title }}
+            </h3>
+          </div>
+          <div class="card__content">
+            {{ block.settings.content }}
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Values Card",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section Settings"
+    },
+    {
+      "type": "text",
+      "id": "section_title",
+      "label": "Section Title",
+      "default": "Our Values",
+      "info": "Main heading for the section"
+    },
+    {
+      "type": "textarea",
+      "id": "section_subtitle",
+      "label": "Section Subtitle",
+      "default": "The principles that guide every decision we make",
+      "info": "Descriptive text below the section title"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "card",
+      "name": "Card",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Card Title",
+          "default": "Card Title"
+        },
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icon",
+          "options": [
+            { "value": "", "label": "No Icon" },
+            { "value": "star", "label": "Star" },
+            { "value": "flower", "label": "Flower" },
+            { "value": "moon", "label": "Moon" },
+            { "value": "sun", "label": "Sun" },
+            { "value": "heart", "label": "Heart" },
+            { "value": "check", "label": "Check" },
+            { "value": "arrow-right", "label": "Arrow Right" },
+            { "value": "play", "label": "Play" },
+            { "value": "phone", "label": "Phone" },
+            { "value": "email", "label": "Email" },
+            { "value": "location", "label": "Location" }
+          ]
+        },
+        {
+          "type": "textarea",
+          "id": "content",
+          "label": "Card Content"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Values Card",
+      "blocks": [
+        {
+          "type": "card",
+          "settings": {
+            "title": "Example Card",
+            "icon": "star",
+            "content": "This is an example card with an icon."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
