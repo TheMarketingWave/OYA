@@ -13,7 +13,8 @@
       "type": "responsive-video",
       "name": "Responsive Video",
       "settings": {
-        "desktop_video": "shopify://files/videos/teaser-cut-web_1fb333f4-abbc-4029-922e-d0efb1d46ebf.mp4",
+        "desktop_video": "shopify://files/videos/oya-desktop-trim.mp4",
+        "mobile_video": "shopify://files/videos/oya-mobile-trim.mp4",
         "heading_text": "Nature That Nourishes. Rituals That Awaken."
       }
     },
@@ -94,15 +95,6 @@
         "cta_color": "#ffffff"
       }
     },
-    "fullscreen_empty_1": {
-      "type": "fullscreen-empty",
-      "settings": {
-        "background_color": "#ffffff",
-        "text_color": "#000000",
-        "show_placeholder": false,
-        "placeholder_text": "Full Screen Section"
-      }
-    },
     "scroll_video_CyYhQr": {
       "type": "scroll-video",
       "name": "Scroll Video",
@@ -110,6 +102,15 @@
         "title": "Every drop, a masterpiece.",
         "video_desktop": "shopify://files/videos/crin-desktop.mp4",
         "video_mobile": "shopify://files/videos/crin-mobile.mp4"
+      }
+    },
+    "fullscreen_empty_1": {
+      "type": "fullscreen-empty",
+      "settings": {
+        "background_color": "#ffffff",
+        "text_color": "#000000",
+        "show_placeholder": false,
+        "placeholder_text": "Full Screen Section"
       }
     }
   },
