@@ -65,10 +65,10 @@
   </head>
 
   <body>
+    {% sections 'header-group' %}
+
     <div id="smooth-wrapper">
       <div id="smooth-content">
-        {% sections 'header-group' %}
-
         {% liquid
           unless template == 'index'
             render 'breadcrumb'
