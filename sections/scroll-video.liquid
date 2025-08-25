@@ -87,20 +87,8 @@
   <div class="scroll-video__divider"></div>
 
   {% if section.settings.title != blank %}
-    {% assign words = section.settings.title | split: ' ' %}
-    {% assign last_word = words.last %}
-    {% assign all_but_last = '' %}
-    {% for word in words %}
-      {% unless forloop.last %}
-        {% if all_but_last != '' %}
-          {% assign all_but_last = all_but_last | append: ' ' %}
-        {% endif %}
-        {% assign all_but_last = all_but_last | append: word %}
-      {% endunless %}
-    {% endfor %}
     <h2 class="scroll-video__title title-font">
-      {{ all_but_last | newline_to_br }}
-      <em>{{ last_word }}</em>
+      {{ section.settings.title }}
     </h2>
   {% endif %}
 </section>
@@ -113,11 +101,11 @@
   "settings": [
     { "type": "header", "content": "Section Content" },
     {
-      "type": "textarea",
+      "type": "richtext",
       "id": "title",
       "label": "Title",
-      "default": "Watch Our Story",
-      "info": "Use line breaks for multiple lines. The last word will be styled in italics."
+      "default": "<p>Watch Our Story</p>",
+      "info": "Use the rich text editor to format your title with line breaks, italics, etc."
     },
     { "type": "header", "content": "Videos" },
     { "type": "video", "id": "video_desktop", "label": "Desktop Video" },
