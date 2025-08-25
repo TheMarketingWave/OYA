@@ -95,6 +95,74 @@
         "cta_color": "#ffffff"
       }
     },
+    "product_carousel_e7BfWK": {
+      "type": "product-carousel",
+      "blocks": {
+        "product_M8egMT": {
+          "type": "product",
+          "settings": {
+            "product": "origami-crane-necklace"
+          }
+        },
+        "product_NXAg4Q": {
+          "type": "product",
+          "settings": {
+            "product": "choker-with-gold-pendant"
+          }
+        },
+        "product_78tiQF": {
+          "type": "product",
+          "settings": {
+            "product": "choker-with-bead"
+          }
+        },
+        "product_UU9qH8": {
+          "type": "product",
+          "settings": {
+            "product": "leather-anchor"
+          }
+        },
+        "product_jyVGfV": {
+          "type": "product",
+          "settings": {
+            "product": "leather-anchor"
+          }
+        },
+        "product_g3wBHQ": {
+          "type": "product",
+          "settings": {
+            "product": "moon-charm-bracelet"
+          }
+        },
+        "product_hDmw9r": {
+          "type": "product",
+          "settings": {
+            "product": "stylish-summer-neclace"
+          }
+        }
+      },
+      "block_order": [
+        "product_M8egMT",
+        "product_NXAg4Q",
+        "product_78tiQF",
+        "product_UU9qH8",
+        "product_jyVGfV",
+        "product_g3wBHQ",
+        "product_hDmw9r"
+      ],
+      "name": "Product Carousel",
+      "settings": {
+        "title": "OYA Aromatherapy Sticks",
+        "subtitle": "Scent that settles. Smoke that sanctifies.",
+        "cta_text": "View All Oils",
+        "cta_url": "",
+        "background_color": "#ffffff",
+        "title_color": "#333333",
+        "subtitle_color": "#666666",
+        "cta_background": "#333333",
+        "cta_color": "#ffffff"
+      }
+    },
     "scroll_video_CyYhQr": {
       "type": "scroll-video",
       "name": "Scroll Video",
@@ -118,6 +186,7 @@
     "responsive_video_1",
     "text_scroll_animation_1",
     "product_carousel_AhhLUq",
+    "product_carousel_e7BfWK",
     "scroll_video_CyYhQr",
     "fullscreen_empty_1"
   ]
