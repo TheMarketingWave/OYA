@@ -106,57 +106,50 @@
     "product_carousel_e7BfWK": {
       "type": "product-carousel",
       "blocks": {
-        "product_M8egMT": {
+        "product_rqUE7W": {
           "type": "product",
           "settings": {
-            "product": "origami-crane-necklace"
+            "product": "bangle-bracelet-with-feathers"
           }
         },
-        "product_NXAg4Q": {
-          "type": "product",
-          "settings": {
-            "product": "choker-with-gold-pendant"
-          }
-        },
-        "product_78tiQF": {
-          "type": "product",
-          "settings": {
-            "product": "choker-with-bead"
-          }
-        },
-        "product_UU9qH8": {
-          "type": "product",
-          "settings": {
-            "product": "leather-anchor"
-          }
-        },
-        "product_jyVGfV": {
-          "type": "product",
-          "settings": {
-            "product": "leather-anchor"
-          }
-        },
-        "product_g3wBHQ": {
+        "product_4zqEEC": {
           "type": "product",
           "settings": {
             "product": "moon-charm-bracelet"
           }
         },
-        "product_hDmw9r": {
+        "product_kDHtED": {
           "type": "product",
           "settings": {
-            "product": "stylish-summer-neclace"
+            "product": "choker-with-gold-pendant"
+          }
+        },
+        "product_YFbqFY": {
+          "type": "product",
+          "settings": {
+            "product": "bangle-bracelet"
+          }
+        },
+        "product_TMiGip": {
+          "type": "product",
+          "settings": {
+            "product": "boho-earrings"
+          }
+        },
+        "product_mdnfBR": {
+          "type": "product",
+          "settings": {
+            "product": "dreamcatcher-pendant-necklace"
           }
         }
       },
       "block_order": [
-        "product_M8egMT",
-        "product_NXAg4Q",
-        "product_78tiQF",
-        "product_UU9qH8",
-        "product_jyVGfV",
-        "product_g3wBHQ",
-        "product_hDmw9r"
+        "product_rqUE7W",
+        "product_4zqEEC",
+        "product_kDHtED",
+        "product_YFbqFY",
+        "product_TMiGip",
+        "product_mdnfBR"
       ],
       "name": "Product Carousel",
       "settings": {
