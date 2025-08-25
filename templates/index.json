@@ -181,6 +181,18 @@
         "show_placeholder": false,
         "placeholder_text": "Full Screen Section"
       }
+    },
+    "image_with_content_6rxDKF": {
+      "type": "image-with-content",
+      "name": "Image with Content",
+      "settings": {
+        "title": "Designed to be Refilled",
+        "subtitle": "Our signature glass bottles are meant to be part of your long-term ritual. When empty, refill, because true luxury respects the earth it comes from.",
+        "content_title": "Refill, Refresh, Renew",
+        "content_subtitle": "Our bottles are made to last—because wellness should be beautiful, not wasteful. When your OYA oil runs low, simply send your bottle back to us. We'll clean, refill, and return it to you—every bottle activity that the refill.",
+        "image_large": "shopify://shop_images/hands.png",
+        "image_small": "shopify://shop_images/plants.jpg"
+      }
     }
   },
   "order": [
@@ -190,6 +202,7 @@
     "horizontal_spacer_GhM9iT",
     "product_carousel_e7BfWK",
     "scroll_video_CyYhQr",
-    "fullscreen_empty_1"
+    "fullscreen_empty_1",
+    "image_with_content_6rxDKF"
   ]
 }
