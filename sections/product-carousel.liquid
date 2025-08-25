@@ -1,110 +1,138 @@
 {% style %}
   .product-carousel {
-    padding: 80px 20px;
-    text-align: center;
-    background-color: {{ section.settings.background_color | default: '#ffffff' }};
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
   }
 
   .product-carousel__header {
-    max-width: 800px;
-    margin: 0 auto 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 16px;
+
+  }
+
+  .product-carousel__header-content {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    flex: 1;
+  }
+
+  .product-carousel__navigation {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    margin-top: auto;
+  }
+
+  .product-carousel__nav-button {
+    background: transparent;
+    border-radius: 50%;
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: none;
+  }
+
+  .product-carousel__nav-button:hover {
+    background: var(--color-brand-cream);
+  }
+
+  .product-carousel__nav-button:hover svg path {
+    fill: var(--color-brand-brown);
+  }
+
+  .product-carousel__nav-button svg {
+    width: 20px;
+    height: 20px;
   }
 
   .product-carousel__title {
-    font-size: 48px;
+    font-size: 40px;
     font-weight: 600;
-    margin-bottom: 16px;
-    color: {{ section.settings.title_color | default: '#333333' }};
+    color: var(--color-brand-cream);
+
   }
 
   .product-carousel__subtitle {
-    font-size: 20px;
-    color: {{ section.settings.subtitle_color | default: '#666666' }};
-    margin-bottom: 40px;
+    font-size: 16px;
+    color: var(--color-brand-cream);
+    max-width: 40%;
   }
 
   .product-carousel__container {
     position: relative;
-    max-width: 1200px;
-    margin: 0 auto;
   }
 
   .product-carousel__track {
     display: flex;
-    overflow-x: auto;
-    overflow-y: hidden;
-    scroll-behavior: smooth;
     gap: 24px;
+    overflow: hidden;
     padding: 20px 0;
-    scrollbar-width: thin;
-    scrollbar-color: #ccc transparent;
-  }
-
-  .product-carousel__track::-webkit-scrollbar {
-    height: 8px;
-  }
-
-  .product-carousel__track::-webkit-scrollbar-track {
-    background: #f1f1f1;
-    border-radius: 4px;
-  }
-
-  .product-carousel__track::-webkit-scrollbar-thumb {
-    background: #ccc;
-    border-radius: 4px;
   }
 
   .product-card {
-    min-width: 300px;
-    max-width: 300px;
-    background: white;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    padding: 20px;
-    text-align: left;
-    transition: transform 0.3s ease;
+    flex-shrink: 0;
+    width: 300px;
+    height: 560px;
   }
 
-  .product-card:hover {
-    transform: translateY(-4px);
+  .product-card__inner {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    color: var(--color-brand-cream);
+    gap: 16px;
+  }
+
+  .product-card:first-child {
+    margin-left: 24px;
   }
 
   .product-card__image {
     width: 100%;
-    height: 200px;
+    height: auto;
+    aspect-ratio: 1 / 1;
     object-fit: cover;
-    border-radius: 8px;
-    margin-bottom: 16px;
+    border-radius: 4px;
+    transition: filter 0.6s ease, opacity 0.6s ease, transform 0.6s ease;
+    will-change: filter, opacity, transform;
   }
+
+
 
   .product-card__tags {
     display: flex;
-    flex-wrap: wrap;
     gap: 8px;
-    margin-bottom: 12px;
+    overflow: hidden;
   }
 
   .product-card__tag {
-    background: #f0f0f0;
-    color: #666;
+    background: var(--color-brand-green);
+    color: white;
     padding: 4px 8px;
-    border-radius: 12px;
+    border-radius: 4px;
     font-size: 12px;
     text-transform: uppercase;
   }
 
   .product-card__title {
     font-size: 18px;
-    font-weight: 600;
-    margin-bottom: 8px;
-    color: #333;
+    width: 100%;
+
+
   }
 
   .product-card__description {
     font-size: 14px;
-    color: #666;
-    margin-bottom: 16px;
-    line-height: 1.4;
+
   }
 
   .product-card__details {
@@ -112,34 +140,26 @@
     justify-content: space-between;
     align-items: center;
     margin-bottom: 16px;
+    margin-top: auto;
   }
 
   .product-card__price {
     font-size: 20px;
     font-weight: 600;
-    color: #333;
   }
 
   .product-card__weight {
     font-size: 14px;
-    color: #888;
   }
 
   .product-card__button {
-    width: 100%;
-    background: #333;
-    color: white;
+    background: var(--color-brand-cream);
+    color: var(--color-brand-brown);
     border: none;
     padding: 12px 16px;
     border-radius: 6px;
     font-size: 14px;
-    font-weight: 600;
     cursor: pointer;
-    transition: background 0.3s ease;
-  }
-
-  .product-card__button:hover {
-    background: #555;
   }
 
   .product-carousel__cta {
@@ -154,44 +174,52 @@
     border-radius: 6px;
     font-size: 16px;
     font-weight: 600;
-    display: inline-block;
-    transition: opacity 0.3s ease;
-  }
-
-  .product-carousel__cta-button:hover {
-    opacity: 0.9;
-  }
-
-  @media (max-width: 768px) {
-    .product-carousel__title {
-      font-size: 32px;
-    }
-
-    .product-card {
-      min-width: 260px;
-      max-width: 260px;
-    }
   }
 {% endstyle %}
 
-<section class="product-carousel">
+<section class="product-carousel section-container">
   <div class="product-carousel__header">
-    {% if section.settings.title != blank %}
-      <h2 class="product-carousel__title">{{ section.settings.title }}</h2>
-    {% endif %}
+    <div class="product-carousel__header-content">
+      {% if section.settings.title != blank %}
+        <h2 class="product-carousel__title title-font">{{ section.settings.title }}</h2>
+      {% endif %}
 
-    {% if section.settings.subtitle != blank %}
-      <p class="product-carousel__subtitle">{{ section.settings.subtitle }}</p>
-    {% endif %}
+      {% if section.settings.subtitle != blank %}
+        <p class="product-carousel__subtitle">{{ section.settings.subtitle }}</p>
+      {% endif %}
+    </div>
+
+    <div class="product-carousel__navigation">
+      <button type="button" class="product-carousel__nav-button" id="carousel-prev-btn" aria-label="Previous products">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <mask id="mask0_490_462" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="20" height="20">
+            <rect width="20" height="20" fill="#D9D9D9"/>
+          </mask>
+          <g mask="url(#mask0_490_462)">
+            <path d="M11.6667 15L6.66669 10L11.6667 5L12.8334 6.16667L9.00002 10L12.8334 13.8333L11.6667 15Z" fill="#E0D9BA"/>
+          </g>
+        </svg>
+      </button>
+      <button type="button" class="product-carousel__nav-button" id="carousel-next-btn" aria-label="Next products">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <mask id="mask0_490_152" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="20" height="20">
+            <rect width="20" height="20" fill="#D9D9D9"/>
+          </mask>
+          <g mask="url(#mask0_490_152)">
+            <path d="M10.5 10L6.66669 6.16667L7.83335 5L12.8334 10L7.83335 15L6.66669 13.8333L10.5 10Z" fill="#E0D9BA"/>
+          </g>
+        </svg>
+      </button>
+    </div>
   </div>
 
-  <div class="product-carousel__container">
-    <div class="product-carousel__track">
-      {% if section.blocks.size > 0 %}
-        {% for block in section.blocks %}
-          {% if block.settings.product != blank %}
-            {% assign product = all_products[block.settings.product] %}
-            <div class="product-card" {{ block.shopify_attributes }}>
+  <div class="product-carousel__track">
+    {% if section.blocks.size > 0 %}
+      {% for block in section.blocks %}
+        {% if block.settings.product != blank %}
+          {% assign product = all_products[block.settings.product] %}
+          <div class="product-card" {{ block.shopify_attributes }}>
+            <div class="product-card__inner">
               {% if product.featured_image %}
                 <img
                   src="{{ product.featured_image | image_url: width: 300 }}"
@@ -215,7 +243,7 @@
 
               {% if product.description != blank %}
                 <p class="product-card__description">
-                  {{ product.description | strip_html | truncate: 100 }}
+                  {{ product.description | strip_html | truncate: 90 }}
                 </p>
               {% endif %}
 
@@ -223,7 +251,22 @@
                 <span class="product-card__price">
                   {{ product.price | money }}
                 </span>
-                {% if product.metafields.custom.weight_volume != blank %}
+                {% comment %} Use unit price measurement to determine weight vs volume {% endcomment %}
+                {% if product.selected_or_first_available_variant.unit_price_measurement %}
+                  {% assign unit_measurement = product.selected_or_first_available_variant.unit_price_measurement %}
+                  <span class="product-card__weight">
+                    {% if unit_measurement.measured_type == 'weight' %}
+                      {{ unit_measurement.quantity_value -}}
+                      {{- unit_measurement.quantity_unit }}
+                    {% elsif unit_measurement.measured_type == 'volume' %}
+                      {{ unit_measurement.quantity_value -}}
+                      {{- unit_measurement.quantity_unit }}
+                    {% else %}
+                      {{ unit_measurement.quantity_value -}}
+                      {{- unit_measurement.quantity_unit }}
+                    {% endif %}
+                  </span>
+                {% elsif product.metafields.custom.weight_volume != blank %}
                   <span class="product-card__weight">
                     {{ product.metafields.custom.weight_volume }}
                   </span>
@@ -234,39 +277,42 @@
                 {% endif %}
               </div>
 
-              <form action="{{ routes.cart_add_url }}" method="post" enctype="multipart/form-data">
-                <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
-                <button type="submit" class="product-card__button">Add to Cart</button>
-              </form>
+              <button
+                type="button"
+                class="product-card__button"
+                onclick="addToCartFromCarousel('{{ product.selected_or_first_available_variant.id }}', '{{ product.title | escape }}', this)"
+              >
+                Add to Cart
+              </button>
             </div>
-          {% endif %}
-        {% endfor %}
-      {% else %}
-        <!-- Placeholder cards when no products are selected -->
-        {% for i in (1..4) %}
-          <div class="product-card">
-            <div
-              class="product-card__image"
-              style="background: #f0f0f0; display: flex; align-items: center; justify-content: center; color: #999;"
-            >
-              Product Image
-            </div>
-            <div class="product-card__tags">
-              <span class="product-card__tag">Sample Tag</span>
-            </div>
-            <h3 class="product-card__title">Sample Product {{ i }}</h3>
-            <p class="product-card__description">
-              This is a sample product description. Add products using the blocks below.
-            </p>
-            <div class="product-card__details">
-              <span class="product-card__price">$29.99</span>
-              <span class="product-card__weight">50ml</span>
-            </div>
-            <button class="product-card__button">Add to Cart</button>
           </div>
-        {% endfor %}
-      {% endif %}
-    </div>
+        {% endif %}
+      {% endfor %}
+    {% else %}
+      <!-- Placeholder cards when no products are selected -->
+      {% for i in (1..4) %}
+        <div class="product-card">
+          <div
+            class="product-card__image"
+            style="background: #f0f0f0; display: flex; align-items: center; justify-content: center; color: #999;"
+          >
+            Product Image
+          </div>
+          <div class="product-card__tags">
+            <span class="product-card__tag">Sample Tag</span>
+          </div>
+          <h3 class="product-card__title">Sample Product {{ i }}</h3>
+          <p class="product-card__description">
+            This is a sample product description. Add products using the blocks below.
+          </p>
+          <div class="product-card__details">
+            <span class="product-card__price">$29.99</span>
+            <span class="product-card__weight">50ml</span>
+          </div>
+          <button class="product-card__button">Add to Cart</button>
+        </div>
+      {% endfor %}
+    {% endif %}
   </div>
 
   {% if section.settings.cta_text != blank and section.settings.cta_url != blank %}
