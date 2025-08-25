@@ -1,0 +1,75 @@
+<section class="card-section">
+  {% for block in section.blocks %}
+    <div class="card">
+      <div class="card__header">
+        <h3 class="card__title">
+          {% if block.settings.icon != blank %}
+            {% render 'icon', icon: block.settings.icon, class: 'card__icon', size: '20' %}
+          {% endif %}
+          {{ block.settings.title }}
+        </h3>
+      </div>
+      <div class="card__content">
+        {{ block.settings.content }}
+      </div>
+    </div>
+  {% endfor %}
+</section>
+
+{% schema %}
+{
+  "name": "Values Card",
+  "tag": "section",
+  "class": "section",
+  "blocks": [
+    {
+      "type": "card",
+      "name": "Card",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Card Title",
+          "default": "Card Title"
+        },
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icon",
+          "options": [
+            { "value": "", "label": "No Icon" },
+            { "value": "star", "label": "Star" },
+            { "value": "heart", "label": "Heart" },
+            { "value": "check", "label": "Check" },
+            { "value": "arrow-right", "label": "Arrow Right" },
+            { "value": "play", "label": "Play" },
+            { "value": "phone", "label": "Phone" },
+            { "value": "email", "label": "Email" },
+            { "value": "location", "label": "Location" }
+          ]
+        },
+        {
+          "type": "textarea",
+          "id": "content",
+          "label": "Card Content"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Values Card",
+      "blocks": [
+        {
+          "type": "card",
+          "settings": {
+            "title": "Example Card",
+            "icon": "star",
+            "content": "This is an example card with an icon."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

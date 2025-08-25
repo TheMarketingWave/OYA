@@ -1,53 +1,51 @@
 {% style %}
   .image-with-content {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    display: flex;
     gap: 60px;
-    padding: 80px 20px;
+    padding: 0 20px;
     max-width: 1200px;
     margin: 0 auto;
-    align-items: center;
+    align-items: flex-start;
   }
 
-  .image-with-content__text {
-    padding-right: 40px;
+  .image-with-content__left-column {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .image-with-content__right-column {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
   }
 
   .image-with-content__title {
-    font-size: 48px;
-    font-weight: 400;
+    font-size: 40px;
+    font-weight: bold;
     margin-bottom: 20px;
-    color: var(--color-text);
-    font-family: var(--font-heading-family);
+    color: var(--color-brand-cream);
   }
 
   .image-with-content__subtitle {
     font-size: 16px;
     line-height: 1.6;
-    margin-bottom: 40px;
-    color: var(--color-text);
-    opacity: 0.8;
+    margin-bottom: 60px;
+    color: var(--color-brand-cream);
   }
 
   .image-with-content__content-title {
     font-size: 24px;
     font-weight: 500;
     margin-bottom: 16px;
-    color: var(--color-text);
-    font-family: var(--font-heading-family);
+    color: var(--color-brand-cream);
   }
 
   .image-with-content__content-subtitle {
     font-size: 14px;
     line-height: 1.6;
-    color: var(--color-text);
-    opacity: 0.7;
-  }
 
-  .image-with-content__images {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
+    color: var(--color-brand-cream);
   }
 
   .image-with-content__image-large {
@@ -55,6 +53,7 @@
     height: 400px;
     object-fit: cover;
     border-radius: 8px;
+    margin-bottom: 40px;
   }
 
   .image-with-content__image-small {
@@ -62,23 +61,14 @@
     height: 200px;
     object-fit: cover;
     border-radius: 8px;
-    align-self: flex-start;
+    margin-top: auto;
   }
 
   @media (max-width: 768px) {
     .image-with-content {
-      grid-template-columns: 1fr;
+      flex-direction: column;
       gap: 40px;
       padding: 60px 20px;
-    }
-
-    .image-with-content__text {
-      padding-right: 0;
-      order: 2;
-    }
-
-    .image-with-content__images {
-      order: 1;
     }
 
     .image-with-content__title {
@@ -106,34 +96,13 @@
 {% endstyle %}
 
 <section class="image-with-content">
-  <div class="image-with-content__text">
+  <div class="image-with-content__left-column">
     {% if section.settings.title != blank %}
-      <h2 class="image-with-content__title">{{ section.settings.title }}</h2>
+      <h2 class="image-with-content__title title-font">{{ section.settings.title }}</h2>
     {% endif %}
 
     {% if section.settings.subtitle != blank %}
       <p class="image-with-content__subtitle">{{ section.settings.subtitle }}</p>
-    {% endif %}
-
-    {% if section.settings.content_title != blank %}
-      <h3 class="image-with-content__content-title">{{ section.settings.content_title }}</h3>
-    {% endif %}
-
-    {% if section.settings.content_subtitle != blank %}
-      <p class="image-with-content__content-subtitle">{{ section.settings.content_subtitle }}</p>
-    {% endif %}
-  </div>
-
-  <div class="image-with-content__images">
-    {% if section.settings.image_large != blank %}
-      <img
-        src="{{ section.settings.image_large | image_url: width: 600 }}"
-        alt="{{ section.settings.image_large.alt | escape }}"
-        class="image-with-content__image-large"
-        width="600"
-        height="400"
-        loading="lazy"
-      >
     {% endif %}
 
     {% if section.settings.image_small != blank %}
@@ -145,6 +114,27 @@
         height="200"
         loading="lazy"
       >
+    {% endif %}
+  </div>
+
+  <div class="image-with-content__right-column">
+    {% if section.settings.image_large != blank %}
+      <img
+        src="{{ section.settings.image_large | image_url: width: 600 }}"
+        alt="{{ section.settings.image_large.alt | escape }}"
+        class="image-with-content__image-large"
+        width="600"
+        height="400"
+        loading="lazy"
+      >
+    {% endif %}
+
+    {% if section.settings.content_title != blank %}
+      <h3 class="image-with-content__content-title">{{ section.settings.content_title }}</h3>
+    {% endif %}
+
+    {% if section.settings.content_subtitle != blank %}
+      <p class="image-with-content__content-subtitle">{{ section.settings.content_subtitle }}</p>
     {% endif %}
   </div>
 </section>

@@ -1,0 +1,52 @@
+{%- comment -%}
+  Icon snippet for rendering SVG icons from assets
+
+  Usage:
+  {% render 'icon', icon: 'arrow-down', class: 'my-icon-class', size: '24' %}
+
+  Parameters:
+  - icon: (required) The icon name (matches the SVG filename without .svg)
+  - class: (optional) CSS classes to add to the icon
+  - size: (optional) Size for width/height, defaults to '24'
+  - width: (optional) Specific width, overrides size
+  - height: (optional) Specific height, overrides size
+{%- endcomment -%}
+
+{%- liquid
+  assign icon_name = icon | default: 'default'
+  assign icon_class = class | default: ''
+  assign icon_size = size | default: '24'
+  assign icon_width = width | default: icon_size
+  assign icon_height = height | default: icon_size
+
+  # Create the full asset path
+  assign icon_path = 'icon-' | append: icon_name | append: '.svg' | asset_url
+-%}
+
+<svg
+  class="icon icon--{{ icon_name }} {{ icon_class }}"
+  width="{{ icon_width }}"
+  height="{{ icon_height }}"
+  aria-hidden="true"
+  focusable="false"
+>
+  <use href="{{ icon_path }}#{{ icon_name }}"></use>
+</svg>
+
+{%- comment -%}
+  Alternative method if your SVGs don't use symbols:
+  You can also include the SVG content directly if needed
+{%- endcomment -%}
+{%- comment -%}
+  Icon options for use in section/block schemas
+  This snippet returns a JSON array of icon options
+{%- endcomment -%}
+
+[ { "value": "arrow-down", "label": "Arrow Down" }, { "value": "arrow-up", "label": "Arrow Up" }, { "value":
+"arrow-left", "label": "Arrow Left" }, { "value": "arrow-right", "label": "Arrow Right" }, { "value": "star", "label":
+"Star" }, { "value": "heart", "label": "Heart" }, { "value": "check", "label": "Check" }, { "value": "close", "label":
+"Close" }, { "value": "menu", "label": "Menu" }, { "value": "search", "label": "Search" }, { "value": "cart", "label":
+"Cart" }, { "value": "user", "label": "User" }, { "value": "play", "label": "Play" }, { "value": "pause", "label":
+"Pause" }, { "value": "phone", "label": "Phone" }, { "value": "email", "label": "Email" }, { "value": "location",
+"label": "Location" }, { "value": "facebook", "label": "Facebook" }, { "value": "instagram", "label": "Instagram" }, {
+"value": "twitter", "label": "Twitter" } ]
