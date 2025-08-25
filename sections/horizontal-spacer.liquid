@@ -1,0 +1,57 @@
+{% style %}
+  .horizontal-spacer {
+    width: 100%;
+    height: {{ section.settings.desktop_height }}px;
+  }
+
+  @media (max-width: 767px) {
+    .horizontal-spacer {
+      height: {{ section.settings.mobile_height }}px;
+    }
+  }
+{% endstyle %}
+
+<div class="horizontal-spacer"></div>
+
+{% schema %}
+{
+  "name": "Horizontal Spacer",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Spacing Settings"
+    },
+    {
+      "type": "range",
+      "id": "desktop_height",
+      "label": "Desktop Height (px)",
+      "min": 10,
+      "max": 500,
+      "step": 10,
+      "default": 80,
+      "info": "Height of the spacer on desktop screens"
+    },
+    {
+      "type": "range",
+      "id": "mobile_height",
+      "label": "Mobile Height (px)",
+      "min": 10,
+      "max": 300,
+      "step": 10,
+      "default": 40,
+      "info": "Height of the spacer on mobile screens"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Horizontal Spacer",
+      "settings": {
+        "desktop_height": 80,
+        "mobile_height": 40
+      }
+    }
+  ]
+}
+{% endschema %}
