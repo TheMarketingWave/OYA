@@ -64,6 +64,17 @@
     display: flex;
     justify-content: center;
   }
+
+  .latest-articles__footer-image {
+    width: 100%;
+    height: 500px;
+  }
+
+  .latest-articles__footer-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
 {% endstyle %}
 
 <section class="latest-articles">
@@ -123,6 +134,16 @@
         %}
       </div>
     {% endif %}
+
+    {% if section.settings.footer_image %}
+      <div class="latest-articles__footer-image">
+        {{
+          section.settings.footer_image
+          | image_url: width: 1200, height: 500
+          | image_tag: alt: section.settings.footer_image.alt, loading: 'lazy'
+        }}
+      </div>
+    {% endif %}
   </div>
 </section>
 
@@ -136,6 +157,11 @@
       "type": "blog",
       "id": "blog",
       "label": "Blog"
+    },
+    {
+      "type": "image_picker",
+      "id": "footer_image",
+      "label": "Footer Image"
     }
   ],
   "presets": [
