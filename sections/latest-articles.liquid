@@ -1,7 +1,9 @@
 {% style %}
   .latest-articles {
     width: 100%;
-    padding: 80px 20px;
+    padding: 60px 20px;
+    background: var(--color-brand-brown2);
+    color: var(--color-brand-cream);
   }
 
   .latest-articles__container {
@@ -13,14 +15,13 @@
     font-size: 48px;
     font-weight: bold;
     color: var(--color-brand-cream);
-    text-align: center;
     margin-bottom: 60px;
   }
 
   .latest-articles__grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 40px;
+    gap: 30px;
     margin-bottom: 60px;
   }
 
@@ -34,7 +35,7 @@
     width: 100%;
     aspect-ratio: 1;
     overflow: hidden;
-    border-radius: 8px;
+    border-radius: 4px;
   }
 
   .article-card__image img {
@@ -42,10 +43,6 @@
     height: 100%;
     object-fit: cover;
     transition: transform 0.3s ease;
-  }
-
-  .article-card:hover .article-card__image img {
-    transform: scale(1.05);
   }
 
   .article-card__content {
@@ -57,94 +54,21 @@
   .article-card__title {
     font-size: 24px;
     font-weight: bold;
-    color: var(--color-brand-cream);
-    line-height: 1.3;
-    margin: 0;
   }
 
   .article-card__excerpt {
     font-size: 16px;
-    color: var(--color-brand-cream);
-    line-height: 1.5;
-    opacity: 0.8;
   }
 
   .latest-articles__cta {
-    text-align: center;
-  }
-
-  .latest-articles__button {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding: 16px 32px;
-    background: transparent;
-    border: 2px solid var(--color-brand-cream);
-    color: var(--color-brand-cream);
-    text-decoration: none;
-    font-size: 16px;
-    font-weight: 500;
-    border-radius: 4px;
-    transition: all 0.3s ease;
-  }
-
-  .latest-articles__button:hover {
-    background: var(--color-brand-cream);
-    color: var(--color-brand-black);
-  }
-
-  .latest-articles__button-arrow {
-    transition: transform 0.3s ease;
-  }
-
-  .latest-articles__button:hover .latest-articles__button-arrow {
-    transform: translateX(4px);
-  }
-
-  @media (max-width: 768px) {
-    .latest-articles {
-      padding: 60px 15px;
-    }
-
-    .latest-articles__title {
-      font-size: 36px;
-      margin-bottom: 40px;
-    }
-
-    .latest-articles__grid {
-      grid-template-columns: 1fr;
-      gap: 30px;
-      margin-bottom: 40px;
-    }
-
-    .article-card__title {
-      font-size: 20px;
-    }
-
-    .article-card__excerpt {
-      font-size: 14px;
-    }
-
-    .latest-articles__button {
-      padding: 14px 28px;
-      font-size: 14px;
-    }
-  }
-
-  @media (max-width: 480px) {
-    .latest-articles {
-      padding: 40px 15px;
-    }
-
-    .latest-articles__title {
-      font-size: 28px;
-    }
+    display: flex;
+    justify-content: center;
   }
 {% endstyle %}
 
 <section class="latest-articles">
   <div class="latest-articles__container">
-    <h2 class="latest-articles__title title-font">Latest Articles</h2>
+    <h2 class="latest-articles__title title-font">Journal</h2>
 
     <div class="latest-articles__grid">
       {% assign selected_blog = blogs[section.settings.blog] %}
@@ -191,10 +115,12 @@
 
     {% if selected_blog %}
       <div class="latest-articles__cta">
-        <a href="{{ selected_blog.url }}" class="latest-articles__button">
-          View All Articles
-          <span class="latest-articles__button-arrow">→</span>
-        </a>
+        {% render 'icon-button',
+          icon: 'blog.svg',
+          label: 'Discover Our Journal',
+          url: selected_blog.url,
+          variant: 'secondary'
+        %}
       </div>
     {% endif %}
   </div>
