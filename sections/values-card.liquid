@@ -5,27 +5,27 @@
   }
 
   .card-section__container {
-    max-width: 1200px;
+    max-width: 550px;
     margin: 0 auto;
   }
 
   .card-section__header {
     text-align: center;
     margin-bottom: 60px;
+    gap: 20px;
+    display: flex;
+    flex-direction: column;
   }
 
   .card-section__title {
     font-size: 48px;
-    font-weight: 400;
-    margin-bottom: 20px;
-    color: var(--color-brand-cream, #333);
+    font-weight: bold;
+    color: var(--color-brand-cream);
   }
 
   .card-section__subtitle {
-    font-size: 18px;
-    line-height: 1.6;
-    color: var(--color-brand-cream, #666);
-    max-width: 600px;
+    font-size: 16px;
+    color: var(--color-brand-cream);
     margin: 0 auto;
   }
 
@@ -38,69 +38,40 @@
   .card {
     display: flex;
     flex-direction: column;
-    padding: 40px;
-    border-radius: 8px;
+    gap: 20px;
   }
 
-  .card__header {
-    margin-bottom: 20px;
+  .card__icon {
+    margin-top: 4px;
   }
 
   .card__title {
     display: flex;
-    align-items: center;
+    /* align-items: center; */
     gap: 12px;
     font-size: 24px;
-    font-weight: 600;
-    margin: 0;
-    color: var(--color-brand-cream, #333);
-    font-family: var(--font-heading-family, inherit);
-  }
-
-  .card__icon {
-    flex-shrink: 0;
+    font-weight: bold;
+    color: var(--color-brand-cream);
   }
 
   .card__content {
     font-size: 16px;
-    line-height: 1.6;
-    color: var(--color-brand-cream, #666);
-    margin: 0;
+    color: var(--color-brand-cream);
+    padding-left: 33px;
   }
 
-  @media (max-width: 768px) {
-    .card-section {
-      padding: 60px 15px;
-    }
+  .card-move-left {
+    transform: translateX(-75%);
+  }
 
-    .card-section__header {
-      margin-bottom: 40px;
-    }
+  .card-move-right {
+    transform: translateX(75%);
+  }
 
-    .card-section__title {
-      font-size: 36px;
-    }
-
-    .card-section__subtitle {
-      font-size: 16px;
-    }
-
-    .card-section__grid {
-      grid-template-columns: 1fr;
-      gap: 30px;
-    }
-
-    .card {
-      padding: 30px;
-    }
-
-    .card__title {
-      font-size: 20px;
-    }
-
-    .card__content {
-      font-size: 14px;
-    }
+  /* Initial state for animation */
+  .card {
+    opacity: 0;
+    filter: blur(10px);
   }
 {% endstyle %}
 
@@ -119,7 +90,17 @@
 
     <div class="card-section__grid">
       {% for block in section.blocks %}
-        <div class="card">
+        {% liquid
+          assign index = forloop.index0
+          assign pair_index = index | divided_by: 2
+          assign is_even_pair = pair_index | modulo: 2
+          if is_even_pair == 0
+            assign movement_class = 'card-move-left'
+          else
+            assign movement_class = 'card-move-right'
+          endif
+        %}
+        <div class="card {{ movement_class }}">
           <div class="card__header">
             <h3 class="card__title">
               {% if block.settings.icon != blank %}

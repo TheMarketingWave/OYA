@@ -1,0 +1,221 @@
+{% style %}
+  .latest-articles {
+    width: 100%;
+    padding: 80px 20px;
+  }
+
+  .latest-articles__container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .latest-articles__title {
+    font-size: 48px;
+    font-weight: bold;
+    color: var(--color-brand-cream);
+    text-align: center;
+    margin-bottom: 60px;
+  }
+
+  .latest-articles__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+    margin-bottom: 60px;
+  }
+
+  .article-card {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .article-card__image {
+    width: 100%;
+    aspect-ratio: 1;
+    overflow: hidden;
+    border-radius: 8px;
+  }
+
+  .article-card__image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+
+  .article-card:hover .article-card__image img {
+    transform: scale(1.05);
+  }
+
+  .article-card__content {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .article-card__title {
+    font-size: 24px;
+    font-weight: bold;
+    color: var(--color-brand-cream);
+    line-height: 1.3;
+    margin: 0;
+  }
+
+  .article-card__excerpt {
+    font-size: 16px;
+    color: var(--color-brand-cream);
+    line-height: 1.5;
+    opacity: 0.8;
+  }
+
+  .latest-articles__cta {
+    text-align: center;
+  }
+
+  .latest-articles__button {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 16px 32px;
+    background: transparent;
+    border: 2px solid var(--color-brand-cream);
+    color: var(--color-brand-cream);
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 500;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+  }
+
+  .latest-articles__button:hover {
+    background: var(--color-brand-cream);
+    color: var(--color-brand-black);
+  }
+
+  .latest-articles__button-arrow {
+    transition: transform 0.3s ease;
+  }
+
+  .latest-articles__button:hover .latest-articles__button-arrow {
+    transform: translateX(4px);
+  }
+
+  @media (max-width: 768px) {
+    .latest-articles {
+      padding: 60px 15px;
+    }
+
+    .latest-articles__title {
+      font-size: 36px;
+      margin-bottom: 40px;
+    }
+
+    .latest-articles__grid {
+      grid-template-columns: 1fr;
+      gap: 30px;
+      margin-bottom: 40px;
+    }
+
+    .article-card__title {
+      font-size: 20px;
+    }
+
+    .article-card__excerpt {
+      font-size: 14px;
+    }
+
+    .latest-articles__button {
+      padding: 14px 28px;
+      font-size: 14px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .latest-articles {
+      padding: 40px 15px;
+    }
+
+    .latest-articles__title {
+      font-size: 28px;
+    }
+  }
+{% endstyle %}
+
+<section class="latest-articles">
+  <div class="latest-articles__container">
+    <h2 class="latest-articles__title title-font">Latest Articles</h2>
+
+    <div class="latest-articles__grid">
+      {% assign selected_blog = blogs[section.settings.blog] %}
+      {% if selected_blog %}
+        {% for article in selected_blog.articles limit: 3 %}
+          <article class="article-card">
+            <div class="article-card__image">
+              {% if article.image %}
+                {{
+                  article.image
+                  | image_url: width: 400, height: 400
+                  | image_tag: alt: article.image.alt, loading: 'lazy'
+                }}
+              {% else %}
+                <div style="width: 100%; height: 100%; background: var(--color-brand-cream); opacity: 0.1;"></div>
+              {% endif %}
+            </div>
+
+            <div class="article-card__content">
+              <h3 class="article-card__title">
+                <a href="{{ article.url }}" style="color: inherit; text-decoration: none;">
+                  {{ article.title }}
+                </a>
+              </h3>
+
+              {% if article.excerpt != blank %}
+                <p class="article-card__excerpt">
+                  {{ article.excerpt | strip_html | truncate: 120 }}
+                </p>
+              {% else %}
+                <p class="article-card__excerpt">
+                  {{ article.content | strip_html | truncate: 120 }}
+                </p>
+              {% endif %}
+            </div>
+          </article>
+        {% endfor %}
+      {% else %}
+        <div style="grid-column: 1 / -1; text-align: center; color: var(--color-brand-cream); opacity: 0.6;">
+          <p>Please select a blog in the section settings.</p>
+        </div>
+      {% endif %}
+    </div>
+
+    {% if selected_blog %}
+      <div class="latest-articles__cta">
+        <a href="{{ selected_blog.url }}" class="latest-articles__button">
+          View All Articles
+          <span class="latest-articles__button-arrow">→</span>
+        </a>
+      </div>
+    {% endif %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Latest Articles",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "blog",
+      "id": "blog",
+      "label": "Blog"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Latest Articles"
+    }
+  ]
+}
+{% endschema %}

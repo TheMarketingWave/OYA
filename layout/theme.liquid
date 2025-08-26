@@ -3,8 +3,13 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="{{ 'favicon.ico' | asset_url }}">
+    <link rel="shortcut icon" type="image/x-icon" href="{{ 'favicon.ico' | asset_url }}">
+
     {%- unless settings.favicon == blank -%}
-      <link rel="shortcut icon" type="image/png" href="{{ settings.favicon | image_url: width: 32, height: 32 }}">
+      <link rel="apple-touch-icon" href="{{ settings.favicon | image_url: width: 180, height: 180 }}">
     {%- endunless -%}
 
     <title>
@@ -98,9 +103,8 @@
       </div>
     </div>
 
-    <script src="{{ 'text-scroll-animation.js' | asset_url }}" defer></script>
+    <script src="{{ 'scroll-animations.js' | asset_url }}" defer></script>
     <script src="{{ 'cart.js' | asset_url }}" defer></script>
     <script src="{{ 'product-carousel.js' | asset_url }}" defer></script>
-    <script src="{{ 'scroll-video.js' | asset_url }}" defer></script>
   </body>
 </html>
