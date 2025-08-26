@@ -229,7 +229,7 @@
       "type": "latest-articles",
       "name": "Latest Articles",
       "settings": {
-        "blog": "latest"
+        "blog": "news"
       }
     },
     "fullscreen_empty_1": {

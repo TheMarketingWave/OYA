@@ -3,6 +3,10 @@
     display: flex;
     flex-direction: column;
     gap: 24px;
+    padding: 60px 0;
+  }
+
+  #shopify-section-{{ section.id }} {
     background-color: var(--color-brand-{{ section.settings.background_color }});
   }
 
@@ -161,7 +165,9 @@
   }
 {% endstyle %}
 
-<section class="product-carousel section-container">
+<section
+  class="product-carousel section-container"
+>
   <div class="product-carousel__header">
     <div class="product-carousel__header-content">
       {% if section.settings.title != blank %}
