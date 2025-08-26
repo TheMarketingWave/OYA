@@ -241,6 +241,13 @@
         "section_subtitle": "What we stand for is infused into every product."
       }
     },
+    "latest_articles_6Cy8XP": {
+      "type": "latest-articles",
+      "name": "Latest Articles",
+      "settings": {
+        "blog": "news"
+      }
+    },
     "fullscreen_empty_1": {
       "type": "fullscreen-empty",
       "settings": {
@@ -261,6 +268,7 @@
     "image_with_content_6rxDKF",
     "scroll_video_CyYhQr",
     "values_card_MnR8Ty",
+    "latest_articles_6Cy8XP",
     "fullscreen_empty_1"
   ]
 }
