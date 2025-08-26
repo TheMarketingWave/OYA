@@ -87,20 +87,8 @@
         "title": "OYA Essentials Oils",
         "subtitle": "Six timeless essentials. Infinite possibilities. Each OYA Oil was chosen for its purity, purpose, and emotional resonance.",
         "cta_text": "View All Oils",
-        "cta_url": "",
-        "background_color": "#ffffff",
-        "title_color": "#333333",
-        "subtitle_color": "#666666",
-        "cta_background": "#333333",
-        "cta_color": "#ffffff"
-      }
-    },
-    "horizontal_spacer_GhM9iT": {
-      "type": "horizontal-spacer",
-      "name": "Horizontal Spacer",
-      "settings": {
-        "desktop_height": 90,
-        "mobile_height": 40
+        "cta_url": "/collections/essential-oils",
+        "background_color": "brown"
       }
     },
     "product_carousel_e7BfWK": {
@@ -155,13 +143,9 @@
       "settings": {
         "title": "OYA Aromatherapy Sticks",
         "subtitle": "Scent that settles. Smoke that sanctifies.",
-        "cta_text": "View All Oils",
-        "cta_url": "",
-        "background_color": "#ffffff",
-        "title_color": "#333333",
-        "subtitle_color": "#666666",
-        "cta_background": "#333333",
-        "cta_color": "#ffffff"
+        "cta_text": "View All Sticks",
+        "cta_url": "/collections/aromatherapy-sticks",
+        "background_color": "brown2"
       }
     },
     "horizontal_spacer_gHwz7V": {
@@ -241,6 +225,14 @@
         "section_subtitle": "What we stand for is infused into every product."
       }
     },
+    "latest_articles_6Cy8XP": {
+      "type": "latest-articles",
+      "name": "Latest Articles",
+      "settings": {
+        "blog": "latest",
+        "footer_image": "shopify://shop_images/footer-blog.webp"
+      }
+    },
     "fullscreen_empty_1": {
       "type": "fullscreen-empty",
       "settings": {
@@ -255,12 +247,12 @@
     "responsive_video_1",
     "text_scroll_animation_1",
     "product_carousel_AhhLUq",
-    "horizontal_spacer_GhM9iT",
     "product_carousel_e7BfWK",
     "horizontal_spacer_gHwz7V",
     "image_with_content_6rxDKF",
     "scroll_video_CyYhQr",
     "values_card_MnR8Ty",
+    "latest_articles_6Cy8XP",
     "fullscreen_empty_1"
   ]
 }

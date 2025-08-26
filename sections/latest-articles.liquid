@@ -1,0 +1,301 @@
+{% style %}
+  .latest-articles {
+    width: 100%;
+    padding: 60px 20px;
+    padding-top: 140px;
+    background: var(--color-brand-brown2);
+    color: var(--color-brand-cream);
+    overflow: hidden;
+  }
+
+  .latest-articles__container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .latest-articles__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    margin-bottom: 60px;
+    position: relative;
+  }
+
+  .article-card {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .article-card__image {
+    width: 100%;
+    aspect-ratio: 1;
+    overflow: hidden;
+    border-radius: 4px;
+  }
+
+  .article-card__image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+
+  .article-card__content {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .article-card__title {
+    font-size: 24px;
+    font-weight: bold;
+  }
+
+  .article-card__excerpt {
+    font-size: 16px;
+  }
+
+  .latest-articles__cta {
+    display: flex;
+    justify-content: center;
+  }
+
+  .latest-articles__footer-image {
+    width: 100%;
+    height: 500px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 4px;
+  }
+
+  .latest-articles__footer-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .latest-articles__text-overlay {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    pointer-events: none;
+  }
+
+  .latest-articles__scrolling-text {
+    display: flex;
+    white-space: nowrap;
+    transform: translate3d(0, 0, 0);
+    animation: scroll-text 150s linear infinite;
+  }
+
+  .latest-articles__text-content {
+    font-size: 40px;
+    color: var(--color-brand-cream);
+    text-transform: uppercase;
+    letter-spacing: 4px;
+  }
+  @keyframes scroll-text {
+    0% {
+      transform: translate3d(0, 0, 0);
+    }
+
+    100% {
+      transform: translate3d(-50%, 0, 0);
+    }
+  }
+
+  .latest-articles__title {
+    font-size: 48px;
+    font-weight: bold;
+    color: var(--color-brand-brown);
+    margin-bottom: 60px;
+    position: absolute;
+    text-transform: uppercase;
+  }
+{% endstyle %}
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    // Register GSAP ScrollTrigger
+    if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+      gsap.registerPlugin(ScrollTrigger);
+
+      const title = document.querySelector('.latest-articles__title');
+      const grid = document.querySelector('.latest-articles__grid');
+      const section = document.querySelector('.latest-articles');
+
+      if (title && grid && section) {
+        // Create timeline
+        const tl = gsap.timeline({
+          scrollTrigger: {
+            trigger: section,
+            start: 'top bottom',
+            end: 'center 70%',
+            scrub: 1,
+            onComplete: () => {
+              // Kill the animation and reset transforms
+              tl.kill();
+              gsap.set(title, { clearProps: 'all' });
+              title.classList.add('animated');
+            },
+            onRefresh: () => {
+              // Ensure clean state on refresh
+              if (title.classList.contains('animated')) {
+                gsap.set(title, { clearProps: 'all' });
+              }
+            },
+          },
+        });
+
+        // Animation 1: Enter from top, scale down, move to center (90% of timeline)
+        tl.fromTo(
+          title,
+          {
+            top: '0px',
+            x: '-50%', // Start with centering transform
+            y: '-400%',
+            scale: 5,
+            left: '50%',
+          },
+          {
+            top: '0px',
+            left: '50%',
+            x: '-50%', // Keep centered during first animation
+            y: '200%',
+            scale: 5,
+            ease: 'linear',
+            duration: 0.9, // Takes 90% of timeline
+          },
+          0 // Start at beginning of timeline
+        ).to(
+          title,
+          {
+            color: 'var(--color-brand-cream)',
+            top: '-20px',
+            left: '0%',
+            x: 0, // Remove centering transform - this fixes the -50% issue
+            y: '-100%',
+            scale: 1,
+            ease: 'power2.inOut',
+            duration: 0.1, // Takes 10% of timeline
+          },
+          0.9 // Start at 90% of timeline
+        );
+      }
+    }
+  });
+</script>
+
+<section class="latest-articles">
+  <div class="latest-articles__container">
+    <div class="latest-articles__grid">
+      <h2 class="latest-articles__title title-font">Journal</h2>
+      {% assign selected_blog = blogs[section.settings.blog] %}
+      {% if selected_blog %}
+        {% for article in selected_blog.articles limit: 3 %}
+          <article class="article-card">
+            <div class="article-card__image">
+              {% if article.image %}
+                {{
+                  article.image
+                  | image_url: width: 400, height: 400
+                  | image_tag: alt: article.image.alt, loading: 'lazy'
+                }}
+              {% else %}
+                <div style="width: 100%; height: 100%; background: var(--color-brand-cream); opacity: 0.1;"></div>
+              {% endif %}
+            </div>
+
+            <div class="article-card__content">
+              <h3 class="article-card__title">
+                <a href="{{ article.url }}" style="color: inherit; text-decoration: none;">
+                  {{ article.title }}
+                </a>
+              </h3>
+
+              {% if article.excerpt != blank %}
+                <p class="article-card__excerpt">
+                  {{ article.excerpt | strip_html | truncate: 120 }}
+                </p>
+              {% else %}
+                <p class="article-card__excerpt">
+                  {{ article.content | strip_html | truncate: 120 }}
+                </p>
+              {% endif %}
+            </div>
+          </article>
+        {% endfor %}
+      {% else %}
+        <div style="grid-column: 1 / -1; text-align: center; color: var(--color-brand-cream); opacity: 0.6;">
+          <p>Please select a blog in the section settings.</p>
+        </div>
+      {% endif %}
+    </div>
+
+    {% if selected_blog %}
+      <div class="latest-articles__cta">
+        {% render 'icon-button',
+          icon: 'blog.svg',
+          label: 'Discover Our Journal',
+          url: selected_blog.url,
+          variant: 'secondary'
+        %}
+      </div>
+    {% endif %}
+  </div>
+</section>
+{% if section.settings.footer_image %}
+  <div class="latest-articles__footer-image">
+    {{
+      section.settings.footer_image
+      | image_url: width: 1200, height: 500
+      | image_tag: alt: section.settings.footer_image.alt, loading: 'lazy'
+    }}
+
+    {% if section.settings.scrolling_text != blank %}
+      <div class="latest-articles__text-overlay">
+        <div class="latest-articles__scrolling-text">
+          <span class="latest-articles__text-content">{{ section.settings.scrolling_text }}</span>
+          <span class="latest-articles__text-content">{{ section.settings.scrolling_text }}</span>
+        </div>
+      </div>
+    {% endif %}
+  </div>
+{% endif %}
+
+{% schema %}
+{
+  "name": "Latest Articles",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "blog",
+      "id": "blog",
+      "label": "Blog"
+    },
+    {
+      "type": "image_picker",
+      "id": "footer_image",
+      "label": "Footer Image"
+    },
+    {
+      "type": "text",
+      "id": "scrolling_text",
+      "label": "Scrolling Text",
+      "default": "Nature • Wellness • Ritual • Aromatherapy • Essential Oils • Mindfulness • Botanical • Purity • Sustainability"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Latest Articles"
+    }
+  ]
+}
+{% endschema %}

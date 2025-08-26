@@ -3,6 +3,11 @@
     display: flex;
     flex-direction: column;
     gap: 24px;
+    padding: 60px 0;
+  }
+
+  #shopify-section-{{ section.id }} {
+    background-color: var(--color-brand-{{ section.settings.background_color }});
   }
 
   .product-carousel__header {
@@ -10,7 +15,6 @@
     justify-content: space-between;
     align-items: flex-start;
     gap: 16px;
-
   }
 
   .product-carousel__header-content {
@@ -57,7 +61,6 @@
     font-size: 40px;
     font-weight: 600;
     color: var(--color-brand-cream);
-
   }
 
   .product-carousel__subtitle {
@@ -106,8 +109,6 @@
     will-change: filter, opacity, transform;
   }
 
-
-
   .product-card__tags {
     display: flex;
     gap: 8px;
@@ -126,13 +127,10 @@
   .product-card__title {
     font-size: 18px;
     width: 100%;
-
-
   }
 
   .product-card__description {
     font-size: 14px;
-
   }
 
   .product-card__details {
@@ -163,21 +161,13 @@
   }
 
   .product-carousel__cta {
-    margin-top: 60px;
-  }
-
-  .product-carousel__cta-button {
-    background: {{ section.settings.cta_background | default: '#333333' }};
-    color: {{ section.settings.cta_color | default: '#ffffff' }};
-    padding: 16px 32px;
-    text-decoration: none;
-    border-radius: 6px;
-    font-size: 16px;
-    font-weight: 600;
+    /* margin-top: 60px; */
   }
 {% endstyle %}
 
-<section class="product-carousel section-container">
+<section
+  class="product-carousel section-container"
+>
   <div class="product-carousel__header">
     <div class="product-carousel__header-content">
       {% if section.settings.title != blank %}
@@ -317,9 +307,7 @@
 
   {% if section.settings.cta_text != blank and section.settings.cta_url != blank %}
     <div class="product-carousel__cta">
-      <a href="{{ section.settings.cta_url }}" class="product-carousel__cta-button">
-        {{ section.settings.cta_text }}
-      </a>
+      {% render 'icon-button', url: section.settings.cta_url, label: section.settings.cta_text, icon: 'bottle.svg' %}
     </div>
   {% endif %}
 </section>
@@ -362,38 +350,28 @@
       "label": "CTA Button URL"
     },
     {
-      "type": "header",
-      "content": "Colors"
-    },
-    {
-      "type": "color",
+      "type": "select",
       "id": "background_color",
       "label": "Background Color",
-      "default": "#ffffff"
-    },
-    {
-      "type": "color",
-      "id": "title_color",
-      "label": "Title Color",
-      "default": "#333333"
-    },
-    {
-      "type": "color",
-      "id": "subtitle_color",
-      "label": "Subtitle Color",
-      "default": "#666666"
-    },
-    {
-      "type": "color",
-      "id": "cta_background",
-      "label": "CTA Background Color",
-      "default": "#333333"
-    },
-    {
-      "type": "color",
-      "id": "cta_color",
-      "label": "CTA Text Color",
-      "default": "#ffffff"
+      "default": "brown",
+      "options": [
+        {
+          "value": "brown",
+          "label": "Dark Brown (#1f1518)"
+        },
+        {
+          "value": "brown2",
+          "label": "Medium Brown (#291c1f)"
+        },
+        {
+          "value": "cream",
+          "label": "Cream (#e0d9ba)"
+        },
+        {
+          "value": "green",
+          "label": "Green (#587a4f)"
+        }
+      ]
     }
   ],
   "blocks": [

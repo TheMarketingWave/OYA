@@ -12,16 +12,6 @@ const setToggleMenu = () => {
   if (menuContainer && menuButton) {
     menuButton.addEventListener("click", (e) => {
       e.preventDefault();
-      console.log("Menu button clicked");
-      console.log(
-        "Menu container open:",
-        menuContainer.classList.contains("menu-open")
-      );
-      console.log(
-        "Menu button open:",
-        menuButton.classList.contains("menu-open")
-      );
-
       if (menuContainer.classList.contains("menu-open")) {
         // Closing animation - remove both classes at the same time
         console.log("Closing menu");
