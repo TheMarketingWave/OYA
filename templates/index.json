@@ -229,7 +229,8 @@
       "type": "latest-articles",
       "name": "Latest Articles",
       "settings": {
-        "blog": "latest"
+        "blog": "latest",
+        "footer_image": "shopify://shop_images/footer-blog.webp"
       }
     },
     "fullscreen_empty_1": {
