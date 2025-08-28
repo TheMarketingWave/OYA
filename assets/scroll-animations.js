@@ -249,6 +249,7 @@ document.addEventListener("DOMContentLoaded", function () {
     initTextScrollAnimation();
     initScrollVideos();
     initValuesCardAnimation();
+    initLatestArticlesAnimation();
   }
 
   // Initialize animations
@@ -261,3 +262,62 @@ document.addEventListener("DOMContentLoaded", function () {
     resizeTimer = setTimeout(initScrollVideos, 300);
   });
 });
+
+function initLatestArticlesAnimation() {
+  let sections = document.querySelectorAll(".latest-articles");
+  if (sections?.length) {
+    sections = gsap.utils.toArray(sections);
+    for (const section of sections) {
+      const title = section.querySelector(".latest-articles__title");
+      if (title) {
+        const tl = gsap.timeline({
+          scrollTrigger: {
+            trigger: section,
+            start: "top bottom",
+            end: "center 70%",
+            scrub: 1,
+            onLeave: () => {
+              tl.kill();
+              gsap.set(title, {
+                color: "var(--color-brand-cream)",
+                top: "-20px",
+                y: "-100%",
+                scale: 1,
+                ease: "power2.inOut",
+                duration: 0.2,
+              });
+            },
+          },
+        });
+
+        tl.fromTo(
+          title,
+          {
+            top: "0px",
+            y: "-400%",
+            scale: 5,
+          },
+          {
+            top: "0px",
+            y: "200%",
+            scale: 5,
+            ease: "linear",
+            duration: 0.8,
+          },
+          0
+        ).to(
+          title,
+          {
+            color: "var(--color-brand-cream)",
+            top: "-20px",
+            y: "-100%",
+            scale: 1,
+            ease: "power2.inOut",
+            duration: 0.2,
+          },
+          0.8
+        );
+      }
+    }
+  }
+}
