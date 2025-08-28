@@ -74,6 +74,8 @@ document.addEventListener("DOMContentLoaded", function () {
     if (!video) return;
 
     video.addEventListener("loadedmetadata", () => {
+      console.log("Video metadata loaded");
+
       const duration = video.duration;
       videoTargets.set(video, 0); // Initialize target time
 
