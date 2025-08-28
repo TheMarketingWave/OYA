@@ -232,15 +232,6 @@
         "blog": "latest",
         "footer_image": "shopify://shop_images/footer-blog.webp"
       }
-    },
-    "fullscreen_empty_1": {
-      "type": "fullscreen-empty",
-      "settings": {
-        "background_color": "#ffffff",
-        "text_color": "#000000",
-        "show_placeholder": false,
-        "placeholder_text": "Full Screen Section"
-      }
     }
   },
   "order": [
@@ -252,7 +243,6 @@
     "image_with_content_6rxDKF",
     "scroll_video_CyYhQr",
     "values_card_MnR8Ty",
-    "latest_articles_6Cy8XP",
-    "fullscreen_empty_1"
+    "latest_articles_6Cy8XP"
   ]
 }

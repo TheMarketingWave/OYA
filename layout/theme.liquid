@@ -84,22 +84,7 @@
           {{ content_for_layout }}
         </main>
 
-        {% comment %}
-          <footer class="section-wrap">
-            <div class="container">
-              {% sections 'footer-group' %}
-            </div>
-          </footer>
-        {% endcomment %}
-
-        {% comment %}
-          {% liquid
-            # Newsletter Popup.
-            if settings.newsletter_popup
-              render 'newsletter-popup'
-            endif
-          %}
-        {% endcomment %}
+        {% sections 'footer-group' %}
       </div>
     </div>
 

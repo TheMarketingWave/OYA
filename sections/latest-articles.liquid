@@ -121,71 +121,72 @@
     transform: translate(-50%, -400%) scale(1);
   }
 {% endstyle %}
+{% comment %}
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      // Register GSAP ScrollTrigger
+      if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+        gsap.registerPlugin(ScrollTrigger);
 
-<script>
-  document.addEventListener('DOMContentLoaded', function () {
-    // Register GSAP ScrollTrigger
-    if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
-      gsap.registerPlugin(ScrollTrigger);
+        const title = document.querySelector('.latest-articles__title');
+        const grid = document.querySelector('.latest-articles__grid');
+        const section = document.querySelector('.latest-articles');
 
-      const title = document.querySelector('.latest-articles__title');
-      const grid = document.querySelector('.latest-articles__grid');
-      const section = document.querySelector('.latest-articles');
-
-      if (title && grid && section) {
-        // Create timeline
-        const tl = gsap.timeline({
-          scrollTrigger: {
-            trigger: section,
-            start: 'top bottom',
-            end: 'center 70%',
-            scrub: 1,
-            onLeave: () => {
-              tl.kill();
-              gsap.set(title, {
-                color: 'var(--color-brand-cream)',
-                top: '-20px',
-                y: '-100%',
-                scale: 1,
-                ease: 'power2.inOut',
-                duration: 0.2,
-              });
+        if (title && grid && section) {
+          // Create timeline
+          const tl = gsap.timeline({
+            scrollTrigger: {
+              trigger: section,
+              start: 'top bottom',
+              end: 'center 70%',
+              scrub: 1,
+              onLeave: () => {
+                tl.kill();
+                gsap.set(title, {
+                  color: 'var(--color-brand-cream)',
+                  top: '-20px',
+                  y: '-100%',
+                  scale: 1,
+                  ease: 'power2.inOut',
+                  duration: 0.2,
+                });
+              },
             },
-          },
-        });
+          });
 
-        // Animation 1: Enter from top, scale down, move to center (90% of timeline)
-        tl.fromTo(
-          title,
-          {
-            top: '0px',
-            y: '-400%',
-            scale: 5,
-          },
-          {
-            top: '0px',
-            y: '200%',
-            scale: 5,
-            ease: 'linear',
-            duration: 0.8,
-          },
-          0
-        ).to(
-          title,
-          {
-            color: 'var(--color-brand-cream)',
-            top: '-20px',
-            y: '-100%',
-            scale: 1,
-            ease: 'power2.inOut',
-            duration: 0.2,
-          },
-          0.8
-        );
+          // Animation 1: Enter from top, scale down, move to center (90% of timeline)
+          tl.fromTo(
+            title,
+            {
+              top: '0px',
+              y: '-400%',
+              scale: 5,
+            },
+            {
+              top: '0px',
+              y: '200%',
+              scale: 5,
+              ease: 'linear',
+              duration: 0.8,
+            },
+            0
+          ).to(
+            title,
+            {
+              color: 'var(--color-brand-cream)',
+              top: '-20px',
+              y: '-100%',
+              scale: 1,
+              ease: 'power2.inOut',
+              duration: 0.2,
+            },
+            0.8
+          );
+        }
       }
-    }
-  });
-</script>
+    });
+  </script>
+{% endcomment %}
 
 <section class="latest-articles">
   <div class="latest-articles__container">
