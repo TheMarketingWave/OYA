@@ -114,9 +114,11 @@
     font-size: 48px;
     font-weight: bold;
     color: var(--color-brand-brown);
-    margin-bottom: 60px;
-    position: absolute;
     text-transform: uppercase;
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    transform: translate(-50%, -400%) scale(1);
   }
 {% endstyle %}
 
@@ -138,17 +140,16 @@
             start: 'top bottom',
             end: 'center 70%',
             scrub: 1,
-            onComplete: () => {
-              // Kill the animation and reset transforms
+            onLeave: () => {
               tl.kill();
-              gsap.set(title, { clearProps: 'all' });
-              title.classList.add('animated');
-            },
-            onRefresh: () => {
-              // Ensure clean state on refresh
-              if (title.classList.contains('animated')) {
-                gsap.set(title, { clearProps: 'all' });
-              }
+              gsap.set(title, {
+                color: 'var(--color-brand-cream)',
+                top: '-20px',
+                y: '-100%',
+                scale: 1,
+                ease: 'power2.inOut',
+                duration: 0.2,
+              });
             },
           },
         });
@@ -158,34 +159,28 @@
           title,
           {
             top: '0px',
-            x: '-50%', // Start with centering transform
             y: '-400%',
             scale: 5,
-            left: '50%',
           },
           {
             top: '0px',
-            left: '50%',
-            x: '-50%', // Keep centered during first animation
             y: '200%',
             scale: 5,
             ease: 'linear',
-            duration: 0.9, // Takes 90% of timeline
+            duration: 0.8,
           },
-          0 // Start at beginning of timeline
+          0
         ).to(
           title,
           {
             color: 'var(--color-brand-cream)',
             top: '-20px',
-            left: '0%',
-            x: 0, // Remove centering transform - this fixes the -50% issue
             y: '-100%',
             scale: 1,
             ease: 'power2.inOut',
-            duration: 0.1, // Takes 10% of timeline
+            duration: 0.2,
           },
-          0.9 // Start at 90% of timeline
+          0.8
         );
       }
     }
