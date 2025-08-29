@@ -48,10 +48,32 @@
         "show_weight": true,
         "button_text": "Add to Cart"
       }
+    },
+    "values_card_gbDAH6": {
+      "type": "values-card",
+      "blocks": {
+        "card_iEg4hE": {
+          "type": "card",
+          "settings": {
+            "title": "Example Card",
+            "icon": "star",
+            "content": "This is an example card with an icon."
+          }
+        }
+      },
+      "block_order": [
+        "card_iEg4hE"
+      ],
+      "name": "Values Card",
+      "settings": {
+        "section_title": "Our Values",
+        "section_subtitle": "The principles that guide every decision we make"
+      }
     }
   },
   "order": [
     "collection_header_RLEKt7",
-    "products"
+    "products",
+    "values_card_gbDAH6"
   ]
 }
