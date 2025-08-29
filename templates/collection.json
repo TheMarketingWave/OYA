@@ -49,31 +49,59 @@
         "button_text": "Add to Cart"
       }
     },
-    "values_card_gbDAH6": {
+    "values_card_MnR8Ty": {
       "type": "values-card",
       "blocks": {
-        "card_iEg4hE": {
+        "card_purity": {
           "type": "card",
           "settings": {
-            "title": "Example Card",
+            "title": "Premium Quality",
             "icon": "star",
-            "content": "This is an example card with an icon."
+            "content": "We work only with the highest-grade botanicals and skilled artisans. Our oils are unaltered, unadulterated, and full-spectrum—offering the deepest expression."
+          }
+        },
+        "card_ritual": {
+          "type": "card",
+          "settings": {
+            "title": "Sustainable Design",
+            "icon": "flower",
+            "content": "Our packaging is refillable, recyclable, and thoughtfully minimalist. Each bottle is a long-term vessel, reducing waste while elevating your shelf and your spirit."
+          }
+        },
+        "card_sustainability": {
+          "type": "card",
+          "settings": {
+            "title": "Creative Rituals",
+            "icon": "moon",
+            "content": "We believe wellness is personal. Our oils are curated not just for function, but for emotional connection—inviting intuitive use, playful blending, and everyday sensory nourishment."
+          }
+        },
+        "card_craftsmanship": {
+          "type": "card",
+          "settings": {
+            "title": "Rooted Transparency",
+            "icon": "sun",
+            "content": "We share our process from plant to pour. That includes ethical sourcing, sustainable farming, and an open invitation to learn with us."
           }
         }
       },
       "block_order": [
-        "card_iEg4hE"
+        "card_purity",
+        "card_ritual",
+        "card_sustainability",
+        "card_craftsmanship"
       ],
       "name": "Values Card",
       "settings": {
-        "section_title": "Our Values",
-        "section_subtitle": "The principles that guide every decision we make"
+        "section_title": "OYA Values",
+        "section_subtitle": "What we stand for is infused into every product."
       }
-    }
+    },
+    
   },
   "order": [
     "collection_header_RLEKt7",
     "products",
-    "values_card_gbDAH6"
+    "values_card_MnR8Ty"
   ]
 }
