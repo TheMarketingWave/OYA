@@ -53,12 +53,21 @@
 
 {% comment %} Find the matching block for current collection {% endcomment %}
 {% assign current_block = null %}
+{% assign all_collections_block = null %}
+
 {% for block in section.blocks %}
-  {% if block.settings.collection.handle == collection.handle %}
+  {% if block.settings.target_type == 'specific' and block.settings.collection.handle == collection.handle %}
     {% assign current_block = block %}
     {% break %}
+  {% elsif block.settings.target_type == 'all' %}
+    {% assign all_collections_block = block %}
   {% endif %}
 {% endfor %}
+
+{% comment %} Use specific collection block if found, otherwise use all collections block {% endcomment %}
+{% unless current_block %}
+  {% assign current_block = all_collections_block %}
+{% endunless %}
 
 {% comment %} Display header if we have a matching block {% endcomment %}
 {% if current_block %}
@@ -99,7 +108,7 @@
     },
     {
       "type": "paragraph",
-      "content": "Add blocks below to create custom headers for specific collections. The header will only show when viewing the matching collection."
+      "content": "Add blocks below to create custom headers. You can target specific collections or all collections. Specific collection headers take priority over 'all collections' headers."
     }
   ],
   "blocks": [
@@ -108,10 +117,26 @@
       "name": "Collection Header",
       "settings": [
         {
+          "type": "select",
+          "id": "target_type",
+          "label": "Apply to",
+          "default": "specific",
+          "options": [
+            {
+              "value": "specific",
+              "label": "Specific Collection"
+            },
+            {
+              "value": "all",
+              "label": "All Collections"
+            }
+          ]
+        },
+        {
           "type": "collection",
           "id": "collection",
           "label": "Collection",
-          "info": "Select which collection this header applies to"
+          "info": "Only required when 'Specific Collection' is selected"
         },
         {
           "type": "text",

@@ -9,37 +9,12 @@
  */
 {
   "sections": {
-    "collection_header_h3MCgW": {
-      "type": "collection-header",
-      "blocks": {
-        "collection_header_pYWEJp": {
-          "type": "collection_header",
-          "settings": {
-            "collection": "essential-oils",
-            "title": "100% Certified Organic& Natural Products",
-            "subtitle": "Our essential oils capture nature in its purest, most expansive form. Sourced from organic gardens and carefully distilled into refillable, eco-friendly bottles, each drop is an invitation to indulge in the art of mindful wellness.",
-            "description": ""
-          }
-        }
-      },
-      "block_order": [
-        "collection_header_pYWEJp"
-      ],
-      "name": "Collection Header",
-      "settings": {}
-    },
     "products": {
       "type": "main-collection-products",
-      "settings": {
-        "show_tags": true,
-        "show_description": true,
-        "show_weight": true,
-        "button_text": "Add to Cart"
-      }
+      "settings": {}
     }
   },
   "order": [
-    "collection_header_h3MCgW",
     "products"
   ]
 }
