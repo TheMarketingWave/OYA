@@ -1,0 +1,148 @@
+{% style %}
+  .collection-header {
+    padding: 60px 0 40px;
+    text-align: center;
+  }
+
+  .collection-header__content {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .collection-header__title {
+    font-size: 48px;
+    font-weight: 600;
+    color: var(--color-brand-cream);
+    margin-bottom: 16px;
+  }
+
+  .collection-header__subtitle {
+    font-size: 24px;
+    font-weight: 400;
+    color: var(--color-brand-cream);
+    margin-bottom: 20px;
+    opacity: 0.9;
+  }
+
+  .collection-header__description {
+    font-size: 16px;
+    color: var(--color-brand-cream);
+    line-height: 1.6;
+    opacity: 0.8;
+  }
+
+  /* Mobile responsive */
+  @media (max-width: 768px) {
+    .collection-header {
+      padding: 40px 0 30px;
+    }
+
+    .collection-header__title {
+      font-size: 32px;
+    }
+
+    .collection-header__subtitle {
+      font-size: 20px;
+    }
+
+    .collection-header__description {
+      font-size: 14px;
+    }
+  }
+{% endstyle %}
+
+{% comment %} Find the matching block for current collection {% endcomment %}
+{% assign current_block = null %}
+{% for block in section.blocks %}
+  {% if block.settings.collection.handle == collection.handle %}
+    {% assign current_block = block %}
+    {% break %}
+  {% endif %}
+{% endfor %}
+
+{% comment %} Display header if we have a matching block {% endcomment %}
+{% if current_block %}
+  <section class="collection-header section-container" {{ current_block.shopify_attributes }}>
+    <div class="collection-header__content">
+      {% if current_block.settings.title != blank %}
+        <h1 class="collection-header__title title-font">{{ current_block.settings.title }}</h1>
+      {% elsif collection.title != blank %}
+        <h1 class="collection-header__title title-font">{{ collection.title }}</h1>
+      {% endif %}
+
+      {% if current_block.settings.subtitle != blank %}
+        <h2 class="collection-header__subtitle">{{ current_block.settings.subtitle }}</h2>
+      {% endif %}
+
+      {% if current_block.settings.description != blank %}
+        <div class="collection-header__description">
+          {{ current_block.settings.description }}
+        </div>
+      {% elsif collection.description != blank %}
+        <div class="collection-header__description">
+          {{ collection.description }}
+        </div>
+      {% endif %}
+    </div>
+  </section>
+{% endif %}
+
+{% schema %}
+{
+  "name": "Collection Header",
+  "tag": "section",
+  "class": "collection-header-section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Instructions"
+    },
+    {
+      "type": "paragraph",
+      "content": "Add blocks below to create custom headers for specific collections. The header will only show when viewing the matching collection."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "collection_header",
+      "name": "Collection Header",
+      "settings": [
+        {
+          "type": "collection",
+          "id": "collection",
+          "label": "Collection",
+          "info": "Select which collection this header applies to"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Custom Title",
+          "info": "Leave blank to use collection name"
+        },
+        {
+          "type": "text",
+          "id": "subtitle",
+          "label": "Subtitle",
+          "placeholder": "e.g., Handcrafted with Love"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Description",
+          "info": "Leave blank to use collection description"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Collection Header",
+      "blocks": [
+        {
+          "type": "collection_header"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

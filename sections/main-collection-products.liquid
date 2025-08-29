@@ -1,33 +1,6 @@
 {% style %}
   .collection-products {
-    padding: 60px 0;
-  }
-
-  .collection-products__header {
-    text-align: center;
-    margin-bottom: 48px;
-  }
-
-  .collection-products__title {
-    font-size: 40px;
-    font-weight: 600;
-    color: var(--color-brand-cream);
-    margin-bottom: 16px;
-  }
-
-  .collection-products__subtitle {
-    font-size: 24px;
-    font-weight: 400;
-    color: var(--color-brand-cream);
-    margin-bottom: 16px;
-    opacity: 0.9;
-  }
-
-  .collection-products__description {
-    font-size: 16px;
-    color: var(--color-brand-cream);
-    max-width: 600px;
-    margin: 0 auto;
+    padding: 20px 0 60px;
   }
 
   .collection-products__grid {
@@ -71,22 +44,6 @@
 {% endstyle %}
 
 <div id="{{ section.id }}" class="collection-products section-container">
-  {% if collection.title != blank %}
-    <div class="collection-products__header">
-      <h1 class="collection-products__title title-font">{{ collection.title }}</h1>
-
-      {% if section.settings.subtitle != blank %}
-        <h2 class="collection-products__subtitle">{{ section.settings.subtitle }}</h2>
-      {% endif %}
-
-      {% if section.settings.description != blank %}
-        <div class="collection-products__description">
-          {{ section.settings.description }}
-        </div>
-      {% endif %}
-    </div>
-  {% endif %}
-
   <div class="collection-products__grid">
     {% for product in collection.products %}
       {% render 'product-card-enhanced',
@@ -108,22 +65,6 @@
   "tag": "section",
   "class": "collection-products-section",
   "settings": [
-    {
-      "type": "header",
-      "content": "Section Content"
-    },
-    {
-      "type": "text",
-      "id": "subtitle",
-      "label": "Subtitle",
-      "info": "Optional subtitle to display below the collection title"
-    },
-    {
-      "type": "textarea",
-      "id": "description",
-      "label": "Custom Description",
-      "info": "Optional custom description. If empty, will use collection description"
-    },
     {
       "type": "header",
       "content": "Product Display"
