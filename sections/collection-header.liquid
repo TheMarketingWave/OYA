@@ -1,53 +1,27 @@
 {% style %}
   .collection-header {
-    padding: 60px 0 40px;
-    text-align: center;
+    padding: 32px 0;
+    color: var(--color-brand-cream);
   }
 
   .collection-header__content {
-    max-width: 800px;
+    max-width: 1200px;
     margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
   }
 
   .collection-header__title {
-    font-size: 48px;
+    font-size: 40px;
     font-weight: 600;
-    color: var(--color-brand-cream);
-    margin-bottom: 16px;
+    max-width: 450px;
   }
 
   .collection-header__subtitle {
-    font-size: 24px;
-    font-weight: 400;
-    color: var(--color-brand-cream);
-    margin-bottom: 20px;
-    opacity: 0.9;
-  }
-
-  .collection-header__description {
     font-size: 16px;
-    color: var(--color-brand-cream);
-    line-height: 1.6;
-    opacity: 0.8;
-  }
-
-  /* Mobile responsive */
-  @media (max-width: 768px) {
-    .collection-header {
-      padding: 40px 0 30px;
-    }
-
-    .collection-header__title {
-      font-size: 32px;
-    }
-
-    .collection-header__subtitle {
-      font-size: 20px;
-    }
-
-    .collection-header__description {
-      font-size: 14px;
-    }
+    max-width: 550px;
+    font-weight: 100;
   }
 {% endstyle %}
 
@@ -75,22 +49,10 @@
     <div class="collection-header__content">
       {% if current_block.settings.title != blank %}
         <h1 class="collection-header__title title-font">{{ current_block.settings.title }}</h1>
-      {% elsif collection.title != blank %}
-        <h1 class="collection-header__title title-font">{{ collection.title }}</h1>
       {% endif %}
 
       {% if current_block.settings.subtitle != blank %}
         <h2 class="collection-header__subtitle">{{ current_block.settings.subtitle }}</h2>
-      {% endif %}
-
-      {% if current_block.settings.description != blank %}
-        <div class="collection-header__description">
-          {{ current_block.settings.description }}
-        </div>
-      {% elsif collection.description != blank %}
-        <div class="collection-header__description">
-          {{ collection.description }}
-        </div>
       {% endif %}
     </div>
   </section>
@@ -149,12 +111,6 @@
           "id": "subtitle",
           "label": "Subtitle",
           "placeholder": "e.g., Handcrafted with Love"
-        },
-        {
-          "type": "textarea",
-          "id": "description",
-          "label": "Description",
-          "info": "Leave blank to use collection description"
         }
       ]
     }

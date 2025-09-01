@@ -7,54 +7,20 @@
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 32px;
+    row-gap: 48px;
     margin-bottom: 48px;
   }
 
   .collection-products__grid .product-card {
     width: 100%;
-    max-width: 320px;
-    margin: 0 auto;
-  }
-
-  .collection-products__pagination {
-    display: flex;
-    justify-content: center;
-    margin-top: 48px;
-  }
-
-  .collection-products__filters {
-    margin-bottom: 32px;
-  }
-
-  .collection-products__no-products {
-    text-align: center;
-    padding: 60px 20px;
-    color: var(--color-brand-cream);
-  }
-
-  .collection-products__no-products h3 {
-    font-size: 24px;
-    margin-bottom: 16px;
-  }
-
-  .collection-products__no-products p {
-    font-size: 16px;
-    opacity: 0.8;
+    height: auto;
   }
 {% endstyle %}
 
 <div id="{{ section.id }}" class="collection-products section-container">
   <div class="collection-products__grid">
     {% for product in collection.products %}
-      {% render 'product-card-enhanced',
-        product: product,
-        width: 300,
-        height: 480,
-        show_tags: section.settings.show_tags,
-        show_description: section.settings.show_description,
-        show_weight: section.settings.show_weight,
-        button_text: section.settings.button_text
-      %}
+      {% render 'product-card-enhanced', product: product %}
     {% endfor %}
   </div>
 </div>
