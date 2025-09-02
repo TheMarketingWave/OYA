@@ -11,86 +11,19 @@
   "sections": {
     "product": {
       "type": "main-product",
-      "blocks": {
-        "text_VgqAwb": {
-          "type": "text",
-          "settings": {
-            "content": "<p>{{ product.description }}</p>"
-          }
-        },
-        "options_je9wUj": {
-          "type": "options",
-          "settings": {}
-        },
-        "prices_zbB86G": {
-          "type": "prices",
-          "settings": {}
-        },
-        "button_bNUm3G": {
-          "type": "button",
-          "settings": {
-            "button_label": "Add to cart"
-          }
-        },
-        "rule_VKccTF": {
-          "type": "rule",
-          "settings": {}
-        },
-        "product_wtgCmw": {
-          "type": "product",
-          "settings": {
-            "heading": "Frequently purchased together",
-            "total_label": "Total Price:",
-            "limit": "2",
-            "thumbnail_size": 150
-          }
-        },
-        "text_NTqjMB": {
-          "type": "text",
-          "settings": {
-            "content": "<p><strong>Need the price further up? You can add as much information as you need here, and reorganise each part of the product details section via the customiser.</strong></p>"
-          }
-        },
-        "text_pLP6Me": {
-          "type": "text",
-          "settings": {
-            "content": "<p>Copyright by respective movie studios. Intended for personal use only and strictly forbidden to reproduce as printed posters.</p>"
-          }
-        },
-        "detail_gzcnpK": {
-          "type": "detail",
-          "settings": {
-            "title": "Some more information",
-            "content": "<p>These are details/summary tabs and you can add as many as you need via the customiser. There are no restrictions with Taillour - if you don't need them, you can remove them entirely from the section template.</p>",
-            "open": true
-          }
-        },
-        "detail_NhMUn6": {
-          "type": "detail",
-          "settings": {
-            "title": "Tabs can be set to open or closed by default",
-            "content": "<p>Any tab can be set to be open or closed as default, so important information is always displayed.</p>",
-            "open": false
-          }
-        }
-      },
-      "block_order": [
-        "text_VgqAwb",
-        "options_je9wUj",
-        "prices_zbB86G",
-        "button_bNUm3G",
-        "rule_VKccTF",
-        "product_wtgCmw",
-        "text_NTqjMB",
-        "text_pLP6Me",
-        "detail_gzcnpK",
-        "detail_NhMUn6"
-      ],
       "settings": {}
     },
-
+    "footer_image_mtHKLn": {
+      "type": "footer-image",
+      "name": "Footer Image",
+      "settings": {
+        "footer_image": "shopify://shop_images/footer.png",
+        "scrolling_text": "Nature • Wellness • Ritual • Aromatherapy • Essential Oils • Mindfulness • Botanical • Purity • Sustainability"
+      }
+    }
   },
   "order": [
     "product",
+    "footer_image_mtHKLn"
   ]
 }
