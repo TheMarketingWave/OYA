@@ -25,21 +25,25 @@
 >
   <div class="product-card__inner">
     {% if product.featured_image %}
-      <img
-        src="{{ product.featured_image | image_url: width: card_width }}"
-        alt="{{ product.featured_image.alt | escape }}"
-        class="product-card__image"
-        width="{{ card_width }}"
-        height="auto"
-        loading="lazy"
-      >
+      <a href="{{ product.url }}" class="product-card__image-link">
+        <img
+          src="{{ product.featured_image | image_url: width: card_width }}"
+          alt="{{ product.featured_image.alt | escape }}"
+          class="product-card__image"
+          width="{{ card_width }}"
+          height="auto"
+          loading="lazy"
+        >
+      </a>
     {% else %}
-      <div
-        class="product-card__image"
-        style="background: #f0f0f0; display: flex; align-items: center; justify-content: center; color: #999;"
-      >
-        {{ 'product-1' | placeholder_svg_tag }}
-      </div>
+      <a href="{{ product.url }}" class="product-card__image-link">
+        <div
+          class="product-card__image"
+          style="background: #f0f0f0; display: flex; align-items: center; justify-content: center; color: #999;"
+        >
+          {{ 'product-1' | placeholder_svg_tag }}
+        </div>
+      </a>
     {% endif %}
 
     {% if show_tags and product.tags.size > 0 %}
@@ -50,7 +54,11 @@
       </div>
     {% endif %}
 
-    <h3 class="product-card__title">{{ product.title }}</h3>
+    <h3 class="product-card__title">
+      <a href="{{ product.url }}" class="product-card__title-link">
+        {{ product.title }}
+      </a>
+    </h3>
 
     {% if show_description and product.description != blank %}
       <p class="product-card__description">

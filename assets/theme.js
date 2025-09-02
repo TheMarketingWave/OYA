@@ -60,9 +60,59 @@ const setSubmenuToggle = () => {
   });
 };
 
+const setAccordionToggle = () => {
+  const accordionToggles = document.querySelectorAll("[data-accordion-toggle]");
+
+  accordionToggles.forEach((toggle) => {
+    toggle.addEventListener("click", (e) => {
+      e.preventDefault();
+
+      const accordionItem = toggle.closest("[data-accordion-item]");
+      const accordion = toggle.closest("[data-accordion]");
+      const content = accordionItem.querySelector("[data-accordion-content]");
+      const icon = toggle.querySelector(".accordion-icon");
+
+      if (!accordionItem || !content) return;
+
+      const isActive = accordionItem.classList.contains("active");
+
+      // Close all accordion items in the same accordion
+      if (accordion) {
+        const allItems = accordion.querySelectorAll("[data-accordion-item]");
+        const allToggles = accordion.querySelectorAll(
+          "[data-accordion-toggle]"
+        );
+        const allIcons = accordion.querySelectorAll(".accordion-icon");
+
+        allItems.forEach((item) => item.classList.remove("active"));
+        allToggles.forEach((t) => t.setAttribute("aria-expanded", "false"));
+        allIcons.forEach((i) => (i.textContent = "+"));
+      }
+
+      // Toggle current item if it wasn't active
+      if (!isActive) {
+        accordionItem.classList.add("active");
+        toggle.setAttribute("aria-expanded", "true");
+        if (icon) icon.textContent = "×";
+
+        // Trigger custom event for onExpand callback
+        const expandEvent = new CustomEvent("accordionExpand", {
+          detail: {
+            item: accordionItem,
+            content: content,
+            title: toggle.querySelector("span")?.textContent || "",
+          },
+        });
+        accordionItem.dispatchEvent(expandEvent);
+      }
+    });
+  });
+};
+
 const onLoad = () => {
   setToggleMenu();
   setSubmenuToggle();
+  setAccordionToggle();
 };
 
 if (document.readyState !== "loading") {

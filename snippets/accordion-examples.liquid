@@ -1,0 +1,41 @@
+{% comment %}
+  Example usage of the accordion snippet
+
+  This file demonstrates different ways to use the accordion component
+{% endcomment %}
+
+<!-- Basic accordion with static content -->
+{% assign faq_items = 'What is this product?::This is a natural essential oil|How do I use it?::Add 2-3 drops to your diffuser|Is it safe?::Yes when used as directed'
+  | split: '|'
+%}
+{% render 'accordion', items: faq_items, class: 'faq-accordion' %}
+
+<!-- Accordion with first item open -->
+{% assign instructions = 'Step 1::First do this|Step 2::Then do that|Step 3::Finally complete this' | split: '|' %}
+{% render 'accordion', items: instructions, class: 'instructions-accordion', open_first: true %}
+
+<!-- Dynamic accordion built from data -->
+{% assign dynamic_items = '' %}
+{% for tag in product.tags limit: 3 %}
+  {% if dynamic_items != blank %}{% assign dynamic_items = dynamic_items | append: '|' %}{% endif %}
+  {% assign dynamic_items = dynamic_items | append: tag | append: '::Information about ' | append: tag %}
+{% endfor %}
+{% assign tag_array = dynamic_items | split: '|' %}
+{% render 'accordion', items: tag_array, class: 'tags-accordion' %}
+
+<script>
+  // Listen for accordion expand events for analytics or other functionality
+  document.addEventListener('accordionExpand', function (e) {
+    console.log('Accordion expanded:', e.detail);
+
+    // Example: Send analytics event
+    // gtag('event', 'accordion_expand', {
+    //   'section': e.detail.title
+    // });
+
+    // Example: Load content dynamically
+    // if (e.detail.title === 'Dynamic Content') {
+    //   loadDynamicContent(e.detail.content);
+    // }
+  });
+</script>
