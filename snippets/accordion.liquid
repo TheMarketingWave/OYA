@@ -1,0 +1,54 @@
+{% comment %}
+  Accordion Component
+
+  Parameters:
+  - items: Array of accordion items with title and content
+  - class: Optional CSS class for styling
+  - open_first: Boolean to open first item by default
+
+  Usage:
+  {% assign accordion_items = 'How to Use::Instructions here|Why It Matters::Explanation here' | split: '|' %}
+  {% render 'accordion', items: accordion_items, class: 'product-accordion' %}
+{% endcomment %}
+
+{% assign open_first = open_first | default: false %}
+{% assign css_class = class | default: 'accordion' %}
+
+<div class="{{ css_class }}" data-accordion>
+  {% for item in items %}
+    {% if item != blank %}
+      {% assign item_parts = item | split: '::' %}
+      {% if item_parts.size >= 2 %}
+        {% assign item_title = item_parts[0] | strip %}
+        {% comment %} Join all parts after the first one with :: to handle content that might contain :: {% endcomment %}
+        {% assign item_content = '' %}
+        {% for part in item_parts offset: 1 %}
+          {% assign item_content = item_content | append: part %}
+          {% unless forloop.last %}
+            {% assign item_content = item_content | append: '::' %}
+          {% endunless %}
+        {% endfor %}
+        {% assign item_content = item_content | strip %}
+
+        <div class="accordion-item {% if open_first and forloop.first %}active{% endif %}" data-accordion-item>
+          <button
+            class="accordion-header"
+            data-accordion-toggle
+            aria-expanded="{% if open_first and forloop.first %}true{% else %}false{% endif %}"
+            aria-controls="accordion-content-{{ forloop.index }}"
+          >
+            <span>{{ item_title }}</span>
+            <span class="accordion-icon">+</span>
+          </button>
+          <div
+            class="accordion-content"
+            id="accordion-content-{{ forloop.index }}"
+            data-accordion-content
+          >
+            {{ item_content }}
+          </div>
+        </div>
+      {% endif %}
+    {% endif %}
+  {% endfor %}
+</div>

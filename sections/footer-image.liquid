@@ -1,0 +1,44 @@
+{% if section.settings.footer_image %}
+  <div class="footer-image">
+    {{
+      section.settings.footer_image
+      | image_url: width: 1200, height: 500
+      | image_tag: alt: section.settings.footer_image.alt, loading: 'lazy'
+    }}
+
+    {% if section.settings.scrolling_text != blank %}
+      <div class="footer-image__text-overlay">
+        <div class="footer-image__scrolling-text">
+          <span class="footer-image__text-content">{{ section.settings.scrolling_text }}</span>
+          <span class="footer-image__text-content">{{ section.settings.scrolling_text }}</span>
+        </div>
+      </div>
+    {% endif %}
+  </div>
+{% endif %}
+
+{% schema %}
+{
+  "name": "Footer Image",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "footer_image",
+      "label": "Footer Image"
+    },
+    {
+      "type": "text",
+      "id": "scrolling_text",
+      "label": "Scrolling Text",
+      "default": "Nature • Wellness • Ritual • Aromatherapy • Essential Oils • Mindfulness • Botanical • Purity • Sustainability"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Footer Image"
+    }
+  ]
+}
+{% endschema %}

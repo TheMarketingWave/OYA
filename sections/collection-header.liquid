@@ -1,0 +1,129 @@
+{% style %}
+  .collection-header {
+    padding: 32px 0;
+    color: var(--color-brand-cream);
+  }
+
+  .collection-header__content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .collection-header__title {
+    font-size: 40px;
+    font-weight: 600;
+    max-width: 450px;
+  }
+
+  .collection-header__subtitle {
+    font-size: 16px;
+    max-width: 550px;
+    font-weight: 100;
+  }
+{% endstyle %}
+
+{% comment %} Find the matching block for current collection {% endcomment %}
+{% assign current_block = null %}
+{% assign all_collections_block = null %}
+
+{% for block in section.blocks %}
+  {% if block.settings.target_type == 'specific' and block.settings.collection.handle == collection.handle %}
+    {% assign current_block = block %}
+    {% break %}
+  {% elsif block.settings.target_type == 'all' %}
+    {% assign all_collections_block = block %}
+  {% endif %}
+{% endfor %}
+
+{% comment %} Use specific collection block if found, otherwise use all collections block {% endcomment %}
+{% unless current_block %}
+  {% assign current_block = all_collections_block %}
+{% endunless %}
+
+{% comment %} Display header if we have a matching block {% endcomment %}
+{% if current_block %}
+  <section class="collection-header section-container" {{ current_block.shopify_attributes }}>
+    <div class="collection-header__content">
+      {% if current_block.settings.title != blank %}
+        <h1 class="collection-header__title title-font">{{ current_block.settings.title }}</h1>
+      {% endif %}
+
+      {% if current_block.settings.subtitle != blank %}
+        <h2 class="collection-header__subtitle">{{ current_block.settings.subtitle }}</h2>
+      {% endif %}
+    </div>
+  </section>
+{% endif %}
+
+{% schema %}
+{
+  "name": "Collection Header",
+  "tag": "section",
+  "class": "collection-header-section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Instructions"
+    },
+    {
+      "type": "paragraph",
+      "content": "Add blocks below to create custom headers. You can target specific collections or all collections. Specific collection headers take priority over 'all collections' headers."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "collection_header",
+      "name": "Collection Header",
+      "settings": [
+        {
+          "type": "select",
+          "id": "target_type",
+          "label": "Apply to",
+          "default": "specific",
+          "options": [
+            {
+              "value": "specific",
+              "label": "Specific Collection"
+            },
+            {
+              "value": "all",
+              "label": "All Collections"
+            }
+          ]
+        },
+        {
+          "type": "collection",
+          "id": "collection",
+          "label": "Collection",
+          "info": "Only required when 'Specific Collection' is selected"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Custom Title",
+          "info": "Leave blank to use collection name"
+        },
+        {
+          "type": "text",
+          "id": "subtitle",
+          "label": "Subtitle",
+          "placeholder": "e.g., Handcrafted with Love"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Collection Header",
+      "blocks": [
+        {
+          "type": "collection_header"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -61,55 +61,6 @@
     justify-content: center;
   }
 
-  .latest-articles__footer-image {
-    width: 100%;
-    height: 500px;
-    position: relative;
-    overflow: hidden;
-    border-radius: 4px;
-  }
-
-  .latest-articles__footer-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-
-  .latest-articles__text-overlay {
-    position: absolute;
-    top: 50%;
-    left: 0;
-    width: 100%;
-    height: 100px;
-    display: flex;
-    align-items: center;
-    overflow: hidden;
-    pointer-events: none;
-  }
-
-  .latest-articles__scrolling-text {
-    display: flex;
-    white-space: nowrap;
-    transform: translate3d(0, 0, 0);
-    animation: scroll-text 150s linear infinite;
-  }
-
-  .latest-articles__text-content {
-    font-size: 40px;
-    color: var(--color-brand-cream);
-    text-transform: uppercase;
-    letter-spacing: 4px;
-  }
-  @keyframes scroll-text {
-    0% {
-      transform: translate3d(0, 0, 0);
-    }
-
-    100% {
-      transform: translate3d(-50%, 0, 0);
-    }
-  }
-
   .latest-articles__title {
     font-size: 48px;
     font-weight: bold;
@@ -121,72 +72,6 @@
     transform: translate(-50%, -400%) scale(1);
   }
 {% endstyle %}
-{% comment %}
-  <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      // Register GSAP ScrollTrigger
-      if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
-        gsap.registerPlugin(ScrollTrigger);
-
-        const title = document.querySelector('.latest-articles__title');
-        const grid = document.querySelector('.latest-articles__grid');
-        const section = document.querySelector('.latest-articles');
-
-        if (title && grid && section) {
-          // Create timeline
-          const tl = gsap.timeline({
-            scrollTrigger: {
-              trigger: section,
-              start: 'top bottom',
-              end: 'center 70%',
-              scrub: 1,
-              onLeave: () => {
-                tl.kill();
-                gsap.set(title, {
-                  color: 'var(--color-brand-cream)',
-                  top: '-20px',
-                  y: '-100%',
-                  scale: 1,
-                  ease: 'power2.inOut',
-                  duration: 0.2,
-                });
-              },
-            },
-          });
-
-          // Animation 1: Enter from top, scale down, move to center (90% of timeline)
-          tl.fromTo(
-            title,
-            {
-              top: '0px',
-              y: '-400%',
-              scale: 5,
-            },
-            {
-              top: '0px',
-              y: '200%',
-              scale: 5,
-              ease: 'linear',
-              duration: 0.8,
-            },
-            0
-          ).to(
-            title,
-            {
-              color: 'var(--color-brand-cream)',
-              top: '-20px',
-              y: '-100%',
-              scale: 1,
-              ease: 'power2.inOut',
-              duration: 0.2,
-            },
-            0.8
-          );
-        }
-      }
-    });
-  </script>
-{% endcomment %}
 
 <section class="latest-articles">
   <div class="latest-articles__container">
@@ -246,24 +131,6 @@
     {% endif %}
   </div>
 </section>
-{% if section.settings.footer_image %}
-  <div class="latest-articles__footer-image">
-    {{
-      section.settings.footer_image
-      | image_url: width: 1200, height: 500
-      | image_tag: alt: section.settings.footer_image.alt, loading: 'lazy'
-    }}
-
-    {% if section.settings.scrolling_text != blank %}
-      <div class="latest-articles__text-overlay">
-        <div class="latest-articles__scrolling-text">
-          <span class="latest-articles__text-content">{{ section.settings.scrolling_text }}</span>
-          <span class="latest-articles__text-content">{{ section.settings.scrolling_text }}</span>
-        </div>
-      </div>
-    {% endif %}
-  </div>
-{% endif %}
 
 {% schema %}
 {
@@ -275,17 +142,6 @@
       "type": "blog",
       "id": "blog",
       "label": "Blog"
-    },
-    {
-      "type": "image_picker",
-      "id": "footer_image",
-      "label": "Footer Image"
-    },
-    {
-      "type": "text",
-      "id": "scrolling_text",
-      "label": "Scrolling Text",
-      "default": "Nature • Wellness • Ritual • Aromatherapy • Essential Oils • Mindfulness • Botanical • Purity • Sustainability"
     }
   ],
   "presets": [

@@ -1,90 +1,63 @@
-{% if collection.products_count > 0 %}
-<style>
-#collection {
-  display: grid;
-  grid-template-columns: 200px auto;
-  gap: 3rem;
-}
-#collection aside h3,
-#collection aside p {
-  margin-top: 0;
-  margin-bottom: 0;
-}
-#collection aside > div {
-  margin-bottom: 1.5rem;
-}
-{{ section.id | prepend: '#' }} .products-grid {
-  grid-template-columns: repeat({{ section.settings.products_per_row }}, 1fr);
-}
-</style>
+{% style %}
+  .collection-products {
+    padding: 20px 0 60px;
+  }
 
-<div id="{{ section.id }}" class="section-wrap">
-  <div id="collection" class="section">
-    <aside>
-      <div class="flex middle">
-        <h3>Filters</h3>
-        <p>
-          <em><a href="{{ collection.url }}?sort_by={{ collection.sort_by }}">Clear all</a></em>
-        </p>
-      </div>
-      {% render 'collection-filters' %}
-    </aside>
+  .collection-products__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 32px;
+    row-gap: 48px;
+    margin-bottom: 48px;
+  }
 
-    {% paginate collection.products by section.settings.limit %}
-    <div>
-      <div class="section">
-        <p>{{ collection.products_count }} products</p>
+  .collection-products__grid .product-card {
+    width: 100%;
+    height: auto;
+  }
+{% endstyle %}
 
-        <div class="products-grid">
-          {% liquid
-          for product in collection.products
-            render 'product-card', product: product
-          endfor
-          %}
-        </div>
-      </div>
-
-      <div class="section">
-        <div>
-          {% render 'pagination', paginate: paginate %}
-        </div>
-      </div>
-    </div>
-    {% endpaginate %}
+<div id="{{ section.id }}" class="collection-products section-container">
+  <div class="collection-products__grid">
+    {% for product in collection.products %}
+      {% render 'product-card-enhanced', product: product %}
+    {% endfor %}
   </div>
 </div>
-{% endif %}
 
 {% schema %}
 {
-  "name": "Products",
+  "name": "Collection Products",
   "tag": "section",
   "class": "collection-products-section",
-  "templates": ["collection"],
   "settings": [
     {
-      "type": "paragraph",
-      "content": "Display current collection's products."
+      "type": "header",
+      "content": "Product Display"
     },
     {
-      "type": "range",
-      "id": "limit",
-      "label": "Limit",
-      "info": "Limit the number of products displayed per page.",
-      "min": 4,
-      "max": 50,
-      "step": 1,
-      "default": 24
+      "type": "checkbox",
+      "id": "show_tags",
+      "label": "Show product tags",
+      "default": true
     },
     {
-      "type": "range",
-      "id": "products_per_row",
-      "label": "Products Per Row",
-      "info": "Number of products per row.",
-      "min": 1,
-      "max": 4,
-      "step": 1,
-      "default": 4
+      "type": "checkbox",
+      "id": "show_description",
+      "label": "Show product descriptions",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_weight",
+      "label": "Show product weight/volume",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Add to cart button text",
+      "default": "Add to Cart"
     }
   ]
 }

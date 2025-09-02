@@ -82,7 +82,9 @@ document.addEventListener("DOMContentLoaded", function () {
       try {
         const p = video.play();
         if (p?.then) p.then(() => video.pause());
-      } catch (e) {}
+      } catch (e) {
+        console.error(e);
+      }
 
       const trigger = ScrollTrigger.create({
         trigger: video,

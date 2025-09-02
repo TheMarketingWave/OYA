@@ -1,53 +1,107 @@
 {% liquid
-# Set the linklist here. Having it as a variable means you can use
-# a different linklist from the main menu if you have to (useful for
-# more complex site structures).
-assign menu_handle = 'main-menu'
+  # Set the linklist here. Having it as a variable means you can use
+  # a different linklist from the main menu if you have to (useful for
+  # more complex site structures).
+  assign menu_handle = 'main-menu'
 %}
 {% comment %}
-This version checks against the linklist path to return a true breadcrumb.
+  This version checks against the linklist path to return a true breadcrumb.
 {% endcomment %}
+
+<style>
+  #breadcrumb {
+    padding: 16px 0;
+    padding-top: 100px;
+  }
+
+  #breadcrumb .section {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  #breadcrumb ol {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--color-brand-cream);
+  }
+
+  #breadcrumb li {
+    cursor: pointer;
+    font-size: 12px;
+  }
+
+  #breadcrumb li:not(:last-child)::after {
+    content: '•';
+    margin-left: 8px;
+  }
+
+  #breadcrumb a {
+    color: var(--color-brand-cream);
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+
+  #breadcrumb a:hover {
+    color: var(--color-brand-green);
+  }
+
+  #breadcrumb li:last-child {
+    cursor: default;
+    color: var(--color-brand-orange);
+  }
+</style>
+
 <section id="breadcrumb" class="section-wrap">
   <div class="section">
-
     <ol aria-label="Breadcrumb" class="flex align-left small-text">
-      <li><a href="/" title="Home">Home</a></li>
+      <li><a href="{{ routes.root_url }}" title="Home">Home</a></li>
 
       {% comment %}
-      If this is a PRODUCT, use the linklist to find its true path.
-      The categories linklist goes down three levels.
+        If this is a PRODUCT, use the linklist to find its true path.
+        The categories linklist goes down three levels.
       {% endcomment %}
       {% if template.name == 'product' %}
         {% comment %}
-        Create an array of this product's collection handles.
+          Create an array of this product's collection handles.
         {% endcomment %}
-        {% assign collection_list = "" %}
+        {% assign collection_list = '' %}
         {% for collection in product.collections %}
           {% capture collection_list %}{{ collection.handle }}|{{ collection_list }}{% endcapture %}
         {% endfor %}
         {% assign collection_list = collection_list | split: '|' %}
 
         {% comment %}
-        Loop through the linklist to find the trail.
+          Loop through the linklist to find the trail.
         {% endcomment %}
         {% assign trail_found = false %}
         {% for parent in linklists[menu_handle].links %}
           {% assign this_url = parent.url | remove: shop.url | remove: '/collections/' %}
           {% if collection_list contains this_url %}
-            <li><a href="{{ parent.url }}">{{ parent.title }}</a></li>
+            <li>
+              <a href="{{ parent.url }}">{{ parent.title }}</a>
+            </li>
             {% break %}
           {% endif %}
           {% for child in parent.links %}
             {% unless trail_found %}
               {% assign this_url = child.url | remove: shop.url | remove: '/collections/' %}
               {% if collection_list contains this_url %}
-                {% if parent.url == "#" %}
-                  {% assign parent_url = "/collections" %}
+                {% if parent.url == '#' %}
+                  {% assign parent_url = '/collections' %}
                 {% else %}
                   {% assign parent_url = parent.url %}
                 {% endif %}
-                <li><a href="{{ parent_url }}">{{ parent.title }}</a></li>
-                <li><a href="{{ child.url }}">{{ child.title }}</a></li>
+                <li>
+                  <a href="{{ parent_url }}">{{ parent.title }}</a>
+                </li>
+                <li>
+                  <a href="{{ child.url }}">{{ child.title }}</a>
+                </li>
                 {% assign trail_found = true %}
                 {% break %}
               {% endif %}
@@ -57,9 +111,15 @@ This version checks against the linklist path to return a true breadcrumb.
               {% for grandchild in child.links %}
                 {% assign this_url = grandchild.url | remove: shop.url | remove: '/collections/' %}
                 {% if collection_list contains this_url %}
-                  <li><a href="{{ parent.url }}">{{ parent.title }}</a></li>
-                  <li><a href="{{ child.url }}">{{ child.title }}</a></li>
-                  <li><a href="{{ grandchild.url }}">{{ grandchild.title }}</a></li>
+                  <li>
+                    <a href="{{ parent.url }}">{{ parent.title }}</a>
+                  </li>
+                  <li>
+                    <a href="{{ child.url }}">{{ child.title }}</a>
+                  </li>
+                  <li>
+                    <a href="{{ grandchild.url }}">{{ grandchild.title }}</a>
+                  </li>
                   {% assign trail_found = true %}
                   {% break %}
                 {% endif %}
@@ -73,10 +133,10 @@ This version checks against the linklist path to return a true breadcrumb.
         {% endfor %}
         <li aria-current="page">{{ product.title }}</li>
 
-      {% comment %}
-      If this is a collection, loop through the categories
-      linklist and find a trail.
-      {% endcomment %}
+        {% comment %}
+          If this is a collection, loop through the categories
+          linklist and find a trail.
+        {% endcomment %}
       {% elsif template.name == 'collection' %}
         {% for parent in linklists[menu_handle].links %}
           {% assign this_parent_url = parent.url | remove: shop.url | remove: '/collections/' %}
@@ -87,15 +147,21 @@ This version checks against the linklist path to return a true breadcrumb.
           {% for child in parent.links %}
             {% assign this_url = child.url | remove: shop.url | remove: '/collections/' %}
             {% if this_url == collection.handle %}
-              <li><a href="{{ parent.url }}">{{ parent.title }}</a></li>
+              <li>
+                <a href="{{ parent.url }}">{{ parent.title }}</a>
+              </li>
               <li>{{ child.title }}</li>
               {% break %}
             {% endif %}
             {% for grandchild in child.links %}
               {% assign this_url = grandchild.url | remove: shop.url | remove: '/collections/' %}
               {% if this_url == collection.handle %}
-                <li><a href="{{ parent.url }}">{{ parent.title }}</a></li>
-                <li><a href="{{ child.url }}">{{ child.title }}</a></li>
+                <li>
+                  <a href="{{ parent.url }}">{{ parent.title }}</a>
+                </li>
+                <li>
+                  <a href="{{ child.url }}">{{ child.title }}</a>
+                </li>
                 <li>{{ grandchild.title }}</li>
                 {% break %}
               {% endif %}
@@ -103,40 +169,38 @@ This version checks against the linklist path to return a true breadcrumb.
           {% endfor %}
         {% endfor %}
 
-      {% comment %}
-      If this is a blog, show the title of the blog
-      {% endcomment %}
+        {% comment %}
+          If this is a blog, show the title of the blog
+        {% endcomment %}
       {% elsif template.name == 'blog' %}
         <li>{{ blog.title }}</li>
 
-      {% comment %}
-      If this is a blog article, show the title of the blog as a link.
-      {% endcomment %}
+        {% comment %}
+          If this is a blog article, show the title of the blog as a link.
+        {% endcomment %}
       {% elsif template.name == 'article' %}
         <li>{{ blog.title | link_to: blog.url }}</li>
         <li aria-current="page">{{ article.title }}</li>
 
-      {% comment %}
-      If this is a page, there isn't a linklist nav, so just show
-      a direct link.
-      {% endcomment %}
+        {% comment %}
+          If this is a page, there isn't a linklist nav, so just show
+          a direct link.
+        {% endcomment %}
       {% elsif template.name == 'page' %}
         <li aria-current="page">{{ page.title }}</li>
 
-      {% comment %}
-      If this is the search results page, include the search term.
-      {% endcomment %}
+        {% comment %}
+          If this is the search results page, include the search term.
+        {% endcomment %}
       {% elsif template.name == 'search' %}
-        <li aria-current="page">{{ search.terms | capitalize | prepend: "Search: " }}</li>
+        <li aria-current="page">{{ search.terms | capitalize | prepend: 'Search: ' }}</li>
 
-      {% comment %}
-      For everything else not covered above, show the page title.
-      {% endcomment %}
+        {% comment %}
+          For everything else not covered above, show the page title.
+        {% endcomment %}
       {% else %}
         <li aria-current="page">{{ page_title }}</li>
-
       {% endif %}
     </ol>
-
   </div>
 </section>

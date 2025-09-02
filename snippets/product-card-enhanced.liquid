@@ -1,0 +1,110 @@
+{% comment %}
+  Enhanced Product Card - Reusable snippet
+  Parameters:
+  - product: Product object (required)
+  - class: Additional CSS classes (optional)
+  - shopify_attributes: Shopify block attributes (optional)
+  - show_tags: Boolean to show/hide tags (default: true)
+  - show_description: Boolean to show/hide description (default: true)
+  - show_weight: Boolean to show/hide weight/volume (default: true)
+  - button_text: Custom button text (default: "Add to Cart")
+  - width: Card width (default: 300px)
+  - height: Card height (default: 560px)
+{% endcomment %}
+
+{% liquid
+  assign show_tags = show_tags | default: true
+  assign show_description = show_description | default: true
+  assign show_weight = show_weight | default: true
+  assign button_text = button_text | default: 'Add to Cart'
+  assign additional_class = class | default: ''
+%}
+
+<div
+  class="product-card {{ additional_class }}"
+>
+  <div class="product-card__inner">
+    {% if product.featured_image %}
+      <a href="{{ product.url }}" class="product-card__image-link">
+        <img
+          src="{{ product.featured_image | image_url: width: card_width }}"
+          alt="{{ product.featured_image.alt | escape }}"
+          class="product-card__image"
+          width="{{ card_width }}"
+          height="auto"
+          loading="lazy"
+        >
+      </a>
+    {% else %}
+      <a href="{{ product.url }}" class="product-card__image-link">
+        <div
+          class="product-card__image"
+          style="background: #f0f0f0; display: flex; align-items: center; justify-content: center; color: #999;"
+        >
+          {{ 'product-1' | placeholder_svg_tag }}
+        </div>
+      </a>
+    {% endif %}
+
+    {% if show_tags and product.tags.size > 0 %}
+      <div class="product-card__tags">
+        {% for tag in product.tags limit: 3 %}
+          <span class="product-card__tag">{{ tag }}</span>
+        {% endfor %}
+      </div>
+    {% endif %}
+
+    <h3 class="product-card__title">
+      <a href="{{ product.url }}" class="product-card__title-link">
+        {{ product.title }}
+      </a>
+    </h3>
+
+    {% if show_description and product.description != blank %}
+      <p class="product-card__description">
+        {{ product.description | strip_html | truncate: 90 }}
+      </p>
+    {% endif %}
+
+    <div class="product-card__details">
+      <span class="product-card__price">
+        {{ product.price | money }}
+      </span>
+
+      {% if show_weight %}
+        {% comment %} Use unit price measurement to determine weight vs volume {% endcomment %}
+        {% if product.selected_or_first_available_variant.unit_price_measurement %}
+          {% assign unit_measurement = product.selected_or_first_available_variant.unit_price_measurement %}
+          <span class="product-card__weight">
+            {% if unit_measurement.measured_type == 'weight' %}
+              {{ unit_measurement.quantity_value -}}
+              {{- unit_measurement.quantity_unit }}
+            {% elsif unit_measurement.measured_type == 'volume' %}
+              {{ unit_measurement.quantity_value -}}
+              {{- unit_measurement.quantity_unit }}
+            {% else %}
+              {{ unit_measurement.quantity_value -}}
+              {{- unit_measurement.quantity_unit }}
+            {% endif %}
+          </span>
+        {% elsif product.metafields.custom.weight_volume != blank %}
+          <span class="product-card__weight">
+            {{ product.metafields.custom.weight_volume }}
+          </span>
+        {% elsif product.variants.first.weight > 0 %}
+          <span class="product-card__weight">
+            {{ product.variants.first.weight | weight_with_unit }}
+          </span>
+        {% endif %}
+      {% endif %}
+    </div>
+
+    <button
+      type="button"
+      class="product-card__button"
+      onclick="addToCartFromCarousel('{{ product.selected_or_first_available_variant.id }}', '{{ product.title | escape }}', this)"
+    >
+      {{ button_text }}
+    </button>
+  </div>
+</div>
