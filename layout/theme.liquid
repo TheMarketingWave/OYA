@@ -1,5 +1,8 @@
 <!doctype html>
-<html lang="en">
+<html lang="" <link rel="stylesheet" href="{{ 'theme.css' | asset_url }}">
+  <link rel="stylesheet" href="{{ 'mobile.css' | asset_url }}" media="(max-width: 768px)">
+  <link rel="stylesheet" href="{{ 'cart-sidepanel.css' | asset_url }}"
+  >n">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -71,6 +74,7 @@
 
   <body>
     {% sections 'header-group' %}
+    {% render 'cart.sidepanel' %}
 
     <div id="smooth-wrapper">
       <div id="smooth-content">
@@ -84,12 +88,13 @@
           {{ content_for_layout }}
         </main>
 
-        {% sections 'footer-group' %}
+        {% section 'footer' %}
       </div>
     </div>
 
     <script src="{{ 'scroll-animations.js' | asset_url }}" defer></script>
     <script src="{{ 'cart.js' | asset_url }}" defer></script>
+    <script src="{{ 'cart-sidepanel.js' | asset_url }}" defer></script>
     <script src="{{ 'product-carousel.js' | asset_url }}" defer></script>
   </body>
 </html>

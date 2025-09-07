@@ -1,0 +1,38 @@
+<div class="cart-sidepanel" id="cart-sidepanel" data-cart-sidepanel>
+  <div class="cart-sidepanel__overlay" data-cart-close></div>
+  <div class="cart-sidepanel__content">
+    <div class="cart-sidepanel__header">
+      <h2>Your Cart ({{ cart.item_count }})</h2>
+      <button class="cart-sidepanel__close" data-cart-close>&times;</button>
+    </div>
+
+    <div class="cart-sidepanel__items">
+      {% if cart.item_count > 0 %}
+        {% for item in cart.items %}
+          <div class="cart-item" data-cart-item="{{ item.key }}">
+            <img src="{{ item.image | image_url: width: 80 }}" alt="{{ item.title }}" width="80" height="80">
+            <div class="cart-item__details">
+              <h3>{{ item.product.title }}</h3>
+              <p>{{ item.variant.title }}</p>
+              <div class="cart-item__quantity">
+                <button data-cart-quantity-minus="{{ item.key }}">-</button>
+                <span>{{ item.quantity }}</span>
+                <button data-cart-quantity-plus="{{ item.key }}">+</button>
+              </div>
+            </div>
+            <div class="cart-item__price">{{ item.final_line_price | money }}</div>
+            <button data-cart-remove="{{ item.key }}">Remove</button>
+          </div>
+        {% endfor %}
+
+        <div class="cart-sidepanel__footer">
+          <div class="cart-total">Total: {{ cart.total_price | money }}</div>
+          <a href="{{ routes.cart_url }}" class="btn btn--secondary">View Cart</a>
+          <button class="btn btn--primary" data-cart-checkout>Checkout</button>
+        </div>
+      {% else %}
+        <p>Your cart is empty</p>
+      {% endif %}
+    </div>
+  </div>
+</div>
