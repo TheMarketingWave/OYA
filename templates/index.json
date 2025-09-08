@@ -165,6 +165,8 @@
         "content_title": "Refill, Refresh, Renew",
         "content_subtitle": "Our bottles are made to last—because wellness should be beautiful, not wasteful. When your OYA oil runs low, simply send your bottle back to us. We'll clean, refill, and return it to you—every bottle activity that the refill.",
         "image_large": "shopify://shop_images/hands.png",
+        "small_video": "shopify://files/videos/output.mp4",
+        "small_video_alt": "Background video",
         "image_small": "shopify://shop_images/plants.jpg"
       }
     },

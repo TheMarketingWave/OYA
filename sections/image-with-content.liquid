@@ -64,6 +64,21 @@
     margin-top: auto;
   }
 
+  .image-with-content__video-small {
+    width: 60%;
+    height: 200px;
+    border-radius: 8px;
+    margin-top: auto;
+    overflow: hidden;
+  }
+
+  .image-with-content__video-small video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+  }
+
   @media (max-width: 768px) {
     .image-with-content {
       flex-direction: column;
@@ -76,6 +91,10 @@
     }
 
     .image-with-content__image-small {
+      width: 80%;
+    }
+
+    .image-with-content__video-small {
       width: 80%;
     }
   }
@@ -92,6 +111,10 @@
     .image-with-content__image-small {
       width: 100%;
     }
+
+    .image-with-content__video-small {
+      width: 100%;
+    }
   }
 {% endstyle %}
 
@@ -105,7 +128,15 @@
       <p class="image-with-content__subtitle">{{ section.settings.subtitle }}</p>
     {% endif %}
 
-    {% if section.settings.image_small != blank %}
+    {% comment %} Small media - can be image or video {% endcomment %}
+    {% if section.settings.small_video != blank %}
+      <div class="image-with-content__video-small">
+        {{
+          section.settings.small_video
+          | video_tag: autoplay: true, loop: true, muted: true, controls: false, playsinline: true
+        }}
+      </div>
+    {% elsif section.settings.image_small != blank %}
       <img
         src="{{ section.settings.image_small | image_url: width: 300 }}"
         alt="{{ section.settings.image_small.alt | escape }}"
@@ -179,7 +210,7 @@
     },
     {
       "type": "header",
-      "content": "Image Settings"
+      "content": "Media Settings"
     },
     {
       "type": "image_picker",
@@ -188,10 +219,27 @@
       "info": "Main image displayed prominently"
     },
     {
+      "type": "paragraph",
+      "content": "For the small media, choose either an image OR a video (video takes priority if both are selected)"
+    },
+    {
+      "type": "video",
+      "id": "small_video",
+      "label": "Small Video",
+      "info": "Video to display as the small accent media (MP4 format recommended)"
+    },
+    {
+      "type": "text",
+      "id": "small_video_alt",
+      "label": "Video Alt Text",
+      "info": "Accessibility description for the video",
+      "default": "Background video"
+    },
+    {
       "type": "image_picker",
       "id": "image_small",
-      "label": "Small Image",
-      "info": "Smaller accent image displayed below the main image"
+      "label": "Small Image (Fallback)",
+      "info": "Image displayed if no video is selected"
     }
   ],
   "presets": [

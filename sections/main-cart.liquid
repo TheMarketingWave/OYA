@@ -1,7 +1,7 @@
 {% liquid
   # Some layout settings here. These aren't added as template settings, as they
   # don't need to be.
-  assign thumbnail_width = 150
+  assign thumbnail_width = 80
 
   # BEGIN GIFT WRAP: Gift wrap option using a product.
   assign cart_item_keys = ''
@@ -34,70 +34,191 @@
 {% endcomment %}
 
 <link rel="stylesheet" href="{{ 'cart.css' | asset_url }}">
+<link rel="stylesheet" href="{{ 'cart-sidepanel.css' | asset_url }}">
+
+<style>
+  .cart-page {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    background: var(--color-brand-cream, #f5f3f0);
+    border-radius: 12px;
+    margin-top: 100px;
+    margin-bottom: 40px;
+  }
+
+  .cart-page__header {
+    text-align: center;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgba(139, 69, 19, 0.1);
+  }
+
+  .cart-page__header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    color: var(--color-brand-brown, #8b4513);
+    margin: 0;
+  }
+
+  .cart-page__items {
+    margin-bottom: 30px;
+  }
+
+  .cart-page__footer {
+    padding-top: 20px;
+    border-top: 1px solid rgba(139, 69, 19, 0.1);
+  }
+
+  .cart-page__total {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--color-brand-brown, #8b4513);
+  }
+
+  .cart-page__checkout {
+    width: 100%;
+    background: var(--color-brand-brown, #8b4513);
+    color: var(--color-brand-cream, #f5f3f0);
+    border: none;
+    padding: 15px 30px;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: opacity 0.2s ease;
+  }
+
+  .cart-page__checkout:hover {
+    opacity: 0.9;
+  }
+
+  .cart-page__empty {
+    text-align: center;
+    padding: 60px 20px;
+  }
+
+  .cart-page__empty p {
+    font-size: 1.1rem;
+    color: var(--color-brand-brown, #8b4513);
+    margin-bottom: 20px;
+  }
+
+  .cart-page__empty .button {
+    display: inline-block;
+    background: var(--color-brand-brown, #8b4513);
+    color: var(--color-brand-cream, #f5f3f0);
+    padding: 12px 24px;
+    text-decoration: none;
+    border-radius: 6px;
+    transition: opacity 0.2s ease;
+  }
+
+  .cart-page__empty .button:hover {
+    opacity: 0.9;
+  }
+
+  /* Override cart-item styles for page layout */
+  .cart-page .cart-item {
+    background: none;
+    border-radius: 0;
+    padding: 15px 0;
+    margin-bottom: 0;
+    border: none;
+    border-bottom: 1px solid rgba(139, 69, 19, 0.1);
+    box-shadow: none;
+  }
+
+  .cart-page .cart-item:last-child {
+    border-bottom: none;
+  }
+
+  /* Remove any borders/outlines from image container and image */
+  .cart-page .cart-item__image,
+  .cart-page .cart-item__image a,
+  .cart-page .cart-item img {
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+  }
+
+  .cart-page .cart-item__image a:focus {
+    outline: none !important;
+  }
+
+  /* Note styling */
+  .cart-page__note {
+    text-align: center;
+    font-size: 0.875rem;
+    color: rgba(139, 69, 19, 0.7);
+    margin-bottom: 20px;
+    font-style: italic;
+  }
+</style>
 
 {% comment %}
   Empty cart section.
 {% endcomment %}
 {% capture empty_cart %}
-<section>
-  <p>Your basket is empty. <a href="{{ shop.url }}" class="button">Let's go shopping</a></p>
-</section>
+<div class="cart-page">
+  <div class="cart-page__empty">
+    <p>Your cart is empty</p>
+    <a href="{{ routes.all_products_collection_url }}" class="button">Continue Shopping</a>
+  </div>
+</div>
 {% endcapture %}
+
 <script>
   const emptyCartHtml = `{{ empty_cart }}`;
 </script>
 
-{% comment %}
-{% endcomment %}
 <div class="section-wrap">
-  <section class="section">
-    <h1 data-title="Cart">Cart</h1>
-  </section>
-
   <div id="cart-content" class="section">
     {% if cart.items.size > 0 %}
-      <form action="{{ routes.cart_url }}" method="post">
-        {% render 'cart-spend', section: section %}
+      <div class="cart-page">
+        <div class="cart-page__header">
+          <h1>Your Cart ({{ cart.item_count }})</h1>
+        </div>
 
-        <section>
-          <div class="cart-items-header" data-device="desktop">
-            <div>Product</div>
-            <div>Quantity</div>
-            <div>Total</div>
-          </div>
-          <div class="cart-items-header" data-device="mobile">
-            <div>Items</div>
-          </div>
-          <div class="cart-items-group">
+        <form action="{{ routes.cart_url }}" method="post">
+          <div class="cart-page__items">
             {% liquid
               for item in cart.items
                 unless item.product.handle == 'gift-wrap' and cart_item_keys contains item.properties._id
-                  render 'cart-item', item: item, thumbnail_width: thumbnail_width, gift_wrap: gift_wrap, gift_wrap_items: gift_wrap_items
+                  render 'cart-page-item', item: item, thumbnail_width: thumbnail_width, gift_wrap: gift_wrap, gift_wrap_items: gift_wrap_items
                 endunless
               endfor
             %}
           </div>
-          <div class="cart-items-footer">
-            <div class="cart-items-footer__total flex">
-              <span>{{ section.settings.cart_total_label }}</span>
-              <strong class="large-text js--cart-total">{{ cart.total_price | money }}</strong>
+
+          <div class="cart-page__footer">
+            <div class="cart-page__total">
+              <span>{{ section.settings.cart_total_label | default: 'Total' }}</span>
+              <strong class="js--cart-total">{{ cart.total_price | money }}</strong>
             </div>
-            <div class="cart-items-footer__note">
-              {{ section.settings.checkout_note }}
-            </div>
-            <div>
-              <button type="submit" name="checkout" class="button">
-                {{ section.settings.checkout_btn_label }}
-              </button>
-              {%- if additional_checkout_buttons -%}
-                <div class="cart__dynamic-checkout-buttons additional-checkout-buttons">
-                  {{ content_for_additional_checkout_buttons }}
-                </div>
-              {%- endif -%}
-            </div>
+
+            {% if section.settings.checkout_note %}
+              <div class="cart-page__note">
+                {{ section.settings.checkout_note }}
+              </div>
+            {% endif %}
+
+            <button type="submit" name="checkout" class="cart-page__checkout">
+              {{ section.settings.checkout_btn_label | default: 'Checkout' }}
+            </button>
+
+            {%- if additional_checkout_buttons -%}
+              <div class="cart__dynamic-checkout-buttons additional-checkout-buttons" style="margin-top: 15px;">
+                {{ content_for_additional_checkout_buttons }}
+              </div>
+            {%- endif -%}
           </div>
-        </section>
-      </form>
+        </form>
+      </div>
       <script async src="{{ 'cart.js' | asset_url }}"></script>
     {% endif %}
 

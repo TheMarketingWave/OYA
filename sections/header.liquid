@@ -479,7 +479,11 @@
 
   <div class="header-content">
     {% render 'icon-button', icon: 'search.svg', label: 'Search' %}
-    {% render 'icon-button', icon: 'person.svg', label: 'Log In' %}
+    {% if customer %}
+      {% render 'icon-button', icon: 'person.svg', label: 'Account', url: routes.account_url %}
+    {% else %}
+      {% render 'icon-button', icon: 'person.svg', label: 'Log In', url: routes.account_login_url %}
+    {% endif %}
     <div id="header-cart-button" data-cart-open>
       {% render 'icon-button', icon: 'cart.svg', label: 'Cart' %}
       <div class="cart-badge{% if cart.item_count > 0 %} visible{% endif %}">

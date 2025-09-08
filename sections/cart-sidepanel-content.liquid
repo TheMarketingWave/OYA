@@ -7,9 +7,15 @@
   {% if cart.item_count > 0 %}
     {% for item in cart.items %}
       <div class="cart-item" data-cart-item="{{ item.key }}">
-        <img src="{{ item.image | image_url: width: 80 }}" alt="{{ item.title }}" width="80" height="80">
+        <div class="cart-item__image">
+          <a href="{{ item.url }}">
+            <img src="{{ item.image | image_url: width: 80 }}" alt="{{ item.title }}" width="80" height="80">
+          </a>
+        </div>
         <div class="cart-item__details">
-          <h3>{{ item.product.title }}</h3>
+          <h3>
+            <a href="{{ item.url }}">{{ item.product.title }}</a>
+          </h3>
 
           <div class="cart-item__quantity">
             <button data-cart-quantity-minus="{{ item.key }}">-</button>
