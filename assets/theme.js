@@ -83,17 +83,49 @@ const setAccordionToggle = () => {
           "[data-accordion-toggle]"
         );
         const allIcons = accordion.querySelectorAll(".accordion-icon");
+        const allContents = accordion.querySelectorAll(
+          "[data-accordion-content]"
+        );
 
         allItems.forEach((item) => item.classList.remove("active"));
         allToggles.forEach((t) => t.setAttribute("aria-expanded", "false"));
         allIcons.forEach((i) => (i.textContent = "+"));
+
+        // Reset max-height for smooth closing animation
+        allContents.forEach((c) => {
+          const currentHeight = c.scrollHeight;
+          c.style.maxHeight = currentHeight + "px";
+          c.style.paddingBottom = "50px"; // Ensure padding is set
+
+          requestAnimationFrame(() => {
+            c.style.maxHeight = "0px";
+            c.style.paddingBottom = "0px";
+          });
+        });
       }
 
       // Toggle current item if it wasn't active
       if (!isActive) {
+        // Set initial state for smooth opening animation
+        content.style.maxHeight = "0px";
+        content.style.paddingBottom = "0px";
+
         accordionItem.classList.add("active");
         toggle.setAttribute("aria-expanded", "true");
         if (icon) icon.textContent = "×";
+
+        // Animate to full height with padding
+        requestAnimationFrame(() => {
+          const targetHeight = content.scrollHeight;
+          content.style.maxHeight = targetHeight + 50 + "px"; // Add 50px for padding
+          content.style.paddingBottom = "50px";
+
+          // After animation completes, remove inline styles so CSS can take over
+          setTimeout(() => {
+            content.style.maxHeight = "";
+            content.style.paddingBottom = "20px";
+          }, 400); // Match the CSS transition duration
+        });
 
         // Trigger custom event for onExpand callback
         const expandEvent = new CustomEvent("accordionExpand", {

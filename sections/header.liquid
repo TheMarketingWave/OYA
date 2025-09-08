@@ -102,6 +102,38 @@
     background-color: var(--color-brand-brown) !important;
   }
 
+  /* Cart Badge Styles */
+  #header-cart-button {
+    position: relative;
+  }
+
+  .cart-badge {
+    position: absolute;
+    top: -4px;
+    right: -6px;
+    background: var(--color-brand-cream);
+    color: var(--color-brand-brown);
+    border-radius: 50%;
+    width: 16px;
+    height: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: 600;
+    transform: scale(0.9);
+    overflow: hidden;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s ease, visibility 0.2s ease, transform 0.2s ease;
+  }
+
+  .cart-badge.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: scale(1);
+  }
+
   .header-content * {
     transition: color 0.3s ease;
   }
@@ -448,7 +480,12 @@
   <div class="header-content">
     {% render 'icon-button', icon: 'search.svg', label: 'Search' %}
     {% render 'icon-button', icon: 'person.svg', label: 'Log In' %}
-    {% render 'icon-button', icon: 'cart.svg', label: 'Cart' %}
+    <div id="header-cart-button" data-cart-open>
+      {% render 'icon-button', icon: 'cart.svg', label: 'Cart' %}
+      <div class="cart-badge{% if cart.item_count > 0 %} visible{% endif %}">
+        <span>{{ cart.item_count }}</span>
+      </div>
+    </div>
   </div>
 
   <!-- New menu container -->
