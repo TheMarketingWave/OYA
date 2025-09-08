@@ -67,6 +67,17 @@
     <script src="{{ 'theme.js' | asset_url }}" async></script>
     <script src="{{ 'predictive-search.js' | asset_url }}" defer></script>
 
+    <!-- Shopify Global Variables -->
+    <script>
+      window.Shopify = window.Shopify || {};
+      window.Shopify.currency = {
+        active: '{{ cart.currency.iso_code }}',
+        rate: '{{ cart.currency.rate }}',
+      };
+      window.Shopify.locale = '{{ request.locale.iso_code }}';
+      window.Shopify.country = '{{ localization.country.iso_code }}';
+    </script>
+
     {% render 'schemas' %}
     {% render 'social-meta-tags' %}
     {{ content_for_header }}

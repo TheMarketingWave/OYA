@@ -84,21 +84,29 @@ class CartSidepanel {
 
   async updateQuantity(key, change) {
     try {
-      // Get current quantity
+      // Get current item and show loading state
       const currentItem = this.sidepanel.querySelector(
         `[data-cart-item="${key}"]`
       );
+      if (!currentItem) return;
+
+      // Add loading class to the item
+      currentItem.classList.add("loading");
+
+      // Disable quantity buttons (but no loading class on buttons)
+      const quantityButtons = currentItem.querySelectorAll(
+        ".cart-item__quantity button, [data-cart-quantity-plus], [data-cart-quantity-minus]"
+      );
+      quantityButtons.forEach((btn) => {
+        btn.disabled = true;
+      });
+
+      // Get current quantity
       const currentQuantityEl = currentItem.querySelector(
-        ".cart-item__quantity span"
+        ".cart-item__quantity span, .quantity-display"
       );
       const currentQuantity = parseInt(currentQuantityEl.textContent);
       const newQuantity = Math.max(0, currentQuantity + change);
-
-      // Show loading state
-      const quantityButtons = currentItem.querySelectorAll(
-        ".cart-item__quantity button"
-      );
-      quantityButtons.forEach((btn) => (btn.disabled = true));
 
       const response = await fetch("/cart/change.js", {
         method: "POST",
@@ -129,24 +137,37 @@ class CartSidepanel {
       }
     } catch (error) {
       console.error("Error updating cart:", error);
-      // Re-enable buttons on error
+
+      // Remove loading states on error
       const currentItem = this.sidepanel.querySelector(
         `[data-cart-item="${key}"]`
       );
-      const quantityButtons = currentItem.querySelectorAll(
-        ".cart-item__quantity button"
-      );
-      quantityButtons.forEach((btn) => (btn.disabled = false));
+      if (currentItem) {
+        currentItem.classList.remove("loading");
+        const quantityButtons = currentItem.querySelectorAll(
+          ".cart-item__quantity button, [data-cart-quantity-plus], [data-cart-quantity-minus]"
+        );
+        quantityButtons.forEach((btn) => {
+          btn.disabled = false;
+        });
+      }
     }
   }
 
   async removeItem(key) {
     try {
-      // Show loading state
+      // Get current item and show loading state
       const currentItem = this.sidepanel.querySelector(
         `[data-cart-item="${key}"]`
       );
-      currentItem.style.opacity = "0.5";
+      if (!currentItem) return;
+
+      // Add loading class and disable all interactions
+      currentItem.classList.add("loading");
+      const itemButtons = currentItem.querySelectorAll("button");
+      itemButtons.forEach((btn) => {
+        btn.disabled = true;
+      });
 
       const response = await fetch("/cart/change.js", {
         method: "POST",
@@ -173,123 +194,130 @@ class CartSidepanel {
       }
     } catch (error) {
       console.error("Error removing item:", error);
+
       // Restore item on error
       const currentItem = this.sidepanel.querySelector(
         `[data-cart-item="${key}"]`
       );
       if (currentItem) {
-        currentItem.style.opacity = "1";
+        currentItem.classList.remove("loading");
+        const itemButtons = currentItem.querySelectorAll("button");
+        itemButtons.forEach((btn) => {
+          btn.disabled = false;
+        });
       }
     }
   }
 
   async refreshCart() {
     try {
-      // Fetch the updated cart data
-      const response = await fetch("/cart.js");
-
-      if (!response.ok) {
-        throw new Error("Failed to fetch cart data");
+      // Show loading state on cart items container
+      const itemsContainer = document.getElementById(
+        "cart-sidepanel-items-container"
+      );
+      if (itemsContainer) {
+        itemsContainer.classList.add("refreshing");
       }
 
-      const cart = await response.json();
+      // Fetch the updated cart content from the section
+      const response = await fetch("/?sections=cart-sidepanel-content");
 
-      // Update the sidepanel content with new cart data
-      this.updateSidepanelContent(cart);
+      if (!response.ok) {
+        throw new Error("Failed to fetch cart section");
+      }
+
+      const data = await response.json();
+
+      if (data["cart-sidepanel-content"]) {
+        // Update the cart items container with new HTML
+        if (itemsContainer) {
+          itemsContainer.innerHTML = data["cart-sidepanel-content"];
+          itemsContainer.classList.remove("refreshing");
+        }
+
+        // Update the cart header count
+        this.updateCartHeader();
+      }
     } catch (error) {
       console.error("Error refreshing cart:", error);
-      // Don't reload the page, just log the error
-      // The cart will be updated on next page load
+
+      // Remove loading state on error
+      const itemsContainer = document.getElementById(
+        "cart-sidepanel-items-container"
+      );
+      if (itemsContainer) {
+        itemsContainer.classList.remove("refreshing");
+      }
     }
   }
 
-  updateSidepanelContent(cart) {
+  async updateCartHeader() {
+    try {
+      // Fetch current cart data for header update
+      const response = await fetch("/cart.js");
+      if (response.ok) {
+        const cart = await response.json();
+        const cartHeader = document.getElementById("cart-count-header");
+        if (cartHeader) {
+          cartHeader.textContent = `Your Cart (${cart.item_count})`;
+        }
+      }
+    } catch (error) {
+      console.error("Error updating cart header:", error);
+    }
+  }
+
+  // Show/hide loading overlay for entire sidepanel
+  showLoadingOverlay() {
+    let overlay = this.sidepanel.querySelector(".cart-loading-overlay");
+    if (!overlay) {
+      overlay = document.createElement("div");
+      overlay.className = "cart-loading-overlay";
+      overlay.innerHTML = '<div class="cart-loading-spinner"></div>';
+      this.sidepanel
+        .querySelector(".cart-sidepanel__content")
+        .appendChild(overlay);
+    }
+    overlay.classList.add("visible");
+  }
+
+  hideLoadingOverlay() {
+    const overlay = this.sidepanel.querySelector(".cart-loading-overlay");
+    if (overlay) {
+      overlay.classList.remove("visible");
+    }
+  }
+
+  async open() {
     if (!this.sidepanel) return;
 
-    const itemsContainer = this.sidepanel.querySelector(
-      ".cart-sidepanel__items"
+    // Calculate scrollbar width to prevent layout shift
+    const scrollbarWidth =
+      window.innerWidth - document.documentElement.clientWidth;
+    document.documentElement.style.setProperty(
+      "--scrollbar-width",
+      `${scrollbarWidth}px`
     );
-    const cartHeader = this.sidepanel.querySelector(
-      ".cart-sidepanel__header h2"
-    );
-
-    if (!itemsContainer) return;
-
-    // Update header count
-    if (cartHeader) {
-      cartHeader.textContent = `Your Cart (${cart.item_count})`;
-    }
-
-    // Clear current items
-    itemsContainer.innerHTML = "";
-
-    if (cart.item_count > 0) {
-      // Add cart items
-      cart.items.forEach((item) => {
-        const itemElement = this.createCartItemElement(item);
-        itemsContainer.appendChild(itemElement);
-      });
-
-      // Add footer with total and buttons
-      const footerElement = this.createCartFooterElement(cart);
-      itemsContainer.appendChild(footerElement);
-    } else {
-      // Show empty cart message
-      itemsContainer.innerHTML = "<p>Your cart is empty</p>";
-    }
-  }
-
-  createCartItemElement(item) {
-    const itemDiv = document.createElement("div");
-    itemDiv.className = "cart-item";
-    itemDiv.setAttribute("data-cart-item", item.key);
-
-    itemDiv.innerHTML = `
-      <img src="${item.image}" alt="${item.title}" width="80" height="80">
-      <div class="cart-item__details">
-        <h3>${item.product_title}</h3>
-        <p>${item.variant_title || ""}</p>
-        <div class="cart-item__quantity">
-          <button data-cart-quantity-minus="${item.key}">-</button>
-          <span>${item.quantity}</span>
-          <button data-cart-quantity-plus="${item.key}">+</button>
-        </div>
-      </div>
-      <div class="cart-item__price">${this.formatMoney(
-        item.final_line_price
-      )}</div>
-      <button data-cart-remove="${item.key}">Remove</button>
-    `;
-
-    return itemDiv;
-  }
-
-  createCartFooterElement(cart) {
-    const footerDiv = document.createElement("div");
-    footerDiv.className = "cart-sidepanel__footer";
-
-    footerDiv.innerHTML = `
-      <div class="cart-total">Total: ${this.formatMoney(cart.total_price)}</div>
-      <a href="/cart" class="btn btn--secondary">View Cart</a>
-      <button class="btn btn--primary" data-cart-checkout>Checkout</button>
-    `;
-
-    return footerDiv;
-  }
-
-  formatMoney(cents) {
-    return new Intl.NumberFormat("en-US", {
-      style: "currency",
-      currency: "USD",
-    }).format(cents / 100);
-  }
-
-  open() {
-    if (!this.sidepanel) return;
 
     this.isOpen = true;
     this.sidepanel.classList.add("is-open");
     document.body.classList.add("cart-sidepanel-open");
+
+    // Disable GSAP ScrollSmoother if available
+    if (window.ScrollSmoother && window.ScrollSmoother.get()) {
+      this.scrollSmoother = window.ScrollSmoother.get();
+      this.scrollSmoother.paused(true);
+    }
+
+    // Show loading overlay while refreshing cart data
+    this.showLoadingOverlay();
+
+    // Refresh cart data when opening
+    try {
+      await this.refreshCart();
+    } finally {
+      this.hideLoadingOverlay();
+    }
 
     // Focus management for accessibility
     const closeButton = this.sidepanel.querySelector("[data-cart-close]");
@@ -307,6 +335,15 @@ class CartSidepanel {
     this.isOpen = false;
     this.sidepanel.classList.remove("is-open");
     document.body.classList.remove("cart-sidepanel-open");
+
+    // Reset scrollbar width compensation
+    document.documentElement.style.setProperty("--scrollbar-width", "0px");
+
+    // Re-enable GSAP ScrollSmoother if it was paused
+    if (this.scrollSmoother) {
+      this.scrollSmoother.paused(false);
+      this.scrollSmoother = null;
+    }
 
     // Trigger close event
     document.dispatchEvent(new CustomEvent("cart:sidepanel:closed"));
