@@ -1,0 +1,136 @@
+{% comment %}
+  Cart Page Item Snippet - Based on sidepanel design
+{% endcomment %}
+
+{% comment %}
+  BEGIN GIFT WRAP
+  If this item is assigned with the "gift wrap" tag,
+  display the gift wrapping option.
+{% endcomment %}
+{% assign gift_wrap_checkbox = '' %}
+{% if item.variant.available %}
+  {% unless gift_wrap == blank %}
+    {% if item.product.tags contains 'gift wrap' or item.product.tags contains 'Gift Wrap' %}
+      {% assign gift_wrap_checked = '' %}
+      {% if gift_wrap_items contains item.key %}
+        {% assign gift_wrap_checked = ' checked' %}
+      {% endif %}
+      {% capture gift_wrap_checkbox %}
+        <div class="gift-wrap-option" style="margin-top: 10px;">
+          <label style="display: flex; align-items: center; gap: 8px; font-size: 0.875rem;">
+            <input class="js--gift-wrap"
+              type="checkbox"
+              name="{{ item.product_id }}"
+              data-item-title="{{ item.title }}"
+              value="{{ item.key }}"
+              {{ gift_wrap_checked }}
+              onclick="runGiftWrap()">
+            <span>
+              Gift wrap item for {{ gift_wrap.price | money }}
+            </span>
+          </label>
+        </div>
+      {% endcapture %}
+    {% endif %}
+  {% endunless %}
+{% endif %}
+{% comment %}
+  END GIFT WRAP
+{% endcomment %}
+
+<div class="cart-item js--cart-item" data-cart-item="{{ item.key }}">
+  <div class="cart-item__image">
+    <a href="{{ item.url }}">
+      {% liquid
+        assign thumbnail_height = thumbnail_width | divided_by: item.image.aspect_ratio | ceil
+      %}
+      {% if item.image == blank %}
+        {{ 'product-1' | placeholder_svg_tag: 'placeholder' }}
+      {% else %}
+        <img
+          src="{{ item.image | image_url: width: thumbnail_width }}"
+          width="{{ thumbnail_width }}"
+          height="{{ thumbnail_height }}"
+          alt="{{ item.image.alt }}"
+          loading="lazy"
+        >
+      {% endif %}
+    </a>
+  </div>
+
+  <div class="cart-item__details">
+    <h3>
+      <a href="{{ item.url }}" style="text-decoration: none; color: inherit;">
+        {{ item.product.title }}
+      </a>
+    </h3>
+
+    {% unless item.product.has_only_default_variant == true %}
+      {% if item.variant.title != 'Default Title' %}
+        <p style="margin: 5px 0; font-size: 0.875rem; color: rgba(139, 69, 19, 0.7);">
+          {{ item.variant.title }}
+        </p>
+      {% endif %}
+    {% endunless %}
+
+    {% if item.variant.compare_at_price > item.price %}
+      <div style="margin: 5px 0; font-size: 0.875rem;">
+        <strike style="color: rgba(139, 69, 19, 0.5);">{{ item.variant.compare_at_price | money }}</strike>
+        <span style="color: var(--color-brand-brown, #8b4513); font-weight: 500;">{{ item.price | money }} ea.</span>
+      </div>
+    {% else %}
+      <div style="margin: 5px 0; font-size: 0.875rem; color: rgba(139, 69, 19, 0.7);">{{ item.price | money }} ea.</div>
+    {% endif %}
+
+    <div class="cart-item__quantity">
+      <button
+        type="button"
+        onclick="updateCartItemQuantity('{{ item.key }}', {{ item.quantity | minus: 1 }})"
+        {% if item.quantity <= 1 %}
+          disabled
+        {% endif %}
+      >
+        -
+      </button>
+      <span>{{ item.quantity }}</span>
+      <button
+        type="button"
+        onclick="updateCartItemQuantity('{{ item.key }}', {{ item.quantity | plus: 1 }})"
+      >
+        +
+      </button>
+    </div>
+
+    {{ gift_wrap_checkbox }}
+  </div>
+
+  <div class="cart-item__actions">
+    <div class="cart-item__price">{{ item.line_price | money }}</div>
+    <button
+      type="button"
+      onclick="if(confirm('Are you sure you want to remove this item from your cart?')){ updateCartItemQuantity('{{ item.key }}', 0); }"
+      style="background: none; border: none; color: rgba(139, 69, 19, 0.6); font-size: 0.75rem; cursor: pointer; padding: 4px 0; text-decoration: underline; transition: color 0.2s ease;"
+    >
+      Remove
+    </button>
+  </div>
+
+  <!-- Hidden input for form submission -->
+  <input type="hidden" name="updates[]" value="{{ item.quantity }}" data-key="{{ item.key }}">
+</div>
+
+<script>
+  function updateCartItemQuantity(key, newQuantity) {
+    // Update the hidden input
+    const input = document.querySelector(`input[data-key="${key}"]`);
+    if (input) {
+      input.value = newQuantity;
+    }
+
+    // Submit the form to update the cart
+    const form = document.querySelector('form[action*="cart"]');
+    if (form) {
+      form.submit();
+    }
+  }
+</script>

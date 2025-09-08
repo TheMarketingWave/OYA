@@ -1,0 +1,48 @@
+{% comment %}
+  Cart Sidepanel Content Section
+  This section is used for AJAX updates of the cart sidepanel
+{% endcomment %}
+
+<div class="cart-sidepanel__items">
+  {% if cart.item_count > 0 %}
+    {% for item in cart.items %}
+      <div class="cart-item" data-cart-item="{{ item.key }}">
+        <div class="cart-item__image">
+          <a href="{{ item.url }}">
+            <img src="{{ item.image | image_url: width: 80 }}" alt="{{ item.title }}" width="80" height="80">
+          </a>
+        </div>
+        <div class="cart-item__details">
+          <h3>
+            <a href="{{ item.url }}">{{ item.product.title }}</a>
+          </h3>
+
+          <div class="cart-item__quantity">
+            <button data-cart-quantity-minus="{{ item.key }}">-</button>
+            <span>{{ item.quantity }}</span>
+            <button data-cart-quantity-plus="{{ item.key }}">+</button>
+          </div>
+        </div>
+        <div class="cart-item__actions">
+          <div class="cart-item__price">{{ item.final_line_price | money }}</div>
+          <button data-cart-remove="{{ item.key }}">Remove</button>
+        </div>
+      </div>
+    {% endfor %}
+
+    <div class="cart-sidepanel__footer">
+      <div class="cart-total">Total: {{ cart.total_price | money }}</div>
+
+      <button class="btn btn--primary" data-cart-checkout>Checkout</button>
+    </div>
+  {% else %}
+    <p>Your cart is empty</p>
+  {% endif %}
+</div>
+
+{% schema %}
+{
+  "name": "Cart Sidepanel Content",
+  "settings": []
+}
+{% endschema %}
