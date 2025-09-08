@@ -30,57 +30,43 @@
     "product_carousel_AhhLUq": {
       "type": "product-carousel",
       "blocks": {
-        "product_aNBrMe": {
+        "product_eHynqH": {
           "type": "product",
           "settings": {
-            "product": "origami-crane-necklace"
+            "product": "serenity-ylang-ylang-iii-copy-4"
           }
         },
-        "product_YhMHfF": {
+        "product_UJNaBx": {
           "type": "product",
           "settings": {
-            "product": "choker-with-gold-pendant"
+            "product": "chain-bracelet"
           }
         },
-        "product_kRbpUP": {
+        "product_m3hmm9": {
           "type": "product",
           "settings": {
-            "product": "choker-with-bead"
+            "product": "serenity-ylang-ylang-iii-copy-3"
           }
         },
-        "product_eaiDgY": {
+        "product_fNCmLc": {
           "type": "product",
           "settings": {
-            "product": "leather-anchor"
+            "product": "serenity-ylang-ylang-iii-copy-2"
           }
         },
-        "product_f6YbUh": {
+        "product_h9xxEM": {
           "type": "product",
           "settings": {
-            "product": "leather-anchor"
-          }
-        },
-        "product_JfphKc": {
-          "type": "product",
-          "settings": {
-            "product": "moon-charm-bracelet"
-          }
-        },
-        "product_BntJXK": {
-          "type": "product",
-          "settings": {
-            "product": "stylish-summer-neclace"
+            "product": "serenity-ylang-ylang-iii-copy-1"
           }
         }
       },
       "block_order": [
-        "product_aNBrMe",
-        "product_YhMHfF",
-        "product_kRbpUP",
-        "product_eaiDgY",
-        "product_f6YbUh",
-        "product_JfphKc",
-        "product_BntJXK"
+        "product_eHynqH",
+        "product_UJNaBx",
+        "product_m3hmm9",
+        "product_fNCmLc",
+        "product_h9xxEM"
       ],
       "name": "Product Carousel",
       "settings": {
