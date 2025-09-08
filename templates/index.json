@@ -80,50 +80,43 @@
     "product_carousel_e7BfWK": {
       "type": "product-carousel",
       "blocks": {
+        "product_dUQihQ": {
+          "type": "product",
+          "settings": {
+            "product": "serenity-ylang-ylang-iii-copy-5"
+          }
+        },
+        "product_kpLHLc": {
+          "type": "product",
+          "settings": {
+            "product": "chain-bracelet"
+          }
+        },
+        "product_kgMLBh": {
+          "type": "product",
+          "settings": {
+            "product": "serenity-ylang-ylang-iii-copy-5"
+          }
+        },
+        "product_CKDcjn": {
+          "type": "product",
+          "settings": {
+            "product": "serenity-ylang-ylang-iii-copy-2"
+          }
+        },
         "product_rqUE7W": {
           "type": "product",
           "settings": {
-            "product": "bangle-bracelet-with-feathers"
-          }
-        },
-        "product_4zqEEC": {
-          "type": "product",
-          "settings": {
-            "product": "moon-charm-bracelet"
-          }
-        },
-        "product_kDHtED": {
-          "type": "product",
-          "settings": {
-            "product": "choker-with-gold-pendant"
-          }
-        },
-        "product_YFbqFY": {
-          "type": "product",
-          "settings": {
-            "product": "bangle-bracelet"
-          }
-        },
-        "product_TMiGip": {
-          "type": "product",
-          "settings": {
-            "product": "boho-earrings"
-          }
-        },
-        "product_mdnfBR": {
-          "type": "product",
-          "settings": {
-            "product": "dreamcatcher-pendant-necklace"
+            "product": "serenity-ylang-ylang-iii-copy-5"
           }
         }
       },
       "block_order": [
-        "product_rqUE7W",
-        "product_4zqEEC",
-        "product_kDHtED",
-        "product_YFbqFY",
-        "product_TMiGip",
-        "product_mdnfBR"
+        "product_dUQihQ",
+        "product_kpLHLc",
+        "product_kgMLBh",
+        "product_CKDcjn",
+        "product_rqUE7W"
       ],
       "name": "Product Carousel",
       "settings": {
