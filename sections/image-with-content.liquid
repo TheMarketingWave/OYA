@@ -67,9 +67,9 @@
   .image-with-content__video-small {
     width: 60%;
     height: 200px;
-    object-fit: cover;
     border-radius: 8px;
     margin-top: auto;
+    overflow: hidden;
   }
 
   .image-with-content__video-small video {
@@ -131,17 +131,10 @@
     {% comment %} Small media - can be image or video {% endcomment %}
     {% if section.settings.small_video != blank %}
       <div class="image-with-content__video-small">
-        <video
-          autoplay
-          muted
-          loop
-          playsinline
-          preload="metadata"
-          aria-label="{{ section.settings.small_video_alt | default: 'Background video' | escape }}"
-        >
-          <source src="{{ section.settings.small_video | file_url }}" type="video/mp4">
-          Your browser does not support the video tag.
-        </video>
+        {{
+          section.settings.small_video
+          | video_tag: autoplay: true, loop: true, muted: true, controls: false, playsinline: true
+        }}
       </div>
     {% elsif section.settings.image_small != blank %}
       <img
