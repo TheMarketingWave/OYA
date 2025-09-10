@@ -30,43 +30,57 @@
     "product_carousel_AhhLUq": {
       "type": "product-carousel",
       "blocks": {
-        "product_eHynqH": {
+        "product_aNBrMe": {
           "type": "product",
           "settings": {
-            "product": "serenity-ylang-ylang-iii-copy-4"
+            "product": "origami-crane-necklace"
           }
         },
-        "product_UJNaBx": {
+        "product_YhMHfF": {
           "type": "product",
           "settings": {
-            "product": "chain-bracelet"
+            "product": "choker-with-gold-pendant"
           }
         },
-        "product_m3hmm9": {
+        "product_kRbpUP": {
           "type": "product",
           "settings": {
-            "product": "serenity-ylang-ylang-iii-copy-3"
+            "product": "choker-with-bead"
           }
         },
-        "product_fNCmLc": {
+        "product_eaiDgY": {
           "type": "product",
           "settings": {
-            "product": "serenity-ylang-ylang-iii-copy-2"
+            "product": "leather-anchor"
           }
         },
-        "product_h9xxEM": {
+        "product_f6YbUh": {
           "type": "product",
           "settings": {
-            "product": "serenity-ylang-ylang-iii-copy-1"
+            "product": "leather-anchor"
+          }
+        },
+        "product_JfphKc": {
+          "type": "product",
+          "settings": {
+            "product": "moon-charm-bracelet"
+          }
+        },
+        "product_BntJXK": {
+          "type": "product",
+          "settings": {
+            "product": "stylish-summer-neclace"
           }
         }
       },
       "block_order": [
-        "product_eHynqH",
-        "product_UJNaBx",
-        "product_m3hmm9",
-        "product_fNCmLc",
-        "product_h9xxEM"
+        "product_aNBrMe",
+        "product_YhMHfF",
+        "product_kRbpUP",
+        "product_eaiDgY",
+        "product_f6YbUh",
+        "product_JfphKc",
+        "product_BntJXK"
       ],
       "name": "Product Carousel",
       "settings": {
@@ -80,43 +94,50 @@
     "product_carousel_e7BfWK": {
       "type": "product-carousel",
       "blocks": {
-        "product_dUQihQ": {
-          "type": "product",
-          "settings": {
-            "product": "serenity-ylang-ylang-iii-copy-5"
-          }
-        },
-        "product_kpLHLc": {
-          "type": "product",
-          "settings": {
-            "product": "chain-bracelet"
-          }
-        },
-        "product_kgMLBh": {
-          "type": "product",
-          "settings": {
-            "product": "serenity-ylang-ylang-iii-copy-5"
-          }
-        },
-        "product_CKDcjn": {
-          "type": "product",
-          "settings": {
-            "product": "serenity-ylang-ylang-iii-copy-2"
-          }
-        },
         "product_rqUE7W": {
           "type": "product",
           "settings": {
-            "product": "serenity-ylang-ylang-iii-copy-5"
+            "product": "bangle-bracelet-with-feathers"
+          }
+        },
+        "product_4zqEEC": {
+          "type": "product",
+          "settings": {
+            "product": "moon-charm-bracelet"
+          }
+        },
+        "product_kDHtED": {
+          "type": "product",
+          "settings": {
+            "product": "choker-with-gold-pendant"
+          }
+        },
+        "product_YFbqFY": {
+          "type": "product",
+          "settings": {
+            "product": "bangle-bracelet"
+          }
+        },
+        "product_TMiGip": {
+          "type": "product",
+          "settings": {
+            "product": "boho-earrings"
+          }
+        },
+        "product_mdnfBR": {
+          "type": "product",
+          "settings": {
+            "product": "dreamcatcher-pendant-necklace"
           }
         }
       },
       "block_order": [
-        "product_dUQihQ",
-        "product_kpLHLc",
-        "product_kgMLBh",
-        "product_CKDcjn",
-        "product_rqUE7W"
+        "product_rqUE7W",
+        "product_4zqEEC",
+        "product_kDHtED",
+        "product_YFbqFY",
+        "product_TMiGip",
+        "product_mdnfBR"
       ],
       "name": "Product Carousel",
       "settings": {
