@@ -61,8 +61,26 @@
     </h3>
 
     {% if show_description and product.description != blank %}
+      {% comment %} Extract description from product table format {% endcomment %}
+      {% assign extracted_description = '' %}
+      {% if product.description contains '<table' %}
+        {% assign content_lines = product.description | split: '</tr>' %}
+        {% for line in content_lines %}
+          {% if line contains 'Description' %}
+            {% assign desc_parts = line | split: 'Description' %}
+            {% if desc_parts.size > 1 %}
+              {% assign extracted_description = desc_parts[1] | strip_html | strip %}
+            {% endif %}
+          {% endif %}
+        {% endfor %}
+      {% endif %}
+
       <p class="product-card__description">
-        {{ product.description | strip_html | truncate: 90 }}
+        {% if extracted_description != blank %}
+          {{ extracted_description | truncate: 90 }}
+        {% else %}
+          {{ product.description | strip_html | truncate: 90 }}
+        {% endif %}
       </p>
     {% endif %}
 
