@@ -1,26 +1,286 @@
+{% style %}
+  .journal-page {
+    color: var(--color-brand-cream);
+    min-height: 100vh;
+    padding: 40px 20px;
+    font-family: 'Playfair Display', serif;
+  }
+
+  .journal-container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .journal-header {
+    text-align: left;
+    margin-bottom: 48px;
+  }
+
+  .journal-title {
+    font-size: 40px;
+    font-weight: 400;
+    margin: 0 0 10px 0;
+    color: var(--color-brand-cream);
+  }
+
+  .journal-subtitle {
+    font-size: 16px;
+    opacity: 0.7;
+    margin: 0;
+    font-weight: 300;
+  }
+
+  .journal-featured {
+    display: flex;
+    gap: 24px;
+    margin-bottom: 48px;
+    align-items: flex-start;
+  }
+
+  .journal-featured__image {
+    flex: 1;
+    aspect-ratio: 16/9;
+    overflow: hidden;
+    border-radius: 8px;
+  }
+
+  .journal-featured__image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .journal-featured__content {
+    flex: 1;
+  }
+
+  .journal-featured__title {
+    font-size: 2.5rem;
+    font-weight: 400;
+    line-height: 1.2;
+    margin: 0 0 20px 0;
+    color: var(--color-brand-cream);
+  }
+
+  .journal-featured__meta {
+    font-size: 14px;
+    margin-bottom: 30px;
+    font-family: 'Poppins', serif;
+  }
+
+  .journal-featured__excerpt {
+    font-size: 14px;
+    font-family: 'Poppins', serif;
+  }
+
+  .journal-filters {
+    display: flex;
+    gap: 40px;
+    margin-bottom: 40px;
+    border-bottom: 1px solid color-mix(in srgb, var(--color-brand-cream) 20%, transparent);
+    padding-bottom: 20px;
+  }
+
+  .journal-filter {
+    background: none;
+    border: none;
+    color: color-mix(in srgb, var(--color-brand-cream) 60%, transparent);
+    font-size: 1rem;
+    cursor: pointer;
+    padding: 0 0 5px 0;
+    border-bottom: 2px solid transparent;
+    transition: all 0.3s ease;
+    font-family: 'Playfair Display', serif;
+  }
+
+  .journal-filter.active,
+  .journal-filter:hover {
+    color: var(--color-brand-cream);
+    border-bottom-color: var(--color-brand-cream);
+  }
+
+  .journal-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    margin-bottom: 60px;
+  }
+
+  .journal-card {
+    background: color-mix(in srgb, var(--color-brand-cream) 5%, transparent);
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .journal-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px color-mix(in srgb, var(--color-brand-brown) 30%, transparent);
+  }
+
+  .journal-card__image {
+    aspect-ratio: 4/5;
+    overflow: hidden;
+  }
+
+  .journal-card__image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .journal-card__content {
+    padding: 25px;
+  }
+
+  .journal-card__title {
+    font-size: 1.3rem;
+    font-weight: 400;
+    margin: 0 0 15px 0;
+    line-height: 1.3;
+    color: var(--color-brand-cream);
+  }
+
+  .journal-card__meta {
+    font-size: 0.85rem;
+    opacity: 0.7;
+    margin-bottom: 15px;
+  }
+
+  .journal-card__excerpt {
+    font-size: 0.9rem;
+    line-height: 1.5;
+    opacity: 0.8;
+    font-weight: 300;
+  }
+
+  .journal-pagination {
+    text-align: center;
+    margin-top: 60px;
+  }
+
+  @media (max-width: 768px) {
+    .journal-featured {
+      flex-direction: column;
+      gap: 30px;
+    }
+
+    .journal-featured__content {
+      padding-left: 0;
+    }
+
+    .journal-featured__title {
+      font-size: 2rem;
+    }
+
+    .journal-title {
+      font-size: 2.5rem;
+    }
+
+    .journal-grid {
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+
+    .journal-filters {
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+  }
+
+  @media (max-width: 1024px) and (min-width: 769px) {
+    .journal-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+{% endstyle %}
+
 {% paginate blog.articles by section.settings.limit %}
-<div class="section-wrap">
-  <div class="section">
-    <h1 data-title="{{- blog.title -}}">{{ blog.title }}</h1>
-    <p>{{ page_description }}</p>
-  </div>
+  <div class="journal-page">
+    <div class="journal-container">
+      <!-- Header -->
+      <div class="journal-header">
+        <h1 class="journal-title">Journal</h1>
+        <p class="journal-subtitle">{{ blog.title }}</p>
+      </div>
 
-  <div class="section">
-    <div class="articles-grid">
-      {% liquid
-      for article in blog.articles
-        render 'article-card', article: article
-      endfor
-      %}
+      {% if blog.articles.size > 0 %}
+        <!-- Featured Article -->
+        {% assign featured_article = blog.articles.first %}
+        <div class="journal-featured">
+          <div class="journal-featured__image">
+            {% if featured_article.image %}
+              <img
+                src="{{ featured_article.image | image_url: width: 600 }}"
+                alt="{{ featured_article.image.alt | escape }}"
+                width="600"
+                height="750"
+                loading="lazy"
+              >
+            {% else %}
+              {{ 'collection-6' | placeholder_svg_tag: 'placeholder' }}
+            {% endif %}
+          </div>
+          <div class="journal-featured__content">
+            <h2 class="journal-featured__title">{{ featured_article.title }}</h2>
+            <div class="journal-featured__meta">Author • {{ featured_article.published_at | date: '%d.%m.%Y' }}</div>
+            <div class="journal-featured__excerpt">
+              {{ featured_article.excerpt | default: featured_article.content | strip_html | truncate: 200 }}
+            </div>
+          </div>
+        </div>
+
+        <!-- Filters -->
+        <div class="journal-filters">
+          <button class="journal-filter active">All</button>
+          <button class="journal-filter">Educational</button>
+          <button class="journal-filter">Aromatherapy</button>
+          <button class="journal-filter">Safety</button>
+        </div>
+
+        <!-- Articles Grid -->
+        <div class="journal-grid">
+          {% for article in blog.articles offset: 1 %}
+            <a href="{{ article.url }}" class="journal-card">
+              <div class="journal-card__image">
+                {% if article.image %}
+                  <img
+                    src="{{ article.image | image_url: width: 400 }}"
+                    alt="{{ article.image.alt | escape }}"
+                    width="400"
+                    height="500"
+                    loading="lazy"
+                  >
+                {% else %}
+                  {{ 'collection-6' | placeholder_svg_tag: 'placeholder' }}
+                {% endif %}
+              </div>
+              <div class="journal-card__content">
+                <h3 class="journal-card__title">{{ article.title }}</h3>
+                <div class="journal-card__meta">Author • {{ article.published_at | date: '%d.%m.%Y' }}</div>
+                <div class="journal-card__excerpt">
+                  {{ article.excerpt | default: article.content | strip_html | truncate: 120 }}
+                </div>
+              </div>
+            </a>
+          {% endfor %}
+        </div>
+
+        <!-- Pagination -->
+        <div class="journal-pagination">
+          {% render 'pagination', paginate: paginate %}
+        </div>
+
+      {% else %}
+        <div style="text-align: center; padding: 60px 0;">
+          <h2 style="margin-bottom: 20px;">No articles yet</h2>
+          <p style="opacity: 0.7;">Check back soon for our latest journal entries.</p>
+        </div>
+      {% endif %}
     </div>
   </div>
-
-  <div class="section">
-    <div>
-      {% render 'pagination', paginate: paginate %}
-    </div>
-  </div>
-</div>
 {% endpaginate %}
 
 {% schema %}
