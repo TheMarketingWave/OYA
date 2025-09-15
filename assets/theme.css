@@ -398,3 +398,57 @@ h6 {
     transform: translate3d(-50%, 0, 0);
   }
 }
+
+/* Text Section Styles */
+.text-section {
+  width: 100%;
+  background-color: var(--color-brand-brown);
+  padding: 60px 0;
+}
+
+.text-section__container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 48px;
+}
+
+.text-section__content {
+  width: 60%;
+  color: var(--color-brand-cream);
+}
+
+.text-section__content--left {
+  margin-right: auto;
+}
+
+.text-section__content--right {
+  margin-left: auto;
+}
+
+.text-section__title {
+  font-size: 40px;
+  font-weight: 600;
+  margin-bottom: 24px;
+  line-height: 1.2;
+}
+
+.text-section__text {
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+/* Mobile responsive for text section */
+@media (max-width: 768px) {
+  .text-section__content {
+    width: 100%;
+  }
+
+  .text-section__title {
+    font-size: 28px;
+    margin-bottom: 16px;
+  }
+
+  .text-section__text {
+    font-size: 14px;
+  }
+}
