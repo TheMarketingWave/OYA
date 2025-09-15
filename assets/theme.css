@@ -452,3 +452,75 @@ h6 {
     font-size: 14px;
   }
 }
+
+/* Image Section Styles */
+.image-section {
+  width: 100%;
+  background-color: var(--color-brand-brown);
+  padding: 60px 0;
+}
+
+.image-section__container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 48px;
+}
+
+.image-section__content {
+  display: flex;
+  width: 100%;
+}
+
+.image-section__content--left {
+  justify-content: flex-start;
+}
+
+.image-section__content--center {
+  justify-content: center;
+}
+
+.image-section__content--right {
+  justify-content: flex-end;
+}
+
+.image-section__image {
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+  transition: transform 0.3s ease;
+}
+
+.image-section__image:hover {
+  transform: scale(1.02);
+}
+
+.image-section__placeholder {
+  width: 100%;
+  height: 300px;
+  background-color: rgba(224, 217, 186, 0.1);
+  border: 2px dashed rgba(224, 217, 186, 0.3);
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-brand-cream);
+  opacity: 0.6;
+}
+
+.image-section__placeholder svg {
+  width: 48px;
+  height: 48px;
+  margin-bottom: 12px;
+}
+
+.image-section__placeholder span {
+  font-size: 14px;
+}
+
+/* Mobile responsive for image section */
+@media (max-width: 768px) {
+  .image-section__content {
+    justify-content: center !important;
+  }
+}
