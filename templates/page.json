@@ -11,6 +11,7 @@
   "sections": {
     "page": {
       "type": "main-page",
+      "disabled": true,
       "settings": {
         "max_width": 768
       }
@@ -23,10 +24,20 @@
         "content": "OYA is more than an essential oil brand; it’s a collection of sensory rituals for modern well-being. From rare, ethically sourced plant essences to aromatherapy blends and wellness innovations, every formula is crafted with the precision of a scientist and the intuition of a healer. Whether it’s a bright citrus burst to awaken the senses, a grounding herbal infusion for balance, or a deep, resinous elixir to lull the body into rest, OYA transforms everyday moments into something sacred. Because true wellness isn’t just about feeling good—it’s about feeling alive.",
         "position": "left"
       }
+    },
+    "text_section_yycfaa": {
+      "type": "text-section",
+      "name": "Text Section",
+      "settings": {
+        "title": "Our processes?",
+        "content": "OYA is more than an essential oil brand; it’s a collection of sensory rituals for modern well-being. From rare, ethically sourced plant essences to aromatherapy blends and wellness innovations, every formula is crafted with the precision of a scientist and the intuition of a healer. Whether it’s a bright citrus burst to awaken the senses, a grounding herbal infusion for balance, or a deep, resinous elixir to lull the body into rest, OYA transforms everyday moments into something sacred. Because true wellness isn’t just about feeling good—it’s about feeling alive.",
+        "position": "right"
+      }
     }
   },
   "order": [
     "page",
-    "text_section_Geb6JW"
+    "text_section_Geb6JW",
+    "text_section_yycfaa"
   ]
 }
