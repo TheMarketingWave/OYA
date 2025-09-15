@@ -48,7 +48,8 @@
         "image_large": "shopify://shop_images/hands.png",
         "small_video": "shopify://files/videos/output-new.mp4",
         "small_video_alt": "Background video",
-        "image_small": "shopify://shop_images/plants.jpg"
+        "image_small": "shopify://shop_images/plants.jpg",
+        "dark_background": true
       }
     },
     "scroll_video_CyYhQr": {

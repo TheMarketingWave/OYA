@@ -1,4 +1,12 @@
 {% style %}
+  .image-with-content-wrapper {
+    padding: 60px 0;
+  }
+
+  .image-with-content-wrapper--dark {
+    background-color: var(--color-brand-brown2);
+  }
+
   .image-with-content {
     display: flex;
     gap: 60px;
@@ -118,57 +126,59 @@
   }
 {% endstyle %}
 
-<section class="image-with-content">
-  <div class="image-with-content__left-column">
-    {% if section.settings.title != blank %}
-      <h2 class="image-with-content__title title-font">{{ section.settings.title }}</h2>
-    {% endif %}
+<div class="image-with-content-wrapper{% if section.settings.dark_background %} image-with-content-wrapper--dark{% endif %}">
+  <section class="image-with-content">
+    <div class="image-with-content__left-column">
+      {% if section.settings.title != blank %}
+        <h2 class="image-with-content__title title-font">{{ section.settings.title }}</h2>
+      {% endif %}
 
-    {% if section.settings.subtitle != blank %}
-      <p class="image-with-content__subtitle">{{ section.settings.subtitle }}</p>
-    {% endif %}
+      {% if section.settings.subtitle != blank %}
+        <p class="image-with-content__subtitle">{{ section.settings.subtitle }}</p>
+      {% endif %}
 
-    {% comment %} Small media - can be image or video {% endcomment %}
-    {% if section.settings.small_video != blank %}
-      <div class="image-with-content__video-small">
-        {{
-          section.settings.small_video
-          | video_tag: autoplay: true, loop: true, muted: true, controls: false, playsinline: true
-        }}
-      </div>
-    {% elsif section.settings.image_small != blank %}
-      <img
-        src="{{ section.settings.image_small | image_url: width: 300 }}"
-        alt="{{ section.settings.image_small.alt | escape }}"
-        class="image-with-content__image-small"
-        width="300"
-        height="200"
-        loading="lazy"
-      >
-    {% endif %}
-  </div>
+      {% comment %} Small media - can be image or video {% endcomment %}
+      {% if section.settings.small_video != blank %}
+        <div class="image-with-content__video-small">
+          {{
+            section.settings.small_video
+            | video_tag: autoplay: true, loop: true, muted: true, controls: false, playsinline: true
+          }}
+        </div>
+      {% elsif section.settings.image_small != blank %}
+        <img
+          src="{{ section.settings.image_small | image_url: width: 300 }}"
+          alt="{{ section.settings.image_small.alt | escape }}"
+          class="image-with-content__image-small"
+          width="300"
+          height="200"
+          loading="lazy"
+        >
+      {% endif %}
+    </div>
 
-  <div class="image-with-content__right-column">
-    {% if section.settings.image_large != blank %}
-      <img
-        src="{{ section.settings.image_large | image_url: width: 600 }}"
-        alt="{{ section.settings.image_large.alt | escape }}"
-        class="image-with-content__image-large"
-        width="600"
-        height="400"
-        loading="lazy"
-      >
-    {% endif %}
+    <div class="image-with-content__right-column">
+      {% if section.settings.image_large != blank %}
+        <img
+          src="{{ section.settings.image_large | image_url: width: 600 }}"
+          alt="{{ section.settings.image_large.alt | escape }}"
+          class="image-with-content__image-large"
+          width="600"
+          height="400"
+          loading="lazy"
+        >
+      {% endif %}
 
-    {% if section.settings.content_title != blank %}
-      <h3 class="image-with-content__content-title">{{ section.settings.content_title }}</h3>
-    {% endif %}
+      {% if section.settings.content_title != blank %}
+        <h3 class="image-with-content__content-title">{{ section.settings.content_title }}</h3>
+      {% endif %}
 
-    {% if section.settings.content_subtitle != blank %}
-      <p class="image-with-content__content-subtitle">{{ section.settings.content_subtitle }}</p>
-    {% endif %}
-  </div>
-</section>
+      {% if section.settings.content_subtitle != blank %}
+        <p class="image-with-content__content-subtitle">{{ section.settings.content_subtitle }}</p>
+      {% endif %}
+    </div>
+  </section>
+</div>
 
 {% schema %}
 {
@@ -240,6 +250,17 @@
       "id": "image_small",
       "label": "Small Image (Fallback)",
       "info": "Image displayed if no video is selected"
+    },
+    {
+      "type": "header",
+      "content": "Section Settings"
+    },
+    {
+      "type": "checkbox",
+      "id": "dark_background",
+      "label": "Use dark background",
+      "default": false,
+      "info": "Enable to use brand-brown2 background color"
     }
   ],
   "presets": [
