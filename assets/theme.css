@@ -56,8 +56,11 @@ h2,
 h3,
 h4,
 h5,
-h6 {
+h6,
+div,
+span {
   overflow-wrap: break-word;
+  line-height: 150%;
 }
 
 .title-font {
