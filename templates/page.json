@@ -25,6 +25,15 @@
         "position": "left"
       }
     },
+    "image_section_P6gmfU": {
+      "type": "image-section",
+      "name": "Image Section",
+      "settings": {
+        "image": "shopify://shop_images/about-us-oya.png",
+        "max_width": 500,
+        "position": "center"
+      }
+    },
     "text_section_yycfaa": {
       "type": "text-section",
       "name": "Text Section",
@@ -38,6 +47,7 @@
   "order": [
     "page",
     "text_section_Geb6JW",
+    "image_section_P6gmfU",
     "text_section_yycfaa"
   ]
 }
