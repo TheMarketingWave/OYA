@@ -1,0 +1,66 @@
+<section class="text-section">
+  <div class="text-section__container">
+    <div class="text-section__content text-section__content--{{ section.settings.position }}">
+      {% if section.settings.title != blank %}
+        <h2 class="text-section__title title-font">{{ section.settings.title }}</h2>
+      {% endif %}
+      {% if section.settings.content != blank %}
+        <div class="text-section__text">{{ section.settings.content }}</div>
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Text Section",
+  "tag": "section",
+  "class": "text-section-wrapper",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "presets": [
+    {
+      "name": "Text Section"
+    }
+  ],
+  "settings": [
+    {
+      "type": "header",
+      "content": "Content Settings"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Section Title"
+    },
+    {
+      "type": "textarea",
+      "id": "content",
+      "label": "Content",
+      "default": "Add your content here. This text will be displayed in a 60% width container that can be positioned on the left or right side of the section."
+    },
+    {
+      "type": "header",
+      "content": "Layout Settings"
+    },
+    {
+      "type": "select",
+      "id": "position",
+      "label": "Text Position",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "default": "left"
+    }
+  ]
+}
+{% endschema %}

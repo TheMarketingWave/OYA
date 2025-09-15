@@ -3,7 +3,6 @@
     color: var(--color-brand-cream);
     min-height: 100vh;
     padding: 40px 20px;
-    font-family: 'Playfair Display', serif;
   }
 
   .journal-container {
@@ -18,30 +17,26 @@
 
   .journal-title {
     font-size: 40px;
-    font-weight: 400;
-    margin: 0 0 10px 0;
-    color: var(--color-brand-cream);
+    font-weight: bold;
+    margin-bottom: 10px;
+    font-family: 'Playfair Display', serif;
   }
 
   .journal-subtitle {
     font-size: 16px;
-    opacity: 0.7;
-    margin: 0;
-    font-weight: 300;
   }
 
   .journal-featured {
     display: flex;
     gap: 24px;
     margin-bottom: 48px;
-    align-items: flex-start;
   }
 
   .journal-featured__image {
     flex: 1;
     aspect-ratio: 16/9;
     overflow: hidden;
-    border-radius: 8px;
+    border-radius: 4px;
   }
 
   .journal-featured__image img {
@@ -52,51 +47,54 @@
 
   .journal-featured__content {
     flex: 1;
+    display: flex;
+    flex-direction: column;
   }
 
   .journal-featured__title {
-    font-size: 2.5rem;
-    font-weight: 400;
-    line-height: 1.2;
-    margin: 0 0 20px 0;
-    color: var(--color-brand-cream);
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    font-family: 'Playfair Display', serif;
   }
 
   .journal-featured__meta {
     font-size: 14px;
     margin-bottom: 30px;
-    font-family: 'Poppins', serif;
   }
 
   .journal-featured__excerpt {
     font-size: 14px;
-    font-family: 'Poppins', serif;
+  }
+
+  .journal-featured__read-more {
+    margin-top: auto;
+    align-self: flex-start;
+    min-width: 150px;
   }
 
   .journal-filters {
     display: flex;
     gap: 40px;
     margin-bottom: 40px;
-    border-bottom: 1px solid color-mix(in srgb, var(--color-brand-cream) 20%, transparent);
-    padding-bottom: 20px;
+    border-bottom: 1px solid var(--color-brand-orange2);
+    justify-content: center;
   }
 
   .journal-filter {
     background: none;
     border: none;
-    color: color-mix(in srgb, var(--color-brand-cream) 60%, transparent);
     font-size: 1rem;
     cursor: pointer;
-    padding: 0 0 5px 0;
+    padding: 5px 10px;
     border-bottom: 2px solid transparent;
-    transition: all 0.3s ease;
-    font-family: 'Playfair Display', serif;
+    transition: color 0.3s ease;
+    color: var(--color-brand-orange2);
+    font-weight: bold;
   }
 
-  .journal-filter.active,
-  .journal-filter:hover {
+  .journal-filter.active {
     color: var(--color-brand-cream);
-    border-bottom-color: var(--color-brand-cream);
   }
 
   .journal-grid {
@@ -107,17 +105,16 @@
   }
 
   .journal-card {
-    background: color-mix(in srgb, var(--color-brand-cream) 5%, transparent);
-    border-radius: 8px;
+    background: var(--color-brand-brown2);
+    border-radius: 4px;
     overflow: hidden;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    text-decoration: none;
-    color: inherit;
+    transition: transform 0.3s ease;
+    display: flex;
+    flex-direction: column;
   }
 
   .journal-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 20px 40px color-mix(in srgb, var(--color-brand-brown) 30%, transparent);
   }
 
   .journal-card__image {
@@ -133,67 +130,31 @@
 
   .journal-card__content {
     padding: 25px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
   }
 
   .journal-card__title {
-    font-size: 1.3rem;
-    font-weight: 400;
-    margin: 0 0 15px 0;
-    line-height: 1.3;
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 15px;
     color: var(--color-brand-cream);
   }
 
   .journal-card__meta {
-    font-size: 0.85rem;
-    opacity: 0.7;
+    font-size: 14px;
     margin-bottom: 15px;
+    margin-top: auto;
   }
 
   .journal-card__excerpt {
-    font-size: 0.9rem;
-    line-height: 1.5;
-    opacity: 0.8;
-    font-weight: 300;
+    font-size: 14px;
+    margin-bottom: 15px;
   }
 
-  .journal-pagination {
-    text-align: center;
-    margin-top: 60px;
-  }
-
-  @media (max-width: 768px) {
-    .journal-featured {
-      flex-direction: column;
-      gap: 30px;
-    }
-
-    .journal-featured__content {
-      padding-left: 0;
-    }
-
-    .journal-featured__title {
-      font-size: 2rem;
-    }
-
-    .journal-title {
-      font-size: 2.5rem;
-    }
-
-    .journal-grid {
-      grid-template-columns: 1fr;
-      gap: 20px;
-    }
-
-    .journal-filters {
-      flex-wrap: wrap;
-      gap: 20px;
-    }
-  }
-
-  @media (max-width: 1024px) and (min-width: 769px) {
-    .journal-grid {
-      grid-template-columns: repeat(2, 1fr);
-    }
+  .journal-card.hidden {
+    display: none;
   }
 {% endstyle %}
 
@@ -227,23 +188,35 @@
             <h2 class="journal-featured__title">{{ featured_article.title }}</h2>
             <div class="journal-featured__meta">Author • {{ featured_article.published_at | date: '%d.%m.%Y' }}</div>
             <div class="journal-featured__excerpt">
-              {{ featured_article.excerpt | default: featured_article.content | strip_html | truncate: 200 }}
+              {{ featured_article.excerpt | default: featured_article.content | strip_html | truncate: 300 }}
+            </div>
+            <div class="journal-featured__read-more">
+              {% render 'icon-button',
+                icon: 'blog.svg',
+                label: 'Read More',
+                url: featured_article.url,
+                variant: 'secondary'
+              %}
             </div>
           </div>
         </div>
 
         <!-- Filters -->
         <div class="journal-filters">
-          <button class="journal-filter active">All</button>
-          <button class="journal-filter">Educational</button>
-          <button class="journal-filter">Aromatherapy</button>
-          <button class="journal-filter">Safety</button>
+          <button class="journal-filter active" data-filter="all">All</button>
+          {% assign all_tags = blog.all_tags %}
+          {% for tag in all_tags %}
+            <button class="journal-filter" data-filter="{{ tag | handle }}">{{ tag }}</button>
+          {% endfor %}
         </div>
 
         <!-- Articles Grid -->
         <div class="journal-grid">
-          {% for article in blog.articles offset: 1 %}
-            <a href="{{ article.url }}" class="journal-card">
+          {% for article in blog.articles %}
+            <div
+              class="journal-card"
+              data-tags="{% for tag in article.tags %}{{ tag | handle }}{% unless forloop.last %} {% endunless %}{% endfor %}"
+            >
               <div class="journal-card__image">
                 {% if article.image %}
                   <img
@@ -263,14 +236,17 @@
                 <div class="journal-card__excerpt">
                   {{ article.excerpt | default: article.content | strip_html | truncate: 120 }}
                 </div>
+                <div class="journal-card__read-more">
+                  {% render 'icon-button',
+                    icon: 'blog.svg',
+                    label: 'Read More',
+                    url: article.url,
+                    variant: 'secondary'
+                  %}
+                </div>
               </div>
-            </a>
+            </div>
           {% endfor %}
-        </div>
-
-        <!-- Pagination -->
-        <div class="journal-pagination">
-          {% render 'pagination', paginate: paginate %}
         </div>
 
       {% else %}
@@ -282,6 +258,38 @@
     </div>
   </div>
 {% endpaginate %}
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const filterButtons = document.querySelectorAll('.journal-filter');
+    const articleCards = document.querySelectorAll('.journal-card');
+
+    filterButtons.forEach((button) => {
+      button.addEventListener('click', function () {
+        const filterValue = this.getAttribute('data-filter');
+
+        // Update active button
+        filterButtons.forEach((btn) => btn.classList.remove('active'));
+        this.classList.add('active');
+
+        // Filter articles
+        articleCards.forEach((card) => {
+          const cardTags = card.getAttribute('data-tags') || '';
+
+          if (filterValue === 'all') {
+            card.classList.remove('hidden');
+          } else {
+            if (cardTags.includes(filterValue)) {
+              card.classList.remove('hidden');
+            } else {
+              card.classList.add('hidden');
+            }
+          }
+        });
+      });
+    });
+  });
+</script>
 
 {% schema %}
 {

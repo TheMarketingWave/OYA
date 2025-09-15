@@ -1,0 +1,131 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "text_section_Geb6JW": {
+      "type": "text-section",
+      "name": "Text Section",
+      "settings": {
+        "title": "Our story",
+        "content": "OYA is more than an essential oil brand; it’s a collection of sensory rituals for modern well-being. From rare, ethically sourced plant essences to aromatherapy blends and wellness innovations, every formula is crafted with the precision of a scientist and the intuition of a healer. Whether it’s a bright citrus burst to awaken the senses, a grounding herbal infusion for balance, or a deep, resinous elixir to lull the body into rest, OYA transforms everyday moments into something sacred. Because true wellness isn’t just about feeling good—it’s about feeling alive.",
+        "position": "left"
+      }
+    },
+    "image_section_P6gmfU": {
+      "type": "image-section",
+      "name": "Image Section",
+      "settings": {
+        "image": "shopify://shop_images/about-us-oya.png",
+        "max_width": 380,
+        "circular": true,
+        "position": "center"
+      }
+    },
+    "text_section_yycfaa": {
+      "type": "text-section",
+      "name": "Text Section",
+      "settings": {
+        "title": "Our processes?",
+        "content": "OYA is more than an essential oil brand; it’s a collection of sensory rituals for modern well-being. From rare, ethically sourced plant essences to aromatherapy blends and wellness innovations, every formula is crafted with the precision of a scientist and the intuition of a healer. Whether it’s a bright citrus burst to awaken the senses, a grounding herbal infusion for balance, or a deep, resinous elixir to lull the body into rest, OYA transforms everyday moments into something sacred. Because true wellness isn’t just about feeling good—it’s about feeling alive.",
+        "position": "right"
+      }
+    },
+    "image_with_content_6rxDKF": {
+      "type": "image-with-content",
+      "name": "Image with Content",
+      "settings": {
+        "title": "Designed to be Refilled",
+        "subtitle": "Our signature glass bottles are meant to be part of your long-term ritual. When empty, refill, because true luxury respects the earth it comes from.",
+        "content_title": "Refill, Refresh, Renew",
+        "content_subtitle": "Our bottles are made to last—because wellness should be beautiful, not wasteful. When your OYA oil runs low, simply send your bottle back to us. We'll clean, refill, and return it to you—every bottle activity that the refill.",
+        "image_large": "shopify://shop_images/hands.png",
+        "small_video": "shopify://files/videos/output-new.mp4",
+        "small_video_alt": "Background video",
+        "image_small": "shopify://shop_images/plants.jpg",
+        "dark_background": true
+      }
+    },
+    "scroll_video_CyYhQr": {
+      "type": "scroll-video",
+      "name": "Scroll Video",
+      "settings": {
+        "title": "<p>Every drop,<br>a <em>masterpiece</em>.</p>",
+        "video_desktop": "shopify://files/videos/crin-desktop.mp4",
+        "video_mobile": "shopify://files/videos/crin-mobile.mp4"
+      }
+    },
+    "values_card_MnR8Ty": {
+      "type": "values-card",
+      "blocks": {
+        "card_purity": {
+          "type": "card",
+          "settings": {
+            "title": "Premium Quality",
+            "icon": "star",
+            "content": "We work only with the highest-grade botanicals and skilled artisans. Our oils are unaltered, unadulterated, and full-spectrum—offering the deepest expression."
+          }
+        },
+        "card_ritual": {
+          "type": "card",
+          "settings": {
+            "title": "Sustainable Design",
+            "icon": "flower",
+            "content": "Our packaging is refillable, recyclable, and thoughtfully minimalist. Each bottle is a long-term vessel, reducing waste while elevating your shelf and your spirit."
+          }
+        },
+        "card_sustainability": {
+          "type": "card",
+          "settings": {
+            "title": "Creative Rituals",
+            "icon": "moon",
+            "content": "We believe wellness is personal. Our oils are curated not just for function, but for emotional connection—inviting intuitive use, playful blending, and everyday sensory nourishment."
+          }
+        },
+        "card_craftsmanship": {
+          "type": "card",
+          "settings": {
+            "title": "Rooted Transparency",
+            "icon": "sun",
+            "content": "We share our process from plant to pour. That includes ethical sourcing, sustainable farming, and an open invitation to learn with us."
+          }
+        }
+      },
+      "block_order": [
+        "card_purity",
+        "card_ritual",
+        "card_sustainability",
+        "card_craftsmanship"
+      ],
+      "name": "Values Card",
+      "settings": {
+        "section_title": "OYA Values",
+        "section_subtitle": "What we stand for is infused into every product."
+      }
+    },
+    "person_section_CWhhEA": {
+      "type": "person-section",
+      "name": "Person Section",
+      "settings": {
+        "image": "shopify://shop_images/andreea.png",
+        "title": "Born From Science. Guided by Soul.",
+        "description": "Andreea, OYA’s founder, spent years in the precise world of pharmaceuticals—where everything is measured, predicted, and controlled. But beneath the clinical formulas, she longed for something wilder."
+      }
+    }
+  },
+  "order": [
+    "text_section_Geb6JW",
+    "image_section_P6gmfU",
+    "text_section_yycfaa",
+    "image_with_content_6rxDKF",
+    "scroll_video_CyYhQr",
+    "values_card_MnR8Ty",
+    "person_section_CWhhEA"
+  ]
+}

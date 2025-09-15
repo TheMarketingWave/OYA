@@ -188,7 +188,7 @@
     padding: 0;
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    gap: 40px;
   }
 
   .menu-item {
@@ -419,7 +419,7 @@
     width: 24px;
     height: 2px;
     background: black;
-    margin-top: 44px;
+    margin-top: 25px;
   }
 
   .submenu-container {
@@ -478,7 +478,7 @@
   </div>
 
   <div class="header-content">
-    {% render 'icon-button', icon: 'search.svg', label: 'Search' %}
+    {% comment %} {% render 'icon-button', icon: 'search.svg', label: 'Search' %} {% endcomment %}
     {% if customer %}
       {% render 'icon-button', icon: 'person.svg', label: 'Account', url: routes.account_url %}
     {% else %}
