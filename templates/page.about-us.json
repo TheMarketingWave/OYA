@@ -109,6 +109,15 @@
         "section_subtitle": "What we stand for is infused into every product."
       }
     },
+    "person_section_CWhhEA": {
+      "type": "person-section",
+      "name": "Person Section",
+      "settings": {
+        "image": "shopify://shop_images/andreea.png",
+        "title": "Born From Science. Guided by Soul.",
+        "description": "Andreea, OYA’s founder, spent years in the precise world of pharmaceuticals—where everything is measured, predicted, and controlled. But beneath the clinical formulas, she longed for something wilder."
+      }
+    }
   },
   "order": [
     "text_section_Geb6JW",
@@ -117,5 +126,6 @@
     "image_with_content_6rxDKF",
     "scroll_video_CyYhQr",
     "values_card_MnR8Ty",
+    "person_section_CWhhEA"
   ]
 }
