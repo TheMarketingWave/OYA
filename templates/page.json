@@ -30,8 +30,9 @@
       "name": "Image Section",
       "settings": {
         "image": "shopify://shop_images/about-us-oya.png",
-        "max_width": 500,
-        "position": "center"
+        "max_width": 380,
+        "position": "center",
+        "circular": true
       }
     },
     "text_section_yycfaa": {

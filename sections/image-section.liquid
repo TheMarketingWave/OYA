@@ -5,7 +5,7 @@
         <img
           src="{{ section.settings.image | image_url }}"
           alt="{{ section.settings.image.alt | escape }}"
-          class="image-section__image"
+          class="image-section__image{% if section.settings.circular %} image-section__image--circular{% endif %}"
           style="max-width: {{ section.settings.max_width }}px;"
           width="{{ section.settings.image.width }}"
           height="{{ section.settings.image.height }}"
@@ -52,6 +52,12 @@
       "label": "Max Width (px)",
       "default": 500,
       "info": "Maximum width of the image in pixels"
+    },
+    {
+      "type": "checkbox",
+      "id": "circular",
+      "label": "Make image circular",
+      "default": false
     },
     {
       "type": "header",
