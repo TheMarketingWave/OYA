@@ -12,9 +12,7 @@
     "page": {
       "type": "main-page",
       "disabled": true,
-      "settings": {
-        "max_width": 768
-      }
+      "settings": {}
     },
     "text_section_Geb6JW": {
       "type": "text-section",
@@ -31,8 +29,8 @@
       "settings": {
         "image": "shopify://shop_images/about-us-oya.png",
         "max_width": 380,
-        "position": "center",
-        "circular": true
+        "circular": true,
+        "position": "center"
       }
     },
     "text_section_yycfaa": {
