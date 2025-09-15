@@ -1,0 +1,194 @@
+{% style %}
+  .person-section {
+    padding: 60px 0;
+    background-color: var(--color-brand-brown);
+  }
+
+  .person-section__container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 48px;
+    display: flex;
+    gap: 60px;
+    align-items: center;
+  }
+
+  .person-section__image-column {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+  }
+
+  .person-section__content-column {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .person-section__image {
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+    aspect-ratio: 1;
+    object-fit: cover;
+    border-radius: 50%;
+  }
+
+  .person-section__placeholder {
+    width: 100%;
+    max-width: 300px;
+    height: 300px;
+    background-color: rgba(224, 217, 186, 0.1);
+    border: 2px dashed rgba(224, 217, 186, 0.3);
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-brand-cream);
+    opacity: 0.6;
+  }
+
+  .person-section__placeholder svg {
+    width: 48px;
+    height: 48px;
+    margin-bottom: 12px;
+  }
+
+  .person-section__placeholder span {
+    font-size: 14px;
+  }
+
+  .person-section__title {
+    font-size: 40px;
+    font-weight: 600;
+    margin-bottom: 24px;
+    color: var(--color-brand-cream);
+    line-height: 1.2;
+  }
+
+  .person-section__description {
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--color-brand-cream);
+  }
+
+  /* Mobile responsive */
+  @media (max-width: 768px) {
+    .person-section__container {
+      flex-direction: column;
+      gap: 40px;
+      text-align: center;
+    }
+
+    .person-section__image,
+    .person-section__placeholder {
+      max-width: 250px;
+    }
+
+    .person-section__title {
+      font-size: 28px;
+      margin-bottom: 16px;
+    }
+
+    .person-section__description {
+      font-size: 14px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .person-section__container {
+      padding: 0 20px;
+    }
+
+    .person-section__image,
+    .person-section__placeholder {
+      max-width: 200px;
+      height: 200px;
+    }
+
+    .person-section__title {
+      font-size: 24px;
+    }
+  }
+{% endstyle %}
+
+<section class="person-section">
+  <div class="person-section__container">
+    <div class="person-section__image-column">
+      {% if section.settings.image != blank %}
+        <img
+          src="{{ section.settings.image | image_url }}"
+          alt="{{ section.settings.image.alt | escape }}"
+          class="person-section__image"
+          width="{{ section.settings.image.width }}"
+          height="{{ section.settings.image.height }}"
+          loading="lazy"
+        >
+      {% else %}
+        <div class="person-section__placeholder">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 12C14.21 12 16 10.21 16 8C16 5.79 14.21 4 12 4C9.79 4 8 5.79 8 8C8 10.21 9.79 12 12 12ZM12 14C9.33 14 4 15.34 4 18V20H20V18C20 15.34 14.67 14 12 14Z" fill="currentColor"/>
+          </svg>
+          <span>Upload person image</span>
+        </div>
+      {% endif %}
+    </div>
+
+    <div class="person-section__content-column">
+      {% if section.settings.title != blank %}
+        <h2 class="person-section__title title-font">{{ section.settings.title }}</h2>
+      {% endif %}
+
+      {% if section.settings.description != blank %}
+        <div class="person-section__description">{{ section.settings.description }}</div>
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Person Section",
+  "tag": "section",
+  "class": "person-section-wrapper",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "presets": [
+    {
+      "name": "Person Section"
+    }
+  ],
+  "settings": [
+    {
+      "type": "header",
+      "content": "Image Settings"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Person Image",
+      "info": "Upload a square image for best results - it will be displayed as a circle"
+    },
+    {
+      "type": "header",
+      "content": "Content Settings"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Person Name",
+      "info": "The name or title for this person"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "Add a description about this person, their role, background, or any other relevant information you'd like to share.",
+      "info": "Detailed information about the person"
+    }
+  ]
+}
+{% endschema %}
