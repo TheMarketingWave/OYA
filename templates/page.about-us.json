@@ -9,11 +9,6 @@
  */
 {
   "sections": {
-    "page": {
-      "type": "main-page",
-      "disabled": true,
-      "settings": {}
-    },
     "text_section_Geb6JW": {
       "type": "text-section",
       "name": "Text Section",
@@ -44,7 +39,6 @@
     }
   },
   "order": [
-    "page",
     "text_section_Geb6JW",
     "image_section_P6gmfU",
     "text_section_yycfaa"
