@@ -1,13 +1,13 @@
 {% style %}
   .contact-form-section {
-    padding: 60px 0;
+    padding: 20px 0;
     background-color: var(--color-brand-brown);
   }
 
   .contact-form__container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 48px;
+    padding: 0 20px;
     display: flex;
     gap: 60px;
     align-items: flex-start;
@@ -243,7 +243,7 @@
       {% form 'customer', class: 'contact-form' %}
         {% if form.posted_successfully? %}
           <div class="contact-form__success">
-            <p><strong>Thanks for your enquiry!</strong> We'll get back to you soon.</p>
+            <p><strong>Thanks for contacting us!</strong> We'll get back to you soon.</p>
           </div>
         {% else %}
           {% if form.errors %}
