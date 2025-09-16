@@ -50,55 +50,18 @@
             "required": true,
             "placeholder": ""
           }
-        },
-        "paragraph_3RCxUm": {
-          "type": "paragraph",
-          "settings": {
-            "text": "<p><strong>How did you hear about us?<br/></strong>Tick all that apply.</p>"
-          }
-        },
-        "checkbox_ceachf": {
-          "type": "checkbox",
-          "settings": {
-            "title": "Google",
-            "name": "Google",
-            "required": false,
-            "placeholder": ""
-          }
-        },
-        "checkbox_HGGwkP": {
-          "type": "checkbox",
-          "settings": {
-            "title": "Facebook",
-            "name": "Facebook",
-            "required": false,
-            "placeholder": ""
-          }
-        },
-        "checkbox_wHnRgw": {
-          "type": "checkbox",
-          "settings": {
-            "title": "TV",
-            "name": "TV",
-            "required": false,
-            "placeholder": ""
-          }
         }
       },
       "block_order": [
         "text_LU8zqn",
         "text_CgHJ6n",
         "email_JcEXPP",
-        "textarea_XmypF6",
-        "paragraph_3RCxUm",
-        "checkbox_ceachf",
-        "checkbox_HGGwkP",
-        "checkbox_wHnRgw"
+        "textarea_XmypF6"
       ],
       "settings": {
         "heading": "Let's get in touch",
         "size": "h3",
-        "text": "<p>At OYA, we believe every connection is part of the journey. Whether you have a question about our essential oils, need guidance in choosing the right blend, or simply want to share how our aromas have inspired your rituals, we’d love to hear from you.<br/><br/></p><p>✨ <strong>Email:</strong> [your@email.com]</p><p>✨ <strong>Address :</strong> [Your location or studio]</p><p><br/></p><p>You can also use the form below to send us a message—we’ll get back to you as soon as possible.</p><p><br/></p><p>Let’s keep the ritual alive, together.</p>",
+        "text": "<p>At OYA, we believe every connection is part of the journey. Whether you have a question about our essential oils, need guidance in choosing the right blend, or simply want to share how our aromas have inspired your rituals, we’d love to hear from you.<br/><br/></p><p>✨ <strong>Email: </strong>contact@oya-essentials.com</p><p>✨ <strong>Address :</strong> Some Street 11, Cluj-Napoca, Romania</p><p><br/></p><p>You can also use the form below to send us a message—we’ll get back to you as soon as possible.</p><p><br/></p><p>Let’s keep the ritual alive, together.</p>",
         "image": "shopify://shop_images/about-us-oya.png",
         "button_label": "Send your thoughts"
       }
