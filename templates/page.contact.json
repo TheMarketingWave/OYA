@@ -9,10 +9,6 @@
  */
 {
   "sections": {
-    "page": {
-      "type": "main-page",
-      "settings": {}
-    },
     "contact_form": {
       "type": "contact-form",
       "blocks": {
@@ -110,7 +106,6 @@
     }
   },
   "order": [
-    "page",
     "contact_form"
   ]
 }
