@@ -279,15 +279,15 @@ function initLatestArticlesAnimation() {
             end: "center 70%",
             scrub: 1,
             onLeave: () => {
-              tl.kill();
-              gsap.set(title, {
-                color: "var(--color-brand-cream)",
-                top: "-20px",
-                y: "-100%",
-                scale: 1,
-                ease: "power2.inOut",
-                duration: 0.2,
-              });
+              // tl.kill();
+              // gsap.set(title, {
+              //   color: "var(--color-brand-cream)",
+              //   top: "-20px",
+              //   y: "-100%",
+              //   scale: 1,
+              //   ease: "power2.inOut",
+              //   duration: 0.2,
+              // });
             },
           },
         });

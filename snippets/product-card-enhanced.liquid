@@ -48,7 +48,7 @@
 
     {% if show_tags and product.tags.size > 0 %}
       <div class="product-card__tags">
-        {% for tag in product.tags limit: 3 %}
+        {% for tag in product.tags %}
           <span class="product-card__tag">{{ tag }}</span>
         {% endfor %}
       </div>
@@ -77,9 +77,9 @@
 
       <p class="product-card__description">
         {% if extracted_description != blank %}
-          {{ extracted_description | truncate: 90 }}
+          {{ extracted_description | truncate: 80 }}
         {% else %}
-          {{ product.description | strip_html | truncate: 90 }}
+          {{ product.description | strip_html | truncate: 80 }}
         {% endif %}
       </p>
     {% endif %}
