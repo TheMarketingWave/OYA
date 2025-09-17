@@ -34,6 +34,16 @@ body {
   background-color: var(--color-brand-brown);
 }
 
+#smooth-content {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+#main-content {
+  flex: 1;
+}
+
 img,
 picture,
 video,
@@ -77,7 +87,7 @@ span {
 .product-card {
   flex-shrink: 0;
   width: 300px;
-  height: 560px;
+  height: 580px;
 }
 
 .product-card__inner {
@@ -113,6 +123,8 @@ span {
   display: flex;
   gap: 8px;
   overflow: hidden;
+  line-height: unset;
+  flex-shrink: 0;
 }
 
 .product-card__tag {
@@ -122,6 +134,7 @@ span {
   border-radius: 4px;
   font-size: 12px;
   text-transform: uppercase;
+  flex-shrink: 0;
 }
 
 .product-card__title {
