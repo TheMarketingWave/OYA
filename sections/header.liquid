@@ -10,7 +10,43 @@
     padding: 0 48px;
     align-items: center;
   }
-
+  @media (max-width: 600px) {
+    header {
+      height: 56px;
+      padding: 0 16px;
+    }
+    .header-logo img {
+      height: 32px;
+    }
+    .menu-button {
+      width: 32px;
+      height: 32px;
+    }
+    .header-content {
+      gap: 8px;
+    }
+    .cart-badge {
+      width: 14px;
+      height: 14px;
+      font-size: 9px;
+    }
+    .menu-image {
+      width: 100%;
+      max-width: 200px;
+      height: auto;
+    }
+    .menu-layout {
+      padding-top: 100px;
+    }
+    .menu-item > a,
+    .menu-item-header > a {
+      font-size: 24px;
+    }
+    .menu-right-msg {
+      font-size: 15px;
+      margin-bottom: 40px;
+    }
+  }
   .header-logo {
     position: absolute;
     padding-top: 5px;
