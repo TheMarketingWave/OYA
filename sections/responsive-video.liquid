@@ -6,15 +6,26 @@
     overflow: hidden;
   }
 
-  .responsive-video-desktop {
+  .responsive-video-desktop,
+  .responsive-video-mobile {
     width: 100%;
     height: 100%;
   }
 
-  .responsive-video-desktop video {
+  .responsive-video-desktop video,
+  .responsive-video-mobile video {
     width: 100%;
     height: 100%;
     object-fit: cover;
+  }
+
+  /* Show desktop video on larger screens */
+  .responsive-video-desktop {
+    display: block;
+  }
+
+  .responsive-video-mobile {
+    display: none;
   }
 
   .vignette-overlay {
@@ -100,6 +111,23 @@
     animation-play-state: paused;
     transform: translateY(2px);
   }
+
+  /* Show mobile video on smaller screens */
+  @media screen and (max-width: 768px) {
+    .responsive-video-desktop {
+      display: none;
+    }
+
+    .responsive-video-mobile {
+      display: block;
+    }
+
+    .video-heading {
+      font-size: 32px;
+      bottom: 30px;
+      gap: 15px;
+    }
+  }
 {% endstylesheet %}
 
 <div class="responsive-video-section">
@@ -107,6 +135,13 @@
   <div class="responsive-video-desktop">
     {% if section.settings.desktop_video.id != blank %}
       {{ section.settings.desktop_video | video_tag: autoplay: true, loop: true, muted: true, controls: false }}
+    {% endif %}
+  </div>
+
+  <!-- Mobile Video (Portrait) -->
+  <div class="responsive-video-mobile">
+    {% if section.settings.mobile_video.id != blank %}
+      {{ section.settings.mobile_video | video_tag: autoplay: true, loop: true, muted: true, controls: false }}
     {% endif %}
   </div>
 

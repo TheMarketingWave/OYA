@@ -265,8 +265,17 @@ span {
 }
 
 /* Mobile responsive for icon-button */
-@media (max-width: 768px) {
+@media (max-width: 600px) {
   .icon-button p {
+    display: none;
+  }
+
+  .icon-button img {
+    width: 20px;
+    height: 20px;
+  }
+
+  .icon-button--primary:before {
     display: none;
   }
 }
