@@ -106,6 +106,36 @@
     text-align: right;
     width: 150px;
   }
+
+  @media (max-width: 480px) {
+    .footer__container {
+      flex-direction: column;
+    }
+
+    .footer__logo {
+      margin: 0px auto;
+    }
+
+    .footer__navigation {
+      text-align: center;
+      gap: 0;
+    }
+
+    .footer__content {
+      border-top: 1px solid var(--color-brand-cream);
+      border-left: none;
+      text-align: center;
+      padding: 20px 0;
+    }
+
+    .footer__social {
+      justify-content: center;
+    }
+
+    .footer__powered-container {
+      justify-content: center;
+    }
+  }
 {% endstyle %}
 
 <footer class="footer">
