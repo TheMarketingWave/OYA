@@ -71,6 +71,16 @@
     left: 50%;
     transform: translate(-50%, -400%) scale(1);
   }
+
+  @media screen and (max-width: 768px) {
+    .latest-articles {
+      padding-top: 120px;
+    }
+
+    .latest-articles__grid {
+      grid-template-columns: 1fr;
+    }
+  }
 {% endstyle %}
 
 <section class="latest-articles">

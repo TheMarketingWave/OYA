@@ -429,6 +429,7 @@ function horizontalLoop(items, config) {
     // ================================
 
     let proxy;
+    let isDragging = false;
 
     if (config.draggable && typeof Draggable === "function") {
       proxy = document.createElement("div");
@@ -440,6 +441,19 @@ function horizontalLoop(items, config) {
         tl.progress(
           wrap(startProgress + (draggable.startX - draggable.x) * ratio)
         );
+      };
+
+      const onDrag = () => {
+        align();
+
+        if (!isDragging) {
+          gsap.to(items, {
+            ...INTERACTION_BLUR_STATE,
+            ease: "power2.out",
+          });
+
+          isDragging = true;
+        }
       };
 
       const syncIndex = () => tl.closestIndex(true);
@@ -463,11 +477,8 @@ function horizontalLoop(items, config) {
           ratio = 1 / totalWidth;
           initChangeX = startProgress / -ratio - x;
           gsap.set(proxy, { x: startProgress / -ratio, force3D: true });
-
-          // Apply blur effect when starting to drag
-          gsap.to(items, INTERACTION_BLUR_STATE);
         },
-        onDrag: align,
+        onDrag: onDrag,
         onThrowUpdate: align,
         overshootTolerance: 0,
         inertia: true,
@@ -503,6 +514,7 @@ function horizontalLoop(items, config) {
             ...CLEAR_STATE,
             ease: "power2.out",
           });
+          isDragging = false;
         },
       })[0];
 

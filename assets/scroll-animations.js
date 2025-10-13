@@ -3,6 +3,8 @@
  * Handles text scroll, video scroll, and values card animations
  */
 
+const isMobile = () => window.innerWidth <= 480;
+
 document.addEventListener("DOMContentLoaded", function () {
   // Register GSAP plugins
   if (typeof gsap !== "undefined" && typeof ScrollTrigger !== "undefined") {
@@ -266,6 +268,7 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 function initLatestArticlesAnimation() {
+  const mobile = isMobile();
   let sections = document.querySelectorAll(".latest-articles");
   if (sections?.length) {
     sections = gsap.utils.toArray(sections);
@@ -276,7 +279,7 @@ function initLatestArticlesAnimation() {
           scrollTrigger: {
             trigger: section,
             start: "top bottom",
-            end: "center 70%",
+            end: mobile ? "10% 70%" : "center 70%",
             scrub: 1,
             onLeave: () => {
               // tl.kill();
@@ -297,12 +300,12 @@ function initLatestArticlesAnimation() {
           {
             top: "0px",
             y: "-400%",
-            scale: 5,
+            scale: mobile ? 1.6 : 5,
           },
           {
             top: "0px",
-            y: "200%",
-            scale: 5,
+            y: "100%",
+            scale: mobile ? 1.6 : 5,
             ease: "linear",
             duration: 0.8,
           },

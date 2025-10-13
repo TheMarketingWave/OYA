@@ -75,6 +75,22 @@
     opacity: 0;
     filter: blur(10px);
   }
+
+  @media (max-width: 480px) {
+    .card-section__header {
+      margin-bottom: 20px;
+      gap: 5px;
+    }
+
+    .card-section__grid {
+      grid-template-columns: 1fr;
+    }
+
+    .card-section__grid .card-move-right,
+    .card-section__grid .card-move-left {
+      transform: none;
+    }
+  }
 {% endstyle %}
 
 <section class="card-section">
