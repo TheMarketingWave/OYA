@@ -52,12 +52,16 @@
     background: var(--color-brand-cream);
   }
 
-  @media (max-width: 767px) {
+  @media (max-width: 600px) {
     .scroll-video__mobile {
       display: block;
     }
     .scroll-video__desktop {
       display: none;
+    }
+
+    .scroll-video__title {
+      font-size: 60px;
     }
   }
 {% endstyle %}
@@ -72,7 +76,7 @@
           muted: true,
           playsinline: true,
           preload: 'metadata',
-          controls: true
+          controls: false
       }}
     {% endif %}
 
