@@ -447,10 +447,10 @@ function horizontalLoop(items, config) {
         align();
 
         if (!isDragging) {
-          gsap.to(items, {
-            ...INTERACTION_BLUR_STATE,
-            ease: "power2.out",
-          });
+          // gsap.to(items, {
+          //   ...INTERACTION_BLUR_STATE,
+          //   ease: "power2.out",
+          // });
 
           isDragging = true;
         }
@@ -509,11 +509,11 @@ function horizontalLoop(items, config) {
           syncIndex();
           if (wasPlaying) tl.play();
 
-          // Clear blur effect when throw/drag completes
-          gsap.to(items, {
-            ...CLEAR_STATE,
-            ease: "power2.out",
-          });
+          // // Clear blur effect when throw/drag completes
+          // gsap.to(items, {
+          //   ...CLEAR_STATE,
+          //   ease: "power2.out",
+          // });
           isDragging = false;
         },
       })[0];
