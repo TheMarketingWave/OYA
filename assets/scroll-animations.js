@@ -300,12 +300,12 @@ function initLatestArticlesAnimation() {
           {
             top: "0px",
             y: "-400%",
-            scale: mobile ? 1.6 : 5,
+            scale: mobile ? 1.4 : 5,
           },
           {
             top: "0px",
             y: "100%",
-            scale: mobile ? 1.6 : 5,
+            scale: mobile ? 1.4 : 5,
             ease: "linear",
             duration: 0.8,
           },
