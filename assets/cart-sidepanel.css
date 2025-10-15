@@ -4,7 +4,7 @@
   top: 0;
   right: 0;
   width: 100%;
-  height: 100vh;
+  height: 100dvh;
   z-index: 9999;
   pointer-events: none;
   opacity: 0;
@@ -34,7 +34,7 @@
   right: 0;
   width: 400px;
   max-width: 90vw;
-  height: 100vh;
+  height: 100dvh;
   background: var(--color-brand-cream, #f5f3f0);
   color: var(--color-brand-brown, #8b4513);
   box-shadow: -4px 0 20px rgba(0, 0, 0, 0.15);
