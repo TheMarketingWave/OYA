@@ -15,12 +15,32 @@
     width: 100%;
     height: auto;
   }
+
+  .collection-products__grid__icon {
+    justify-content: center;
+    display: none;
+  }
+
+  @media (max-width: 768px) {
+    .collection-products__grid__icon {
+      display: flex;
+    }
+
+    .collection-products {
+      padding: 16px;
+    }
+
+    .collection-products__grid {
+      margin-bottom: 0;
+    }
+  }
 {% endstyle %}
 
 <div id="{{ section.id }}" class="collection-products section-container">
   <div class="collection-products__grid">
     {% for product in collection.products %}
       {% render 'product-card-enhanced', product: product %}
+      <div class="collection-products__grid__icon">{% render 'icon', icon: 'drop' %}</div>
     {% endfor %}
   </div>
 </div>
