@@ -17,6 +17,12 @@
     margin-bottom: 20px;
   }
 
+  @media (max-width: 800px) {
+    .product-page__main {
+      flex-direction: column;
+    }
+  }
+
   .product-page__main > * {
     flex: 1;
   }
@@ -26,7 +32,14 @@
     display: flex;
     flex-direction: column;
     gap: 5px;
-    max-width: 380px;
+    max-width: 300px;
+  }
+
+  @media (max-width: 800px) {
+    .product-gallery {
+      max-width: unset;
+      width: 100%;
+    }
   }
 
   .product-gallery__main {
@@ -34,6 +47,12 @@
     aspect-ratio: 3/4;
     overflow: hidden;
     border-radius: 4px;
+  }
+
+  @media (max-width: 800px) {
+    .product-gallery__main {
+      aspect-ratio: 16 / 9;
+    }
   }
 
   .product-gallery__main img {
@@ -95,6 +114,12 @@
     font-family: 'Playfair Display', serif;
     font-size: 40px;
     font-weight: 600;
+  }
+
+  @media (max-width: 800px) {
+    .product-details__title {
+      font-size: 30px;
+    }
   }
 
   .product-details__scent {
@@ -186,6 +211,12 @@
     transform: translateX(-50%);
     bottom: -50px;
     z-index: 100;
+  }
+
+  @media (max-width: 800px) {
+    .product-flower-divider {
+      bottom: -25px;
+    }
   }
 {% endstyle %}
 
@@ -364,10 +395,18 @@
         </div>
 
         <!-- Add to Cart -->
-        <form action="{{ routes.cart_add_url }}" method="post">
-          <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
-          <button type="submit" class="product-details__add-to-cart">Add to Cart</button>
-        </form>
+        <div class="product-form">
+          <input type="hidden" id="variant-id" value="{{ product.selected_or_first_available_variant.id }}">
+          <button
+            type="button"
+            class="product-details__add-to-cart"
+            id="add-to-cart-btn"
+            data-variant-id="{{ product.selected_or_first_available_variant.id }}"
+          >
+            <span class="btn-text">Add to Cart</span>
+            <span class="btn-loading" style="display: none;">Adding...</span>
+          </button>
+        </div>
       </div>
     </div>
 
@@ -438,6 +477,80 @@
     });
     thumbnail.classList.add('active');
   }
+
+  // AJAX Add to Cart functionality
+  document.addEventListener('DOMContentLoaded', function () {
+    const addToCartBtn = document.getElementById('add-to-cart-btn');
+
+    if (addToCartBtn) {
+      addToCartBtn.addEventListener('click', async function (e) {
+        e.preventDefault();
+
+        const variantId = this.dataset.variantId;
+        const btnText = this.querySelector('.btn-text');
+        const btnLoading = this.querySelector('.btn-loading');
+
+        // Show loading state
+        btnText.style.display = 'none';
+        btnLoading.style.display = 'inline';
+        this.disabled = true;
+
+        try {
+          const response = await fetch('/cart/add.js', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              id: variantId,
+              quantity: 1,
+            }),
+          });
+
+          if (response.ok) {
+            const data = await response.json();
+
+            // Trigger cart updated event for sidepanel
+            document.dispatchEvent(
+              new CustomEvent('cart:updated', {
+                detail: {
+                  action: 'item_added',
+                  variant_id: variantId,
+                  product: data,
+                },
+              })
+            );
+
+            // Show success state
+            btnText.textContent = 'Added!';
+            btnText.style.display = 'inline';
+            btnLoading.style.display = 'none';
+
+            // Reset button after 2 seconds
+            setTimeout(() => {
+              btnText.textContent = 'Add to Cart';
+              this.disabled = false;
+            }, 2000);
+          } else {
+            throw new Error('Failed to add item to cart');
+          }
+        } catch (error) {
+          console.error('Error adding to cart:', error);
+
+          // Show error state
+          btnText.textContent = 'Error - Try Again';
+          btnText.style.display = 'inline';
+          btnLoading.style.display = 'none';
+
+          // Reset button after 3 seconds
+          setTimeout(() => {
+            btnText.textContent = 'Add to Cart';
+            this.disabled = false;
+          }, 3000);
+        }
+      });
+    }
+  });
 
   // Example: Listen for accordion expand events
   document.addEventListener('accordionExpand', function (e) {
