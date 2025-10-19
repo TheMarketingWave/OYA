@@ -17,6 +17,12 @@
     margin-bottom: 20px;
   }
 
+  @media (max-width: 800px) {
+    .product-page__main {
+      flex-direction: column;
+    }
+  }
+
   .product-page__main > * {
     flex: 1;
   }
@@ -29,11 +35,24 @@
     max-width: 300px;
   }
 
+  @media (max-width: 800px) {
+    .product-gallery {
+      max-width: unset;
+      width: 100%;
+    }
+  }
+
   .product-gallery__main {
     width: 100%;
     aspect-ratio: 3/4;
     overflow: hidden;
     border-radius: 4px;
+  }
+
+  @media (max-width: 800px) {
+    .product-gallery__main {
+      aspect-ratio: 16 / 9;
+    }
   }
 
   .product-gallery__main img {
@@ -95,6 +114,12 @@
     font-family: 'Playfair Display', serif;
     font-size: 40px;
     font-weight: 600;
+  }
+
+  @media (max-width: 800px) {
+    .product-details__title {
+      font-size: 30px;
+    }
   }
 
   .product-details__scent {
@@ -186,6 +211,12 @@
     transform: translateX(-50%);
     bottom: -50px;
     z-index: 100;
+  }
+
+  @media (max-width: 800px) {
+    .product-flower-divider {
+      bottom: -25px;
+    }
   }
 {% endstyle %}
 
