@@ -11,8 +11,12 @@
   "sections": {
     "page": {
       "type": "main-page",
-      "disabled": true,
-      "settings": {}
+      "settings": {
+        "show_title": true,
+        "content_width": "medium",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
     }
   },
   "order": [
