@@ -115,7 +115,16 @@
       "settings": {
         "image": "shopify://shop_images/andreea.png",
         "title": "Born From Science. Guided by Soul.",
-        "description": "Andreea, oya essentials’s founder, spent years in the precise and structured world of pharmaceuticals, a universe where everything is measured, predicted, and controlled. For a long time, her days were filled with formulations, numbers, and results. Yet beneath the surface of that discipline, she felt a quiet calling — a longing for stillness, ritual and a return to what truly matters. oya essentials was born from that balance between science and soul — a space where knowledge meets intuition, and where formulas transform into experiences. It’s about slowing down, reconnecting with yourself, and finding beauty in the everyday. Each product is an invitation to pause, to breathe, and to come back to the essence of who you are.\n\nA Message from the Founder\n\n“In a world that moves too fast, I created oya essentials as a gentle reminder to slow down.\n To choose peace over noise. To bring nature back into our daily rituals and allow its quiet strength to guide us. Each object — whether it’s a candle, essential oil, or scent — is meant to hold space for you. To help you find stillness, to meditate, to reflect, and to reconnect with your own rhythm. Wherever you are in your journey, as long as you live with honesty and love, your path will always unfold in the right direction.”"
+        "description": "Andreea, oya essentials’s founder, spent years in the precise and structured world of pharmaceuticals, a universe where everything is measured, predicted, and controlled. For a long time, her days were filled with formulations, numbers, and results. Yet beneath the surface of that discipline, she felt a quiet calling — a longing for stillness, ritual and a return to what truly matters. oya essentials was born from that balance between science and soul — a space where knowledge meets intuition, and where formulas transform into experiences. It’s about slowing down, reconnecting with yourself, and finding beauty in the everyday. Each product is an invitation to pause, to breathe, and to come back to the essence of who you are."
+      }
+    },
+    "person_section_YBfAtB": {
+      "type": "person-section",
+      "name": "Person Section",
+      "settings": {
+        "image": "shopify://shop_images/andreea.png",
+        "title": "A Message from the Founder",
+        "description": "“In a world that moves too fast, I created oya essentials as a gentle reminder to slow down.  To choose peace over noise. To bring nature back into our daily rituals and allow its quiet strength to guide us. Each object — whether it’s a candle, essential oil, or scent — is meant to hold space for you. To help you find stillness, to meditate, to reflect, and to reconnect with your own rhythm. Wherever you are in your journey, as long as you live with honesty and love, your path will always unfold in the right direction.”"
       }
     }
   },
@@ -126,6 +135,7 @@
     "image_with_content_6rxDKF",
     "scroll_video_CyYhQr",
     "values_card_MnR8Ty",
-    "person_section_CWhhEA"
+    "person_section_CWhhEA",
+    "person_section_YBfAtB"
   ]
 }
