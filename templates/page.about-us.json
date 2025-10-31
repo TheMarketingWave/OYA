@@ -22,19 +22,10 @@
       "type": "image-section",
       "name": "Image Section",
       "settings": {
-        "image": "shopify://shop_images/about-us-oya.png",
+        "image": "shopify://shop_images/about-us-oya_57c3b685-9e3b-41df-a6d6-10b43b697fb1.png",
         "max_width": 380,
         "circular": true,
         "position": "center"
-      }
-    },
-    "text_section_yycfaa": {
-      "type": "text-section",
-      "name": "Text Section",
-      "settings": {
-        "title": "",
-        "content": "",
-        "position": "right"
       }
     },
     "image_with_content_6rxDKF": {
@@ -131,7 +122,6 @@
   "order": [
     "text_section_Geb6JW",
     "image_section_P6gmfU",
-    "text_section_yycfaa",
     "image_with_content_6rxDKF",
     "scroll_video_CyYhQr",
     "values_card_MnR8Ty",
