@@ -24,10 +24,10 @@
         "collection_header_CgTE63": {
           "type": "collection_header",
           "settings": {
-            "target_type": "all",
-            "collection": "",
-            "title": "100% Certified Organic & Natural Products",
-            "subtitle": "Our collections capture nature in its purest, most expansive form. Each drop and each scent is an invitation to indulge in the art of mindful wellness."
+            "target_type": "specific",
+            "collection": "frontpage",
+            "title": "OYA AROMATHERAPY INCENSE",
+            "subtitle": "Scent that settles. Smoke that sanctifies."
           }
         },
         "collection_header_YV8TTT": {
