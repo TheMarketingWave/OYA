@@ -266,8 +266,8 @@ span {
 
 /* Mobile responsive for icon-button */
 @media (max-width: 600px) {
-  .icon-button p {
-    /* display: none; */
+  .icon-button.hide-text-mobile p {
+    display: none;
   }
 
   .icon-button img {

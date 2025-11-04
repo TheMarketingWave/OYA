@@ -535,12 +535,17 @@
   <div class="header-content">
     {% comment %} {% render 'icon-button', icon: 'search.svg', label: 'Search' %} {% endcomment %}
     {% if customer %}
-      {% render 'icon-button', icon: 'person.svg', label: 'Account', url: routes.account_url %}
+      {% render 'icon-button', icon: 'person.svg', label: 'Account', url: routes.account_url, hide_text_mobile: true %}
     {% else %}
-      {% render 'icon-button', icon: 'person.svg', label: 'Log In', url: routes.account_login_url %}
+      {% render 'icon-button',
+        icon: 'person.svg',
+        label: 'Log In',
+        url: routes.account_login_url,
+        hide_text_mobile: true
+      %}
     {% endif %}
     <div id="header-cart-button" data-cart-open>
-      {% render 'icon-button', icon: 'cart.svg', label: 'Cart' %}
+      {% render 'icon-button', icon: 'cart.svg', label: 'Cart', hide_text_mobile: true %}
       <div class="cart-badge{% if cart.item_count > 0 %} visible{% endif %}">
         <span>{{ cart.item_count }}</span>
       </div>
