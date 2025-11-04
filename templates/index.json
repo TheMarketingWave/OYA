@@ -127,6 +127,56 @@
         "background_color": "brown2"
       }
     },
+    "product_carousel_Hm3qRN": {
+      "type": "product-carousel",
+      "blocks": {
+        "product_q4Dqmp": {
+          "type": "product",
+          "settings": {
+            "product": "essential-oil-grounding-patchouli"
+          }
+        },
+        "product_VGbFyi": {
+          "type": "product",
+          "settings": {
+            "product": "essential-oil-focus-tea-tree"
+          }
+        },
+        "product_NEmY8F": {
+          "type": "product",
+          "settings": {
+            "product": "serenity-ylang-ylang-iii-copy-3"
+          }
+        },
+        "product_8KfHBX": {
+          "type": "product",
+          "settings": {
+            "product": "essential-oil-creativity-amyris"
+          }
+        },
+        "product_6fwXPF": {
+          "type": "product",
+          "settings": {
+            "product": "essential-oil-clarity-bergamot"
+          }
+        }
+      },
+      "block_order": [
+        "product_q4Dqmp",
+        "product_VGbFyi",
+        "product_NEmY8F",
+        "product_8KfHBX",
+        "product_6fwXPF"
+      ],
+      "name": "Product Carousel",
+      "settings": {
+        "title": "OYA CERAMICS - OYA x UAU",
+        "subtitle": "Hand-built, hand-finished, and created in limited editions.",
+        "cta_text": "Discover Our Ceramics",
+        "cta_url": "shopify://collections/diffusers",
+        "background_color": "brown"
+      }
+    },
     "horizontal_spacer_gHwz7V": {
       "type": "horizontal-spacer",
       "name": "Horizontal Spacer",
@@ -228,6 +278,7 @@
     "text_scroll_animation_1",
     "product_carousel_AhhLUq",
     "product_carousel_e7BfWK",
+    "product_carousel_Hm3qRN",
     "horizontal_spacer_gHwz7V",
     "image_with_content_6rxDKF",
     "scroll_video_CyYhQr",
