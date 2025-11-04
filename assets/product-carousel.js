@@ -24,8 +24,8 @@ const CLEAR_STATE = {
 };
 
 const INTERACTION_BLUR_STATE = {
-  filter: "blur(5px)",
-  opacity: 0.8,
+  // filter: "blur(5px)",
+  // opacity: 0.8,
   duration: 0.4,
   ease: "power3.out",
 };

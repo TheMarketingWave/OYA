@@ -400,12 +400,10 @@
           <input type="hidden" id="variant-id" value="{{ product.selected_or_first_available_variant.id }}">
           <button
             type="button"
-            class="product-details__add-to-cart"
-            id="add-to-cart-btn"
-            data-variant-id="{{ product.selected_or_first_available_variant.id }}"
+            class="product-card__button"
+            onclick="addToCartFromCarousel('{{ product.selected_or_first_available_variant.id }}', '{{ product.title | escape }}', this)"
           >
-            <span class="btn-text">Add to Cart</span>
-            <span class="btn-loading" style="display: none;">Adding...</span>
+            Add to Cart
           </button>
         </div>
       </div>
