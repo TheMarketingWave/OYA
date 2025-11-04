@@ -77,9 +77,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
     video.addEventListener("loadedmetadata", () => {
       console.log("Video metadata loaded");
-
+      // video.load();
       const duration = video.duration;
       videoTargets.set(video, 0); // Initialize target time
+      // video.load();
 
       try {
         const p = video.play();
@@ -95,6 +96,8 @@ document.addEventListener("DOMContentLoaded", function () {
         scrub: true,
         onUpdate: (self) => {
           const targetTime = self.progress * duration;
+          console.log("targetTime", targetTime);
+
           videoTargets.set(video, targetTime);
 
           // Start ticker if not already running
