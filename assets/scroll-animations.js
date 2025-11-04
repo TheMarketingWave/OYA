@@ -91,7 +91,7 @@ document.addEventListener("DOMContentLoaded", function () {
       const trigger = ScrollTrigger.create({
         trigger: video,
         start: "center bottom",
-        end: "center center",
+        end: "top top",
         scrub: true,
         onUpdate: (self) => {
           const targetTime = self.progress * duration;
