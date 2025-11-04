@@ -110,6 +110,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
           // Video enters scrub range from above
           videoTargets.set(video, 0);
+          const p = video.play();
+          if (p?.then) p.then(() => video.pause());
           if (!ticker) startTicker();
         },
         onLeave: () => {
