@@ -11,20 +11,6 @@
   "current": {
     "newsletter_heading": "Newsletter Sign-up",
     "newsletter_text": "This is the built-in newsletter signup pop-up form, which you can customise as required.",
-    "sections": {
-      "cart-sidepanel-content": {
-        "type": "cart-sidepanel-content",
-        "settings": {}
-      },
-      "footer": {
-        "type": "footer",
-        "settings": {
-          "facebook_url": "https://www.facebook.com/profile.php?id=61582272144116",
-          "instagram_url": "",
-          "pinterest_url": ""
-        }
-      }
-    },
     "content_for_index": []
   }
 }

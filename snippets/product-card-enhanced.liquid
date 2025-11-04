@@ -107,11 +107,19 @@
           {% assign unit_measurement = product.selected_or_first_available_variant.unit_price_measurement %}
           <span class="product-card__weight">
             {% if unit_measurement.measured_type == 'weight' %}
-              {{ unit_measurement.quantity_value -}}
+              {{ unit_measurement.quantity_value | round }}
               {{- unit_measurement.quantity_unit }}
             {% elsif unit_measurement.measured_type == 'volume' %}
-              {{ unit_measurement.quantity_value -}}
+              {{ unit_measurement.quantity_value | round }}
+              {{ ' ' }}
               {{- unit_measurement.quantity_unit }}
+            {% elsif unit_measurement.measured_type == 'count' %}
+              {{ unit_measurement.quantity_value | round }}
+              {%- if unit_measurement.quantity_value > 1 -%}
+                items
+              {%- else -%}
+                item
+              {%- endif -%}
             {% else %}
               {{ unit_measurement.quantity_value -}}
               {{- unit_measurement.quantity_unit }}
