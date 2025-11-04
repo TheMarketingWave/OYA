@@ -152,9 +152,11 @@ function removeGiftWrap(lineItemKey) {
  * Update cart item count.
  */
 function updateCartCounter(cart) {
-  document.querySelectorAll(".js--cart-counter").forEach(function (el) {
-    el.innerText = cart.item_count;
-  });
+  const badge = document.querySelector(".cart-badge");
+  if (badge) {
+    badge.classList.add("visible");
+    badge.innerText = cart.item_count;
+  }
 }
 
 /*

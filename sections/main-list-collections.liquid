@@ -1,7 +1,7 @@
 <style>
-{{ section.id | prepend: '#' }} .collections-grid {
-  grid-template-columns: repeat({{ section.settings.collections_per_row }}, 1fr);
-}
+  {{ section.id | prepend: '#' }} .collections-grid {
+    grid-template-columns: repeat({{ section.settings.collections_per_row }}, 1fr);
+  }
 </style>
 
 <div id="{{ section.id }}" class="section-wrap">
@@ -15,9 +15,9 @@
   <section class="section">
     <div class="collections-grid">
       {% liquid
-      for collection in collections
-        render 'collection-card', collection: collection
-      endfor
+        for collection in collections
+          render 'collection-card', collection: collection
+        endfor
       %}
     </div>
   </section>
@@ -39,7 +39,7 @@
       "type": "richtext",
       "id": "content",
       "label": "Content",
-      "default": "<p>Natus voluptas repellat qui voluptates dolores non eos. Eos quo accusamus rerum in. Ducimus consequatur laudantium quibusdam nihil est quis vero non cupiditate. Sit distinctio sed aliquam nobis quo non aut. Eaque atque doloremque et inventore qui laboriosam at totam. Mollitia fugiat est.</p>"
+      "default": "<p>Page content</p>"
     },
     {
       "type": "range",

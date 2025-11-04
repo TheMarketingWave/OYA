@@ -16,6 +16,10 @@
 {% liquid
   assign button_variant = variant | default: 'primary'
   assign button_class = 'icon-button icon-button--' | append: button_variant
+
+  if hide_text_mobile
+    assign button_class = button_class | append: ' hide-text-mobile'
+  endif
 %}
 
 {% if url %}

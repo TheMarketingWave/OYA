@@ -14,7 +14,7 @@
       "name": "Text Section",
       "settings": {
         "title": "Our story",
-        "content": "OYA is more than an essential oil brand; it’s a collection of sensory rituals for modern well-being. From rare, ethically sourced plant essences to aromatherapy blends and wellness innovations, every formula is crafted with the precision of a scientist and the intuition of a healer. Whether it’s a bright citrus burst to awaken the senses, a grounding herbal infusion for balance, or a deep, resinous elixir to lull the body into rest, OYA transforms everyday moments into something sacred. Because true wellness isn’t just about feeling good—it’s about feeling alive.",
+        "content": "Oya essentials is more than an essential oil brand; it’s a collection of sensory rituals for modern well-being. From rare, ethically sourced plant essences to aromatherapy blends and wellness innovations, every formula is crafted with the precision of a scientist and the intuition of a healer. Whether it’s a bright citrus burst to awaken the senses, a grounding herbal infusion for balance, or a deep, resinous elixir to lull the body into rest, oya transforms everyday moments into something sacred. Because true wellness isn’t just about feeling good—it’s about feeling alive.",
         "position": "left"
       }
     },
@@ -22,19 +22,10 @@
       "type": "image-section",
       "name": "Image Section",
       "settings": {
-        "image": "shopify://shop_images/about-us-oya.png",
+        "image": "shopify://shop_images/about-us-oya_57c3b685-9e3b-41df-a6d6-10b43b697fb1.png",
         "max_width": 380,
         "circular": true,
         "position": "center"
-      }
-    },
-    "text_section_yycfaa": {
-      "type": "text-section",
-      "name": "Text Section",
-      "settings": {
-        "title": "Our processes?",
-        "content": "OYA is more than an essential oil brand; it’s a collection of sensory rituals for modern well-being. From rare, ethically sourced plant essences to aromatherapy blends and wellness innovations, every formula is crafted with the precision of a scientist and the intuition of a healer. Whether it’s a bright citrus burst to awaken the senses, a grounding herbal infusion for balance, or a deep, resinous elixir to lull the body into rest, OYA transforms everyday moments into something sacred. Because true wellness isn’t just about feeling good—it’s about feeling alive.",
-        "position": "right"
       }
     },
     "image_with_content_6rxDKF": {
@@ -44,8 +35,8 @@
         "title": "Designed to be Refilled",
         "subtitle": "Our signature glass bottles are meant to be part of your long-term ritual. When empty, refill, because true luxury respects the earth it comes from.",
         "content_title": "Refill, Refresh, Renew",
-        "content_subtitle": "Our bottles are made to last—because wellness should be beautiful, not wasteful. When your OYA oil runs low, simply send your bottle back to us. We'll clean, refill, and return it to you—every bottle activity that the refill.",
-        "image_large": "shopify://shop_images/hands.png",
+        "content_subtitle": "Our bottles are made to last—because wellness should be beautiful, not wasteful. Each step is designed to reduce waste, preserve resources, and extend the life of every bottle. It’s a ritual of return—one that honors both your well-being and the Earth’s.",
+        "image_large": "shopify://shop_images/bottles.jpg",
         "small_video": "shopify://files/videos/output-new.mp4",
         "small_video_alt": "Background video",
         "image_small": "shopify://shop_images/plants.jpg",
@@ -85,7 +76,7 @@
           "settings": {
             "title": "Creative Rituals",
             "icon": "moon",
-            "content": "We believe wellness is personal. Our oils are curated not just for function, but for emotional connection—inviting intuitive use, playful blending, and everyday sensory nourishment."
+            "content": "We believe wellness is personal. Our pieces are curated not just for function, but for emotional connection—inviting intuitive use, playful blending, and everyday sensory nourishment."
           }
         },
         "card_craftsmanship": {
@@ -93,7 +84,7 @@
           "settings": {
             "title": "Rooted Transparency",
             "icon": "sun",
-            "content": "We share our process from plant to pour. That includes ethical sourcing, sustainable farming, and an open invitation to learn with us."
+            "content": "We provide clear information about the origin of our ingredients and how they are sourced. Our focus is on quality, ethical practices."
           }
         }
       },
@@ -105,7 +96,7 @@
       ],
       "name": "Values Card",
       "settings": {
-        "section_title": "OYA Values",
+        "section_title": "Our Values",
         "section_subtitle": "What we stand for is infused into every product."
       }
     },
@@ -113,19 +104,28 @@
       "type": "person-section",
       "name": "Person Section",
       "settings": {
-        "image": "shopify://shop_images/andreea.png",
+        "image": "shopify://shop_images/andreea_a053ca35-ff7e-4b25-8d8a-b7f8dbb88f41.webp",
         "title": "Born From Science. Guided by Soul.",
-        "description": "Andreea, OYA’s founder, spent years in the precise world of pharmaceuticals—where everything is measured, predicted, and controlled. But beneath the clinical formulas, she longed for something wilder."
+        "description": "Andreea, oya essentials’s founder, spent years in the precise and structured world of pharmaceuticals, a universe where everything is measured, predicted, and controlled. For a long time, her days were filled with formulations, numbers, and results. Yet beneath the surface of that discipline, she felt a quiet calling — a longing for stillness, ritual and a return to what truly matters. Oya essentials was born from that balance between science and soul — a space where knowledge meets intuition, and where formulas transform into experiences. It’s about slowing down, reconnecting with yourself, and finding beauty in the everyday. Each product is an invitation to pause, to breathe, and to come back to the essence of who you are."
+      }
+    },
+    "text_section_WMF77R": {
+      "type": "text-section",
+      "name": "Text Section",
+      "settings": {
+        "title": "A Message from the Founder",
+        "content": "“In a world that moves too fast, I created oya essentials as a gentle reminder to slow down.\n To choose peace over noise. To bring nature back into our daily rituals and allow its quiet strength to guide us. Each object — whether it’s a candle, essential oil, or scent — is meant to hold space for you. To help you find stillness, to meditate, to reflect, and to reconnect with your own rhythm.”  Andreea Founder of oya essentials",
+        "position": "left"
       }
     }
   },
   "order": [
     "text_section_Geb6JW",
     "image_section_P6gmfU",
-    "text_section_yycfaa",
     "image_with_content_6rxDKF",
     "scroll_video_CyYhQr",
     "values_card_MnR8Ty",
-    "person_section_CWhhEA"
+    "person_section_CWhhEA",
+    "text_section_WMF77R"
   ]
 }

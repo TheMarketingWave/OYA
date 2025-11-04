@@ -77,9 +77,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
     video.addEventListener("loadedmetadata", () => {
       console.log("Video metadata loaded");
-
+      // video.load();
       const duration = video.duration;
       videoTargets.set(video, 0); // Initialize target time
+      // video.load();
 
       try {
         const p = video.play();
@@ -91,7 +92,7 @@ document.addEventListener("DOMContentLoaded", function () {
       const trigger = ScrollTrigger.create({
         trigger: video,
         start: "center bottom",
-        end: "center center",
+        end: "top top",
         scrub: true,
         onUpdate: (self) => {
           const targetTime = self.progress * duration;
@@ -105,6 +106,8 @@ document.addEventListener("DOMContentLoaded", function () {
         onEnter: () => {
           // Video enters scrub range from above
           videoTargets.set(video, 0);
+          const p = video.play();
+          if (p?.then) p.then(() => video.pause());
           if (!ticker) startTicker();
         },
         onLeave: () => {
@@ -125,6 +128,8 @@ document.addEventListener("DOMContentLoaded", function () {
           if (videoTargets.size === 0) stopTicker();
         },
       });
+
+      console.log(trigger);
 
       scrollVideoTriggers.push(trigger);
     });
@@ -259,12 +264,12 @@ document.addEventListener("DOMContentLoaded", function () {
   // Initialize animations
   initAllAnimations();
 
-  // Handle resize for video animations
-  let resizeTimer;
-  window.addEventListener("resize", () => {
-    clearTimeout(resizeTimer);
-    resizeTimer = setTimeout(initScrollVideos, 300);
-  });
+  // // Handle resize for video animations
+  // let resizeTimer;
+  // window.addEventListener("resize", () => {
+  //   clearTimeout(resizeTimer);
+  //   resizeTimer = setTimeout(initScrollVideos, 300);
+  // });
 });
 
 function initLatestArticlesAnimation() {

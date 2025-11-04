@@ -12,13 +12,22 @@
     "collection_header_RLEKt7": {
       "type": "collection-header",
       "blocks": {
+        "collection_header_wkM8Yf": {
+          "type": "collection_header",
+          "settings": {
+            "target_type": "specific",
+            "collection": "diffusers",
+            "title": "OYA CERAMICS - OYA x UAU",
+            "subtitle": "Our ceramic objects are a celebration of artisan partnership and creative excellence. We proudly present the OYA x UAU collection, a collaboration with the visionary, contemporary design studio, UAU. Crafted by local artist Vanessa Singenzi, each sculptural piece blends utility with tactile artistry. This is a meeting place for kindred spirits who cherish slow, intentional design, merging the pure world of aromatherapy with exquisite, grounded craftsmanship."
+          }
+        },
         "collection_header_CgTE63": {
           "type": "collection_header",
           "settings": {
-            "target_type": "all",
-            "collection": "",
-            "title": "100% Certified Organic & Natural Products",
-            "subtitle": "Our essential oils capture nature in its purest, most expansive form. Sourced from organic gardens and carefully distilled into refillable, eco-friendly bottles, each drop is an invitation to indulge in the art of mindful wellness.",
+            "target_type": "specific",
+            "collection": "frontpage",
+            "title": "OYA AROMATHERAPY INCENSE",
+            "subtitle": "Our incense sticks are hand-rolled and made of 100% natural ingredients. Each stick carries fire, air, and fragrance — elements that ask for presence and care."
           }
         },
         "collection_header_YV8TTT": {
@@ -26,12 +35,13 @@
           "settings": {
             "target_type": "specific",
             "collection": "essential-oils",
-            "title": "100% Certified Organic & Natural Products",
-            "subtitle": "Our essential oils capture nature in its purest, most expansive form. Sourced from organic gardens and carefully distilled into refillable, eco-friendly bottles, each drop is an invitation to indulge in the art of mindful wellness."
+            "title": "100% Natural Products & Packaging",
+            "subtitle": "Our collections capture nature in its purest, most expansive form. Each drop and each scent is an invitation to indulge in the art of mindful wellness."
           }
         }
       },
       "block_order": [
+        "collection_header_wkM8Yf",
         "collection_header_CgTE63",
         "collection_header_YV8TTT"
       ],
@@ -71,7 +81,7 @@
           "settings": {
             "title": "Creative Rituals",
             "icon": "moon",
-            "content": "We believe wellness is personal. Our oils are curated not just for function, but for emotional connection—inviting intuitive use, playful blending, and everyday sensory nourishment."
+            "content": "We believe wellness is personal. Our pieces are curated not just for function, but for emotional connection—inviting intuitive use, playful blending, and everyday sensory nourishment."
           }
         },
         "card_craftsmanship": {
@@ -79,7 +89,7 @@
           "settings": {
             "title": "Rooted Transparency",
             "icon": "sun",
-            "content": "We share our process from plant to pour. That includes ethical sourcing, sustainable farming, and an open invitation to learn with us."
+            "content": "We provide clear information about the origin of our ingredients and how they are sourced. Our focus is on quality, ethical practices."
           }
         }
       },
@@ -94,8 +104,7 @@
         "section_title": "OYA Values",
         "section_subtitle": "What we stand for is infused into every product."
       }
-    },
-    
+    }
   },
   "order": [
     "collection_header_RLEKt7",

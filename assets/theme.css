@@ -182,11 +182,22 @@ span {
   font-size: 14px;
   cursor: pointer;
   transition: all 0.3s ease;
+  font-weight: 700;
 }
 
 .product-card__button:hover {
   background: var(--color-brand-green);
   color: white;
+}
+
+@media (max-width: 768px) {
+  .product-card__button {
+    width: 100%;
+  }
+  .product-card__button:hover {
+    background: var(--color-brand-cream);
+    color: var(--color-brand-brown);
+  }
 }
 
 /* Icon Button Component */
@@ -266,7 +277,7 @@ span {
 
 /* Mobile responsive for icon-button */
 @media (max-width: 600px) {
-  .icon-button p {
+  .icon-button.hide-text-mobile p {
     display: none;
   }
 
@@ -340,6 +351,7 @@ span {
   font-size: 40px;
   font-weight: 600;
   color: var(--color-brand-cream);
+  padding: 0 20px;
 }
 
 .product-carousel__subtitle {
