@@ -104,8 +104,6 @@ document.addEventListener("DOMContentLoaded", function () {
           }
         },
         onEnter: () => {
-          console.log("onEnter");
-
           // Video enters scrub range from above
           videoTargets.set(video, 0);
           const p = video.play();
