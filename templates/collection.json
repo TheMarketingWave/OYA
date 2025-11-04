@@ -12,6 +12,15 @@
     "collection_header_RLEKt7": {
       "type": "collection-header",
       "blocks": {
+        "collection_header_wkM8Yf": {
+          "type": "collection_header",
+          "settings": {
+            "target_type": "specific",
+            "collection": "diffusers",
+            "title": "OYA CERAMICS - OYA x UAU",
+            "subtitle": "Hand-built, hand-finished, and created in limited editions."
+          }
+        },
         "collection_header_CgTE63": {
           "type": "collection_header",
           "settings": {
@@ -32,6 +41,7 @@
         }
       },
       "block_order": [
+        "collection_header_wkM8Yf",
         "collection_header_CgTE63",
         "collection_header_YV8TTT"
       ],
