@@ -266,12 +266,12 @@ document.addEventListener("DOMContentLoaded", function () {
   // Initialize animations
   initAllAnimations();
 
-  // Handle resize for video animations
-  let resizeTimer;
-  window.addEventListener("resize", () => {
-    clearTimeout(resizeTimer);
-    resizeTimer = setTimeout(initScrollVideos, 300);
-  });
+  // // Handle resize for video animations
+  // let resizeTimer;
+  // window.addEventListener("resize", () => {
+  //   clearTimeout(resizeTimer);
+  //   resizeTimer = setTimeout(initScrollVideos, 300);
+  // });
 });
 
 function initLatestArticlesAnimation() {
