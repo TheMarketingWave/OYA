@@ -176,8 +176,8 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function initScrollVideos() {
-    // scrollVideoTriggers.forEach((trigger) => trigger.kill());
-    // scrollVideoTriggers = [];
+    scrollVideoTriggers.forEach((trigger) => trigger.kill());
+    scrollVideoTriggers = [];
 
     // Clear video targets and stop ticker
     videoTargets.clear();
