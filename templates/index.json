@@ -130,6 +130,12 @@
     "product_carousel_Hm3qRN": {
       "type": "product-carousel",
       "blocks": {
+        "product_NEmY8F": {
+          "type": "product",
+          "settings": {
+            "product": "norr-incense-stick-holder"
+          }
+        },
         "product_q4Dqmp": {
           "type": "product",
           "settings": {
@@ -140,12 +146,6 @@
           "type": "product",
           "settings": {
             "product": "terrae-crafted-holders"
-          }
-        },
-        "product_NEmY8F": {
-          "type": "product",
-          "settings": {
-            "product": "norr-incense-stick-holder"
           }
         },
         "product_8KfHBX": {
@@ -162,9 +162,9 @@
         }
       },
       "block_order": [
+        "product_NEmY8F",
         "product_q4Dqmp",
         "product_VGbFyi",
-        "product_NEmY8F",
         "product_8KfHBX",
         "product_6fwXPF"
       ],
