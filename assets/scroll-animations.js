@@ -96,8 +96,6 @@ document.addEventListener("DOMContentLoaded", function () {
         scrub: true,
         onUpdate: (self) => {
           const targetTime = self.progress * duration;
-          console.log("targetTime", targetTime);
-
           videoTargets.set(video, targetTime);
 
           // Start ticker if not already running
