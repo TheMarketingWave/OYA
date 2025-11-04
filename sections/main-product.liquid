@@ -18,6 +18,9 @@
   }
 
   @media (max-width: 800px) {
+    .product-page {
+      padding-top: 0px;
+    }
     .product-page__main {
       flex-direction: column;
     }
@@ -51,7 +54,7 @@
 
   @media (max-width: 800px) {
     .product-gallery__main {
-      aspect-ratio: 16 / 9;
+      aspect-ratio: 1;
     }
   }
 
@@ -67,7 +70,7 @@
   }
 
   .product-gallery__thumbnail {
-    width: 60px;
+    width: 90px;
     aspect-ratio: 1;
     overflow: hidden;
     border-radius: 4px;
@@ -192,7 +195,7 @@
   .product-flower-image {
     display: flex;
     justify-content: center;
-    margin-top: 40px;
+    /* margin-top: 40px; */
     position: relative;
   }
 
@@ -206,17 +209,15 @@
     height: 2px;
     background: var(--color-brand-cream);
     width: 500px;
+    max-width: 90%;
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
-    bottom: -50px;
+    bottom: 0px;
     z-index: 100;
   }
 
   @media (max-width: 800px) {
-    .product-flower-divider {
-      bottom: -25px;
-    }
   }
 {% endstyle %}
 
@@ -462,6 +463,8 @@
         >
         <div class="product-flower-divider"></div>
       </div>
+    {% else %}
+      <div style="height: 100px;"></div>
     {% endif %}
   </div>
 </div>
