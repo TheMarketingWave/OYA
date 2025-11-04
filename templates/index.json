@@ -130,6 +130,12 @@
     "product_carousel_Hm3qRN": {
       "type": "product-carousel",
       "blocks": {
+        "product_VGbFyi": {
+          "type": "product",
+          "settings": {
+            "product": "terrae-crafted-holders"
+          }
+        },
         "product_NEmY8F": {
           "type": "product",
           "settings": {
@@ -142,7 +148,7 @@
             "product": "ayra-diffuser"
           }
         },
-        "product_VGbFyi": {
+        "product_6fwXPF": {
           "type": "product",
           "settings": {
             "product": "terrae-crafted-holders"
@@ -153,20 +159,14 @@
           "settings": {
             "product": "ayra-diffuser"
           }
-        },
-        "product_6fwXPF": {
-          "type": "product",
-          "settings": {
-            "product": "terrae-crafted-holders"
-          }
         }
       },
       "block_order": [
+        "product_VGbFyi",
         "product_NEmY8F",
         "product_q4Dqmp",
-        "product_VGbFyi",
-        "product_8KfHBX",
-        "product_6fwXPF"
+        "product_6fwXPF",
+        "product_8KfHBX"
       ],
       "name": "Product Carousel",
       "settings": {
