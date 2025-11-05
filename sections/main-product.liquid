@@ -52,12 +52,6 @@
     border-radius: 4px;
   }
 
-  @media (max-width: 800px) {
-    .product-gallery__main {
-      aspect-ratio: 1;
-    }
-  }
-
   .product-gallery__main img {
     width: 100%;
     height: 100%;
@@ -270,8 +264,8 @@
       {% endif %}
     {% endif %}
 
-    {% if line contains 'Sustainability' %}
-      {% assign sust_parts = line | split: 'Sustainability' %}
+    {% if line contains 'Sustainability-sec' %}
+      {% assign sust_parts = line | split: 'Sustainability-sec' %}
       {% if sust_parts.size > 1 %}
         {% assign sustainability = sust_parts[1] | strip_html | strip %}
       {% endif %}

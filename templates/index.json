@@ -45,7 +45,7 @@
         "product_aLFLHF": {
           "type": "product",
           "settings": {
-            "product": "serenity-ylang-ylang-iii-copy-3"
+            "product": "essential-oil-serenity-ylang-ylang"
           }
         },
         "product_6cDc4a": {
@@ -70,7 +70,7 @@
       ],
       "name": "Product Carousel",
       "settings": {
-        "title": "OYA Essential Oils",
+        "title": "OYA ESSENTIAL OILS",
         "subtitle": "Five timeless essentials. Infinite possibilities. Each oil was chosen for its purity, purpose, and emotional resonance.",
         "cta_text": "Experience Our Essential Oils",
         "cta_url": "/collections/essential-oils",
@@ -120,7 +120,7 @@
       ],
       "name": "Product Carousel",
       "settings": {
-        "title": "OYA Aromatherapy Incense",
+        "title": "OYA AROMATHERAPY INCENSE",
         "subtitle": "Scent that settles. Smoke that sanctifies.",
         "cta_text": "Enjoy Our Aromatherapy Sticks",
         "cta_url": "/collections/aromatherapy-sticks",
@@ -268,7 +268,7 @@
       "type": "footer-image",
       "name": "Footer Image",
       "settings": {
-        "footer_image": "shopify://shop_images/desktopimage.jpg",
+        "footer_image": "shopify://shop_images/home-footer.webp",
         "scrolling_text": "Nature • Wellness • Ritual • Aromatherapy • Essential Oils • Mindfulness • Botanical • Purity • Sustainability"
       }
     }

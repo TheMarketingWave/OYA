@@ -87,7 +87,7 @@ span {
 .product-card {
   flex-shrink: 0;
   width: 300px;
-  height: 580px;
+  height: 600px;
 }
 
 .product-card__inner {
@@ -112,7 +112,7 @@ span {
 .product-card__image {
   width: 100%;
   height: auto;
-  aspect-ratio: 1 / 1;
+  aspect-ratio: 3 / 4;
   object-fit: cover;
   border-radius: 4px;
   transition: filter 0.6s ease, opacity 0.6s ease, transform 0.6s ease;
@@ -351,7 +351,6 @@ span {
   font-size: 40px;
   font-weight: 600;
   color: var(--color-brand-cream);
-  padding: 0 20px;
 }
 
 .product-carousel__subtitle {
@@ -394,6 +393,7 @@ span {
     font-size: 32px;
     text-align: center;
     margin-bottom: 0;
+    padding: 0 20px;
   }
 }
 

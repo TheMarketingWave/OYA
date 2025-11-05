@@ -49,7 +49,19 @@
     {% if show_tags and product.tags.size > 0 %}
       <div class="product-card__tags">
         {% for tag in product.tags %}
-          <span class="product-card__tag">{{ tag }}</span>
+          {% liquid
+            assign tag_color = '#999'
+            assign tag_lower = tag | downcase
+
+            if tag_lower contains 'essential oil'
+              assign tag_color = '#587A4F'
+            elsif tag_lower contains 'ceramics'
+              assign tag_color = '#CD7F36'
+            elsif tag_lower contains 'incense sticks'
+              assign tag_color = '#99451D'
+            endif
+          %}
+          <span class="product-card__tag" style="background-color: {{ tag_color }};">{{ tag }}</span>
         {% endfor %}
       </div>
     {% endif %}
@@ -95,11 +107,19 @@
           {% assign unit_measurement = product.selected_or_first_available_variant.unit_price_measurement %}
           <span class="product-card__weight">
             {% if unit_measurement.measured_type == 'weight' %}
-              {{ unit_measurement.quantity_value -}}
+              {{ unit_measurement.quantity_value | round }}
               {{- unit_measurement.quantity_unit }}
             {% elsif unit_measurement.measured_type == 'volume' %}
-              {{ unit_measurement.quantity_value -}}
+              {{ unit_measurement.quantity_value | round }}
+              {{ ' ' }}
               {{- unit_measurement.quantity_unit }}
+            {% elsif unit_measurement.measured_type == 'count' %}
+              {{ unit_measurement.quantity_value | round }}
+              {%- if unit_measurement.quantity_value > 1 -%}
+                items
+              {%- else -%}
+                item
+              {%- endif -%}
             {% else %}
               {{ unit_measurement.quantity_value -}}
               {{- unit_measurement.quantity_unit }}

@@ -241,11 +241,13 @@
     display: flex;
     align-items: center;
     gap: 0.5rem;
+    cursor: pointer;
   }
 
-  .menu-item-header > a {
+  .menu-item-header > p {
     font-family: 'Playfair Display';
     font-size: 40px;
+    cursor: pointer;
   }
 
   .custom-menu-list li {
@@ -508,6 +510,11 @@
     .menu-item-header > a {
       font-size: 24px;
     }
+
+    .menu-item > p,
+    .menu-item-header > p {
+      font-size: 24px;
+    }
     .menu-right {
       /* text-align: center; */
     }
@@ -574,8 +581,8 @@
                 <div class="menu-item-icon"></div>
                 {% if link.links != blank %}
                   <div class="submenu-container">
-                    <div class="menu-item-header">
-                      <a href="{{ link.url }}">{{ link.title }}</a>
+                    <div class="menu-item-header" data-submenu-toggle>
+                      <p href="{{ link.url }}">{{ link.title }}</p>
                       <button class="expand-button" aria-label="Expand submenu" data-submenu-toggle>
                         <div class="expand-icon">
                           <span></span>
