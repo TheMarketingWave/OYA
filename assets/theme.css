@@ -87,7 +87,7 @@ span {
 .product-card {
   flex-shrink: 0;
   width: 300px;
-  height: 580px;
+  height: 600px;
 }
 
 .product-card__inner {
