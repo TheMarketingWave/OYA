@@ -480,8 +480,11 @@ function horizontalLoop(items, config) {
         },
         onDrag: onDrag,
         onThrowUpdate: align,
-        overshootTolerance: 0,
+        // INERTIA CONTROLS
         inertia: true,
+        overshootTolerance: 0,
+        throwResistance: 10000,
+        // INERTIA CONTROLS
         snap(value) {
           if (Math.abs(startProgress / -ratio - this.x) < 10) {
             return lastSnap + initChangeX;
