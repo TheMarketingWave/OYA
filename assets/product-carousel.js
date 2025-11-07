@@ -47,6 +47,8 @@ const initProductCarousel = () => {
 
   // Initialize each carousel separately
   carouselContainers.forEach((container, containerIndex) => {
+    console.log("containerIndex");
+
     const wrapper = container.querySelector(".product-carousel__track");
     const boxes = gsap.utils.toArray(
       container.querySelectorAll(".product-card")
@@ -480,8 +482,11 @@ function horizontalLoop(items, config) {
         },
         onDrag: onDrag,
         onThrowUpdate: align,
-        overshootTolerance: 0,
+        // INERTIA CONTROLS
         inertia: true,
+        overshootTolerance: 0,
+        throwResistance: 3000,
+        // INERTIA CONTROLS
         snap(value) {
           if (Math.abs(startProgress / -ratio - this.x) < 10) {
             return lastSnap + initChangeX;
