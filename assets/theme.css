@@ -681,3 +681,9 @@ span {
 .image-section__placeholder span {
   font-size: 14px;
 }
+
+#main-content .shopify-policy__container {
+  max-width: 1000px;
+  color: #e0d9ba;
+  padding-bottom: 80px;
+}
