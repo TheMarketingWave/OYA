@@ -20,10 +20,21 @@
         "footer_image": "shopify://shop_images/home-footer.webp",
         "scrolling_text": "Sustainable Luxury, Pure Experience • Sustainable Luxury, Pure Experience • Sustainable Luxury, Pure Experience •"
       }
+    },
+    "first_time_offer_TFPNY6": {
+      "type": "first-time-offer",
+      "name": "First Time Offer Popup",
+      "settings": {
+        "title": "Receive 10% off your first order",
+        "subtitle": "Your new ritual begins. Unlock 10% off your first order.",
+        "button_label": "Thank you!",
+        "image": "shopify://shop_images/popup.png"
+      }
     }
   },
   "order": [
     "product",
-    "footer_image_mtHKLn"
+    "footer_image_mtHKLn",
+    "first_time_offer_TFPNY6"
   ]
 }

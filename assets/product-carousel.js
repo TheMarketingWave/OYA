@@ -47,8 +47,6 @@ const initProductCarousel = () => {
 
   // Initialize each carousel separately
   carouselContainers.forEach((container, containerIndex) => {
-    console.log("containerIndex");
-
     const wrapper = container.querySelector(".product-carousel__track");
     const boxes = gsap.utils.toArray(
       container.querySelectorAll(".product-card")

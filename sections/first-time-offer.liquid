@@ -1,0 +1,165 @@
+{% stylesheet %}
+  .first-time-offer__container-overlay.hide {
+    display: none;
+  }
+
+  .first-time-offer__container-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 100;
+  }
+
+  .first-time-offer__container {
+    width: 90%;
+    max-width: 640px;
+    background: var(--color-brand-cream);
+    display: flex;
+    overflow: hidden;
+    border-radius: 4px;
+    min-height: 300px;
+  }
+
+  .first-time-offer__text-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 40px 30px;
+    padding-right: 0;
+    gap: 15px;
+    align-self: center;
+    justify-content: flex-start;
+  }
+
+  .first-time-offer__text-container .title-font {
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 120%;
+  }
+
+  .first-time-offer__text-container p {
+    font-size: 16px;
+  }
+
+  .first-time-image-container {
+    flex: 1;
+    position: relative;
+  }
+
+  .first-time-image-container img {
+    width: 100%;
+    height: auto;
+    position: absolute;
+    bottom: -40px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  #first-time-offer-popup-button {
+    /* align-self: flex-start; */
+    z-index: 200;
+    position: relative;
+  }
+
+  #first-time-offer-popup-button:hover {
+    background: var(--color-brand-green);
+  }
+
+  #first-time-offer-popup-button img {
+    display: none;
+  }
+
+  @media (max-width: 480px) {
+    .first-time-offer__container {
+      flex-direction: column;
+      margin-top: 40px;
+    }
+
+    .first-time-offer__text-container {
+      align-self: unset;
+      align-items: center;
+      padding: 60px 80px 0px 80px;
+      text-align: center;
+    }
+
+    .first-time-image-container {
+      min-height: 250px;
+      /* max-width: 280px; */
+    }
+  }
+{% endstylesheet %}
+{% assign image = section.settings.image %}
+{% assign title = section.settings.title %}
+{% assign subtitle = section.settings.subtitle %}
+{% assign button_label = section.settings.button_label %}
+<div class="first-time-offer__container-overlay hide">
+  <div class="first-time-offer__container">
+    <div class="first-time-offer__text-container">
+      <h1 class="title-font">{{ title }}</h1>
+      <p>{{ subtitle }}</p>
+      {% render 'icon-button', label: button_label, variant: 'secondary', id: 'first-time-offer-popup-button' %}
+    </div>
+    <div class="first-time-image-container">
+      <img
+        src="{{image | image_url: width: image.width }}"
+        width="{{ image.width }}"
+        height="{{ image.height }}"
+        alt="{{ image.alt }}"
+        style="object-fit:{{ section.settings.object_fit }}; object-position:{{ section.settings.object_position }};"
+        loading="lazy"
+      >
+    </div>
+  </div>
+</div>
+<script>
+  const hidePopUp = localStorage.getItem('first-time-offer-pop-up-hide');
+  if (!hidePopUp) {
+    document.querySelector('.first-time-offer__container-overlay').classList.remove('hide');
+    document.getElementById('first-time-offer-popup-button').addEventListener('click', () => {
+      localStorage.setItem('first-time-offer-pop-up-hide', 'true');
+      document.querySelector('.first-time-offer__container-overlay').classList.add('hide');
+    });
+  }
+</script>
+
+{% schema %}
+{
+  "name": "First Time Offer Popup",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Popup Title"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Popup Subtitle"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button Label"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    }
+  ],
+  "presets": [
+    {
+      "name": "First Time Offer Popup"
+    }
+  ]
+}
+{% endschema %}
