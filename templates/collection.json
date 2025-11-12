@@ -105,21 +105,21 @@
         "section_subtitle": "What we stand for is infused into every product."
       }
     },
-    // "first_time_offer_Yh3AM3": {
-    //   "type": "first-time-offer",
-    //   "name": "First Time Offer Popup",
-    //   "settings": {
-    //     "title": "Receive 10% off your first order",
-    //     "subtitle": "Your new ritual begins. Unlock 10% off your first order.",
-    //     "button_label": "Thank you!",
-    //     "image": "shopify://shop_images/popup.png"
-    //   }
-    // }
+    "first_time_offer_Yh3AM3": {
+      "type": "first-time-offer",
+      "name": "First Time Offer Popup",
+      "settings": {
+        "title": "Receive 10% off your first order",
+        "subtitle": "Your new ritual begins. Unlock 10% off your first order.",
+        "button_label": "Thank you!",
+        "image": "shopify://shop_images/popup.png"
+      }
+    }
   },
   "order": [
     "collection_header_RLEKt7",
     "products",
     "values_card_MnR8Ty",
-    // "first_time_offer_Yh3AM3"
+    "first_time_offer_Yh3AM3"
   ]
 }
