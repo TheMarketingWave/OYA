@@ -1,0 +1,85 @@
+{% stylesheet %}
+  .first-time-offer__container-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.9);
+  }
+
+  .first-time-offer__container {
+    width: 90%;
+    max-width: 640px;
+    background: var(--color-brand-cream);
+    display: flex;
+  }
+  .first-time-offer__text-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .first-time-image-container {
+    flex: 1;
+  }
+
+  .first-time-image-container img {
+    width: 100%;
+  }
+{% endstylesheet %}
+{% assign image = section.settings.image %}
+{% assign title = section.settings.title %}
+{% assign subtitle = section.settings.subtitle %}
+{% assign button_label = section.settings.button_label %}
+<div class="first-time-offer__container-overlay">
+  <div class="first-time-offer__container">
+    <div class="first-time-offer__text-container">
+      <h1>{{ title }}</h1>
+      <p>{{ subtitle }}</p>
+      {% render 'icon-button', label: button_label, variant: 'secondary' %}
+    </div>
+    <div class="first-time-image-container">
+      <img
+        src="{{image | image_url: width: image.width }}"
+        width="{{ image.width }}"
+        height="{{ image.height }}"
+        alt="{{ image.alt }}"
+        style="object-fit:{{ section.settings.object_fit }}; object-position:{{ section.settings.object_position }};"
+        loading="lazy"
+      >
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "First Time Offer Popup",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Popup Title"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Popup Subtitle"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button Label"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    }
+  ]
+}
+{% endschema %}
