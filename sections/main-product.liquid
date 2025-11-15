@@ -35,7 +35,7 @@
     display: flex;
     flex-direction: column;
     gap: 5px;
-    max-width: 300px;
+    max-width: 330px;
   }
 
   @media (max-width: 800px) {
@@ -222,6 +222,7 @@
 {% assign why_it_matters = '' %}
 {% assign precautions = '' %}
 {% assign sustainability = '' %}
+{% assign rituals = '' %}
 
 {% comment %} Extract table content using simple string search {% endcomment %}
 {% if product.description contains '<table' %}
@@ -239,7 +240,7 @@
     {% if line contains 'Description' %}
       {% assign desc_parts = line | split: 'Description' %}
       {% if desc_parts.size > 1 %}
-        {% assign description = desc_parts[1] | strip_html | strip %}
+        {% assign description = desc_parts[1] %}
       {% endif %}
     {% endif %}
 
@@ -268,6 +269,13 @@
       {% assign sust_parts = line | split: 'Sustainability-sec' %}
       {% if sust_parts.size > 1 %}
         {% assign sustainability = sust_parts[1] | strip_html | strip %}
+      {% endif %}
+    {% endif %}
+
+    {% if line contains 'Suggested Ritual' %}
+      {% assign rit_parts = line | split: 'Suggested Ritual' %}
+      {% if rit_parts.size > 1 %}
+        {% assign rituals = rit_parts[1] | strip_html | strip %}
       {% endif %}
     {% endif %}
   {% endfor %}
@@ -424,6 +432,11 @@
     {% if sustainability != blank %}
       {% if accordion_items != blank %}{% assign accordion_items = accordion_items | append: '|' %}{% endif %}
       {% assign accordion_items = accordion_items | append: 'Sustainability::' | append: sustainability %}
+    {% endif %}
+
+    {% if rituals != blank %}
+      {% if accordion_items != blank %}{% assign accordion_items = accordion_items | append: '|' %}{% endif %}
+      {% assign accordion_items = accordion_items | append: 'Suggested Ritual::' | append: rituals %}
     {% endif %}
 
     {% if accordion_items != blank %}

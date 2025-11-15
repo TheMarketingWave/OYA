@@ -87,7 +87,7 @@ span {
 .product-card {
   flex-shrink: 0;
   width: 300px;
-  height: 600px;
+  height: 700px;
 }
 
 .product-card__inner {
@@ -532,8 +532,8 @@ span {
 .footer-image__text-content {
   font-size: 40px;
   color: var(--color-brand-cream);
-  text-transform: uppercase;
   letter-spacing: 4px;
+  font-weight: bold;
 }
 
 @media (max-width: 768px) {
@@ -620,6 +620,7 @@ span {
   width: 100%;
   background-color: var(--color-brand-brown);
   padding: 20px 0;
+  padding-bottom: 60px;
 }
 
 .image-section__container {

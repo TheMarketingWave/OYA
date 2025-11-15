@@ -142,5 +142,12 @@
     <script src="{{ 'cart.js' | asset_url }}" defer></script>
     <script src="{{ 'cart-sidepanel.js' | asset_url }}" defer></script>
     <script src="{{ 'product-carousel.js' | asset_url }}" defer></script>
+    {%- if theme.role == 'development' or request.design_mode -%}
+      {% style %}
+        #shopify-pc__banner {
+          display: none !important;
+        }
+      {% endstyle %}
+    {%- endif -%}
   </body>
 </html>
