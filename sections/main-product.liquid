@@ -194,9 +194,10 @@
   }
 
   .product-flower-image img {
-    width: 300px;
-    aspect-ratio: 3/4;
+    aspect-ratio: 1;
     object-fit: cover;
+    max-width: 100%;
+    height: auto;
   }
 
   .product-flower-divider {
@@ -461,10 +462,10 @@
     {% if flower_image %}
       <div class="product-flower-image">
         <img
-          src="{{ flower_image | image_url: width: 300 }}"
+          src="{{ flower_image | image_url: width: 500 }}"
           alt="{{ flower_image.alt | escape }}"
-          width="300"
-          height="400"
+          width="500"
+          height="500"
         >
         <div class="product-flower-divider"></div>
       </div>
