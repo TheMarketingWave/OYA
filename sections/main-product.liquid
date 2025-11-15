@@ -415,6 +415,11 @@
     {% comment %} Build accordion items array {% endcomment %}
     {% assign accordion_items = '' %}
 
+    {% if rituals != blank %}
+      {% if accordion_items != blank %}{% assign accordion_items = accordion_items | append: '|' %}{% endif %}
+      {% assign accordion_items = accordion_items | append: 'Suggested Ritual::' | append: rituals %}
+    {% endif %}
+
     {% if how_to_use != blank %}
       {% assign accordion_items = accordion_items | append: 'How to Use::' | append: how_to_use %}
     {% endif %}
@@ -432,11 +437,6 @@
     {% if sustainability != blank %}
       {% if accordion_items != blank %}{% assign accordion_items = accordion_items | append: '|' %}{% endif %}
       {% assign accordion_items = accordion_items | append: 'Sustainability::' | append: sustainability %}
-    {% endif %}
-
-    {% if rituals != blank %}
-      {% if accordion_items != blank %}{% assign accordion_items = accordion_items | append: '|' %}{% endif %}
-      {% assign accordion_items = accordion_items | append: 'Suggested Ritual::' | append: rituals %}
     {% endif %}
 
     {% if accordion_items != blank %}
