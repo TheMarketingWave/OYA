@@ -146,6 +146,7 @@ span {
   color: var(--color-brand-cream);
   text-decoration: none;
   transition: color 0.3s ease;
+  font-weight: 400;
 }
 
 .product-card__title-link:hover {
