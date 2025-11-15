@@ -532,8 +532,8 @@ span {
 .footer-image__text-content {
   font-size: 40px;
   color: var(--color-brand-cream);
-  text-transform: uppercase;
   letter-spacing: 4px;
+  font-weight: bold;
 }
 
 @media (max-width: 768px) {
