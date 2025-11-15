@@ -244,12 +244,7 @@
               {{ featured_article.excerpt | default: featured_article.content | strip_html | truncate: 300 }}
             </div>
             <div class="journal-featured__read-more">
-              {% render 'icon-button',
-                icon: 'blog.svg',
-                label: 'Read More',
-                url: featured_article.url,
-                variant: 'secondary'
-              %}
+              {% render 'icon-button', label: 'Read More', url: featured_article.url, variant: 'secondary' %}
             </div>
           </div>
         </div>

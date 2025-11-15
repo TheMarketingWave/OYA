@@ -31,7 +31,9 @@
     {% if label %}
       <p>{{ label }}</p>
     {% endif %}
-    <img src="{{ icon | asset_url }}" alt="{{ icon | split: '.' | first | capitalize }}" width="24" height="24">
+    {% if icon %}
+      <img src="{{ icon | asset_url }}" alt="{{ icon | split: '.' | first | capitalize }}" width="24" height="24">
+    {% endif %}
   </a>
 {% else %}
   <button
@@ -42,6 +44,8 @@
     {% if label %}
       <p>{{ label }}</p>
     {% endif %}
-    <img src="{{ icon | asset_url }}" alt="{{ icon | split: '.' | first | capitalize }}" width="24" height="24">
+    {% if icon %}
+      <img src="{{ icon | asset_url }}" alt="{{ icon | split: '.' | first | capitalize }}" width="24" height="24">
+    {% endif %}
   </button>
 {% endif %}
