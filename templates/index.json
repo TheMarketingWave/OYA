@@ -89,10 +89,16 @@
         "product_QyPKUk": {
           "type": "product",
           "settings": {
-            "product": "incense-stick-velour"
+            "product": "incense-stick-myrrha"
           }
         },
         "product_G9Uz7f": {
+          "type": "product",
+          "settings": {
+            "product": "incense-stick-sanctum"
+          }
+        },
+        "product_nph8iz": {
           "type": "product",
           "settings": {
             "product": "incense-stick-amber"
@@ -103,20 +109,14 @@
           "settings": {
             "product": "incense-stick-velour"
           }
-        },
-        "product_nph8iz": {
-          "type": "product",
-          "settings": {
-            "product": "incense-stick-amber"
-          }
         }
       },
       "block_order": [
         "product_Rb3FGa",
         "product_QyPKUk",
         "product_G9Uz7f",
-        "product_t3rz7W",
-        "product_nph8iz"
+        "product_nph8iz",
+        "product_t3rz7W"
       ],
       "name": "Product Carousel",
       "settings": {
