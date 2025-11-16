@@ -458,11 +458,13 @@ span {
     opacity 0.3s ease 0.1s, padding-bottom 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   padding: 0;
   opacity: 0;
+  padding: 0 20px;
 }
 
 .accordion-item.active .accordion-content {
   opacity: 1;
-  max-height: 1000px; /* High value to accommodate any content size */
+  max-height: 1000px;
+  padding-bottom: 20px;
 }
 
 .product-accordion {

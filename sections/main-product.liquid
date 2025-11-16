@@ -443,7 +443,7 @@
     {% if accordion_items != blank %}
       {% assign items_array = accordion_items | split: '|' %}
       <div class="product-accordion-container">
-        {% render 'accordion', items: items_array %}
+        {% render 'accordion', items: items_array, open_first: true %}
       </div>
     {% endif %}
 
