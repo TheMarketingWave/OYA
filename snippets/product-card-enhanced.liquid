@@ -68,7 +68,7 @@
 
     <h3 class="product-card__title">
       <a href="{{ product.url }}" class="product-card__title-link">
-        {{ product.title }}
+        {{ product.title | truncate: 40 }}
       </a>
     </h3>
 
@@ -89,9 +89,9 @@
 
       <p class="product-card__description">
         {% if extracted_description != blank %}
-          {{ extracted_description | truncate: 80 }}
+          {{ extracted_description | truncate: 60 }}
         {% else %}
-          {{ product.description | strip_html | truncate: 80 }}
+          {{ product.description | strip_html | truncate: 60 }}
         {% endif %}
       </p>
     {% endif %}

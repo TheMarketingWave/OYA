@@ -194,9 +194,10 @@
   }
 
   .product-flower-image img {
-    width: 300px;
-    aspect-ratio: 3/4;
+    aspect-ratio: 1;
     object-fit: cover;
+    max-width: 100%;
+    height: auto;
   }
 
   .product-flower-divider {
@@ -415,6 +416,11 @@
     {% comment %} Build accordion items array {% endcomment %}
     {% assign accordion_items = '' %}
 
+    {% if rituals != blank %}
+      {% if accordion_items != blank %}{% assign accordion_items = accordion_items | append: '|' %}{% endif %}
+      {% assign accordion_items = accordion_items | append: 'Suggested Ritual::' | append: rituals %}
+    {% endif %}
+
     {% if how_to_use != blank %}
       {% assign accordion_items = accordion_items | append: 'How to Use::' | append: how_to_use %}
     {% endif %}
@@ -434,15 +440,10 @@
       {% assign accordion_items = accordion_items | append: 'Sustainability::' | append: sustainability %}
     {% endif %}
 
-    {% if rituals != blank %}
-      {% if accordion_items != blank %}{% assign accordion_items = accordion_items | append: '|' %}{% endif %}
-      {% assign accordion_items = accordion_items | append: 'Suggested Ritual::' | append: rituals %}
-    {% endif %}
-
     {% if accordion_items != blank %}
       {% assign items_array = accordion_items | split: '|' %}
       <div class="product-accordion-container">
-        {% render 'accordion', items: items_array %}
+        {% render 'accordion', items: items_array, open_first: true %}
       </div>
     {% endif %}
 
@@ -461,10 +462,10 @@
     {% if flower_image %}
       <div class="product-flower-image">
         <img
-          src="{{ flower_image | image_url: width: 300 }}"
+          src="{{ flower_image | image_url: width: 500 }}"
           alt="{{ flower_image.alt | escape }}"
-          width="300"
-          height="400"
+          width="500"
+          height="500"
         >
         <div class="product-flower-divider"></div>
       </div>
