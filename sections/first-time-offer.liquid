@@ -18,7 +18,7 @@
 
   .first-time-offer__container {
     width: 90%;
-    max-width: 640px;
+    max-width: 350px;
     background: var(--color-brand-cream);
     display: flex;
     overflow: hidden;
@@ -31,7 +31,6 @@
     display: flex;
     flex-direction: column;
     padding: 40px 30px;
-    padding-right: 0;
     gap: 15px;
     align-self: center;
     justify-content: flex-start;
@@ -85,7 +84,7 @@
     .first-time-offer__text-container {
       align-self: unset;
       align-items: center;
-      padding: 60px 80px 0px 80px;
+      padding: 60px 80px;
       text-align: center;
     }
 
@@ -95,7 +94,7 @@
     }
   }
 {% endstylesheet %}
-{% assign image = section.settings.image %}
+{% comment %} {% assign image = section.settings.image %} {% endcomment %}
 {% assign title = section.settings.title %}
 {% assign subtitle = section.settings.subtitle %}
 {% assign button_label = section.settings.button_label %}
@@ -106,16 +105,18 @@
       <p>{{ subtitle }}</p>
       {% render 'icon-button', label: button_label, variant: 'secondary', id: 'first-time-offer-popup-button' %}
     </div>
-    <div class="first-time-image-container">
-      <img
-        src="{{image | image_url: width: image.width }}"
-        width="{{ image.width }}"
-        height="{{ image.height }}"
-        alt="{{ image.alt }}"
-        style="object-fit:{{ section.settings.object_fit }}; object-position:{{ section.settings.object_position }};"
-        loading="lazy"
-      >
-    </div>
+    {% comment %}
+      <div class="first-time-image-container">
+        <img
+          src="{{image | image_url: width: image.width }}"
+          width="{{ image.width }}"
+          height="{{ image.height }}"
+          alt="{{ image.alt }}"
+          style="object-fit:{{ section.settings.object_fit }}; object-position:{{ section.settings.object_position }};"
+          loading="lazy"
+        >
+      </div>
+    {% endcomment %}
   </div>
 </div>
 <script>
