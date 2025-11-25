@@ -141,10 +141,70 @@ const setAccordionToggle = () => {
   });
 };
 
+const setLanguageSwitcher = () => {
+  const languageSwitcher = document.getElementById("language-switcher");
+  const currentLang = document.getElementById("current-language");
+  const otherLang = document.getElementById("other-language");
+
+  if (languageSwitcher && currentLang && otherLang) {
+    // Function to get current locale
+    const getCurrentLocale = () => {
+      const htmlLang = document.documentElement.lang || "en";
+      const pathMatch = window.location.pathname.match(/^\/(en|ro)/);
+      return pathMatch ? pathMatch[1] : htmlLang;
+    };
+
+    // Function to update button display
+    const updateDisplay = () => {
+      const locale = getCurrentLocale();
+      if (locale === "ro") {
+        currentLang.textContent = "RO";
+        otherLang.textContent = "EN";
+        currentLang.className = "current";
+        otherLang.className = "other";
+      } else {
+        currentLang.textContent = "EN";
+        otherLang.textContent = "RO";
+        currentLang.className = "current";
+        otherLang.className = "other";
+      }
+    };
+
+    // Set initial state
+    updateDisplay();
+
+    languageSwitcher.addEventListener("click", () => {
+      const currentLocale = getCurrentLocale();
+      const targetLocale = currentLocale === "en" ? "ro" : "en";
+
+      // Build the URL with the new locale
+      const currentPath = window.location.pathname;
+      const currentSearch = window.location.search;
+
+      // Remove existing locale from path if present
+      let newPath = currentPath.replace(/^\/(en|ro)/, "");
+
+      // Add new locale prefix only if not English
+      if (targetLocale !== "en") {
+        newPath = `/${targetLocale}${newPath}`;
+      }
+
+      // Ensure path starts with /
+      if (!newPath.startsWith("/")) {
+        newPath = `/${newPath}`;
+      }
+
+      // Redirect to new locale
+      window.location.href = newPath + currentSearch;
+    });
+  }
+};
+
 const onLoad = () => {
   setToggleMenu();
   setSubmenuToggle();
   setAccordionToggle();
+  setLanguageSwitcher();
 };
 
 if (document.readyState !== "loading") {

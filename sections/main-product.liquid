@@ -216,16 +216,16 @@
   }
 {% endstyle %}
 
-{% comment %} Parse product description table {% endcomment %}
+{% comment %} Get product data from metafields and description table {% endcomment %}
 {% assign scent = '' %}
 {% assign description = '' %}
 {% assign how_to_use = '' %}
-{% assign why_it_matters = '' %}
-{% assign precautions = '' %}
-{% assign sustainability = '' %}
-{% assign rituals = '' %}
+{% assign why_it_matters = product.metafields.custom.why_it_matters | metafield_tag %}
+{% assign precautions = product.metafields.custom.precautions | metafield_tag %}
+{% assign sustainability = product.metafields.custom.sustainability_sec | metafield_tag %}
+{% assign rituals = product.metafields.custom.suggested_ritual | metafield_tag %}
 
-{% comment %} Extract table content using simple string search {% endcomment %}
+{% comment %} Extract scent, description, and how_to_use from table if present {% endcomment %}
 {% if product.description contains '<table' %}
   {% comment %} Split by common row patterns and extract data {% endcomment %}
   {% assign content_lines = product.description | split: '</tr>' %}
@@ -249,34 +249,6 @@
       {% assign use_parts = line | split: 'How to use' %}
       {% if use_parts.size > 1 %}
         {% assign how_to_use = use_parts[1] | strip_html | strip %}
-      {% endif %}
-    {% endif %}
-
-    {% if line contains 'Why It Matters' %}
-      {% assign why_parts = line | split: 'Why It Matters' %}
-      {% if why_parts.size > 1 %}
-        {% assign why_it_matters = why_parts[1] | strip_html | strip %}
-      {% endif %}
-    {% endif %}
-
-    {% if line contains 'Precautions' %}
-      {% assign prec_parts = line | split: 'Precautions' %}
-      {% if prec_parts.size > 1 %}
-        {% assign precautions = prec_parts[1] | strip_html | strip %}
-      {% endif %}
-    {% endif %}
-
-    {% if line contains 'Sustainability-sec' %}
-      {% assign sust_parts = line | split: 'Sustainability-sec' %}
-      {% if sust_parts.size > 1 %}
-        {% assign sustainability = sust_parts[1] | strip_html | strip %}
-      {% endif %}
-    {% endif %}
-
-    {% if line contains 'Suggested Ritual' %}
-      {% assign rit_parts = line | split: 'Suggested Ritual' %}
-      {% if rit_parts.size > 1 %}
-        {% assign rituals = rit_parts[1] | strip_html | strip %}
       {% endif %}
     {% endif %}
   {% endfor %}
