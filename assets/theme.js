@@ -149,7 +149,7 @@ const setLanguageSwitcher = () => {
   if (languageSwitcher && currentLang && otherLang) {
     // Function to get current locale
     const getCurrentLocale = () => {
-      const htmlLang = document.documentElement.lang || "en";
+      const htmlLang = document.documentElement.lang || "ro";
       const pathMatch = window.location.pathname.match(/^\/(en|ro)/);
       return pathMatch ? pathMatch[1] : htmlLang;
     };
@@ -175,7 +175,7 @@ const setLanguageSwitcher = () => {
 
     languageSwitcher.addEventListener("click", () => {
       const currentLocale = getCurrentLocale();
-      const targetLocale = currentLocale === "en" ? "ro" : "en";
+      const targetLocale = currentLocale === "ro" ? "en" : "ro";
 
       // Build the URL with the new locale
       const currentPath = window.location.pathname;
@@ -184,8 +184,8 @@ const setLanguageSwitcher = () => {
       // Remove existing locale from path if present
       let newPath = currentPath.replace(/^\/(en|ro)/, "");
 
-      // Add new locale prefix only if not English
-      if (targetLocale !== "en") {
+      // Add new locale prefix only if not Romanian (default)
+      if (targetLocale !== "ro") {
         newPath = `/${targetLocale}${newPath}`;
       }
 
