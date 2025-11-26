@@ -386,13 +386,12 @@
 
     <!-- Accordion Section -->
     {% comment %} Get accordion labels from shop metaobject {% endcomment %}
-    {% assign labels = shop.metaobjects.product_section_label.product_accordion_labels %}
-    <p>a {{ shop.metaobjects.product_section_label.product_accordion_labels }}</p>
-    {% assign label_suggested_ritual = labels.suggested_ritual | default: 'Suggested Ritual' %}
-    {% assign label_how_to_use = labels.how_to_use | default: 'How to Use' %}
+    {% assign labels = shop.metaobjects.product_section_label['section-labels'] %}
+    {% assign label_suggested_ritual = labels.label_suggested_ritual | default: 'Suggested Ritual' %}
+    {% assign label_how_to_use = labels.label_how_to_use | default: 'How to Use' %}
     {% assign label_why_it_matters = labels.why_it_matters | default: 'Why It Matters' %}
-    {% assign label_precautions = labels.precautions | default: 'Precautions' %}
-    {% assign label_sustainability = labels.sustainability | default: 'Sustainability' %}
+    {% assign label_precautions = labels.label_precautions | default: 'Precautions' %}
+    {% assign label_sustainability = labels.label_sustainability | default: 'Sustainability' %}
 
     {% comment %} Build accordion items array {% endcomment %}
     {% assign accordion_items = '' %}
