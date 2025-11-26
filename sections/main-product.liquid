@@ -386,7 +386,8 @@
 
     <!-- Accordion Section -->
     {% comment %} Get accordion labels from shop metaobject {% endcomment %}
-    {% assign labels = shop.metaobjects.product_accordion_labels.first %}
+    {% assign labels = shop.metaobjects.product_section_label.product_accordion_labels %}
+    <p>a {{ shop.metaobjects.product_section_label.product_accordion_labels }}</p>
     {% assign label_suggested_ritual = labels.suggested_ritual | default: 'Suggested Ritual' %}
     {% assign label_how_to_use = labels.how_to_use | default: 'How to Use' %}
     {% assign label_why_it_matters = labels.why_it_matters | default: 'Why It Matters' %}
