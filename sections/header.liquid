@@ -589,17 +589,22 @@
       {% render 'icon', icon: 'translate', size: '18' %}
     </button>
     {% if customer %}
-      {% render 'icon-button', icon: 'person.svg', label: 'Account', url: routes.account_url, hide_text_mobile: true %}
+      {% render 'icon-button',
+        icon: 'person.svg',
+        label: section.settings.account_label,
+        url: routes.account_url,
+        hide_text_mobile: true
+      %}
     {% else %}
       {% render 'icon-button',
         icon: 'person.svg',
-        label: 'Log In',
+        label: section.settings.login_label,
         url: routes.account_login_url,
         hide_text_mobile: true
       %}
     {% endif %}
     <div id="header-cart-button" data-cart-open>
-      {% render 'icon-button', icon: 'cart.svg', label: 'Cart', hide_text_mobile: true %}
+      {% render 'icon-button', icon: 'cart.svg', label: section.settings.cart_label, hide_text_mobile: true %}
       <div class="cart-badge{% if cart.item_count > 0 %} visible{% endif %}">
         <span>{{ cart.item_count }}</span>
       </div>
@@ -692,6 +697,32 @@
   "name": "Nav",
   "settings": [
     {
+      "type": "header",
+      "content": "Button Labels"
+    },
+    {
+      "type": "text",
+      "id": "cart_label",
+      "label": "Cart Button Label",
+      "default": "Cart"
+    },
+    {
+      "type": "text",
+      "id": "login_label",
+      "label": "Login Button Label",
+      "default": "Log In"
+    },
+    {
+      "type": "text",
+      "id": "account_label",
+      "label": "Account Button Label",
+      "default": "Account"
+    },
+    {
+      "type": "header",
+      "content": "Menu Settings"
+    },
+    {
       "type": "link_list",
       "id": "menu",
       "label": "Menu",
@@ -713,6 +744,10 @@
       "id": "menu_right_msg",
       "label": "Menu Bottom Message",
       "default": "Our essential oils capture nature in its purest."
+    },
+    {
+      "type": "header",
+      "content": "Social Media"
     },
     {
       "type": "url",
