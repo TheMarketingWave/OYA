@@ -385,31 +385,47 @@
     </div>
 
     <!-- Accordion Section -->
+    {% comment %} Get accordion labels from shop metaobject {% endcomment %}
+    {% assign labels = shop.metaobjects.product_section_label['section-labels'] %}
+    {% assign label_suggested_ritual = labels.label_suggested_ritual | default: 'Suggested Ritual' %}
+    {% assign label_how_to_use = labels.label_how_to_use | default: 'How to Use' %}
+    {% assign label_why_it_matters = labels.why_it_matters | default: 'Why It Matters' %}
+    {% assign label_precautions = labels.label_precautions | default: 'Precautions' %}
+    {% assign label_sustainability = labels.label_sustainability | default: 'Sustainability' %}
+
     {% comment %} Build accordion items array {% endcomment %}
     {% assign accordion_items = '' %}
 
     {% if rituals != blank %}
       {% if accordion_items != blank %}{% assign accordion_items = accordion_items | append: '|' %}{% endif %}
-      {% assign accordion_items = accordion_items | append: 'Suggested Ritual::' | append: rituals %}
+      {% assign accordion_items = accordion_items | append: label_suggested_ritual | append: '::' | append: rituals %}
     {% endif %}
 
     {% if how_to_use != blank %}
-      {% assign accordion_items = accordion_items | append: 'How to Use::' | append: how_to_use %}
+      {% assign accordion_items = accordion_items | append: label_how_to_use | append: '::' | append: how_to_use %}
     {% endif %}
 
     {% if why_it_matters != blank %}
       {% if accordion_items != blank %}{% assign accordion_items = accordion_items | append: '|' %}{% endif %}
-      {% assign accordion_items = accordion_items | append: 'Why It Matters::' | append: why_it_matters %}
+      {% assign accordion_items = accordion_items
+        | append: label_why_it_matters
+        | append: '::'
+        | append: why_it_matters
+      %}
     {% endif %}
 
     {% if precautions != blank %}
       {% if accordion_items != blank %}{% assign accordion_items = accordion_items | append: '|' %}{% endif %}
-      {% assign accordion_items = accordion_items | append: 'Precautions::' | append: precautions %}
+      {% assign accordion_items = accordion_items | append: label_precautions | append: '::' | append: precautions %}
     {% endif %}
 
     {% if sustainability != blank %}
       {% if accordion_items != blank %}{% assign accordion_items = accordion_items | append: '|' %}{% endif %}
-      {% assign accordion_items = accordion_items | append: 'Sustainability::' | append: sustainability %}
+      {% assign accordion_items = accordion_items
+        | append: label_sustainability
+        | append: '::'
+        | append: sustainability
+      %}
     {% endif %}
 
     {% if accordion_items != blank %}
