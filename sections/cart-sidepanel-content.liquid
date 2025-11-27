@@ -3,7 +3,7 @@
   This section is used for AJAX updates of the cart sidepanel
 {% endcomment %}
 
-<div class="cart-sidepanel__items">
+<div class="cart-sidepanel__items" data-cart-title="{{ section.settings.cart_title }}">
   {% if cart.item_count > 0 %}
     {% for item in cart.items %}
       <div class="cart-item" data-cart-item="{{ item.key }}">
@@ -25,24 +25,59 @@
         </div>
         <div class="cart-item__actions">
           <div class="cart-item__price">{{ item.final_line_price | money }}</div>
-          <button data-cart-remove="{{ item.key }}">Remove</button>
+          <button data-cart-remove="{{ item.key }}">{{ section.settings.remove_label }}</button>
         </div>
       </div>
     {% endfor %}
 
     <div class="cart-sidepanel__footer">
-      <div class="cart-total">Total: {{ cart.total_price | money }}</div>
+      <div class="cart-total">{{ section.settings.total_label }}: {{ cart.total_price | money }}</div>
 
-      <button class="btn btn--primary" data-cart-checkout>Checkout</button>
+      <button class="btn btn--primary" data-cart-checkout>{{ section.settings.checkout_label }}</button>
     </div>
   {% else %}
-    <p>Your cart is empty</p>
+    <p>{{ section.settings.empty_cart_message }}</p>
   {% endif %}
 </div>
 
 {% schema %}
 {
   "name": "Cart Sidepanel Content",
-  "settings": []
+  "settings": [
+    {
+      "type": "header",
+      "content": "Cart Labels"
+    },
+    {
+      "type": "text",
+      "id": "cart_title",
+      "label": "Cart Title",
+      "default": "Your Cart"
+    },
+    {
+      "type": "text",
+      "id": "remove_label",
+      "label": "Remove Button Label",
+      "default": "Remove"
+    },
+    {
+      "type": "text",
+      "id": "total_label",
+      "label": "Total Label",
+      "default": "Total"
+    },
+    {
+      "type": "text",
+      "id": "checkout_label",
+      "label": "Checkout Button Label",
+      "default": "Checkout"
+    },
+    {
+      "type": "text",
+      "id": "empty_cart_message",
+      "label": "Empty Cart Message",
+      "default": "Your cart is empty"
+    }
+  ]
 }
 {% endschema %}

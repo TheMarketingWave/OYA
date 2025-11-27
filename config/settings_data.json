@@ -14,7 +14,13 @@
     "sections": {
       "cart-sidepanel-content": {
         "type": "cart-sidepanel-content",
-        "settings": {}
+        "settings": {
+          "cart_title": "Your Cart",
+          "remove_label": "Remove",
+          "total_label": "Total",
+          "checkout_label": "Checkout",
+          "empty_cart_message": "Your cart is empty"
+        }
       },
       "footer": {
         "type": "footer",
