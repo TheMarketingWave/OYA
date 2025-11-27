@@ -14,12 +14,7 @@
     "sections": {
       "cart-sidepanel-content": {
         "type": "cart-sidepanel-content",
-        "settings": {
-          "remove_label": "Remove",
-          "total_label": "Total",
-          "checkout_label": "Checkout",
-          "empty_cart_message": "Your cart is empty"
-        }
+        "settings": {}
       },
       "footer": {
         "type": "footer",
