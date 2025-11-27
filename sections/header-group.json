@@ -14,9 +14,6 @@
     "header": {
       "type": "header",
       "settings": {
-        "cart_label": "Cart",
-        "login_label": "Log In",
-        "account_label": "Account",
         "menu": "main-menu",
         "menu_image": "shopify://shop_images/menu-pic.webp",
         "menu_text": "Our collections capture nature in its purest, most expansive form. Each drop and each scent is an invitation to indulge in the art of mindful wellness.",
