@@ -224,6 +224,7 @@
 {% assign precautions = product.metafields.custom.precautions | metafield_tag %}
 {% assign sustainability = product.metafields.custom.sustainability_sec | metafield_tag %}
 {% assign rituals = product.metafields.custom.suggested_ritual | metafield_tag %}
+{% assign cart_button_text = shop.metaobjects.labels.labels_values.add_to_cart | default: 'Add to Cart' %}
 
 {% comment %} Extract scent, description, and how_to_use from table if present {% endcomment %}
 {% if product.description contains '<table' %}
@@ -378,7 +379,7 @@
             class="product-card__button"
             onclick="addToCartFromCarousel('{{ product.selected_or_first_available_variant.id }}', '{{ product.title | escape }}', this)"
           >
-            Add to Cart
+            {{ cart_button_text }}
           </button>
         </div>
       </div>
