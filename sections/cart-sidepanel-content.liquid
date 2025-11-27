@@ -3,7 +3,7 @@
   This section is used for AJAX updates of the cart sidepanel
 {% endcomment %}
 
-<div class="cart-sidepanel__items">
+<div class="cart-sidepanel__items" data-cart-title="{{ section.settings.cart_title }}">
   {% if cart.item_count > 0 %}
     {% for item in cart.items %}
       <div class="cart-item" data-cart-item="{{ item.key }}">

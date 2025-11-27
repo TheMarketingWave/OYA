@@ -259,7 +259,12 @@ class CartSidepanel {
         const cart = await response.json();
         const cartHeader = document.getElementById("cart-count-header");
         if (cartHeader) {
-          const cartTitle = cartHeader.dataset.cartTitle || "Your Cart";
+          // Get cart title from the cart items container (set by the section)
+          const cartItemsContainer = document.querySelector(
+            ".cart-sidepanel__items"
+          );
+          const cartTitle =
+            cartItemsContainer?.dataset?.cartTitle || "Your Cart";
           cartHeader.textContent = `${cartTitle} (${cart.item_count})`;
         }
       }
