@@ -20,6 +20,7 @@
     },
     "text_scroll_animation_1": {
       "type": "text-scroll-animation",
+      "disabled": true,
       "settings": {
         "title": "The Art of Aromatherapy, Reimagined",
         "content": "At oya essentials, every drop and aromatic breeze is a handcrafted journey—from soil to scent. We bring together rare botanicals, time-honored distillation, and a commitment to sustainability to create essential oils and incense that ground the body and uplift the spirit. Whether you're seeking stillness, clarity, or a spark of creative energy, oya invites you into a ritual that expands the moment.",
