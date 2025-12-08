@@ -23,6 +23,7 @@
     },
     "first_time_offer_TFPNY6": {
       "type": "first-time-offer",
+      "disabled": true,
       "name": "First Time Offer Popup",
       "settings": {
         "title": "Receive 10% off your first order",
