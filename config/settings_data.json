@@ -38,6 +38,16 @@
         "type": "shopify://apps/forms/blocks/forms/8744a304-fcb1-4347-b211-bb6b4759a76a",
         "disabled": false,
         "settings": {}
+      },
+      "12168986436008309812": {
+        "type": "shopify://apps/parkour-tiktok-pixel/blocks/threasury_pixel/6c589340-c893-4a7c-ad89-703f18722d60",
+        "disabled": false,
+        "settings": {}
+      },
+      "14327677521557774844": {
+        "type": "shopify://apps/simprosys-google-shopping-feed/blocks/core_settings_block/1f0b859e-9fa6-4007-97e8-4513aff5ff3b",
+        "disabled": false,
+        "settings": {}
       }
     }
   }

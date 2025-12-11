@@ -22,7 +22,7 @@
       "type": "text-scroll-animation",
       "settings": {
         "title": "The Art of Aromatherapy, Reimagined",
-        "content": "At oya essentials, every drop and aromatic breeze is a handcrafted journey—from soil to scent. We bring together rare botanicals, time-honored distillation, and a commitment to sustainability to create essential oils and incense that ground the body and uplift the spirit. Whether you're seeking stillness, clarity, or a spark of creative energy, oya invites you into a ritual that expands the moment.",
+        "content": "At oya essentials, every drop and aromatic breeze is a handcrafted journey from soil to scent. We bring together rare botanicals, time-honored distillation, and a commitment to sustainability to create essential oils and incense that ground the body and uplift the spirit. Whether you're seeking stillness, clarity, or a spark of creative energy, oya invites you into a ritual that expands the moment.",
         "cta_text": "Experience the Art of Aromatherapy",
         "cta_url": "/collections/all"
       }
@@ -192,7 +192,7 @@
         "title": "<p>Designed to </p><p>be Refilled</p>",
         "subtitle": "Our signature glass bottles are meant to be part of your long-term ritual. When empty, refill, because true luxury respects the earth it comes from.",
         "content_title": "Refill, Refresh, Renew",
-        "content_subtitle": "Our bottles are made to last—because wellness should be beautiful, not wasteful. Each step is designed to reduce waste, preserve resources, and extend the life of every bottle. It’s a ritual of return—one that honors both your well-being and the Earth’s",
+        "content_subtitle": "Our bottles are made to last, because wellness should be beautiful, not wasteful. Each step is designed to reduce waste, preserve resources, and extend the life of every bottle. It’s a ritual of return. One that honors both your well-being and the Earth’s",
         "image_large": "shopify://shop_images/bottles.jpg",
         "small_video": "shopify://files/videos/output-new.mp4",
         "small_video_alt": "Background video",
@@ -217,7 +217,7 @@
           "settings": {
             "title": "Premium Quality",
             "icon": "diamond",
-            "content": "We work only with the highest-grade botanicals and skilled artisans. Our pieces are unaltered, unadulterated, and full-spectrum—offering the deepest expression."
+            "content": "We work only with the highest-grade botanicals and skilled artisans. Our pieces are unaltered offering the deepest expression."
           }
         },
         "card_ritual": {
@@ -225,7 +225,7 @@
           "settings": {
             "title": "Sustainable Design",
             "icon": "flower2",
-            "content": "Our packaging is refillable, recyclable, and thoughtfully minimalist. Each bottle is a long-term vessel, reducing waste while elevating your shelf and your spirit."
+            "content": "Our packaging is refillable, recyclable, and thoughtfully minimalist. Each bottle is a long term vessel, reducing waste while elevating your shelf and your spirit."
           }
         },
         "card_sustainability": {
@@ -233,7 +233,7 @@
           "settings": {
             "title": "Creative Rituals",
             "icon": "refreshener",
-            "content": "We believe wellness is personal. Our pieces are curated not just for function, but for emotional connection—inviting intuitive use, playful blending, and everyday sensory nourishment."
+            "content": "We believe wellness is personal. Our pieces are curated not just for function, but for emotional connection, inviting intuitive use, playful blending, and everyday sensory nourishment."
           }
         },
         "card_craftsmanship": {
@@ -269,7 +269,7 @@
       "name": "Footer Image",
       "settings": {
         "footer_image": "shopify://shop_images/home-footer.webp",
-        "scrolling_text": "Sustainable Luxury, Pure Experience • Sustainable Luxury, Pure Experience • Sustainable Luxury, Pure Experience •"
+        "scrolling_text": "Sustainable • 100% Natural • Pure Experience • Sustainable • 100% Natural • Pure Experience • Sustainable • 100% Natural • Pure Experience •"
       }
     }
   },
