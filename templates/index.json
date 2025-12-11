@@ -137,16 +137,16 @@
     "product_carousel_e7BfWK": {
       "type": "product-carousel",
       "blocks": {
-        "product_Rb3FGa": {
-          "type": "product",
-          "settings": {
-            "product": "incense-stick-amber"
-          }
-        },
         "product_QyPKUk": {
           "type": "product",
           "settings": {
             "product": "incense-stick-velour"
+          }
+        },
+        "product_Rb3FGa": {
+          "type": "product",
+          "settings": {
+            "product": "incense-stick-amber"
           }
         },
         "product_G9Uz7f": {
@@ -155,25 +155,25 @@
             "product": "incense-stick-sanctum"
           }
         },
-        "product_t3rz7W": {
-          "type": "product",
-          "settings": {
-            "product": "incense-stick-velour"
-          }
-        },
         "product_nph8iz": {
           "type": "product",
           "settings": {
             "product": "incense-stick-myrrha"
           }
+        },
+        "product_t3rz7W": {
+          "type": "product",
+          "settings": {
+            "product": "incense-stick-velour"
+          }
         }
       },
       "block_order": [
-        "product_Rb3FGa",
         "product_QyPKUk",
+        "product_Rb3FGa",
         "product_G9Uz7f",
-        "product_t3rz7W",
-        "product_nph8iz"
+        "product_nph8iz",
+        "product_t3rz7W"
       ],
       "name": "Product Carousel",
       "settings": {
