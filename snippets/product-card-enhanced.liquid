@@ -139,10 +139,18 @@
 
     <button
       type="button"
-      class="product-card__button"
-      onclick="addToCartFromCarousel('{{ product.selected_or_first_available_variant.id }}', '{{ product.title | escape }}', this)"
+      class="product-card__button{% unless product.selected_or_first_available_variant.available %} product-card__button--out-of-stock{% endunless %}"
+      {% if product.selected_or_first_available_variant.available %}
+        onclick="addToCartFromCarousel('{{ product.selected_or_first_available_variant.id }}', '{{ product.title | escape }}', this)"
+      {% else %}
+        disabled
+      {% endif %}
     >
-      {{ button_text }}
+      {% if product.selected_or_first_available_variant.available %}
+        {{ button_text }}
+      {% else %}
+        {{ shop.metaobjects.labels.labels_values.out_of_stock | default: 'Out of Stock' }}
+      {% endif %}
     </button>
   </div>
 </div>
