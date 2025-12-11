@@ -30,6 +30,24 @@
     "product_carousel_bTE486": {
       "type": "product-carousel",
       "blocks": {
+        "product_6we8Xt": {
+          "type": "product",
+          "settings": {
+            "product": "the-sparkle-grounding-ritual"
+          }
+        },
+        "product_a4Ug4Q": {
+          "type": "product",
+          "settings": {
+            "product": "oya-ylang-ylang-fior-original"
+          }
+        },
+        "product_3hEPY6": {
+          "type": "product",
+          "settings": {
+            "product": "fior-grace-oya-bergamot"
+          }
+        },
         "product_9tGKD4": {
           "type": "product",
           "settings": {
@@ -50,11 +68,13 @@
         }
       },
       "block_order": [
+        "product_6we8Xt",
+        "product_a4Ug4Q",
+        "product_3hEPY6",
         "product_9tGKD4",
         "product_ghaPXm",
         "product_94EDq4"
       ],
-      "disabled": true,
       "name": "Product Carousel",
       "settings": {
         "title": "BATH & SENSES - OYA X FIOR",
