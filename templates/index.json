@@ -230,7 +230,7 @@
         "title": "OYA CERAMICS - OYA x UAU",
         "subtitle": "Hand-built, hand-finished, and created in limited editions.",
         "cta_text": "Discover Our Ceramics",
-        "cta_url": "/collections/ceramics",
+        "cta_url": "shopify://collections/ceramics",
         "background_color": "brown"
       }
     },
