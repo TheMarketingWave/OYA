@@ -16,7 +16,7 @@
           "type": "collection_header",
           "settings": {
             "target_type": "specific",
-            "collection": "diffusers",
+            "collection": "ceramics",
             "title": "<p>OYA CERAMICS </p><p>OYA x UAU</p>",
             "subtitle": "Our ceramic objects are a celebration of artisan partnership and creative excellence. We proudly present the OYA x UAU collection, a collaboration with the visionary, contemporary design studio, UAU. Crafted by local artist Vanessa Singenzi, each sculptural piece blends utility with tactile artistry. This is a meeting place for kindred spirits who cherish slow, intentional design, merging the pure world of aromatherapy with exquisite, grounded craftsmanship."
           }
@@ -25,7 +25,7 @@
           "type": "collection_header",
           "settings": {
             "target_type": "specific",
-            "collection": "frontpage",
+            "collection": "incense-sticks",
             "title": "<p>OYA AROMATHERAPY INCENSE</p>",
             "subtitle": "Our incense sticks are hand-rolled and made of 100% natural ingredients. Each stick carries fire, air, and fragrance — elements that ask for presence and care."
           }

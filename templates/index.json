@@ -18,13 +18,70 @@
         "heading_text": "Nature That Nourishes.\nRituals That Awaken."
       }
     },
-    "text_scroll_animation_1": {
+    "text_scroll_animation_xXPH68": {
       "type": "text-scroll-animation",
       "settings": {
         "title": "The Art of Aromatherapy, Reimagined",
         "content": "At oya essentials, every drop and aromatic breeze is a handcrafted journey from soil to scent. We bring together rare botanicals, time-honored distillation, and a commitment to sustainability to create essential oils and incense that ground the body and uplift the spirit. Whether you're seeking stillness, clarity, or a spark of creative energy, oya invites you into a ritual that expands the moment.",
         "cta_text": "Experience the Art of Aromatherapy",
         "cta_url": "/collections/all"
+      }
+    },
+    "product_carousel_bTE486": {
+      "type": "product-carousel",
+      "blocks": {
+        "product_6we8Xt": {
+          "type": "product",
+          "settings": {
+            "product": "the-sparkle-grounding-ritual"
+          }
+        },
+        "product_a4Ug4Q": {
+          "type": "product",
+          "settings": {
+            "product": "oya-ylang-ylang-fior-original"
+          }
+        },
+        "product_3hEPY6": {
+          "type": "product",
+          "settings": {
+            "product": "fior-grace-oya-bergamot"
+          }
+        },
+        "product_9tGKD4": {
+          "type": "product",
+          "settings": {
+            "product": "the-sparkle-grounding-ritual"
+          }
+        },
+        "product_ghaPXm": {
+          "type": "product",
+          "settings": {
+            "product": "oya-ylang-ylang-fior-original"
+          }
+        },
+        "product_94EDq4": {
+          "type": "product",
+          "settings": {
+            "product": "fior-grace-oya-bergamot"
+          }
+        }
+      },
+      "block_order": [
+        "product_6we8Xt",
+        "product_a4Ug4Q",
+        "product_3hEPY6",
+        "product_9tGKD4",
+        "product_ghaPXm",
+        "product_94EDq4"
+      ],
+      "name": "Product Carousel",
+      "settings": {
+        "title": "BATH & SENSES - OYA X FIOR",
+        "subtitle": "Descoperă o colecție pentru ritualul tău de baie, creată pentru momentele în care ai nevoie de un răsfăț.",
+        "cta_text": "Experience Our Collection",
+        "cta_url": "shopify://collections/bath-senses-oya-x-fior",
+        "background_color": "brown"
       }
     },
     "product_carousel_AhhLUq": {
@@ -73,88 +130,88 @@
         "title": "OYA ESSENTIAL OILS",
         "subtitle": "Five timeless essentials. Infinite possibilities. Each oil was chosen for its purity, purpose, and emotional resonance.",
         "cta_text": "Experience Our Essential Oils",
-        "cta_url": "/collections/essential-oils",
+        "cta_url": "shopify://collections/essential-oils",
         "background_color": "brown"
       }
     },
-    "product_carousel_e7BfWK": {
+    "product_carousel_4XT4Lq": {
       "type": "product-carousel",
       "blocks": {
-        "product_Rb3FGa": {
+        "product_J9yVYN": {
+          "type": "product",
+          "settings": {
+            "product": "incense-stick-velour"
+          }
+        },
+        "product_9XU6PR": {
           "type": "product",
           "settings": {
             "product": "incense-stick-amber"
           }
         },
-        "product_QyPKUk": {
-          "type": "product",
-          "settings": {
-            "product": "incense-stick-velour"
-          }
-        },
-        "product_G9Uz7f": {
+        "product_6rWCHr": {
           "type": "product",
           "settings": {
             "product": "incense-stick-sanctum"
           }
         },
-        "product_t3rz7W": {
-          "type": "product",
-          "settings": {
-            "product": "incense-stick-velour"
-          }
-        },
-        "product_nph8iz": {
+        "product_jDG4P6": {
           "type": "product",
           "settings": {
             "product": "incense-stick-myrrha"
           }
+        },
+        "product_KkyYmU": {
+          "type": "product",
+          "settings": {
+            "product": "incense-stick-velour"
+          }
         }
       },
       "block_order": [
-        "product_Rb3FGa",
-        "product_QyPKUk",
-        "product_G9Uz7f",
-        "product_t3rz7W",
-        "product_nph8iz"
+        "product_J9yVYN",
+        "product_9XU6PR",
+        "product_6rWCHr",
+        "product_jDG4P6",
+        "product_KkyYmU"
       ],
       "name": "Product Carousel",
       "settings": {
         "title": "OYA AROMATHERAPY INCENSE",
         "subtitle": "Scent that settles. Smoke that sanctifies.",
         "cta_text": "Enjoy Our Aromatherapy Sticks",
-        "cta_url": "/collections/aromatherapy-sticks",
+        "cta_url": "shopify://collections/incense-sticks",
         "background_color": "brown2"
       }
     },
-    "product_carousel_Hm3qRN": {
+    "product_carousel_LmaznV": {
       "type": "product-carousel",
       "blocks": {
-        "product_VGbFyi": {
+        "product_gTaAjd": {
           "type": "product",
           "settings": {
             "product": "terrae-crafted-holders"
           }
         },
-        "product_NEmY8F": {
+        "product_biJHLN": {
           "type": "product",
           "settings": {
             "product": "norr-incense-stick-holder"
           }
         },
-        "product_q4Dqmp": {
+        "product_w8WA7U": {
           "type": "product",
           "settings": {
             "product": "ayra-diffuser"
           }
         },
-        "product_6fwXPF": {
+        "product_KTykp3": {
           "type": "product",
           "settings": {
             "product": "terrae-crafted-holders"
           }
         },
-        "product_8KfHBX": {
+        "product_gfyYLr": {
           "type": "product",
           "settings": {
             "product": "ayra-diffuser"
@@ -162,18 +219,18 @@
         }
       },
       "block_order": [
-        "product_VGbFyi",
-        "product_NEmY8F",
-        "product_q4Dqmp",
-        "product_6fwXPF",
-        "product_8KfHBX"
+        "product_gTaAjd",
+        "product_biJHLN",
+        "product_w8WA7U",
+        "product_KTykp3",
+        "product_gfyYLr"
       ],
       "name": "Product Carousel",
       "settings": {
         "title": "OYA CERAMICS - OYA x UAU",
         "subtitle": "Hand-built, hand-finished, and created in limited editions.",
         "cta_text": "Discover Our Ceramics",
-        "cta_url": "shopify://collections/diffusers",
+        "cta_url": "shopify://collections/ceramics",
         "background_color": "brown"
       }
     },
@@ -275,10 +332,11 @@
   },
   "order": [
     "responsive_video_1",
-    "text_scroll_animation_1",
+    "text_scroll_animation_xXPH68",
+    "product_carousel_bTE486",
     "product_carousel_AhhLUq",
-    "product_carousel_e7BfWK",
-    "product_carousel_Hm3qRN",
+    "product_carousel_4XT4Lq",
+    "product_carousel_LmaznV",
     "horizontal_spacer_gHwz7V",
     "image_with_content_6rxDKF",
     "scroll_video_CyYhQr",
