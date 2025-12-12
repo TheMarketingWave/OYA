@@ -18,13 +18,13 @@
         "heading_text": "Nature That Nourishes.\nRituals That Awaken."
       }
     },
-    "text_scroll_animation_aEHUKf": {
+    "text_scroll_animation_rnqDWT": {
       "type": "text-scroll-animation",
       "settings": {
         "title": "The Art of Aromatherapy, Reimagined",
         "content": "At oya essentials, every drop and aromatic breeze is a handcrafted journey from soil to scent. We bring together rare botanicals, time-honored distillation, and a commitment to sustainability to create essential oils and incense that ground the body and uplift the spirit. Whether you're seeking stillness, clarity, or a spark of creative energy, oya invites you into a ritual that expands the moment.",
         "cta_text": "Experience the Art of Aromatherapy",
-        "cta_url": "shopify://collections"
+        "cta_url": "https://oya-essentials.com/collections/all"
       }
     },
     "product_carousel_bTE486": {
@@ -332,7 +332,7 @@
   },
   "order": [
     "responsive_video_1",
-    "text_scroll_animation_aEHUKf",
+    "text_scroll_animation_rnqDWT",
     "product_carousel_bTE486",
     "product_carousel_AhhLUq",
     "product_carousel_4XT4Lq",
