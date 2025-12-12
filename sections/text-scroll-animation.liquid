@@ -68,7 +68,7 @@
   {% endif %}
 
   {% if section.settings.cta_text != blank %}
-    {% render 'icon-button', icon: 'drop.svg', label: section.settings.cta_text %}
+    {% render 'icon-button', icon: 'drop.svg', label: section.settings.cta_text, url: section.settings.cta_url %}
   {% endif %}
 </div>
 
