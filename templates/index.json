@@ -184,34 +184,34 @@
         "background_color": "brown2"
       }
     },
-    "product_carousel_Hm3qRN": {
+    "product_carousel_LmaznV": {
       "type": "product-carousel",
       "blocks": {
-        "product_VGbFyi": {
+        "product_gTaAjd": {
           "type": "product",
           "settings": {
             "product": "terrae-crafted-holders"
           }
         },
-        "product_NEmY8F": {
+        "product_biJHLN": {
           "type": "product",
           "settings": {
             "product": "norr-incense-stick-holder"
           }
         },
-        "product_q4Dqmp": {
+        "product_w8WA7U": {
           "type": "product",
           "settings": {
             "product": "ayra-diffuser"
           }
         },
-        "product_6fwXPF": {
+        "product_KTykp3": {
           "type": "product",
           "settings": {
             "product": "terrae-crafted-holders"
           }
         },
-        "product_8KfHBX": {
+        "product_gfyYLr": {
           "type": "product",
           "settings": {
             "product": "ayra-diffuser"
@@ -219,11 +219,11 @@
         }
       },
       "block_order": [
-        "product_VGbFyi",
-        "product_NEmY8F",
-        "product_q4Dqmp",
-        "product_6fwXPF",
-        "product_8KfHBX"
+        "product_gTaAjd",
+        "product_biJHLN",
+        "product_w8WA7U",
+        "product_KTykp3",
+        "product_gfyYLr"
       ],
       "name": "Product Carousel",
       "settings": {
@@ -336,7 +336,7 @@
     "product_carousel_bTE486",
     "product_carousel_AhhLUq",
     "product_carousel_4XT4Lq",
-    "product_carousel_Hm3qRN",
+    "product_carousel_LmaznV",
     "horizontal_spacer_gHwz7V",
     "image_with_content_6rxDKF",
     "scroll_video_CyYhQr",
