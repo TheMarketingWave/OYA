@@ -18,7 +18,7 @@
         "heading_text": "Nature That Nourishes.\nRituals That Awaken."
       }
     },
-    "text_scroll_animation_gUxfNQ": {
+    "text_scroll_animation_aEHUKf": {
       "type": "text-scroll-animation",
       "settings": {
         "title": "The Art of Aromatherapy, Reimagined",
@@ -332,7 +332,7 @@
   },
   "order": [
     "responsive_video_1",
-    "text_scroll_animation_gUxfNQ",
+    "text_scroll_animation_aEHUKf",
     "product_carousel_bTE486",
     "product_carousel_AhhLUq",
     "product_carousel_4XT4Lq",
