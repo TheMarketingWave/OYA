@@ -24,7 +24,7 @@
         "title": "The Art of Aromatherapy, Reimagined",
         "content": "At oya essentials, every drop and aromatic breeze is a handcrafted journey from soil to scent. We bring together rare botanicals, time-honored distillation, and a commitment to sustainability to create essential oils and incense that ground the body and uplift the spirit. Whether you're seeking stillness, clarity, or a spark of creative energy, oya invites you into a ritual that expands the moment.",
         "cta_text": "Experience the Art of Aromatherapy",
-        "cta_url": "/collections/all"
+        "cta_url": "shopify://collections"
       }
     },
     "product_carousel_bTE486": {
@@ -80,7 +80,7 @@
         "title": "BATH & SENSES - OYA X FIOR",
         "subtitle": "Descoperă o colecție pentru ritualul tău de baie, creată pentru momentele în care ai nevoie de un răsfăț.",
         "cta_text": "Experience Our Collection",
-        "cta_url": "/collections/bath-senses-oya-x-fior",
+        "cta_url": "shopify://collections/bath-senses-oya-x-fior",
         "background_color": "brown"
       }
     },
@@ -130,7 +130,7 @@
         "title": "OYA ESSENTIAL OILS",
         "subtitle": "Five timeless essentials. Infinite possibilities. Each oil was chosen for its purity, purpose, and emotional resonance.",
         "cta_text": "Experience Our Essential Oils",
-        "cta_url": "/collections/essential-oils",
+        "cta_url": "shopify://collections/essential-oils",
         "background_color": "brown"
       }
     },
