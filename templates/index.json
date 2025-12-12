@@ -134,34 +134,34 @@
         "background_color": "brown"
       }
     },
-    "product_carousel_e7BfWK": {
+    "product_carousel_4XT4Lq": {
       "type": "product-carousel",
       "blocks": {
-        "product_QyPKUk": {
+        "product_J9yVYN": {
           "type": "product",
           "settings": {
             "product": "incense-stick-velour"
           }
         },
-        "product_Rb3FGa": {
+        "product_9XU6PR": {
           "type": "product",
           "settings": {
             "product": "incense-stick-amber"
           }
         },
-        "product_G9Uz7f": {
+        "product_6rWCHr": {
           "type": "product",
           "settings": {
             "product": "incense-stick-sanctum"
           }
         },
-        "product_nph8iz": {
+        "product_jDG4P6": {
           "type": "product",
           "settings": {
             "product": "incense-stick-myrrha"
           }
         },
-        "product_t3rz7W": {
+        "product_KkyYmU": {
           "type": "product",
           "settings": {
             "product": "incense-stick-velour"
@@ -169,11 +169,11 @@
         }
       },
       "block_order": [
-        "product_QyPKUk",
-        "product_Rb3FGa",
-        "product_G9Uz7f",
-        "product_nph8iz",
-        "product_t3rz7W"
+        "product_J9yVYN",
+        "product_9XU6PR",
+        "product_6rWCHr",
+        "product_jDG4P6",
+        "product_KkyYmU"
       ],
       "name": "Product Carousel",
       "settings": {
@@ -335,7 +335,7 @@
     "text_scroll_animation_1",
     "product_carousel_bTE486",
     "product_carousel_AhhLUq",
-    "product_carousel_e7BfWK",
+    "product_carousel_4XT4Lq",
     "product_carousel_Hm3qRN",
     "horizontal_spacer_gHwz7V",
     "image_with_content_6rxDKF",
