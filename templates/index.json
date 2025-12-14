@@ -27,40 +27,40 @@
         "cta_url": "/collections/all"
       }
     },
-    "product_carousel_bTE486": {
+    "product_carousel_LdQBgw": {
       "type": "product-carousel",
       "blocks": {
-        "product_6we8Xt": {
+        "product_jBMQcA": {
           "type": "product",
           "settings": {
             "product": "the-sparkle-grounding-ritual"
           }
         },
-        "product_a4Ug4Q": {
+        "product_K8xWJQ": {
           "type": "product",
           "settings": {
             "product": "oya-ylang-ylang-fior-original"
           }
         },
-        "product_3hEPY6": {
+        "product_4CHfMj": {
           "type": "product",
           "settings": {
             "product": "fior-grace-oya-bergamot"
           }
         },
-        "product_9tGKD4": {
+        "product_NVte8e": {
           "type": "product",
           "settings": {
             "product": "the-sparkle-grounding-ritual"
           }
         },
-        "product_ghaPXm": {
+        "product_ic46dP": {
           "type": "product",
           "settings": {
             "product": "oya-ylang-ylang-fior-original"
           }
         },
-        "product_94EDq4": {
+        "product_LXxw6G": {
           "type": "product",
           "settings": {
             "product": "fior-grace-oya-bergamot"
@@ -68,12 +68,12 @@
         }
       },
       "block_order": [
-        "product_6we8Xt",
-        "product_a4Ug4Q",
-        "product_3hEPY6",
-        "product_9tGKD4",
-        "product_ghaPXm",
-        "product_94EDq4"
+        "product_jBMQcA",
+        "product_K8xWJQ",
+        "product_4CHfMj",
+        "product_NVte8e",
+        "product_ic46dP",
+        "product_LXxw6G"
       ],
       "name": "Product Carousel",
       "settings": {
@@ -333,7 +333,7 @@
   "order": [
     "responsive_video_1",
     "text_scroll_animation_xXPH68",
-    "product_carousel_bTE486",
+    "product_carousel_LdQBgw",
     "product_carousel_AhhLUq",
     "product_carousel_4XT4Lq",
     "product_carousel_LmaznV",
