@@ -109,6 +109,16 @@
     ></noscript>
     <!-- End Meta Pixel Code -->
 
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=GT-MBTLFRSN"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'GT-MBTLFRSN');
+    </script>
+
     {% render 'schemas' %}
     {% render 'social-meta-tags' %}
     {{ content_for_header }}
