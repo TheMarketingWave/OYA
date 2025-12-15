@@ -483,7 +483,7 @@ function horizontalLoop(items, config) {
         // INERTIA CONTROLS
         inertia: true,
         overshootTolerance: 0,
-        throwResistance: 3000,
+        throwResistance: 800,
         // INERTIA CONTROLS
         snap(value) {
           if (Math.abs(startProgress / -ratio - this.x) < 10) {
