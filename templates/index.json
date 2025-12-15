@@ -84,6 +84,64 @@
         "background_color": "brown"
       }
     },
+    "product_carousel_DH3DP9": {
+      "type": "product-carousel",
+      "blocks": {
+        "product_Fcgj8h": {
+          "type": "product",
+          "settings": {
+            "product": "velour-powdered-rose-soft-wood-1-1"
+          }
+        },
+        "product_AaUzgQ": {
+          "type": "product",
+          "settings": {
+            "product": "serenity-ylang-ylang-1-1"
+          }
+        },
+        "product_imKA7h": {
+          "type": "product",
+          "settings": {
+            "product": "clarity-bergamot-1-1"
+          }
+        },
+        "product_chcHKn": {
+          "type": "product",
+          "settings": {
+            "product": "creativity-amyris"
+          }
+        },
+        "product_LMpW7P": {
+          "type": "product",
+          "settings": {
+            "product": "tea-tree-1-1"
+          }
+        },
+        "product_F9eiGA": {
+          "type": "product",
+          "settings": {
+            "product": "grounding-patchouli-1-1"
+          }
+        }
+      },
+      "block_order": [
+        "product_Fcgj8h",
+        "product_AaUzgQ",
+        "product_imKA7h",
+        "product_chcHKn",
+        "product_LMpW7P",
+        "product_F9eiGA"
+      ],
+      "disabled": true,
+      "name": "Product Carousel",
+      "settings": {
+        "title": "Dăruiești un Moment, Primești un Moment",
+        "subtitle": "",
+        "cta_text": "View All Products",
+        "cta_url": "",
+        "background_color": "brown"
+      }
+    },
     "product_carousel_AhhLUq": {
       "type": "product-carousel",
       "blocks": {
@@ -334,6 +392,7 @@
     "responsive_video_1",
     "text_scroll_animation_xXPH68",
     "product_carousel_LdQBgw",
+    "product_carousel_DH3DP9",
     "product_carousel_AhhLUq",
     "product_carousel_4XT4Lq",
     "product_carousel_LmaznV",
