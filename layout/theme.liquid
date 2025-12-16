@@ -97,7 +97,7 @@
         s = b.getElementsByTagName(e)[0];
         s.parentNode.insertBefore(t, s);
       })(window, document, 'script', 'https://connect.facebook.net/en_US/fbevents.js');
-      fbq('init', '852519680456263');
+      fbq('init', '2111348929400943');
       fbq('track', 'PageView');
     </script>
     <noscript
@@ -108,6 +108,16 @@
         src="https://www.facebook.com/tr?id=852519680456263&ev=PageView&noscript=1"
     ></noscript>
     <!-- End Meta Pixel Code -->
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=GT-MBTLFRSN"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'GT-MBTLFRSN');
+    </script>
 
     {% render 'schemas' %}
     {% render 'social-meta-tags' %}

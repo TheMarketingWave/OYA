@@ -198,6 +198,55 @@
     margin: 0 auto;
   }
 
+  /* Key Info Section */
+  .product-key-info {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+    padding: 0 20px;
+    max-width: 800px;
+    margin: 60px auto;
+  }
+
+  @media (max-width: 800px) {
+    .product-key-info {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+  }
+
+  .product-key-info__item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 12px;
+  }
+
+  .product-key-info__icon {
+    width: 32px;
+    height: 32px;
+    color: var(--color-brand-cream);
+  }
+
+  .product-key-info__icon svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  .product-key-info__title {
+    font-size: 14px;
+    color: var(--color-brand-cream);
+    margin: 0;
+  }
+
+  .product-key-info__description {
+    font-size: 14px;
+    color: var(--color-brand-cream);
+    margin: 0;
+    font-weight: 800;
+  }
+
   /* Flower Image at Bottom */
   .product-flower-image {
     display: flex;
@@ -407,6 +456,27 @@
         </div>
       </div>
     </div>
+    <!-- Key Info Section -->
+    {% assign keyinfo = product.metafields.custom.keyinfo.value %}
+    {% if keyinfo != blank %}
+      <div class="product-key-info">
+        {% for item in keyinfo %}
+          <div class="product-key-info__item">
+            {% if item.icon %}
+              <div class="product-key-info__icon">
+                {% render 'icon', icon: item.icon, size: '32' %}
+              </div>
+            {% endif %}
+            {% if item.title %}
+              <p class="product-key-info__title">{{ item.title }}</p>
+            {% endif %}
+            {% if item.subtitle %}
+              <p class="product-key-info__description">{{ item.subtitle }}</p>
+            {% endif %}
+          </div>
+        {% endfor %}
+      </div>
+    {% endif %}
 
     <!-- Accordion Section -->
     {% comment %} Get accordion labels from shop metaobject {% endcomment %}
