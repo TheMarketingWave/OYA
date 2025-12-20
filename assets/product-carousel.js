@@ -483,9 +483,9 @@ function horizontalLoop(items, config) {
         // INERTIA CONTROLS
         inertia: true,
         overshootTolerance: 0,
-        throwResistance: 1500,
-        maxDuration: 1.0,
-        minDuration: 0.3,
+        throwResistance: 1000,
+        maxDuration: 0.9,
+        minDuration: 0.25,
         // INERTIA CONTROLS
         snap(value) {
           if (Math.abs(startProgress / -ratio - this.x) < 10) {
@@ -494,12 +494,12 @@ function horizontalLoop(items, config) {
 
           // Velocity dampening for mobile - limit how far carousel travels on fast swipes
           const velocity = Math.abs(this.getVelocity("x"));
-          const velocityThreshold = 3000; // Pixels per second
+          const velocityThreshold = 4000; // Pixels per second
           let dampening = 1;
 
           // If velocity is very high, dampen the distance traveled
           if (velocity > velocityThreshold) {
-            dampening = Math.max(0.6, 1 - ((velocity - velocityThreshold) / 8000));
+            dampening = Math.max(0.6, 1 - ((velocity - velocityThreshold) / 10000));
           }
 
           const time = -(value * ratio) * tl.duration();
