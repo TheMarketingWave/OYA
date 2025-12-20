@@ -482,10 +482,11 @@ function horizontalLoop(items, config) {
         onThrowUpdate: align,
         // INERTIA CONTROLS
         inertia: true,
-        overshootTolerance: 0,
-        throwResistance: 1000,
-        maxDuration: 0.9,
-        minDuration: 0.25,
+        overshootTolerance: 0.5,
+        throwResistance: 1200,
+        ease: "power3.out",
+        maxDuration: 1.0,
+        minDuration: 0.4,
         // INERTIA CONTROLS
         snap(value) {
           if (Math.abs(startProgress / -ratio - this.x) < 10) {
