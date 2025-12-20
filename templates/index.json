@@ -373,6 +373,7 @@
     },
     "latest_articles_6Cy8XP": {
       "type": "latest-articles",
+      "disabled": true,
       "name": "Latest Articles",
       "settings": {
         "blog": "latest"
