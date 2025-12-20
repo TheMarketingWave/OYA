@@ -382,6 +382,9 @@ span {
   gap: 24px;
   overflow: hidden;
   padding: 20px 0;
+  touch-action: pan-y;
+  -webkit-user-select: none;
+  user-select: none;
 }
 
 .product-carousel__track .product-card:first-child {
