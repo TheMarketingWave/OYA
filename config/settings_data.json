@@ -9,6 +9,7 @@
  */
 {
   "current": {
+    "newsletter_duration": 10,
     "newsletter_heading": "Newsletter Sign-up",
     "newsletter_text": "This is the built-in newsletter signup pop-up form, which you can customise as required.",
     "sections": {
