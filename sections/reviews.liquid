@@ -1,74 +1,109 @@
-<style>
-{{ section.id | prepend: '#' }}.section-wrap:before {
-  background-color: {{ section.settings.background | default: '#ffffff' }};
-}
-
-{{ section.id | prepend: '#' }} .reviews-grid {
-  display: grid;
-  grid-template-columns: repeat({{ section.settings.columns }}, 1fr);
-  gap: 2rem;
-}
-
-@media (max-width: 768px) {
-  {{ section.id | prepend: '#' }} .reviews-grid {
-    grid-template-columns: 1fr;
+{% style %}
+  .reviews-section {
+    width: 100%;
+    padding: 80px 20px;
+    position: relative;
+    z-index: 1;
   }
-}
 
-{{ section.id | prepend: '#' }} .review-item {
-  text-align: center;
-  padding: 1.5rem;
-}
+  .reviews-section__container {
+    max-width: 900px;
+    margin: 0 auto;
+  }
 
-{{ section.id | prepend: '#' }} .review-image {
-  width: {{ section.settings.image_size }}px;
-  height: {{ section.settings.image_size }}px;
-  border-radius: 50%;
-  object-fit: cover;
-  margin: 0 auto 1.5rem;
-  display: block;
-}
+  .reviews-section__header {
+    text-align: center;
+    margin-bottom: 60px;
+    gap: 20px;
+    display: flex;
+    flex-direction: column;
+  }
 
-{{ section.id | prepend: '#' }} .review-quote {
-  font-style: italic;
-  font-size: 1.1rem;
-  line-height: 1.6;
-  margin-bottom: 1rem;
-}
+  .reviews-section__title {
+    font-size: 48px;
+    color: var(--color-brand-cream);
+  }
 
-{{ section.id | prepend: '#' }} .review-quote:before {
-  content: '"';
-}
+  .reviews-section__subtitle {
+    font-size: 16px;
+    color: var(--color-brand-cream);
+    margin: 0 auto;
+  }
 
-{{ section.id | prepend: '#' }} .review-quote:after {
-  content: '"';
-}
+  .reviews-section__grid {
+    display: grid;
+    grid-template-columns: repeat({{ section.settings.columns }}, 1fr);
+    gap: 40px;
+  }
 
-{{ section.id | prepend: '#' }} .review-name {
-  font-weight: 600;
-  font-size: 0.95rem;
-  opacity: 0.8;
-}
-</style>
+  .review-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    text-align: center;
+  }
 
-<div id="{{ section.id }}" class="section-wrap" style="color: {{ section.settings.color | default: 'inherit' }};">
-  <div class="section">
-    {% if section.settings.heading != blank %}
-      <div class="center">
-        <{{ section.settings.size }} data-title="{{ section.settings.heading }}">
-          {{ section.settings.heading }}
-        </{{ section.settings.size }}>
+  .review-card__image {
+    width: {{ section.settings.image_size }}px;
+    height: {{ section.settings.image_size }}px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  .review-card__quote {
+    font-size: 16px;
+    color: var(--color-brand-cream);
+    font-weight: 100;
+    font-style: italic;
+    line-height: 1.6;
+  }
+
+  .review-card__quote:before {
+    content: '"';
+  }
+
+  .review-card__quote:after {
+    content: '"';
+  }
+
+  .review-card__name {
+    font-size: 18px;
+    font-weight: 400;
+    color: var(--color-brand-cream);
+  }
+
+  @media (max-width: 480px) {
+    .reviews-section__header {
+      margin-bottom: 20px;
+      gap: 5px;
+    }
+
+    .reviews-section__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+{% endstyle %}
+
+<section class="reviews-section">
+  <div class="reviews-section__container">
+    {% if section.settings.section_title != blank or section.settings.section_subtitle != blank %}
+      <div class="reviews-section__header">
+        {% if section.settings.section_title != blank %}
+          <h2 class="reviews-section__title title-font">{{ section.settings.section_title }}</h2>
+        {% endif %}
+        {% if section.settings.section_subtitle != blank %}
+          <p class="reviews-section__subtitle">{{ section.settings.section_subtitle }}</p>
+        {% endif %}
       </div>
     {% endif %}
-  </div>
 
-  <div class="section">
-    <div class="reviews-grid">
+    <div class="reviews-section__grid">
       {% for block in section.blocks %}
-        <div class="review-item" {{ block.shopify_attributes }}>
+        <div class="review-card" {{ block.shopify_attributes }}>
           {% if block.settings.image != blank %}
             <img
-              class="review-image"
+              class="review-card__image"
               src="{{ block.settings.image | image_url: width: 200 }}"
               alt="{{ block.settings.name }}"
               width="{{ section.settings.image_size }}"
@@ -78,95 +113,41 @@
           {% endif %}
 
           {% if block.settings.quote != blank %}
-            <p class="review-quote">{{ block.settings.quote }}</p>
+            <p class="review-card__quote">{{ block.settings.quote }}</p>
           {% endif %}
 
           {% if block.settings.name != blank %}
-            <p class="review-name">{{ block.settings.name }}</p>
+            <p class="review-card__name">{{ block.settings.name }}</p>
           {% endif %}
         </div>
       {% endfor %}
     </div>
   </div>
-</div>
+</section>
 
 {% schema %}
 {
   "name": "Reviews",
   "tag": "section",
-  "class": "reviews-section",
-  "disabled_on": {
-    "groups": ["header"]
-  },
-  "presets": [
-    {
-      "name": "Reviews",
-      "blocks": [
-        {
-          "type": "review",
-          "settings": {
-            "quote": "Produsele OYA au transformat complet rutina mea de relaxare. Calitatea uleiurilor esențiale este excepțională!",
-            "name": "Maria P."
-          }
-        },
-        {
-          "type": "review",
-          "settings": {
-            "quote": "Recomand cu căldură! Amestecurile sunt perfecte și aromele sunt divine.",
-            "name": "Andreea M."
-          }
-        },
-        {
-          "type": "review",
-          "settings": {
-            "quote": "Cel mai bun cadou pe care mi l-am făcut. Folosesc uleiurile zilnic pentru meditație.",
-            "name": "Elena D."
-          }
-        }
-      ]
-    }
-  ],
+  "class": "section",
   "settings": [
     {
       "type": "header",
       "content": "Section Settings"
     },
     {
-      "type": "color",
-      "id": "background",
-      "label": "Background",
-      "default": "#ffffff"
+      "type": "text",
+      "id": "section_title",
+      "label": "Section Title",
+      "default": "Ce spun clienții noștri",
+      "info": "Main heading for the section"
     },
     {
-      "type": "color",
-      "id": "color",
-      "label": "Text Colour"
-    },
-    {
-      "type": "inline_richtext",
-      "id": "heading",
-      "label": "Heading",
-      "default": "Ce spun clienții noștri"
-    },
-    {
-      "type": "select",
-      "id": "size",
-      "label": "Heading Size",
-      "options": [
-        {
-          "value": "h1",
-          "label": "H1"
-        },
-        {
-          "value": "h2",
-          "label": "H2"
-        },
-        {
-          "value": "h3",
-          "label": "H3"
-        }
-      ],
-      "default": "h2"
+      "type": "textarea",
+      "id": "section_subtitle",
+      "label": "Section Subtitle",
+      "default": "Experiențe autentice de la comunitatea noastră",
+      "info": "Descriptive text below the section title"
     },
     {
       "type": "range",
@@ -175,7 +156,7 @@
       "min": 1,
       "max": 4,
       "step": 1,
-      "default": 3
+      "default": 2
     },
     {
       "type": "range",
@@ -209,6 +190,27 @@
           "id": "name",
           "label": "Name",
           "default": "Client"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Reviews",
+      "blocks": [
+        {
+          "type": "review",
+          "settings": {
+            "quote": "Produsele OYA au transformat complet rutina mea de relaxare. Calitatea uleiurilor esențiale este excepțională!",
+            "name": "Maria P."
+          }
+        },
+        {
+          "type": "review",
+          "settings": {
+            "quote": "Recomand cu căldură! Amestecurile sunt perfecte și aromele sunt divine.",
+            "name": "Andreea M."
+          }
         }
       ]
     }

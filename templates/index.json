@@ -422,10 +422,6 @@
       ],
       "name": "Reviews",
       "settings": {
-        "background": "#ffffff",
-        "color": "",
-        "heading": "Ce spun clienții noștri",
-        "size": "h2",
         "columns": 3,
         "image_size": 100
       }
