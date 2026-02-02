@@ -1,0 +1,217 @@
+<style>
+{{ section.id | prepend: '#' }}.section-wrap:before {
+  background-color: {{ section.settings.background | default: '#ffffff' }};
+}
+
+{{ section.id | prepend: '#' }} .reviews-grid {
+  display: grid;
+  grid-template-columns: repeat({{ section.settings.columns }}, 1fr);
+  gap: 2rem;
+}
+
+@media (max-width: 768px) {
+  {{ section.id | prepend: '#' }} .reviews-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+{{ section.id | prepend: '#' }} .review-item {
+  text-align: center;
+  padding: 1.5rem;
+}
+
+{{ section.id | prepend: '#' }} .review-image {
+  width: {{ section.settings.image_size }}px;
+  height: {{ section.settings.image_size }}px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin: 0 auto 1.5rem;
+  display: block;
+}
+
+{{ section.id | prepend: '#' }} .review-quote {
+  font-style: italic;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+{{ section.id | prepend: '#' }} .review-quote:before {
+  content: '"';
+}
+
+{{ section.id | prepend: '#' }} .review-quote:after {
+  content: '"';
+}
+
+{{ section.id | prepend: '#' }} .review-name {
+  font-weight: 600;
+  font-size: 0.95rem;
+  opacity: 0.8;
+}
+</style>
+
+<div id="{{ section.id }}" class="section-wrap" style="color: {{ section.settings.color | default: 'inherit' }};">
+  <div class="section">
+    {% if section.settings.heading != blank %}
+      <div class="center">
+        <{{ section.settings.size }} data-title="{{ section.settings.heading }}">
+          {{ section.settings.heading }}
+        </{{ section.settings.size }}>
+      </div>
+    {% endif %}
+  </div>
+
+  <div class="section">
+    <div class="reviews-grid">
+      {% for block in section.blocks %}
+        <div class="review-item" {{ block.shopify_attributes }}>
+          {% if block.settings.image != blank %}
+            <img
+              class="review-image"
+              src="{{ block.settings.image | image_url: width: 200 }}"
+              alt="{{ block.settings.name }}"
+              width="{{ section.settings.image_size }}"
+              height="{{ section.settings.image_size }}"
+              loading="lazy"
+            >
+          {% endif %}
+
+          {% if block.settings.quote != blank %}
+            <p class="review-quote">{{ block.settings.quote }}</p>
+          {% endif %}
+
+          {% if block.settings.name != blank %}
+            <p class="review-name">{{ block.settings.name }}</p>
+          {% endif %}
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Reviews",
+  "tag": "section",
+  "class": "reviews-section",
+  "disabled_on": {
+    "groups": ["header"]
+  },
+  "presets": [
+    {
+      "name": "Reviews",
+      "blocks": [
+        {
+          "type": "review",
+          "settings": {
+            "quote": "Produsele OYA au transformat complet rutina mea de relaxare. Calitatea uleiurilor esențiale este excepțională!",
+            "name": "Maria P."
+          }
+        },
+        {
+          "type": "review",
+          "settings": {
+            "quote": "Recomand cu căldură! Amestecurile sunt perfecte și aromele sunt divine.",
+            "name": "Andreea M."
+          }
+        },
+        {
+          "type": "review",
+          "settings": {
+            "quote": "Cel mai bun cadou pe care mi l-am făcut. Folosesc uleiurile zilnic pentru meditație.",
+            "name": "Elena D."
+          }
+        }
+      ]
+    }
+  ],
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section Settings"
+    },
+    {
+      "type": "color",
+      "id": "background",
+      "label": "Background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "color",
+      "label": "Text Colour"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Ce spun clienții noștri"
+    },
+    {
+      "type": "select",
+      "id": "size",
+      "label": "Heading Size",
+      "options": [
+        {
+          "value": "h1",
+          "label": "H1"
+        },
+        {
+          "value": "h2",
+          "label": "H2"
+        },
+        {
+          "value": "h3",
+          "label": "H3"
+        }
+      ],
+      "default": "h2"
+    },
+    {
+      "type": "range",
+      "id": "columns",
+      "label": "Columns",
+      "min": 1,
+      "max": 4,
+      "step": 1,
+      "default": 3
+    },
+    {
+      "type": "range",
+      "id": "image_size",
+      "label": "Image Size",
+      "min": 60,
+      "max": 150,
+      "step": 10,
+      "default": 100,
+      "unit": "px"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "review",
+      "name": "Review",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Photo"
+        },
+        {
+          "type": "textarea",
+          "id": "quote",
+          "label": "Quote",
+          "default": "Produsele sunt extraordinare!"
+        },
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Name",
+          "default": "Client"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
