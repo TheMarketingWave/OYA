@@ -422,12 +422,14 @@
       ],
       "name": "Reviews",
       "settings": {
-        "background": "#ffffff",
-        "color": "",
-        "heading": "Ce spun clienții noștri",
-        "size": "h2",
+        "section_title": "Ce spun clienții noștri",
+        "section_subtitle": "Experiențe autentice de la comunitatea noastră",
         "columns": 3,
-        "image_size": 100
+        "image_size": 100,
+        "show_button": true,
+        "button_text": "Vezi toate recenziile",
+        "button_url": "shopify://pages/reviews",
+        "button_icon": "carousel-right.svg"
       }
     },
     "footer_image_new": {
