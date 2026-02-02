@@ -1,0 +1,56 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "reviews_main": {
+      "type": "reviews",
+      "blocks": {
+        "review_hr4gyX": {
+          "type": "review",
+          "settings": {
+            "image": "shopify://shop_images/portait1.jpg",
+            "quote": "Produsele OYA au transformat complet rutina mea de relaxare. Calitatea uleiurilor esențiale este excepțională!",
+            "name": "Maria P."
+          }
+        },
+        "review_nhHBiV": {
+          "type": "review",
+          "settings": {
+            "image": "shopify://shop_images/portrait2.jpg",
+            "quote": "Recomand cu căldură! Amestecurile sunt perfecte și aromele sunt divine.",
+            "name": "Andreea M."
+          }
+        },
+        "review_XxK9gz": {
+          "type": "review",
+          "settings": {
+            "image": "shopify://shop_images/portrait3.jpg",
+            "quote": "Cel mai bun cadou pe care mi l-am făcut. Folosesc uleiurile zilnic pentru meditație.",
+            "name": "Elena D."
+          }
+        }
+      },
+      "block_order": [
+        "review_hr4gyX",
+        "review_nhHBiV",
+        "review_XxK9gz"
+      ],
+      "settings": {
+        "section_title": "Ce spun clienții noștri",
+        "section_subtitle": "Experiențe autentice de la comunitatea noastră",
+        "columns": 3,
+        "image_size": 100
+      }
+    }
+  },
+  "order": [
+    "reviews_main"
+  ]
+}
