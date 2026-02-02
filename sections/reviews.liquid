@@ -73,14 +73,32 @@
     color: var(--color-brand-cream);
   }
 
+  .reviews-section__cta {
+    display: flex;
+    justify-content: center;
+    margin-top: 60px;
+  }
+
   @media (max-width: 480px) {
+    .reviews-section {
+      padding: 20px;
+    }
+
     .reviews-section__header {
-      margin-bottom: 20px;
+      margin-bottom: 60px;
       gap: 5px;
     }
 
     .reviews-section__grid {
       grid-template-columns: 1fr;
+    }
+
+    .reviews-section__title {
+      font-size: 32px;
+    }
+
+    .reviews-section__cta {
+      margin-top: 40px;
     }
   }
 {% endstyle %}
@@ -122,6 +140,17 @@
         </div>
       {% endfor %}
     </div>
+
+    {% if section.settings.show_button and section.settings.button_url != blank %}
+      <div class="reviews-section__cta">
+        {% render 'icon-button',
+          url: section.settings.button_url,
+          label: section.settings.button_text,
+          icon: section.settings.button_icon,
+          variant: 'secondary'
+        %}
+      </div>
+    {% endif %}
   </div>
 </section>
 
@@ -167,6 +196,43 @@
       "step": 10,
       "default": 100,
       "unit": "px"
+    },
+    {
+      "type": "header",
+      "content": "Button Settings"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_button",
+      "label": "Show Button",
+      "default": false
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button Text",
+      "default": "Vezi toate recenziile"
+    },
+    {
+      "type": "url",
+      "id": "button_url",
+      "label": "Button URL"
+    },
+    {
+      "type": "select",
+      "id": "button_icon",
+      "label": "Button Icon",
+      "default": "carousel-right.svg",
+      "options": [
+        { "value": "", "label": "None" },
+        { "value": "carousel-right.svg", "label": "Arrow Right" },
+        { "value": "carousel-left.svg", "label": "Arrow Left" },
+        { "value": "icon-star.svg", "label": "Star" },
+        { "value": "icon-flower.svg", "label": "Flower" },
+        { "value": "icon-lotus.svg", "label": "Lotus" },
+        { "value": "icon-diamond.svg", "label": "Diamond" },
+        { "value": "icon-spa.svg", "label": "Spa" }
+      ]
     }
   ],
   "blocks": [
