@@ -245,6 +245,56 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   // ================================
+  // REVIEWS ANIMATION
+  // ================================
+
+  function initReviewsAnimation() {
+    const reviews = document.querySelectorAll(".reviews-section .review-card");
+
+    if (
+      !reviews.length ||
+      typeof gsap === "undefined" ||
+      typeof ScrollTrigger === "undefined"
+    ) {
+      return;
+    }
+
+    // Set initial state
+    gsap.set(reviews, {
+      opacity: 0,
+      filter: "blur(10px)",
+      y: 30,
+      scale: 0.95,
+    });
+
+    // Create timeline with ScrollTrigger
+    const tl = gsap.timeline({
+      defaults: {
+        ease: "power3.out",
+        force3D: true,
+      },
+      scrollTrigger: {
+        trigger: ".reviews-section__grid",
+        start: "top 70%",
+        toggleActions: "play none none none",
+      },
+    });
+
+    // Animate reviews with stagger
+    tl.to(reviews, {
+      opacity: 1,
+      filter: "blur(0px)",
+      y: 0,
+      scale: 1,
+      duration: 0.8,
+      stagger: {
+        amount: 0.6,
+        from: "start",
+      },
+    });
+  }
+
+  // ================================
   // INITIALIZATION
   // ================================
 
@@ -258,6 +308,7 @@ document.addEventListener("DOMContentLoaded", function () {
     initTextScrollAnimation();
     initScrollVideos();
     initValuesCardAnimation();
+    initReviewsAnimation();
     initLatestArticlesAnimation();
   }
 

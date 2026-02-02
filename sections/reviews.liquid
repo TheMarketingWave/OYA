@@ -1,0 +1,219 @@
+{% style %}
+  .reviews-section {
+    width: 100%;
+    padding: 80px 20px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .reviews-section__container {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .reviews-section__header {
+    text-align: center;
+    margin-bottom: 60px;
+    gap: 20px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .reviews-section__title {
+    font-size: 48px;
+    color: var(--color-brand-cream);
+  }
+
+  .reviews-section__subtitle {
+    font-size: 16px;
+    color: var(--color-brand-cream);
+    margin: 0 auto;
+  }
+
+  .reviews-section__grid {
+    display: grid;
+    grid-template-columns: repeat({{ section.settings.columns }}, 1fr);
+    gap: 40px;
+  }
+
+  .review-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    text-align: center;
+  }
+
+  .review-card__image {
+    width: {{ section.settings.image_size }}px;
+    height: {{ section.settings.image_size }}px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  .review-card__quote {
+    font-size: 16px;
+    color: var(--color-brand-cream);
+    font-weight: 100;
+    font-style: italic;
+    line-height: 1.6;
+  }
+
+  .review-card__quote:before {
+    content: '"';
+  }
+
+  .review-card__quote:after {
+    content: '"';
+  }
+
+  .review-card__name {
+    font-size: 18px;
+    font-weight: 400;
+    color: var(--color-brand-cream);
+  }
+
+  @media (max-width: 480px) {
+    .reviews-section__header {
+      margin-bottom: 20px;
+      gap: 5px;
+    }
+
+    .reviews-section__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+{% endstyle %}
+
+<section class="reviews-section">
+  <div class="reviews-section__container">
+    {% if section.settings.section_title != blank or section.settings.section_subtitle != blank %}
+      <div class="reviews-section__header">
+        {% if section.settings.section_title != blank %}
+          <h2 class="reviews-section__title title-font">{{ section.settings.section_title }}</h2>
+        {% endif %}
+        {% if section.settings.section_subtitle != blank %}
+          <p class="reviews-section__subtitle">{{ section.settings.section_subtitle }}</p>
+        {% endif %}
+      </div>
+    {% endif %}
+
+    <div class="reviews-section__grid">
+      {% for block in section.blocks %}
+        <div class="review-card" {{ block.shopify_attributes }}>
+          {% if block.settings.image != blank %}
+            <img
+              class="review-card__image"
+              src="{{ block.settings.image | image_url: width: 200 }}"
+              alt="{{ block.settings.name }}"
+              width="{{ section.settings.image_size }}"
+              height="{{ section.settings.image_size }}"
+              loading="lazy"
+            >
+          {% endif %}
+
+          {% if block.settings.quote != blank %}
+            <p class="review-card__quote">{{ block.settings.quote }}</p>
+          {% endif %}
+
+          {% if block.settings.name != blank %}
+            <p class="review-card__name">{{ block.settings.name }}</p>
+          {% endif %}
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Reviews",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section Settings"
+    },
+    {
+      "type": "text",
+      "id": "section_title",
+      "label": "Section Title",
+      "default": "Ce spun clienții noștri",
+      "info": "Main heading for the section"
+    },
+    {
+      "type": "textarea",
+      "id": "section_subtitle",
+      "label": "Section Subtitle",
+      "default": "Experiențe autentice de la comunitatea noastră",
+      "info": "Descriptive text below the section title"
+    },
+    {
+      "type": "range",
+      "id": "columns",
+      "label": "Columns",
+      "min": 1,
+      "max": 4,
+      "step": 1,
+      "default": 2
+    },
+    {
+      "type": "range",
+      "id": "image_size",
+      "label": "Image Size",
+      "min": 60,
+      "max": 150,
+      "step": 10,
+      "default": 100,
+      "unit": "px"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "review",
+      "name": "Review",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Photo"
+        },
+        {
+          "type": "textarea",
+          "id": "quote",
+          "label": "Quote",
+          "default": "Produsele sunt extraordinare!"
+        },
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Name",
+          "default": "Client"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Reviews",
+      "blocks": [
+        {
+          "type": "review",
+          "settings": {
+            "quote": "Produsele OYA au transformat complet rutina mea de relaxare. Calitatea uleiurilor esențiale este excepțională!",
+            "name": "Maria P."
+          }
+        },
+        {
+          "type": "review",
+          "settings": {
+            "quote": "Recomand cu căldură! Amestecurile sunt perfecte și aromele sunt divine.",
+            "name": "Andreea M."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

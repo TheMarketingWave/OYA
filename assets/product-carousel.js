@@ -430,6 +430,8 @@ function horizontalLoop(items, config) {
 
     let proxy;
     let isDragging = false;
+    let activeSwipes = 0;
+    const MAX_SWIPES = 2;
 
     if (config.draggable && typeof Draggable === "function") {
       proxy = document.createElement("div");
@@ -468,6 +470,10 @@ function horizontalLoop(items, config) {
         trigger: items[0].parentNode,
         type: "x",
         onPressInit() {
+          // Check if we've reached max swipes limit
+          if (activeSwipes >= MAX_SWIPES) {
+            return false; // Prevent this interaction
+          }
           const x = this.x;
           gsap.killTweensOf(tl);
           wasPlaying = !tl.paused();
@@ -483,9 +489,9 @@ function horizontalLoop(items, config) {
         // INERTIA CONTROLS
         inertia: true,
         overshootTolerance: 0,
-        throwResistance: 800,
-        maxDuration: 0.8,
-        minDuration: 0.2,
+        throwResistance: 1200,
+        maxDuration: 1.8,
+        minDuration: 0.6,
         // INERTIA CONTROLS
         snap(value) {
           if (Math.abs(startProgress / -ratio - this.x) < 10) {
@@ -508,6 +514,7 @@ function horizontalLoop(items, config) {
           syncIndex();
           if (draggable.isThrowing) {
             indexIsDirty = true;
+            activeSwipes++; // Increment when throw animation starts
           }
         },
         onThrowComplete: () => {
@@ -520,6 +527,7 @@ function horizontalLoop(items, config) {
           //   ease: "power2.out",
           // });
           isDragging = false;
+          activeSwipes--; // Decrement when animation completes
         },
       })[0];
 

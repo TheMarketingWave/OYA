@@ -27,120 +27,6 @@
         "cta_url": "/collections/all"
       }
     },
-    "product_carousel_DH3DP9": {
-      "type": "product-carousel",
-      "blocks": {
-        "product_Fcgj8h": {
-          "type": "product",
-          "settings": {
-            "product": "velour-powdered-rose-soft-wood-1-1"
-          }
-        },
-        "product_AaUzgQ": {
-          "type": "product",
-          "settings": {
-            "product": "serenity-ylang-ylang-1-1"
-          }
-        },
-        "product_imKA7h": {
-          "type": "product",
-          "settings": {
-            "product": "clarity-bergamot-1-1"
-          }
-        },
-        "product_chcHKn": {
-          "type": "product",
-          "settings": {
-            "product": "creativity-amyris"
-          }
-        },
-        "product_LMpW7P": {
-          "type": "product",
-          "settings": {
-            "product": "tea-tree-1-1"
-          }
-        },
-        "product_F9eiGA": {
-          "type": "product",
-          "settings": {
-            "product": "grounding-patchouli-1-1"
-          }
-        }
-      },
-      "block_order": [
-        "product_Fcgj8h",
-        "product_AaUzgQ",
-        "product_imKA7h",
-        "product_chcHKn",
-        "product_LMpW7P",
-        "product_F9eiGA"
-      ],
-      "name": "Product Carousel",
-      "settings": {
-        "title": "Dăruiește un Moment, Primești un Moment",
-        "subtitle": "Dăruiești și primește. Alege un moment de relaxare pentru tine ș unul pentru cineva drag.",
-        "cta_text": "Dăruiește un Moment",
-        "cta_url": "shopify://collections/1-1-cadou",
-        "background_color": "brown"
-      }
-    },
-    "product_carousel_LdQBgw": {
-      "type": "product-carousel",
-      "blocks": {
-        "product_jBMQcA": {
-          "type": "product",
-          "settings": {
-            "product": "the-sparkle-grounding-ritual"
-          }
-        },
-        "product_K8xWJQ": {
-          "type": "product",
-          "settings": {
-            "product": "oya-ylang-ylang-fior-original"
-          }
-        },
-        "product_4CHfMj": {
-          "type": "product",
-          "settings": {
-            "product": "fior-grace-oya-bergamot"
-          }
-        },
-        "product_NVte8e": {
-          "type": "product",
-          "settings": {
-            "product": "the-sparkle-grounding-ritual"
-          }
-        },
-        "product_ic46dP": {
-          "type": "product",
-          "settings": {
-            "product": "oya-ylang-ylang-fior-original"
-          }
-        },
-        "product_LXxw6G": {
-          "type": "product",
-          "settings": {
-            "product": "fior-grace-oya-bergamot"
-          }
-        }
-      },
-      "block_order": [
-        "product_jBMQcA",
-        "product_K8xWJQ",
-        "product_4CHfMj",
-        "product_NVte8e",
-        "product_ic46dP",
-        "product_LXxw6G"
-      ],
-      "name": "Product Carousel",
-      "settings": {
-        "title": "BATH & SENSES - OYA X FIOR",
-        "subtitle": "Descoperă o colecție pentru ritualul tău de baie, creată pentru momentele în care ai nevoie de un răsfăț.",
-        "cta_text": "Experimentează Colecția Noastră",
-        "cta_url": "shopify://collections/bath-senses-oya-x-fior",
-        "background_color": "brown"
-      }
-    },
     "product_carousel_AhhLUq": {
       "type": "product-carousel",
       "blocks": {
@@ -268,6 +154,12 @@
             "product": "terrae-crafted-holders"
           }
         },
+        "product_PgxgAY": {
+          "type": "product",
+          "settings": {
+            "product": "norr-incense-stick-holder"
+          }
+        },
         "product_gfyYLr": {
           "type": "product",
           "settings": {
@@ -280,6 +172,7 @@
         "product_biJHLN",
         "product_w8WA7U",
         "product_KTykp3",
+        "product_PgxgAY",
         "product_gfyYLr"
       ],
       "name": "Product Carousel",
@@ -288,6 +181,121 @@
         "subtitle": "Hand-built, hand-finished, and created in limited editions.",
         "cta_text": "Discover Our Ceramics",
         "cta_url": "shopify://collections/ceramics",
+        "background_color": "brown"
+      }
+    },
+    "product_carousel_DH3DP9": {
+      "type": "product-carousel",
+      "blocks": {
+        "product_Fcgj8h": {
+          "type": "product",
+          "settings": {
+            "product": "velour-powdered-rose-soft-wood-1-1"
+          }
+        },
+        "product_AaUzgQ": {
+          "type": "product",
+          "settings": {
+            "product": "serenity-ylang-ylang-1-1"
+          }
+        },
+        "product_imKA7h": {
+          "type": "product",
+          "settings": {
+            "product": "clarity-bergamot-1-1"
+          }
+        },
+        "product_chcHKn": {
+          "type": "product",
+          "settings": {
+            "product": "creativity-amyris"
+          }
+        },
+        "product_LMpW7P": {
+          "type": "product",
+          "settings": {
+            "product": "tea-tree-1-1"
+          }
+        },
+        "product_F9eiGA": {
+          "type": "product",
+          "settings": {
+            "product": "grounding-patchouli-1-1"
+          }
+        }
+      },
+      "block_order": [
+        "product_Fcgj8h",
+        "product_AaUzgQ",
+        "product_imKA7h",
+        "product_chcHKn",
+        "product_LMpW7P",
+        "product_F9eiGA"
+      ],
+      "disabled": true,
+      "name": "Product Carousel",
+      "settings": {
+        "title": "Dăruiește un Moment, Primești un Moment",
+        "subtitle": "Dăruiești și primește. Alege un moment de relaxare pentru tine și unul pentru cineva drag.",
+        "cta_text": "Dăruiește un Moment",
+        "cta_url": "shopify://collections/1-1-cadou",
+        "background_color": "brown"
+      }
+    },
+    "product_carousel_LdQBgw": {
+      "type": "product-carousel",
+      "blocks": {
+        "product_jBMQcA": {
+          "type": "product",
+          "settings": {
+            "product": "the-sparkle-grounding-ritual"
+          }
+        },
+        "product_K8xWJQ": {
+          "type": "product",
+          "settings": {
+            "product": "oya-ylang-ylang-fior-original"
+          }
+        },
+        "product_4CHfMj": {
+          "type": "product",
+          "settings": {
+            "product": "fior-grace-oya-bergamot"
+          }
+        },
+        "product_NVte8e": {
+          "type": "product",
+          "settings": {
+            "product": "the-sparkle-grounding-ritual"
+          }
+        },
+        "product_ic46dP": {
+          "type": "product",
+          "settings": {
+            "product": "oya-ylang-ylang-fior-original"
+          }
+        },
+        "product_LXxw6G": {
+          "type": "product",
+          "settings": {
+            "product": "fior-grace-oya-bergamot"
+          }
+        }
+      },
+      "block_order": [
+        "product_jBMQcA",
+        "product_K8xWJQ",
+        "product_4CHfMj",
+        "product_NVte8e",
+        "product_ic46dP",
+        "product_LXxw6G"
+      ],
+      "name": "Product Carousel",
+      "settings": {
+        "title": "BATH & SENSES - OYA X FIOR",
+        "subtitle": "Descoperă o colecție pentru ritualul tău de baie, creată pentru momentele în care ai nevoie de un răsfăț.",
+        "cta_text": "Experimentează Colecția Noastră",
+        "cta_url": "shopify://collections/bath-senses-oya-x-fior",
         "background_color": "brown"
       }
     },
@@ -373,9 +381,53 @@
     },
     "latest_articles_6Cy8XP": {
       "type": "latest-articles",
+      "disabled": true,
       "name": "Latest Articles",
       "settings": {
         "blog": "latest"
+      }
+    },
+    "reviews_JyEhR4": {
+      "type": "reviews",
+      "blocks": {
+        "review_hr4gyX": {
+          "type": "review",
+          "settings": {
+            "image": "shopify://shop_images/portait1.jpg",
+            "quote": "Produsele OYA au transformat complet rutina mea de relaxare. Calitatea uleiurilor esențiale este excepțională!",
+            "name": "Maria P."
+          }
+        },
+        "review_nhHBiV": {
+          "type": "review",
+          "settings": {
+            "image": "shopify://shop_images/portrait2.jpg",
+            "quote": "Recomand cu căldură! Amestecurile sunt perfecte și aromele sunt divine.",
+            "name": "Andreea M."
+          }
+        },
+        "review_XxK9gz": {
+          "type": "review",
+          "settings": {
+            "image": "shopify://shop_images/portrait3.jpg",
+            "quote": "Cel mai bun cadou pe care mi l-am făcut. Folosesc uleiurile zilnic pentru meditație.",
+            "name": "Elena D."
+          }
+        }
+      },
+      "block_order": [
+        "review_hr4gyX",
+        "review_nhHBiV",
+        "review_XxK9gz"
+      ],
+      "name": "Reviews",
+      "settings": {
+        "background": "#ffffff",
+        "color": "",
+        "heading": "Ce spun clienții noștri",
+        "size": "h2",
+        "columns": 3,
+        "image_size": 100
       }
     },
     "footer_image_new": {
@@ -390,16 +442,17 @@
   "order": [
     "responsive_video_1",
     "text_scroll_animation_xXPH68",
-    "product_carousel_DH3DP9",
-    "product_carousel_LdQBgw",
     "product_carousel_AhhLUq",
     "product_carousel_4XT4Lq",
     "product_carousel_LmaznV",
+    "product_carousel_DH3DP9",
+    "product_carousel_LdQBgw",
     "horizontal_spacer_gHwz7V",
     "image_with_content_6rxDKF",
     "scroll_video_CyYhQr",
     "values_card_MnR8Ty",
     "latest_articles_6Cy8XP",
+    "reviews_JyEhR4",
     "footer_image_new"
   ]
 }
