@@ -439,6 +439,49 @@
         "footer_image": "shopify://shop_images/home-footer.webp",
         "scrolling_text": "Sustainable • 100% Natural • Pure Experience • Sustainable • 100% Natural • Pure Experience • Sustainable • 100% Natural • Pure Experience •"
       }
+    },
+    "product_carousel_RdPWpp": {
+      "type": "product-carousel",
+      "blocks": {
+        "product_nXQ4Xk": {
+          "type": "product",
+          "settings": {
+            "product": ""
+          }
+        },
+        "product_YWagU3": {
+          "type": "product",
+          "settings": {
+            "product": ""
+          }
+        },
+        "product_qwTqi4": {
+          "type": "product",
+          "settings": {
+            "product": ""
+          }
+        },
+        "product_3cnFXx": {
+          "type": "product",
+          "settings": {
+            "product": ""
+          }
+        }
+      },
+      "block_order": [
+        "product_nXQ4Xk",
+        "product_YWagU3",
+        "product_qwTqi4",
+        "product_3cnFXx"
+      ],
+      "name": "Product Carousel",
+      "settings": {
+        "title": "OYA SOY CANDLES - OYA x MAISON NATURE",
+        "subtitle": "Discover our handcrafted collection of candles.",
+        "cta_text": "Discover our candles",
+        "cta_url": "shopify://collections/candles",
+        "background_color": "brown"
+      }
     }
   },
   "order": [
@@ -455,6 +498,7 @@
     "values_card_MnR8Ty",
     "latest_articles_6Cy8XP",
     "reviews_JyEhR4",
-    "footer_image_new"
+    "footer_image_new",
+    "product_carousel_RdPWpp"
   ]
 }
