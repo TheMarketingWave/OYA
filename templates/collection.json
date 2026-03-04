@@ -12,6 +12,15 @@
     "collection_header_RLEKt7": {
       "type": "collection-header",
       "blocks": {
+        "collection_header_iT4HnY": {
+          "type": "collection_header",
+          "settings": {
+            "target_type": "specific",
+            "collection": "candles",
+            "title": "<p>OYA SOY CANDLES<br/>OYA x MAISON NATURE</p>",
+            "subtitle": "Our decorative candles are a celebration of mindful living and aesthetic harmony. We proudly present the Oya Essentials x Maison Nature set, a collaboration with the visionary mind behind Maison Nature, Monica Burcă. Hand-poured in small batches using 100% pure soy wax, this unscented trio blends the warmth of natural light with elegant, minimalist design."
+          }
+        },
         "collection_header_wkM8Yf": {
           "type": "collection_header",
           "settings": {
@@ -41,6 +50,7 @@
         }
       },
       "block_order": [
+        "collection_header_iT4HnY",
         "collection_header_wkM8Yf",
         "collection_header_CgTE63",
         "collection_header_YV8TTT"
