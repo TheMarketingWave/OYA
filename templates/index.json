@@ -242,6 +242,56 @@
         "background_color": "brown"
       }
     },
+    "product_carousel_RdPWpp": {
+      "type": "product-carousel",
+      "blocks": {
+        "product_e8874V": {
+          "type": "product",
+          "settings": {
+            "product": "the-balance-set"
+          }
+        },
+        "product_nXQ4Xk": {
+          "type": "product",
+          "settings": {
+            "product": "the-balance-set"
+          }
+        },
+        "product_YWagU3": {
+          "type": "product",
+          "settings": {
+            "product": "the-balance-set"
+          }
+        },
+        "product_qwTqi4": {
+          "type": "product",
+          "settings": {
+            "product": "the-balance-set"
+          }
+        },
+        "product_3cnFXx": {
+          "type": "product",
+          "settings": {
+            "product": "the-balance-set"
+          }
+        }
+      },
+      "block_order": [
+        "product_e8874V",
+        "product_nXQ4Xk",
+        "product_YWagU3",
+        "product_qwTqi4",
+        "product_3cnFXx"
+      ],
+      "name": "Product Carousel",
+      "settings": {
+        "title": "OYA SOY CANDLES - OYA x MAISON NATURE",
+        "subtitle": "Discover our handcrafted collection of candles.",
+        "cta_text": "Discover our candles",
+        "cta_url": "shopify://collections/candles",
+        "background_color": "brown"
+      }
+    },
     "product_carousel_LdQBgw": {
       "type": "product-carousel",
       "blocks": {
@@ -296,56 +346,6 @@
         "subtitle": "Descoperă o colecție pentru ritualul tău de baie, creată pentru momentele în care ai nevoie de un răsfăț.",
         "cta_text": "Experimentează Colecția Noastră",
         "cta_url": "shopify://collections/bath-senses-oya-x-fior",
-        "background_color": "brown"
-      }
-    },
-    "product_carousel_RdPWpp": {
-      "type": "product-carousel",
-      "blocks": {
-        "product_e8874V": {
-          "type": "product",
-          "settings": {
-            "product": "the-balance-set"
-          }
-        },
-        "product_nXQ4Xk": {
-          "type": "product",
-          "settings": {
-            "product": "the-balance-set"
-          }
-        },
-        "product_YWagU3": {
-          "type": "product",
-          "settings": {
-            "product": "the-balance-set"
-          }
-        },
-        "product_qwTqi4": {
-          "type": "product",
-          "settings": {
-            "product": "the-balance-set"
-          }
-        },
-        "product_3cnFXx": {
-          "type": "product",
-          "settings": {
-            "product": "the-balance-set"
-          }
-        }
-      },
-      "block_order": [
-        "product_e8874V",
-        "product_nXQ4Xk",
-        "product_YWagU3",
-        "product_qwTqi4",
-        "product_3cnFXx"
-      ],
-      "name": "Product Carousel",
-      "settings": {
-        "title": "OYA SOY CANDLES - OYA x MAISON NATURE",
-        "subtitle": "Discover our handcrafted collection of candles.",
-        "cta_text": "Discover our candles",
-        "cta_url": "shopify://collections/candles",
         "background_color": "brown"
       }
     },
@@ -498,8 +498,8 @@
     "product_carousel_4XT4Lq",
     "product_carousel_LmaznV",
     "product_carousel_DH3DP9",
-    "product_carousel_LdQBgw",
     "product_carousel_RdPWpp",
+    "product_carousel_LdQBgw",
     "horizontal_spacer_gHwz7V",
     "image_with_content_6rxDKF",
     "scroll_video_CyYhQr",
