@@ -12,6 +12,24 @@
     "collection_header_RLEKt7": {
       "type": "collection-header",
       "blocks": {
+        "collection_header_8bFjVp": {
+          "type": "collection_header",
+          "settings": {
+            "target_type": "specific",
+            "collection": "bath-senses-oya-x-fior",
+            "title": "<p>BATH & SENSES<br/>OYA x FIOR</p>",
+            "subtitle": ""
+          }
+        },
+        "collection_header_GxhCRq": {
+          "type": "collection_header",
+          "settings": {
+            "target_type": "specific",
+            "collection": "",
+            "title": "",
+            "subtitle": ""
+          }
+        },
         "collection_header_iT4HnY": {
           "type": "collection_header",
           "settings": {
@@ -50,6 +68,8 @@
         }
       },
       "block_order": [
+        "collection_header_8bFjVp",
+        "collection_header_GxhCRq",
         "collection_header_iT4HnY",
         "collection_header_wkM8Yf",
         "collection_header_CgTE63",
