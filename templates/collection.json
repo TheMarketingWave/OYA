@@ -21,15 +21,6 @@
             "subtitle": ""
           }
         },
-        "collection_header_GxhCRq": {
-          "type": "collection_header",
-          "settings": {
-            "target_type": "specific",
-            "collection": "",
-            "title": "",
-            "subtitle": ""
-          }
-        },
         "collection_header_iT4HnY": {
           "type": "collection_header",
           "settings": {
@@ -69,7 +60,6 @@
       },
       "block_order": [
         "collection_header_8bFjVp",
-        "collection_header_GxhCRq",
         "collection_header_iT4HnY",
         "collection_header_wkM8Yf",
         "collection_header_CgTE63",
