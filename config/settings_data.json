@@ -10,7 +10,7 @@
 {
   "current": {
     "newsletter_popup": true,
-    "newsletter_duration": 10,
+    "newsletter_duration": 3,
     "newsletter_heading": "Newsletter Sign-up",
     "newsletter_text": "Subscribe and get 10%",
     "sections": {
